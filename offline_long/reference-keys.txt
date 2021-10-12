@@ -1,0 +1,9 @@
+tab:unnamed-chunk-155
+tab:unnamed-chunk-655
+part-về-cuốn-sách-này
+part-nhập-môn-về-r
+part-quản-lý-dữ-liệu
+part-phân-tích-dữ-liệu
+part-trực-quan-hóa-dữ-liệu
+part-báo-cáo-và-dashboards
+part-tổng-hợp

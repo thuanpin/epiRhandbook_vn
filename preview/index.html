@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>R trong dịch tễ học ứng dụng và y tế công cộng | Sổ tay dịch tễ học với R</title>
+<meta name="author" content="the handbook team">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.4/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="libs/datatables-binding-0.16/datatables.js"></script><link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script><link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet">
+<script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script><link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet">
+<script src="libs/selectize-0.12.0/selectize.min.js"></script><link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet">
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS --><link rel="stylesheet" href="style_bs4.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Sổ tay dịch tễ học với R</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="active" href="index.html"></a></li>
+<li class="book-part">Về cuốn sách này</li>
+<li><a class="" href="editorial_style.html"><span class="header-section-number">1</span> Biên tập và ghi chú kỹ thuật</a></li>
+<li><a class="" href="data_used.html"><span class="header-section-number">2</span> Tải sách và dữ liệu</a></li>
+<li class="book-part">Nhập môn về R</li>
+<li><a class="" href="basics.html"><span class="header-section-number">3</span> R Cơ bản</a></li>
+<li><a class="" href="transition_to_R.html"><span class="header-section-number">4</span> Chuyển đổi sang R</a></li>
+<li><a class="" href="packages_suggested.html"><span class="header-section-number">5</span> Package đề xuất</a></li>
+<li><a class="" href="r_projects.html"><span class="header-section-number">6</span> Dự án R</a></li>
+<li><a class="" href="importing.html"><span class="header-section-number">7</span> Nhập xuất dữ liệu</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><!--bookdown:title:end--><!--bookdown:title:start--><div id="section" class="section level1 unnumbered">
+<h1 class="unnumbered"><a class="anchor" aria-label="anchor" href="#section"><i class="fas fa-link"></i></a></h1>
+<div class="inline-figure"><img src="images/Epi%20R%20Handbook%20Banner%20Beige%201500x500.png" width="100%" style="display: block; margin: auto;"></div>
+<meta name="description" content="The Epi R Handbook is an R reference manual for applied epidemiology and public health.">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- <span style="color: red;">**THIS IS A DRAFT.  REVIEWERS GIVE FEEDBACK AT THIS [LINK](https://forms.gle/4RNdRRLGx67xW9yq9)**.</span> --><!-- <span style="color: darkgreen;">**DO YOU LIKE THIS HANDBOOK? SHOULD SOMETHING BE CHANGED? PLEASE TELL US!**</span> --><!-- <form target="_blank" action="https://forms.gle/A5SnRVws7tPD15Js9"> --><!--     <input type="submit" value="FEEDBACK" /> --><!-- </form> --><!-- ======================================================= --><!-- ## An R reference manual for applied epidemiology and public health {.unnumbered} --><!-- <span style="color: brown;">**The Epi R Handbook is an R reference manual for applied epidemiology and public health.**</span> --><!-- ## About this handbook   --><div id="r-trong-dịch-tễ-học-ứng-dụng-và-y-tế-công-cộng" class="section level2 unnumbered">
+<h2>R trong dịch tễ học ứng dụng và y tế công cộng<a class="anchor" aria-label="anchor" href="#r-trong-d%E1%BB%8Bch-t%E1%BB%85-h%E1%BB%8Dc-%E1%BB%A9ng-d%E1%BB%A5ng-v%C3%A0-y-t%E1%BA%BF-c%C3%B4ng-c%E1%BB%99ng"><i class="fas fa-link"></i></a>
+</h2>
+<p><strong>Sổ tay này hướng tới:</strong></p>
+<ul>
+<li>Là một tài liệu tham khảo R một cách nhanh chóng<br>
+</li>
+<li>Cung cấp các ví dụ tập trung vào nhiệm vụ giải quyết các vấn đề dịch tễ học phổ biến<br>
+</li>
+<li>Hỗ trợ các nhà dịch tễ học chuyển sang sử dụng R<br>
+</li>
+<li>Có thể sử dụng trong các tình huống có kết nối internet thấp thông qua <strong><a href="data-used.html#data_used">phiên bản ngoại tuyến</a></strong>
+</li>
+</ul>
+<!-- * Use practical epi examples - cleaning case linelists, making transmission chains and epidemic curves, automated reports and dashboards, modeling incidence and making projections, demographic pyramids and rate standardization, record matching, outbreak detection, survey analysis, survival analysis, GIS basics, contact tracing, phylogenetic trees...   --><!-- **How is this different than other R books?**   --><!-- * It is community-driven - *written for epidemiologists by epidemiologists* in their spare time and leveraging experience in local, national, academic, and emergency settings   --><!-- Dual-column created based on the rmarkdown cookbook here: https://bookdown.org/yihui/rmarkdown-cookbook/multi-column.html --><p><br></p>
+<div style="display: flex;">
+<div>
+<div class="inline-figure"><img src="images/epiRhandbook_HexSticker_500x500.png" width="100%" style="display: block; margin: auto;"></div>
+</div>
+<div class="col">
+<p>  <!-- an empty Div (with a white space), serving as
+a column separator --></p>
+</div>
+<div>
+<p><span style="color: black;"><strong>Được viết bởi các nhà dịch tễ học, dành cho các nhà dịch tễ học</strong></span></p>
+<p>Chúng tôi là những nhà dịch tễ học đến từ khắp mọi nơi trên thế giới, viết trong thời gian rảnh của mình để cung cấp tài liệu này cho cộng đồng. Sự động viên và góp ý của bạn luôn được chào đón thông qua:</p>
+<ul>
+<li>Gửi <a href="https://forms.gle/A5SnRVws7tPD15Js9"><strong>biểu mẫu phản hồi</strong></a><br>
+</li>
+<li>Email <a href="mailto:epiRhandbook@gmail.com" class="email"><strong>epiRhandbook@gmail.com</strong></a> hoặc tweet <a href="https://twitter.com/epirhandbook"><strong>@epiRhandbook</strong></a><br>
+</li>
+<li>Gửi các vấn đề cho chúng tôi tại <a href="https://github.com/epirhandbook/Epi_R_handbook"><strong>Github repository</strong></a>
+</li>
+</ul>
+</div>
+</div>
+<!-- ======================================================= -->
+</div>
+<div id="sổ-tay-này-được-sử-dụng-như-thế-nào" class="section level2 unnumbered">
+<h2>Sổ tay này được sử dụng như thế nào<a class="anchor" aria-label="anchor" href="#s%E1%BB%95-tay-n%C3%A0y-%C4%91%C6%B0%E1%BB%A3c-s%E1%BB%AD-d%E1%BB%A5ng-nh%C6%B0-th%E1%BA%BF-n%C3%A0o"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>Truy cập các trang trong phần Mục lục, hoặc sử dụng ô tìm kiếm</li>
+<li>Nhấn biểu tượng “copy” để copy code<br>
+</li>
+<li>Kết hợp theo dõi cùng với các bộ <a href="data-used.html#data_used">dữ liệu minh họa</a><br>
+</li>
+<li>Xem phần “Tài nguyên” trong từng trang để tìm thêm tài liệu</li>
+</ul>
+<p><strong>Phiên bản ngoại tuyến</strong></p>
+<p>Xem hướng dẫn tại trang <a href="data-used.html#data_used">Tải sách và dữ liệu</a>.</p>
+<!-- ======================================================= -->
+</div>
+<div id="lời-cảm-ơn" class="section level2 unnumbered">
+<h2>Lời cảm ơn<a class="anchor" aria-label="anchor" href="#l%E1%BB%9Di-c%E1%BA%A3m-%C6%A1n"><i class="fas fa-link"></i></a>
+</h2>
+<p>Sổ tay này được tạo ra bởi sự hợp tác của các nhà dịch tễ học từ khắp nơi trên thế giới, đúc kết kinh nghiệm cùng với các tổ chức khác bao gồm các cơ quan y tế địa phương, tiểu bang, tỉnh và quốc gia, Tổ chức Y tế Thế giới (WHO), Tổ chức Bác sỹ không biên giới (MSF), hệ thống các bệnh viện, và các đơn vị nghiên cứu.</p>
+<p>Sổ tay này <strong>không phải</strong> là sản phẩm đã được phê duyệt của bất kỳ tổ chức cụ thể nào. Mặc dù chúng tôi cố gắng đảm bảo tính chính xác, nhưng chúng tôi không đảm bảo về nội dung trong cuốn sách này.</p>
+<div id="những-người-đóng-góp" class="section level3 unnumbered">
+<h3>Những người đóng góp<a class="anchor" aria-label="anchor" href="#nh%E1%BB%AFng-ng%C6%B0%E1%BB%9Di-%C4%91%C3%B3ng-g%C3%B3p"><i class="fas fa-link"></i></a>
+</h3>
+<p><strong>Chủ biên:</strong> <a href="https://www.linkedin.com/in/neale-batra/">Neale Batra</a></p>
+<p><strong>Nhóm nòng cốt dự án:</strong> <a href="https://www.linkedin.com/in/neale-batra/">Neale Batra</a>, <a href="https://github.com/aspina7">Alex Spina</a>, <a href="https://twitter.com/Ammer_B">Amrish Baidjoe</a>, Pat Keating, <a href="https://github.com/henryls1">Henry Laurenson-Schafer</a>, <a href="https://github.com/finlaycampbell">Finlay Campbell</a></p>
+<p><strong>Nhóm tác giả</strong>: <a href="https://www.linkedin.com/in/neale-batra/">Neale Batra</a>, <a href="https://github.com/aspina7">Alex Spina</a>, <a href="https://www.linkedin.com/in/paula-bianca-blomquist-53188186/">Paula Blomquist</a>, <a href="https://github.com/finlaycampbell">Finlay Campbell</a>, <a href="https://github.com/henryls1">Henry Laurenson-Schafer</a>, <a href="www.Twitter.com/isaacatflorence">Isaac Florence</a>, <a href="https://www.linkedin.com/in/nataliefischer211/">Natalie Fischer</a>, <a href="https://twitter.com/aminata_fadl">Aminata Ndiaye</a>, <a href="https://www.linkedin.com/in/liza-coyer-86022040/">Liza Coyer</a>, <a href="https://twitter.com/jonny_polonsky">Jonathan Polonsky</a>, <a href="https://ch.linkedin.com/in/yurie-izawa-a1590319">Yurie Izawa</a>, <a href="https://twitter.com/cbailey_58?lang=en">Chris Bailey</a>, <a href="https://www.linkedin.com/in/daniel-molling-4005716a/">Daniel Molling</a>, <a href="https://twitter.com/ishaberry2">Isha Berry</a>, <a href="https://twitter.com/buajitti">Emma Buajitti</a>, <a href="https://mathildemousset.wordpress.com/research/">Mathilde Mousset</a>, <a href="https://www.linkedin.com/in/saramhollis/">Sara Hollis</a>, Wen Lin</p>
+<p><strong>Nhóm dịch giả</strong>: <a href="https://www.linkedin.com/in/ntluong95/">Nguyễn Thanh Lương</a>, Nguyễn Trung Thành, <a href="https://www.linkedin.com/in/huyen-nguyen-3920b51a6/">Nguyễn Thị Khánh Huyền</a>, Vũ Thu Hà</p>
+<p><strong>Nhóm phản biện</strong>: Pat Keating, Annick Lenglet, Margot Charette, Danielly Xavier, Esther Kukielka, Michelle Sloan, Aybüke Koyuncu, Rachel Burke, Kate Kelsey, <a href="https://www.linkedin.com/in/berhe-etsay-5752b1154/">Berhe Etsay</a>, John Rossow, Mackenzie Zendt, James Wright, Laura Haskins, <a href="ffinger.github.io">Flavio Finger</a>, Tim Taylor, <a href="https://www.linkedin.com/in/jaehyoungtlee/">Jae Hyoung Tim Lee</a>, <a href="https://www.linkedin.com/in/brianna-bradley-bb8658155">Brianna Bradley</a>, <a href="https://www.linkedin.com/in/wenanoria">Wayne Enanoria</a>, Manual Albela Miranda, <a href="https://www.linkedin.com/in/molly-mantus-174550150/">Molly Mantus</a>, Pattama Ulrich, Joseph Timothy, Adam Vaughan, Olivia Varsaneux, Lionel Monteiro, Joao Muianga</p>
+<p><strong>Hình minh họa</strong>: Calder Fong</p>
+<!-- **Editor-in-Chief:** Neale Batra  -->
+<!-- **Project core team:** Neale Batra, Alex Spina, Amrish Baidjoe, Pat Keating, Henry Laurenson-Schafer, Finlay Campbell   -->
+<!-- **Authors**: Neale Batra, Alex Spina, Paula Blomquist, Finlay Campbell, Henry Laurenson-Schafer, [Isaac Florence](www.Twitter.com/isaacatflorence), Natalie Fischer, Aminata Ndiaye, Liza Coyer, Jonathan Polonsky, Yurie Izawa, Chris Bailey, Daniel Molling, Isha Berry, Emma Buajitti, Mathilde Mousset, Sara Hollis, Wen Lin   -->
+<!-- **Reviewers**: Pat Keating, Mathilde Mousset, Annick Lenglet, Margot Charette, Isha Berry, Paula Blomquist, Natalie Fischer, Daniely Xavier, Esther Kukielka, Michelle Sloan, Aybüke Koyuncu, Rachel Burke, Daniel Molling, Kate Kelsey, Berhe Etsay, John Rossow, Mackenzie Zendt, James Wright, Wayne Enanoria, Laura Haskins, Flavio Finger, Tim Taylor, Jae Hyoung Tim Lee, Brianna Bradley, Manual Albela Miranda, Molly Mantus, Priscilla Spencer, Pattama Ulrich, Joseph Timothy, Adam Vaughan, Olivia Varsaneux, Lionel Monteiro, Joao Muianga   -->
+</div>
+<div id="tài-trợ-và-hỗ-trợ" class="section level3 unnumbered">
+<h3>Tài trợ và hỗ trợ<a class="anchor" aria-label="anchor" href="#t%C3%A0i-tr%E1%BB%A3-v%C3%A0-h%E1%BB%97-tr%E1%BB%A3"><i class="fas fa-link"></i></a>
+</h3>
+<p>Sổ tay này nhận được tài trợ thông qua kinh phí hỗ trợ trợ xây dựng năng lực khẩn cấp COVID-19 từ <a href="https://www.tephinet.org/">TEPHINET</a>, tmạng lưới toàn cầu của các Chương trình Đào tạo Dịch tễ học Thực địa (FETPs).</p>
+<p>Hỗ trợ hành chính được cung cấp bởi EPIET Alumni Network (<a href="https://epietalumni.net/">EAN</a>), với lời cảm ơn đặc biệt tới Annika Wendland. EPIET là Chương trình Châu Âu về Đào tạo Dịch tễ học can thiệp.</p>
+<p>Đặc biệt cảm ơn Trung tâm Điều hành Amsterdam (OCA) của tổ chức Bác sỹ không biên giới (MSF) cho những sự hỗ trợ của họ trong quá trình phát triển cuốn sổ tay này.</p>
+<p><em>Ấn phẩm này được hỗ trợ bởi Hợp đồng Hợp tác số NU2GGH001873, được tài trợ bởi Trung tâm Kiểm soát và Phòng ngừa Dịch bệnh thông qua TEPHINET, một chương trình của Lực lượng đặc nhiệm về sức khỏe toàn cầu. Nội dung của nó hoàn toàn do tác giả chịu trách nhiệm và không nhất thiết phải đại diện cho quan điểm chính thức của Trung tâm Kiểm soát và Phòng ngừa Dịch bệnh, Bộ Y tế và Dịch vụ Nhân sinh, Lực lượng Đặc nhiệm về Sức khỏe Toàn cầu, hoặc TEPHINET</em></p>
+</div>
+<div id="cảm-hứng" class="section level3 unnumbered">
+<h3>Cảm hứng<a class="anchor" aria-label="anchor" href="#c%E1%BA%A3m-h%E1%BB%A9ng"><i class="fas fa-link"></i></a>
+</h3>
+<p>Vô số hướng dẫn và tóm tắt cung cấp kiến thức để phát triển nội dung sổ tay này được ghi nhận trong các trang nội dung tương ứng.</p>
+<p>Nói một cách tổng quát hơn, các nguồn sau đây đã truyền nguồn cảm hứng cho cuốn sổ tay này:<br><a href="https://r4epis.netlify.app/">The “R4Epis” project</a> (một sự hợp tác giữa MSF và RECON)<br><a href="https://www.repidemicsconsortium.org/">R Epidemics Consortium (RECON)</a><br><a href="https://r4ds.had.co.nz/">R for Data Science book (R4DS)</a><br><a href="https://bookdown.org/yihui/bookdown/">bookdown: Authoring Books and Technical Documents with R Markdown</a><br><a href="https://www.netlify.com">Netlify</a> lưu trữ trang web này</p>
+<!-- ### Image credits {-}   -->
+<!-- Images in logo from US CDC Public Health Image Library) include [2013 Yemen looking for mosquito breeding sites](https://phil.cdc.gov/Details.aspx?pid=19623), [Ebola virus](https://phil.cdc.gov/Details.aspx?pid=23186), and [Survey in Rajasthan](https://phil.cdc.gov/Details.aspx?pid=19838).   -->
+</div>
+</div>
+<div id="điều-khoản-sử-dụng-và-đóng-góp" class="section level2 unnumbered">
+<h2>Điều khoản sử dụng và đóng góp<a class="anchor" aria-label="anchor" href="#%C4%91i%E1%BB%81u-kho%E1%BA%A3n-s%E1%BB%AD-d%E1%BB%A5ng-v%C3%A0-%C4%91%C3%B3ng-g%C3%B3p"><i class="fas fa-link"></i></a>
+</h2>
+<div id="giấy-phép" class="section level3 unnumbered">
+<h3>Giấy phép<a class="anchor" aria-label="anchor" href="#gi%E1%BA%A5y-ph%C3%A9p"><i class="fas fa-link"></i></a>
+</h3>
+<p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" alt="Creative Commons License" style="border-width:0"></a><br>Sổ tay này được cấp phép theo <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Giấy phép quốc tế Creative Commons Attribution-NonCommercial-ShareAlike 4.0</a>.</p>
+<p>Các khóa học học thuật và các chương trình đào tạo dịch tễ học được hoan nghênh sử dụng cuốn sổ tay này với sinh viên của họ. Nếu bạn có thắc mắc về mục đích sử dụng của mình, hãy gửi email tới <a href="mailto:epiRhandbook@gmail.com" class="email"><strong>epiRhandbook@gmail.com</strong></a>.</p>
+</div>
+<div id="trích-dẫn" class="section level3 unnumbered">
+<h3>Trích dẫn<a class="anchor" aria-label="anchor" href="#tr%C3%ADch-d%E1%BA%ABn"><i class="fas fa-link"></i></a>
+</h3>
+<p>Neale Batra và cộng sự, Sổ tay Dịch tễ học với R. <a rel="license" href="https://zenodo.org/badge/231610102.svg"><img src="https://zenodo.org/badge/231610102.svg" alt="DOI" style="border-width:0"></a><br></p>
+</div>
+<div id="đóng-góp" class="section level3 unnumbered">
+<h3>Đóng góp<a class="anchor" aria-label="anchor" href="#%C4%91%C3%B3ng-g%C3%B3p"><i class="fas fa-link"></i></a>
+</h3>
+<p>Nếu bạn muốn đóng góp nội dung, vui lòng liên hệ với chúng tôi trước về các vấn đề trên Github hoặc qua email. Chúng tôi đang triển khai lịch trình cập nhật và đang tạo hướng dẫn dành cho cộng tác viên.</p>
+<p>Xin lưu ý rằng dự án epiRhandbook được phát hành cùng với bộ <a href="https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html">Quy tắc ứng xử của cộng tác viên</a>. Bằng cách đóng góp cho dự án này, bạn đồng ý tuân theo các điều khoản của nó.</p>
+
+</div>
+</div>
+</div>
+
+
+
+<div class="chapter-nav">
+<div class="empty"></div>
+<div class="next"><a href="editorial_style.html"><span class="header-section-number">1</span> Biên tập và ghi chú kỹ thuật</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#section"></a></li>
+<li><a class="nav-link" href="#r-trong-d%E1%BB%8Bch-t%E1%BB%85-h%E1%BB%8Dc-%E1%BB%A9ng-d%E1%BB%A5ng-v%C3%A0-y-t%E1%BA%BF-c%C3%B4ng-c%E1%BB%99ng">R trong dịch tễ học ứng dụng và y tế công cộng</a></li>
+<li><a class="nav-link" href="#s%E1%BB%95-tay-n%C3%A0y-%C4%91%C6%B0%E1%BB%A3c-s%E1%BB%AD-d%E1%BB%A5ng-nh%C6%B0-th%E1%BA%BF-n%C3%A0o">Sổ tay này được sử dụng như thế nào</a></li>
+<li>
+<a class="nav-link" href="#l%E1%BB%9Di-c%E1%BA%A3m-%C6%A1n">Lời cảm ơn</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#nh%E1%BB%AFng-ng%C6%B0%E1%BB%9Di-%C4%91%C3%B3ng-g%C3%B3p">Những người đóng góp</a></li>
+<li><a class="nav-link" href="#t%C3%A0i-tr%E1%BB%A3-v%C3%A0-h%E1%BB%97-tr%E1%BB%A3">Tài trợ và hỗ trợ</a></li>
+<li><a class="nav-link" href="#c%E1%BA%A3m-h%E1%BB%A9ng">Cảm hứng</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#%C4%91i%E1%BB%81u-kho%E1%BA%A3n-s%E1%BB%AD-d%E1%BB%A5ng-v%C3%A0-%C4%91%C3%B3ng-g%C3%B3p">Điều khoản sử dụng và đóng góp</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#gi%E1%BA%A5y-ph%C3%A9p">Giấy phép</a></li>
+<li><a class="nav-link" href="#tr%C3%ADch-d%E1%BA%ABn">Trích dẫn</a></li>
+<li><a class="nav-link" href="#%C4%91%C3%B3ng-g%C3%B3p">Đóng góp</a></li>
+</ul>
+</li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+</div>
+  
+
+  
+
+</div>
+ <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Sổ tay dịch tễ học với R</strong>" was written by the handbook team. It was last built on 2021-06-14.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

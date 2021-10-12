@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>5 Package đề xuất | Sổ tay dịch tễ học với R</title>
+
+    <meta name="author" content="the handbook team" />
+  
+  <!-- JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script>
+  <script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script>
+    <script src="libs/header-attrs-2.6.4/header-attrs.js"></script>
+    <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" />
+    <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
+    <script src="libs/bs3compat-0.2.5.1/tabs.js"></script>
+    <script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script>
+    <link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet" />
+    <script src="libs/bs4_book-1.0.0/bs4_book.js"></script>
+    <script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+    <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+    <script src="libs/datatables-binding-0.16/datatables.js"></script>
+    <link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+    <script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+    <link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet" />
+    <script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
+    <link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet" />
+    <script src="libs/selectize-0.12.0/selectize.min.js"></script>
+    <link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+    <script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script>
+
+  <!-- CSS -->
+    <link rel="stylesheet" href="style_bs4.css" />
+    
+</head>
+
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book">
+    <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Sổ tay dịch tễ học với R</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+      </form>
+
+      <nav aria-label="Table of contents">
+        <h2>Table of contents</h2>
+        <div id="book-toc"></div>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="#">View book source <i class="fab fa-github"></i></a></li></p>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="col-sm-12 col-md-9 col-lg-7" id="content">
+<div id="packages_suggested" class="section level1" number="5">
+<h1><span class="header-section-number">5</span> Package đề xuất</h1>
+<p>Below is a long list of suggested packages for common epidemiological work in R. You can copy this code, run it, and all of these packages will install from CRAN and load for use in the current R session. If a package is already installed, it will be loaded for use only.</p>
+<p>You can modify the code with <code>#</code> symbols to exclude any packages you do not want.</p>
+<p>Of note:</p>
+<ul>
+<li>Install the <strong>pacman</strong> package first before running the below code. You can do this with <code>install.packages("pacman")</code>. In this handbook we emphasize <code>p_load()</code> from <strong>pacman</strong>, which installs the package if necessary <em>and</em> loads it for use in the current R session. You can also load packages that are already installed with <code>library()</code> from <strong>base</strong> R.<br />
+</li>
+<li>In the code below, packages that are included when installing/loading another package are indicated by an indent and hash. For example how <strong>ggplot2</strong> is listed under <strong>tidyverse</strong>.<br />
+</li>
+<li>If multiple packages have functions with the same name, <em>masking</em> can occur when the function from the more recently-loaded package takes precedent. Read more in the [R basics] page. Consider using the package <strong>conflicted</strong> to manage such conflicts.<br />
+</li>
+<li>See the [R basics] section on packages for more information on <strong>pacman</strong> and masking.</li>
+</ul>
+<p>To see the versions of R, RStudio, and R packages used during the production of this handbook, see the page on [Editorial and technical notes].</p>
+<div id="packages-from-cran" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Packages from CRAN</h2>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="packages-suggested.html#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="do">##########################################</span></span>
+<span id="cb126-2"><a href="packages-suggested.html#cb126-2" aria-hidden="true" tabindex="-1"></a><span class="co"># List of useful epidemiology R packages #</span></span>
+<span id="cb126-3"><a href="packages-suggested.html#cb126-3" aria-hidden="true" tabindex="-1"></a><span class="do">##########################################</span></span>
+<span id="cb126-4"><a href="packages-suggested.html#cb126-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-5"><a href="packages-suggested.html#cb126-5" aria-hidden="true" tabindex="-1"></a><span class="co"># This script uses the p_load() function from pacman R package, </span></span>
+<span id="cb126-6"><a href="packages-suggested.html#cb126-6" aria-hidden="true" tabindex="-1"></a><span class="co"># which installs if package is absent, and loads for use if already installed</span></span>
+<span id="cb126-7"><a href="packages-suggested.html#cb126-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-8"><a href="packages-suggested.html#cb126-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-9"><a href="packages-suggested.html#cb126-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensures the package &quot;pacman&quot; is installed</span></span>
+<span id="cb126-10"><a href="packages-suggested.html#cb126-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">&quot;pacman&quot;</span>)) <span class="fu">install.packages</span>(<span class="st">&quot;pacman&quot;</span>)</span>
+<span id="cb126-11"><a href="packages-suggested.html#cb126-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-12"><a href="packages-suggested.html#cb126-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-13"><a href="packages-suggested.html#cb126-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Packages available from CRAN</span></span>
+<span id="cb126-14"><a href="packages-suggested.html#cb126-14" aria-hidden="true" tabindex="-1"></a><span class="do">##############################</span></span>
+<span id="cb126-15"><a href="packages-suggested.html#cb126-15" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(</span>
+<span id="cb126-16"><a href="packages-suggested.html#cb126-16" aria-hidden="true" tabindex="-1"></a>     </span>
+<span id="cb126-17"><a href="packages-suggested.html#cb126-17" aria-hidden="true" tabindex="-1"></a>     <span class="co"># learning R</span></span>
+<span id="cb126-18"><a href="packages-suggested.html#cb126-18" aria-hidden="true" tabindex="-1"></a>     <span class="do">############</span></span>
+<span id="cb126-19"><a href="packages-suggested.html#cb126-19" aria-hidden="true" tabindex="-1"></a>     learnr,   <span class="co"># interactive tutorials in RStudio Tutorial pane</span></span>
+<span id="cb126-20"><a href="packages-suggested.html#cb126-20" aria-hidden="true" tabindex="-1"></a>     swirl,    <span class="co"># interactive tutorials in R console</span></span>
+<span id="cb126-21"><a href="packages-suggested.html#cb126-21" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb126-22"><a href="packages-suggested.html#cb126-22" aria-hidden="true" tabindex="-1"></a>     <span class="co"># project and file management</span></span>
+<span id="cb126-23"><a href="packages-suggested.html#cb126-23" aria-hidden="true" tabindex="-1"></a>     <span class="do">#############################</span></span>
+<span id="cb126-24"><a href="packages-suggested.html#cb126-24" aria-hidden="true" tabindex="-1"></a>     here,     <span class="co"># file paths relative to R project root folder</span></span>
+<span id="cb126-25"><a href="packages-suggested.html#cb126-25" aria-hidden="true" tabindex="-1"></a>     rio,      <span class="co"># import/export of many types of data</span></span>
+<span id="cb126-26"><a href="packages-suggested.html#cb126-26" aria-hidden="true" tabindex="-1"></a>     openxlsx, <span class="co"># import/export of multi-sheet Excel workbooks </span></span>
+<span id="cb126-27"><a href="packages-suggested.html#cb126-27" aria-hidden="true" tabindex="-1"></a>     </span>
+<span id="cb126-28"><a href="packages-suggested.html#cb126-28" aria-hidden="true" tabindex="-1"></a>     <span class="co"># package install and management</span></span>
+<span id="cb126-29"><a href="packages-suggested.html#cb126-29" aria-hidden="true" tabindex="-1"></a>     <span class="do">################################</span></span>
+<span id="cb126-30"><a href="packages-suggested.html#cb126-30" aria-hidden="true" tabindex="-1"></a>     pacman,   <span class="co"># package install/load</span></span>
+<span id="cb126-31"><a href="packages-suggested.html#cb126-31" aria-hidden="true" tabindex="-1"></a>     renv,     <span class="co"># managing versions of packages when working in collaborative groups</span></span>
+<span id="cb126-32"><a href="packages-suggested.html#cb126-32" aria-hidden="true" tabindex="-1"></a>     remotes,  <span class="co"># install from github</span></span>
+<span id="cb126-33"><a href="packages-suggested.html#cb126-33" aria-hidden="true" tabindex="-1"></a>     </span>
+<span id="cb126-34"><a href="packages-suggested.html#cb126-34" aria-hidden="true" tabindex="-1"></a>     <span class="co"># General data management</span></span>
+<span id="cb126-35"><a href="packages-suggested.html#cb126-35" aria-hidden="true" tabindex="-1"></a>     <span class="do">#########################</span></span>
+<span id="cb126-36"><a href="packages-suggested.html#cb126-36" aria-hidden="true" tabindex="-1"></a>     tidyverse,    <span class="co"># includes many packages for tidy data wrangling and presentation</span></span>
+<span id="cb126-37"><a href="packages-suggested.html#cb126-37" aria-hidden="true" tabindex="-1"></a>          <span class="co">#dplyr,      # data management</span></span>
+<span id="cb126-38"><a href="packages-suggested.html#cb126-38" aria-hidden="true" tabindex="-1"></a>          <span class="co">#tidyr,      # data management</span></span>
+<span id="cb126-39"><a href="packages-suggested.html#cb126-39" aria-hidden="true" tabindex="-1"></a>          <span class="co">#ggplot2,    # data visualization</span></span>
+<span id="cb126-40"><a href="packages-suggested.html#cb126-40" aria-hidden="true" tabindex="-1"></a>          <span class="co">#stringr,    # work with strings and characters</span></span>
+<span id="cb126-41"><a href="packages-suggested.html#cb126-41" aria-hidden="true" tabindex="-1"></a>          <span class="co">#forcats,    # work with factors </span></span>
+<span id="cb126-42"><a href="packages-suggested.html#cb126-42" aria-hidden="true" tabindex="-1"></a>          <span class="co">#lubridate,  # work with dates</span></span>
+<span id="cb126-43"><a href="packages-suggested.html#cb126-43" aria-hidden="true" tabindex="-1"></a>          <span class="co">#purrr       # iteration and working with lists</span></span>
+<span id="cb126-44"><a href="packages-suggested.html#cb126-44" aria-hidden="true" tabindex="-1"></a>     linelist,     <span class="co"># cleaning linelists</span></span>
+<span id="cb126-45"><a href="packages-suggested.html#cb126-45" aria-hidden="true" tabindex="-1"></a>     naniar,       <span class="co"># assessing missing data</span></span>
+<span id="cb126-46"><a href="packages-suggested.html#cb126-46" aria-hidden="true" tabindex="-1"></a>     </span>
+<span id="cb126-47"><a href="packages-suggested.html#cb126-47" aria-hidden="true" tabindex="-1"></a>     <span class="co"># statistics  </span></span>
+<span id="cb126-48"><a href="packages-suggested.html#cb126-48" aria-hidden="true" tabindex="-1"></a>     <span class="do">############</span></span>
+<span id="cb126-49"><a href="packages-suggested.html#cb126-49" aria-hidden="true" tabindex="-1"></a>     janitor,      <span class="co"># tables and data cleaning</span></span>
+<span id="cb126-50"><a href="packages-suggested.html#cb126-50" aria-hidden="true" tabindex="-1"></a>     gtsummary,    <span class="co"># making descriptive and statistical tables</span></span>
+<span id="cb126-51"><a href="packages-suggested.html#cb126-51" aria-hidden="true" tabindex="-1"></a>     rstatix,      <span class="co"># quickly run statistical tests and summaries</span></span>
+<span id="cb126-52"><a href="packages-suggested.html#cb126-52" aria-hidden="true" tabindex="-1"></a>     broom,        <span class="co"># tidy up results from regressions</span></span>
+<span id="cb126-53"><a href="packages-suggested.html#cb126-53" aria-hidden="true" tabindex="-1"></a>     lmtest,       <span class="co"># likelihood-ratio tests</span></span>
+<span id="cb126-54"><a href="packages-suggested.html#cb126-54" aria-hidden="true" tabindex="-1"></a>     easystats,</span>
+<span id="cb126-55"><a href="packages-suggested.html#cb126-55" aria-hidden="true" tabindex="-1"></a>          <span class="co"># parameters, # alternative to tidy up results from regressions</span></span>
+<span id="cb126-56"><a href="packages-suggested.html#cb126-56" aria-hidden="true" tabindex="-1"></a>          <span class="co"># see,        # alternative to visualise forest plots </span></span>
+<span id="cb126-57"><a href="packages-suggested.html#cb126-57" aria-hidden="true" tabindex="-1"></a>     </span>
+<span id="cb126-58"><a href="packages-suggested.html#cb126-58" aria-hidden="true" tabindex="-1"></a>     <span class="co"># epidemic modeling</span></span>
+<span id="cb126-59"><a href="packages-suggested.html#cb126-59" aria-hidden="true" tabindex="-1"></a>     <span class="do">###################</span></span>
+<span id="cb126-60"><a href="packages-suggested.html#cb126-60" aria-hidden="true" tabindex="-1"></a>     epicontacts,  <span class="co"># Analysing transmission networks</span></span>
+<span id="cb126-61"><a href="packages-suggested.html#cb126-61" aria-hidden="true" tabindex="-1"></a>     EpiNow2,      <span class="co"># Rt estimation</span></span>
+<span id="cb126-62"><a href="packages-suggested.html#cb126-62" aria-hidden="true" tabindex="-1"></a>     EpiEstim,     <span class="co"># Rt estimation</span></span>
+<span id="cb126-63"><a href="packages-suggested.html#cb126-63" aria-hidden="true" tabindex="-1"></a>     projections,  <span class="co"># Incidence projections</span></span>
+<span id="cb126-64"><a href="packages-suggested.html#cb126-64" aria-hidden="true" tabindex="-1"></a>     incidence2,   <span class="co"># Make epicurves and handle incidence data</span></span>
+<span id="cb126-65"><a href="packages-suggested.html#cb126-65" aria-hidden="true" tabindex="-1"></a>     i2extras,     <span class="co"># Extra functions for the incidence2 package</span></span>
+<span id="cb126-66"><a href="packages-suggested.html#cb126-66" aria-hidden="true" tabindex="-1"></a>     epitrix,      <span class="co"># Useful epi functions</span></span>
+<span id="cb126-67"><a href="packages-suggested.html#cb126-67" aria-hidden="true" tabindex="-1"></a>     distcrete,    <span class="co"># Discrete delay distributions</span></span>
+<span id="cb126-68"><a href="packages-suggested.html#cb126-68" aria-hidden="true" tabindex="-1"></a>     </span>
+<span id="cb126-69"><a href="packages-suggested.html#cb126-69" aria-hidden="true" tabindex="-1"></a>     </span>
+<span id="cb126-70"><a href="packages-suggested.html#cb126-70" aria-hidden="true" tabindex="-1"></a>     <span class="co"># plots - general</span></span>
+<span id="cb126-71"><a href="packages-suggested.html#cb126-71" aria-hidden="true" tabindex="-1"></a>     <span class="do">#################</span></span>
+<span id="cb126-72"><a href="packages-suggested.html#cb126-72" aria-hidden="true" tabindex="-1"></a>     <span class="co">#ggplot2,         # included in tidyverse</span></span>
+<span id="cb126-73"><a href="packages-suggested.html#cb126-73" aria-hidden="true" tabindex="-1"></a>     cowplot,          <span class="co"># combining plots  </span></span>
+<span id="cb126-74"><a href="packages-suggested.html#cb126-74" aria-hidden="true" tabindex="-1"></a>     <span class="co"># patchwork,      # combining plots (alternative)     </span></span>
+<span id="cb126-75"><a href="packages-suggested.html#cb126-75" aria-hidden="true" tabindex="-1"></a>     RColorBrewer,     <span class="co"># color scales</span></span>
+<span id="cb126-76"><a href="packages-suggested.html#cb126-76" aria-hidden="true" tabindex="-1"></a>     ggnewscale,       <span class="co"># to add additional layers of color schemes</span></span>
+<span id="cb126-77"><a href="packages-suggested.html#cb126-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-78"><a href="packages-suggested.html#cb126-78" aria-hidden="true" tabindex="-1"></a>     </span>
+<span id="cb126-79"><a href="packages-suggested.html#cb126-79" aria-hidden="true" tabindex="-1"></a>     <span class="co"># plots - specific types</span></span>
+<span id="cb126-80"><a href="packages-suggested.html#cb126-80" aria-hidden="true" tabindex="-1"></a>     <span class="do">########################</span></span>
+<span id="cb126-81"><a href="packages-suggested.html#cb126-81" aria-hidden="true" tabindex="-1"></a>     DiagrammeR,       <span class="co"># diagrams using DOT language</span></span>
+<span id="cb126-82"><a href="packages-suggested.html#cb126-82" aria-hidden="true" tabindex="-1"></a>     incidence2,       <span class="co"># epidemic curves</span></span>
+<span id="cb126-83"><a href="packages-suggested.html#cb126-83" aria-hidden="true" tabindex="-1"></a>     gghighlight,      <span class="co"># highlight a subset</span></span>
+<span id="cb126-84"><a href="packages-suggested.html#cb126-84" aria-hidden="true" tabindex="-1"></a>     ggrepel,          <span class="co"># smart labels</span></span>
+<span id="cb126-85"><a href="packages-suggested.html#cb126-85" aria-hidden="true" tabindex="-1"></a>     plotly,           <span class="co"># interactive graphics</span></span>
+<span id="cb126-86"><a href="packages-suggested.html#cb126-86" aria-hidden="true" tabindex="-1"></a>     gganimate,        <span class="co"># animated graphics </span></span>
+<span id="cb126-87"><a href="packages-suggested.html#cb126-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-88"><a href="packages-suggested.html#cb126-88" aria-hidden="true" tabindex="-1"></a>     </span>
+<span id="cb126-89"><a href="packages-suggested.html#cb126-89" aria-hidden="true" tabindex="-1"></a>     <span class="co"># gis</span></span>
+<span id="cb126-90"><a href="packages-suggested.html#cb126-90" aria-hidden="true" tabindex="-1"></a>     <span class="do">######</span></span>
+<span id="cb126-91"><a href="packages-suggested.html#cb126-91" aria-hidden="true" tabindex="-1"></a>     sf,               <span class="co"># to manage spatial data using a Simple Feature format</span></span>
+<span id="cb126-92"><a href="packages-suggested.html#cb126-92" aria-hidden="true" tabindex="-1"></a>     tmap,             <span class="co"># to produce simple maps, works for both interactive and static maps</span></span>
+<span id="cb126-93"><a href="packages-suggested.html#cb126-93" aria-hidden="true" tabindex="-1"></a>     OpenStreetMap,    <span class="co"># to add OSM basemap in ggplot map</span></span>
+<span id="cb126-94"><a href="packages-suggested.html#cb126-94" aria-hidden="true" tabindex="-1"></a>     spdep,            <span class="co"># spatial statistics </span></span>
+<span id="cb126-95"><a href="packages-suggested.html#cb126-95" aria-hidden="true" tabindex="-1"></a>     </span>
+<span id="cb126-96"><a href="packages-suggested.html#cb126-96" aria-hidden="true" tabindex="-1"></a>     <span class="co"># routine reports</span></span>
+<span id="cb126-97"><a href="packages-suggested.html#cb126-97" aria-hidden="true" tabindex="-1"></a>     <span class="do">#################</span></span>
+<span id="cb126-98"><a href="packages-suggested.html#cb126-98" aria-hidden="true" tabindex="-1"></a>     rmarkdown,        <span class="co"># produce PDFs, Word Documents, Powerpoints, and HTML files</span></span>
+<span id="cb126-99"><a href="packages-suggested.html#cb126-99" aria-hidden="true" tabindex="-1"></a>     reportfactory,    <span class="co"># auto-organization of R Markdown outputs</span></span>
+<span id="cb126-100"><a href="packages-suggested.html#cb126-100" aria-hidden="true" tabindex="-1"></a>     officer,          <span class="co"># powerpoints</span></span>
+<span id="cb126-101"><a href="packages-suggested.html#cb126-101" aria-hidden="true" tabindex="-1"></a>     </span>
+<span id="cb126-102"><a href="packages-suggested.html#cb126-102" aria-hidden="true" tabindex="-1"></a>     <span class="co"># dashboards</span></span>
+<span id="cb126-103"><a href="packages-suggested.html#cb126-103" aria-hidden="true" tabindex="-1"></a>     <span class="do">############</span></span>
+<span id="cb126-104"><a href="packages-suggested.html#cb126-104" aria-hidden="true" tabindex="-1"></a>     flexdashboard,    <span class="co"># convert an R Markdown script into a dashboard</span></span>
+<span id="cb126-105"><a href="packages-suggested.html#cb126-105" aria-hidden="true" tabindex="-1"></a>     shiny,            <span class="co"># interactive web apps</span></span>
+<span id="cb126-106"><a href="packages-suggested.html#cb126-106" aria-hidden="true" tabindex="-1"></a>     </span>
+<span id="cb126-107"><a href="packages-suggested.html#cb126-107" aria-hidden="true" tabindex="-1"></a>     <span class="co"># tables for presentation</span></span>
+<span id="cb126-108"><a href="packages-suggested.html#cb126-108" aria-hidden="true" tabindex="-1"></a>     <span class="do">#########################</span></span>
+<span id="cb126-109"><a href="packages-suggested.html#cb126-109" aria-hidden="true" tabindex="-1"></a>     knitr,            <span class="co"># R Markdown report generation and html tables</span></span>
+<span id="cb126-110"><a href="packages-suggested.html#cb126-110" aria-hidden="true" tabindex="-1"></a>     flextable,        <span class="co"># HTML tables</span></span>
+<span id="cb126-111"><a href="packages-suggested.html#cb126-111" aria-hidden="true" tabindex="-1"></a>     <span class="co">#DT,              # HTML tables (alternative)</span></span>
+<span id="cb126-112"><a href="packages-suggested.html#cb126-112" aria-hidden="true" tabindex="-1"></a>     <span class="co">#gt,              # HTML tables (alternative)</span></span>
+<span id="cb126-113"><a href="packages-suggested.html#cb126-113" aria-hidden="true" tabindex="-1"></a>     <span class="co">#huxtable,        # HTML tables (alternative) </span></span>
+<span id="cb126-114"><a href="packages-suggested.html#cb126-114" aria-hidden="true" tabindex="-1"></a>     </span>
+<span id="cb126-115"><a href="packages-suggested.html#cb126-115" aria-hidden="true" tabindex="-1"></a>     <span class="co"># phylogenetics</span></span>
+<span id="cb126-116"><a href="packages-suggested.html#cb126-116" aria-hidden="true" tabindex="-1"></a>     <span class="do">###############</span></span>
+<span id="cb126-117"><a href="packages-suggested.html#cb126-117" aria-hidden="true" tabindex="-1"></a>     ggtree,           <span class="co"># visualization and annotation of trees</span></span>
+<span id="cb126-118"><a href="packages-suggested.html#cb126-118" aria-hidden="true" tabindex="-1"></a>     ape,              <span class="co"># analysis of phylogenetics and evolution</span></span>
+<span id="cb126-119"><a href="packages-suggested.html#cb126-119" aria-hidden="true" tabindex="-1"></a>     treeio            <span class="co"># to visualize phylogenetic files</span></span>
+<span id="cb126-120"><a href="packages-suggested.html#cb126-120" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb126-121"><a href="packages-suggested.html#cb126-121" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+</div>
+<div id="packages-from-github" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> Packages from Github</h2>
+<p>Below are commmands to install two packages directly from Github repositories.</p>
+<ul>
+<li>The development version of <strong>epicontacts</strong> contains the ability to make transmission trees with an temporal x-axis<br />
+</li>
+<li>The <strong>epirhandbook</strong> package contains all the example data for this handbook and can be used to download the offline version of the handbook.</li>
+</ul>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="packages-suggested.html#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Packages to download from Github (not available on CRAN)</span></span>
+<span id="cb127-2"><a href="packages-suggested.html#cb127-2" aria-hidden="true" tabindex="-1"></a><span class="do">##########################################################</span></span>
+<span id="cb127-3"><a href="packages-suggested.html#cb127-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb127-4"><a href="packages-suggested.html#cb127-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Development version of epicontacts (for transmission chains with a time x-axis)</span></span>
+<span id="cb127-5"><a href="packages-suggested.html#cb127-5" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_install_gh</span>(<span class="st">&quot;reconhub/epicontacts@timeline&quot;</span>)</span>
+<span id="cb127-6"><a href="packages-suggested.html#cb127-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb127-7"><a href="packages-suggested.html#cb127-7" aria-hidden="true" tabindex="-1"></a><span class="co"># The package for this handbook, which includes all the example data  </span></span>
+<span id="cb127-8"><a href="packages-suggested.html#cb127-8" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_install_gh</span>(<span class="st">&quot;appliedepi/epirhandbook&quot;</span>)</span></code></pre></div>
+
+</div>
+</div>
+  </main>
+
+  <div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page">
+      <h2>On this page</h2>
+      <div id="book-on-this-page"></div>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          <li><a id="book-source" href="#">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="#">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5">
+  <div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Sổ tay dịch tễ học với R</strong>" was written by the handbook team. It was last built on 2021-06-14.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+
+
+</body>
+
+</html>

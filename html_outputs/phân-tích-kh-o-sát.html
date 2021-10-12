@@ -1,0 +1,1565 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>26 Phân tích khảo sát | Sổ tay dịch tễ học với R</title>
+
+    <meta name="author" content="the handbook team" />
+  
+  <!-- JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script>
+  <script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script>
+    <script src="libs/header-attrs-2.6.4/header-attrs.js"></script>
+    <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" />
+    <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
+    <script src="libs/bs3compat-0.2.5.1/tabs.js"></script>
+    <script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script>
+    <link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet" />
+    <script src="libs/bs4_book-1.0.0/bs4_book.js"></script>
+    <script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+    <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+    <script src="libs/datatables-binding-0.16/datatables.js"></script>
+    <link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+    <script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+    <link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet" />
+    <script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
+    <link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet" />
+    <script src="libs/selectize-0.12.0/selectize.min.js"></script>
+    <link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+    <script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+    <script src="libs/kePrint-0.0.1/kePrint.js"></script>
+    <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+    <link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
+    <script src="libs/tabwid-1.0.0/tabwid.js"></script>
+    <link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+    <script src="libs/leaflet-1.3.1/leaflet.js"></script>
+    <link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+    <script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
+    <script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+    <link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+    <script src="libs/leaflet-binding-2.0.3/leaflet.js"></script>
+    <script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
+    <script src="libs/leaflet-providers-plugin-2.0.3/leaflet-providers-plugin.js"></script>
+    <script src="libs/viz-1.8.2/viz.js"></script>
+    <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+    <script src="libs/grViz-binding-1.0.6.1/grViz.js"></script>
+    <script src="libs/d3-4.5.0/d3.min.js"></script>
+    <script src="libs/sankey-1/sankey.js"></script>
+    <script src="libs/sankeyNetwork-binding-0.4/sankeyNetwork.js"></script>
+    <script src="libs/plotly-binding-4.9.2.1/plotly.js"></script>
+    <script src="libs/typedarray-0.1/typedarray.min.js"></script>
+    <link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
+    <script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
+    <link href="libs/vis-4.20.1/vis.css" rel="stylesheet" />
+    <script src="libs/vis-4.20.1/vis.min.js"></script>
+    <script src="libs/visNetwork-binding-2.0.9/visNetwork.js"></script>
+    <link href="libs/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <script src="libs/plotly-basic-1.52.2/plotly-basic-1.52.2.min.js"></script>
+    <script src="libs/plotly-cartesian-1.52.2/plotly-cartesian-1.52.2.min.js"></script>
+    <script src="libs/proj4js-2.3.15/proj4.js"></script>
+    <link href="libs/highcharts-8.1.2/css/motion.css" rel="stylesheet" />
+    <script src="libs/highcharts-8.1.2/highcharts.js"></script>
+    <script src="libs/highcharts-8.1.2/highcharts-3d.js"></script>
+    <script src="libs/highcharts-8.1.2/highcharts-more.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/stock.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/map.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/annotations.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/data.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/drilldown.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/item-series.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/offline-exporting.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/overlapping-datalabels.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/exporting.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/export-data.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/funnel.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/heatmap.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/treemap.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/sankey.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/dependency-wheel.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/organization.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/solid-gauge.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/streamgraph.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/sunburst.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/vector.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/wordcloud.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/xrange.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/tilemap.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/venn.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/gantt.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/timeline.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/parallel-coordinates.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/bullet.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/coloraxis.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/dumbbell.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/lollipop.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/series-label.js"></script>
+    <script src="libs/highcharts-8.1.2/plugins/motion.js"></script>
+    <script src="libs/highcharts-8.1.2/custom/reset.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/boost.js"></script>
+    <script src="libs/highchart-binding-0.8.2/highchart.js"></script>
+    <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script>
+
+  <!-- CSS -->
+    <link rel="stylesheet" href="style_bs4.css" />
+    
+</head>
+
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book">
+    <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Sổ tay dịch tễ học với R</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+      </form>
+
+      <nav aria-label="Table of contents">
+        <h2>Table of contents</h2>
+        <div id="book-toc"></div>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="#">View book source <i class="fab fa-github"></i></a></li></p>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="col-sm-12 col-md-9 col-lg-7" id="content">
+<div id="phân-tích-khảo-sát" class="section level1" number="26">
+<h1><span class="header-section-number">26</span> Phân tích khảo sát</h1>
+<!-- ======================================================= -->
+<div id="overview-4" class="section level2" number="26.1">
+<h2><span class="header-section-number">26.1</span> Overview</h2>
+<p>This page demonstrates the use of several packages for survey analysis.</p>
+<p>Most survey R packages rely on the <a href="https://cran.r-project.org/web/packages/survey/index.html"><strong>survey</strong> package</a>
+for doing weighted analysis.
+We will use <strong>survey</strong> as well as <a href="https://cran.r-project.org/web/packages/srvyr/index.html"><strong>srvyr</strong></a>
+(a wrapper for <strong>survey</strong> allowing for tidyverse-style coding) and
+<a href="https://cran.r-project.org/web/packages/gtsummary/index.html"><strong>gtsummary</strong></a>
+(a wrapper for <strong>survey</strong> allowing for publication ready tables).
+While the original <strong>survey</strong> package does not allow for tidyverse-style coding,
+it does have the added benefit of allowing for survey-weighted generalised linear
+models (which will be added to this page at a later date).
+We will also demonstrate using a function from the <a href="https://github.com/R4EPI/sitrep"><strong>sitrep</strong></a>
+package to create sampling weights (<em>n.b</em> this package is currently not yet on CRAN,
+but can be installed from github).</p>
+<p>Most of this page is based off work done for the <a href="https://r4epis.netlify.app/">“R4Epis” project</a>;
+for detailed code and R-markdown templates see the <a href="https://github.com/R4EPI/sitrep">“R4Epis” github page</a>.
+Some of the <strong>survey</strong> package based code is based off early versions of
+<a href="https://github.com/EPIET/RapidAssessmentSurveys">EPIET case studies</a>.</p>
+<p>At current this page does not address sample size calculations or sampling.
+For a simple to use sample size calculator see <a href="https://www.openepi.com/Menu/OE_Menu.htm">OpenEpi</a>.
+The <a href="https://epirhandbook.com/gis-basics.html">GIS basics</a> page of the handbook
+will eventually have a section on spatial random sampling, and this page will
+eventually have a section on sampling frames as well as sample size calculations.</p>
+<ol style="list-style-type: decimal">
+<li>Survey data</li>
+<li>Observation time</li>
+<li>Weighting</li>
+<li>Survey design objects</li>
+<li>Descriptive analysis</li>
+<li>Weighted proportions</li>
+<li>Weighted rates</li>
+</ol>
+<!-- ======================================================= -->
+</div>
+<div id="preparation-16" class="section level2" number="26.2">
+<h2><span class="header-section-number">26.2</span> Preparation</h2>
+<div id="packages-3" class="section level3 unnumbered">
+<h3>Packages</h3>
+<p>This code chunk shows the loading of packages required for the analyses. In this handbook we emphasize <code>p_load()</code> from <strong>pacman</strong>, which installs the package if necessary <em>and</em> loads it for use. You can also load packages with <code>library()</code> from <strong>base</strong> R. See the page on [R basics] for more information on R packages.<br />
+Here we also demonstrate using the <code>p_load_gh()</code> function from <strong>pacman</strong> to install a load a package from github which has not yet been published on CRAN.</p>
+<div class="sourceCode" id="cb1233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1233-1"><a href="phân-tích-kh-o-sát.html#cb1233-1" aria-hidden="true" tabindex="-1"></a><span class="do">## load packages from CRAN</span></span>
+<span id="cb1233-2"><a href="phân-tích-kh-o-sát.html#cb1233-2" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(rio,          <span class="co"># File import</span></span>
+<span id="cb1233-3"><a href="phân-tích-kh-o-sát.html#cb1233-3" aria-hidden="true" tabindex="-1"></a>               here,         <span class="co"># File locator</span></span>
+<span id="cb1233-4"><a href="phân-tích-kh-o-sát.html#cb1233-4" aria-hidden="true" tabindex="-1"></a>               tidyverse,    <span class="co"># data management + ggplot2 graphics</span></span>
+<span id="cb1233-5"><a href="phân-tích-kh-o-sát.html#cb1233-5" aria-hidden="true" tabindex="-1"></a>               tsibble,      <span class="co"># handle time series datasets</span></span>
+<span id="cb1233-6"><a href="phân-tích-kh-o-sát.html#cb1233-6" aria-hidden="true" tabindex="-1"></a>               survey,       <span class="co"># for survey functions</span></span>
+<span id="cb1233-7"><a href="phân-tích-kh-o-sát.html#cb1233-7" aria-hidden="true" tabindex="-1"></a>               srvyr,        <span class="co"># dplyr wrapper for survey package</span></span>
+<span id="cb1233-8"><a href="phân-tích-kh-o-sát.html#cb1233-8" aria-hidden="true" tabindex="-1"></a>               gtsummary,    <span class="co"># wrapper for survey package to produce tables</span></span>
+<span id="cb1233-9"><a href="phân-tích-kh-o-sát.html#cb1233-9" aria-hidden="true" tabindex="-1"></a>               apyramid,     <span class="co"># a package dedicated to creating age pyramids</span></span>
+<span id="cb1233-10"><a href="phân-tích-kh-o-sát.html#cb1233-10" aria-hidden="true" tabindex="-1"></a>               patchwork,    <span class="co"># for combining ggplots</span></span>
+<span id="cb1233-11"><a href="phân-tích-kh-o-sát.html#cb1233-11" aria-hidden="true" tabindex="-1"></a>               ggforce       <span class="co"># for alluvial/sankey plots</span></span>
+<span id="cb1233-12"><a href="phân-tích-kh-o-sát.html#cb1233-12" aria-hidden="true" tabindex="-1"></a>               ) </span>
+<span id="cb1233-13"><a href="phân-tích-kh-o-sát.html#cb1233-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1233-14"><a href="phân-tích-kh-o-sát.html#cb1233-14" aria-hidden="true" tabindex="-1"></a><span class="do">## load packages from github</span></span>
+<span id="cb1233-15"><a href="phân-tích-kh-o-sát.html#cb1233-15" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load_gh</span>(</span>
+<span id="cb1233-16"><a href="phân-tích-kh-o-sát.html#cb1233-16" aria-hidden="true" tabindex="-1"></a>     <span class="st">&quot;R4EPI/sitrep&quot;</span>          <span class="co"># for observation time / weighting functions</span></span>
+<span id="cb1233-17"><a href="phân-tích-kh-o-sát.html#cb1233-17" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+</div>
+<div id="load-data-1" class="section level3 unnumbered">
+<h3>Load data</h3>
+<p>The example dataset used in this section:</p>
+<ul>
+<li>fictional mortality survey data.</li>
+<li>fictional population counts for the survey area.</li>
+<li>data dictionary for the fictional mortality survey data.</li>
+</ul>
+<p>This is based off the MSF OCA ethical review board pre-approved survey. The
+fictional dataset was produced as part of the <a href="https://r4epis.netlify.app/">“R4Epis” project</a>.
+This is all based off data collected using <a href="https://www.kobotoolbox.org/">KoboToolbox</a>,
+which is a data collection software based off <a href="https://opendatakit.org/">Open Data Kit</a>.</p>
+<p>Kobo allows you to export both the collected data, as well as the data dictionary
+for that dataset. We strongly recommend doing this as it simplifies data cleaning
+and is useful for looking up variables/questions.</p>
+<p><span style="color: darkgreen;"><strong><em>TIP:</em></strong> The Kobo data dictionary has variable
+names in the “name” column of the survey sheet.
+Possible values for each variable are specified in choices sheet.
+In the choices tab, “name” has the shortened value and the “label::english” and
+“label::french” columns have the appropriate long versions.
+Using the <strong>epidict</strong> package <code>msf_dict_survey()</code> function to import a Kobo
+dictionary excel file will re-format this for you so it can be used easily to recode. </span></p>
+<p><span style="color: orange;"><strong><em>CAUTION:</em></strong> The example dataset is not the same
+as an export (as in Kobo you export different questionnaire levels individually)
+- see the survey data section below to merge the different levels.</span></p>
+<p>The dataset is imported using the <code>import()</code> function from the <strong>rio</strong> package. See the page on <a href="https://epirhandbook.com/import-and-export.html">Import and export</a> for various ways to import data.</p>
+<div class="sourceCode" id="cb1234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1234-1"><a href="phân-tích-kh-o-sát.html#cb1234-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import the survey data</span></span>
+<span id="cb1234-2"><a href="phân-tích-kh-o-sát.html#cb1234-2" aria-hidden="true" tabindex="-1"></a>survey_data <span class="ot">&lt;-</span> rio<span class="sc">::</span><span class="fu">import</span>(<span class="st">&quot;survey_data.xlsx&quot;</span>)</span>
+<span id="cb1234-3"><a href="phân-tích-kh-o-sát.html#cb1234-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1234-4"><a href="phân-tích-kh-o-sát.html#cb1234-4" aria-hidden="true" tabindex="-1"></a><span class="co"># import the dictionary into R</span></span>
+<span id="cb1234-5"><a href="phân-tích-kh-o-sát.html#cb1234-5" aria-hidden="true" tabindex="-1"></a>survey_dict <span class="ot">&lt;-</span> rio<span class="sc">::</span><span class="fu">import</span>(<span class="st">&quot;survey_dict.xlsx&quot;</span>) </span></code></pre></div>
+<p>The first 10 rows of the survey are displayed below.</p>
+<div id="htmlwidget-51bca8623fbbfe743ecb" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-51bca8623fbbfe743ecb">{"x":{"filter":"none","data":[[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],["2018-04-15T00:00:00Z","2018-03-04T00:00:00Z","2018-04-16T00:00:00Z","2018-01-23T00:00:00Z","2018-01-09T00:00:00Z","2018-03-07T00:00:00Z","2018-02-18T00:00:00Z","2018-04-12T00:00:00Z","2018-04-17T00:00:00Z","2018-01-05T00:00:00Z"],[null,null,null,null,null,null,null,null,null,null],["village_1","village_1","village_10","village_5","village_3","village_8","other","village_7","village_4","village_2"],[null,null,null,null,null,null,null,null,null,null],[1,1,10,5,3,8,11,7,4,2],[9,1,15,6,18,14,17,16,13,14],[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],["yes","no","no","yes","no","yes","no","yes","yes","yes"],[null,"no_benefit","neg_experience",null,"other",null,"no_benefit",null,null,null],[null,null,null,null,null,null,null,null,null,null],[6,null,null,8,null,5,null,6,5,5],["female",null,null,"female",null,"male",null,"male","male","female"],[26,null,null,3,null,22,null,33,96,18],[null,null,null,36,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],["no",null,null,"no",null,"yes",null,"yes","yes","yes"],["yes",null,null,null,null,"yes",null,"no","no","no"],["secondary",null,null,null,null,"secondary",null,null,null,null],["no",null,null,"no",null,"yes",null,"no","yes","yes"],[null,null,null,null,null,"yes",null,null,"no","no"],["yes",null,null,null,null,null,null,null,null,"yes"],["no",null,null,"no",null,"yes",null,"yes","no","yes"],["yes",null,null,"no",null,"no",null,"no","yes","yes"],["no",null,null,null,null,null,null,null,"no","no"],[null,null,null,null,null,null,null,null,null,null],["yes",null,null,"no",null,"no",null,"yes","no","no"],["no",null,null,null,null,null,null,"no",null,null],[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],["no","no","no","no","no","no","no","no","yes","no"],[null,null,null,null,null,null,null,null,"no",null],[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,"dont_know",null],[null,null,null,null,null,null,null,null,null,null],["yes",null,null,"yes",null,"no",null,"yes","no","no"],[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],["sexual",null,null,"sexual",null,null,null,"shot",null,null],["0",null,null,"0",null,null,null,"0",null,null],["1",null,null,"1",null,null,null,"0",null,null],["0",null,null,"0",null,null,null,"1",null,null],["0",null,null,"0",null,null,null,"0",null,null],["0",null,null,"0",null,null,null,"0",null,null],["0",null,null,"0",null,null,null,"0",null,null],[9,1,183,83,58,146,205,130,72,33],[1,1,1,1,1,1,1,1,1,1],["9_1","1_1","183_1","83_1","58_1","146_1","205_1","130_1","72_1","33_1"]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>start<\/th>\n      <th>end<\/th>\n      <th>today<\/th>\n      <th>deviceid<\/th>\n      <th>date<\/th>\n      <th>team_number<\/th>\n      <th>village_name<\/th>\n      <th>village_other<\/th>\n      <th>cluster_number<\/th>\n      <th>household_number<\/th>\n      <th>households_building<\/th>\n      <th>random_hh<\/th>\n      <th>random_hh_note<\/th>\n      <th>consent<\/th>\n      <th>no_consent_reason<\/th>\n      <th>no_consent_other<\/th>\n      <th>member_number<\/th>\n      <th>sex<\/th>\n      <th>age_years<\/th>\n      <th>age_months_calc<\/th>\n      <th>age_months<\/th>\n      <th>bednet<\/th>\n      <th>read_write<\/th>\n      <th>education_level<\/th>\n      <th>measles_vaccination<\/th>\n      <th>vaccination_card<\/th>\n      <th>pregnant<\/th>\n      <th>malaria_treatment<\/th>\n      <th>arrived<\/th>\n      <th>remember_arrival<\/th>\n      <th>arrived_date<\/th>\n      <th>left<\/th>\n      <th>remember_departure<\/th>\n      <th>left_date<\/th>\n      <th>born<\/th>\n      <th>remember_dob<\/th>\n      <th>birthday_date<\/th>\n      <th>died<\/th>\n      <th>remember_death<\/th>\n      <th>death_date<\/th>\n      <th>cause<\/th>\n      <th>cause_other<\/th>\n      <th>violent_episode<\/th>\n      <th>violent_episodes_number<\/th>\n      <th>violence_nature_other<\/th>\n      <th>violence_nature<\/th>\n      <th>violence_nature/beaten<\/th>\n      <th>violence_nature/sexual<\/th>\n      <th>violence_nature/shot<\/th>\n      <th>violence_nature/detained_kidnapped<\/th>\n      <th>violence_nature/other<\/th>\n      <th>violence_nature/no_response<\/th>\n      <th>index<\/th>\n      <th>index_y<\/th>\n      <th>uid<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[8,9,16,18,19,20,52,53]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<p>We also want to import the data on sampling population so that we can produce
+appropriate weights. This data can be in different formats, however we would
+suggest to have it as seen below (this can just be typed in to an excel).</p>
+<div class="sourceCode" id="cb1235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1235-1"><a href="phân-tích-kh-o-sát.html#cb1235-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import the population data</span></span>
+<span id="cb1235-2"><a href="phân-tích-kh-o-sát.html#cb1235-2" aria-hidden="true" tabindex="-1"></a>population <span class="ot">&lt;-</span> rio<span class="sc">::</span><span class="fu">import</span>(<span class="st">&quot;population.xlsx&quot;</span>)</span></code></pre></div>
+<p>The first 10 rows of the survey are displayed below.</p>
+<div id="htmlwidget-3d5e024caed1a4a2cda4" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3d5e024caed1a4a2cda4">{"x":{"filter":"none","data":[["0-2","3-14","15-29","30-44","45+","0-2","3-14","15-29","30-44","45+"],["male","male","male","male","male","female","female","female","female","female"],[0.034,0.1811,0.138,0.0808,0.0661,0.034,0.1811,0.138,0.0808,0.0661],[340,1811,1380,808,661,340,1811,1380,808,661],["district_a","district_a","district_a","district_a","district_a","district_a","district_a","district_a","district_a","district_a"]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>age_group<\/th>\n      <th>sex<\/th>\n      <th>proportions<\/th>\n      <th>population<\/th>\n      <th>health_district<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[2,3]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<p>For cluster surveys you may want to add survey weights at the cluster level.
+You could read this data in as above.
+Alternatively if there are only a few counts, these could be entered as below
+in to a tibble.
+In any case you will need to have one column with a cluster identifier which
+matches your survey data, and another column with the number of households in
+each cluster.</p>
+<div class="sourceCode" id="cb1236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1236-1"><a href="phân-tích-kh-o-sát.html#cb1236-1" aria-hidden="true" tabindex="-1"></a><span class="do">## define the number of households in each cluster</span></span>
+<span id="cb1236-2"><a href="phân-tích-kh-o-sát.html#cb1236-2" aria-hidden="true" tabindex="-1"></a>cluster_counts <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">cluster =</span> <span class="fu">c</span>(<span class="st">&quot;village_1&quot;</span>, <span class="st">&quot;village_2&quot;</span>, <span class="st">&quot;village_3&quot;</span>, <span class="st">&quot;village_4&quot;</span>, </span>
+<span id="cb1236-3"><a href="phân-tích-kh-o-sát.html#cb1236-3" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">&quot;village_5&quot;</span>, <span class="st">&quot;village_6&quot;</span>, <span class="st">&quot;village_7&quot;</span>, <span class="st">&quot;village_8&quot;</span>,</span>
+<span id="cb1236-4"><a href="phân-tích-kh-o-sát.html#cb1236-4" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">&quot;village_9&quot;</span>, <span class="st">&quot;village_10&quot;</span>), </span>
+<span id="cb1236-5"><a href="phân-tích-kh-o-sát.html#cb1236-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">households =</span> <span class="fu">c</span>(<span class="dv">700</span>, <span class="dv">400</span>, <span class="dv">600</span>, <span class="dv">500</span>, <span class="dv">300</span>, </span>
+<span id="cb1236-6"><a href="phân-tích-kh-o-sát.html#cb1236-6" aria-hidden="true" tabindex="-1"></a>                                        <span class="dv">800</span>, <span class="dv">700</span>, <span class="dv">400</span>, <span class="dv">500</span>, <span class="dv">500</span>))</span></code></pre></div>
+</div>
+<div id="clean-data-2" class="section level3 unnumbered">
+<h3>Clean data</h3>
+<p>The below makes sure that the date column is in the appropriate format.
+There are several other ways of doing this (see the <a href="https://epirhandbook.com/working-with-dates.html">Working with dates</a>
+page for details), however using the dictionary to define dates is quick and easy.</p>
+<p>We also create an age group variable using the <code>age_categories()</code> function from
+<strong>epikit</strong> - see <a href="https://epirhandbook.com/cleaning-data-and-core-functions.html#num_cats">cleaning data</a>
+handbook section for details.
+In addition, we create a character variable defining which district the various clusters
+are in.</p>
+<p>Finally, we recode all of the yes/no variables to TRUE/FALSE variables - otherwise
+these cant be used by the <strong>survey</strong> proportion functions.</p>
+<div class="sourceCode" id="cb1237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1237-1"><a href="phân-tích-kh-o-sát.html#cb1237-1" aria-hidden="true" tabindex="-1"></a><span class="do">## select the date variable names from the dictionary </span></span>
+<span id="cb1237-2"><a href="phân-tích-kh-o-sát.html#cb1237-2" aria-hidden="true" tabindex="-1"></a>DATEVARS <span class="ot">&lt;-</span> survey_dict <span class="sc">%&gt;%</span> </span>
+<span id="cb1237-3"><a href="phân-tích-kh-o-sát.html#cb1237-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(type <span class="sc">==</span> <span class="st">&quot;date&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1237-4"><a href="phân-tích-kh-o-sát.html#cb1237-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(name <span class="sc">%in%</span> <span class="fu">names</span>(survey_data)) <span class="sc">%&gt;%</span> </span>
+<span id="cb1237-5"><a href="phân-tích-kh-o-sát.html#cb1237-5" aria-hidden="true" tabindex="-1"></a>  <span class="do">## filter to match the column names of your data</span></span>
+<span id="cb1237-6"><a href="phân-tích-kh-o-sát.html#cb1237-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(name) <span class="co"># select date vars</span></span>
+<span id="cb1237-7"><a href="phân-tích-kh-o-sát.html#cb1237-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1237-8"><a href="phân-tích-kh-o-sát.html#cb1237-8" aria-hidden="true" tabindex="-1"></a><span class="do">## change to dates </span></span>
+<span id="cb1237-9"><a href="phân-tích-kh-o-sát.html#cb1237-9" aria-hidden="true" tabindex="-1"></a>survey_data <span class="ot">&lt;-</span> survey_data <span class="sc">%&gt;%</span></span>
+<span id="cb1237-10"><a href="phân-tích-kh-o-sát.html#cb1237-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">all_of</span>(DATEVARS), as.Date))</span>
+<span id="cb1237-11"><a href="phân-tích-kh-o-sát.html#cb1237-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1237-12"><a href="phân-tích-kh-o-sát.html#cb1237-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1237-13"><a href="phân-tích-kh-o-sát.html#cb1237-13" aria-hidden="true" tabindex="-1"></a><span class="do">## add those with only age in months to the year variable (divide by twelve)</span></span>
+<span id="cb1237-14"><a href="phân-tích-kh-o-sát.html#cb1237-14" aria-hidden="true" tabindex="-1"></a>survey_data <span class="ot">&lt;-</span> survey_data <span class="sc">%&gt;%</span> </span>
+<span id="cb1237-15"><a href="phân-tích-kh-o-sát.html#cb1237-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_years =</span> <span class="fu">if_else</span>(<span class="fu">is.na</span>(age_years), </span>
+<span id="cb1237-16"><a href="phân-tích-kh-o-sát.html#cb1237-16" aria-hidden="true" tabindex="-1"></a>                             age_months <span class="sc">/</span> <span class="dv">12</span>, </span>
+<span id="cb1237-17"><a href="phân-tích-kh-o-sát.html#cb1237-17" aria-hidden="true" tabindex="-1"></a>                             age_years))</span>
+<span id="cb1237-18"><a href="phân-tích-kh-o-sát.html#cb1237-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1237-19"><a href="phân-tích-kh-o-sát.html#cb1237-19" aria-hidden="true" tabindex="-1"></a><span class="do">## define age group variable</span></span>
+<span id="cb1237-20"><a href="phân-tích-kh-o-sát.html#cb1237-20" aria-hidden="true" tabindex="-1"></a>survey_data <span class="ot">&lt;-</span> survey_data <span class="sc">%&gt;%</span> </span>
+<span id="cb1237-21"><a href="phân-tích-kh-o-sát.html#cb1237-21" aria-hidden="true" tabindex="-1"></a>     <span class="fu">mutate</span>(<span class="at">age_group =</span> <span class="fu">age_categories</span>(age_years, </span>
+<span id="cb1237-22"><a href="phân-tích-kh-o-sát.html#cb1237-22" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">breakers =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">15</span>, <span class="dv">30</span>, <span class="dv">45</span>)</span>
+<span id="cb1237-23"><a href="phân-tích-kh-o-sát.html#cb1237-23" aria-hidden="true" tabindex="-1"></a>                                    ))</span>
+<span id="cb1237-24"><a href="phân-tích-kh-o-sát.html#cb1237-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1237-25"><a href="phân-tích-kh-o-sát.html#cb1237-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1237-26"><a href="phân-tích-kh-o-sát.html#cb1237-26" aria-hidden="true" tabindex="-1"></a><span class="do">## create a character variable based off groups of a different variable </span></span>
+<span id="cb1237-27"><a href="phân-tích-kh-o-sát.html#cb1237-27" aria-hidden="true" tabindex="-1"></a>survey_data <span class="ot">&lt;-</span> survey_data <span class="sc">%&gt;%</span> </span>
+<span id="cb1237-28"><a href="phân-tích-kh-o-sát.html#cb1237-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">health_district =</span> <span class="fu">case_when</span>(</span>
+<span id="cb1237-29"><a href="phân-tích-kh-o-sát.html#cb1237-29" aria-hidden="true" tabindex="-1"></a>    cluster_number <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) <span class="sc">~</span> <span class="st">&quot;district_a&quot;</span>, </span>
+<span id="cb1237-30"><a href="phân-tích-kh-o-sát.html#cb1237-30" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">&quot;district_b&quot;</span></span>
+<span id="cb1237-31"><a href="phân-tích-kh-o-sát.html#cb1237-31" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb1237-32"><a href="phân-tích-kh-o-sát.html#cb1237-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1237-33"><a href="phân-tích-kh-o-sát.html#cb1237-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1237-34"><a href="phân-tích-kh-o-sát.html#cb1237-34" aria-hidden="true" tabindex="-1"></a><span class="do">## select the yes/no variable names from the dictionary </span></span>
+<span id="cb1237-35"><a href="phân-tích-kh-o-sát.html#cb1237-35" aria-hidden="true" tabindex="-1"></a>YNVARS <span class="ot">&lt;-</span> survey_dict <span class="sc">%&gt;%</span> </span>
+<span id="cb1237-36"><a href="phân-tích-kh-o-sát.html#cb1237-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(type <span class="sc">==</span> <span class="st">&quot;yn&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1237-37"><a href="phân-tích-kh-o-sát.html#cb1237-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(name <span class="sc">%in%</span> <span class="fu">names</span>(survey_data)) <span class="sc">%&gt;%</span> </span>
+<span id="cb1237-38"><a href="phân-tích-kh-o-sát.html#cb1237-38" aria-hidden="true" tabindex="-1"></a>  <span class="do">## filter to match the column names of your data</span></span>
+<span id="cb1237-39"><a href="phân-tích-kh-o-sát.html#cb1237-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(name) <span class="co"># select yn vars</span></span>
+<span id="cb1237-40"><a href="phân-tích-kh-o-sát.html#cb1237-40" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1237-41"><a href="phân-tích-kh-o-sát.html#cb1237-41" aria-hidden="true" tabindex="-1"></a><span class="do">## change to dates </span></span>
+<span id="cb1237-42"><a href="phân-tích-kh-o-sát.html#cb1237-42" aria-hidden="true" tabindex="-1"></a>survey_data <span class="ot">&lt;-</span> survey_data <span class="sc">%&gt;%</span></span>
+<span id="cb1237-43"><a href="phân-tích-kh-o-sát.html#cb1237-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">all_of</span>(YNVARS), </span>
+<span id="cb1237-44"><a href="phân-tích-kh-o-sát.html#cb1237-44" aria-hidden="true" tabindex="-1"></a>                str_detect, </span>
+<span id="cb1237-45"><a href="phân-tích-kh-o-sát.html#cb1237-45" aria-hidden="true" tabindex="-1"></a>                <span class="at">pattern =</span> <span class="st">&quot;yes&quot;</span>))</span></code></pre></div>
+<!-- ======================================================= -->
+</div>
+</div>
+<div id="survey-data" class="section level2" number="26.3">
+<h2><span class="header-section-number">26.3</span> Survey data</h2>
+<p>There numerous different sampling designs that can be used for surveys. Here
+we will demonstrate code for:
+- Stratified
+- Cluster
+- Stratified and cluster</p>
+<p>As described above (depending on how you design your questionnaire) the data for
+each level would be exported as a separate dataset from Kobo. In our example there
+is one level for households and one level for individuals within those households.</p>
+<p>These two levels are linked by a unique identifier.
+For a Kobo dataset this variable is "_index" at the household level, which
+matches the "_parent_index" at the individual level.
+This will create new rows for household with each matching individual,
+see the handbook section on <a href="https://epirhandbook.com/joining-data.html">joining</a>
+for details.</p>
+<div class="sourceCode" id="cb1238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1238-1"><a href="phân-tích-kh-o-sát.html#cb1238-1" aria-hidden="true" tabindex="-1"></a><span class="do">## join the individual and household data to form a complete data set</span></span>
+<span id="cb1238-2"><a href="phân-tích-kh-o-sát.html#cb1238-2" aria-hidden="true" tabindex="-1"></a>survey_data <span class="ot">&lt;-</span> <span class="fu">left_join</span>(survey_data_hh, </span>
+<span id="cb1238-3"><a href="phân-tích-kh-o-sát.html#cb1238-3" aria-hidden="true" tabindex="-1"></a>                         survey_data_indiv,</span>
+<span id="cb1238-4"><a href="phân-tích-kh-o-sát.html#cb1238-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;_index&quot;</span> <span class="ot">=</span> <span class="st">&quot;_parent_index&quot;</span>))</span>
+<span id="cb1238-5"><a href="phân-tích-kh-o-sát.html#cb1238-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1238-6"><a href="phân-tích-kh-o-sát.html#cb1238-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1238-7"><a href="phân-tích-kh-o-sát.html#cb1238-7" aria-hidden="true" tabindex="-1"></a><span class="do">## create a unique identifier by combining indeces of the two levels </span></span>
+<span id="cb1238-8"><a href="phân-tích-kh-o-sát.html#cb1238-8" aria-hidden="true" tabindex="-1"></a>survey_data <span class="ot">&lt;-</span> survey_data <span class="sc">%&gt;%</span> </span>
+<span id="cb1238-9"><a href="phân-tích-kh-o-sát.html#cb1238-9" aria-hidden="true" tabindex="-1"></a>     <span class="fu">mutate</span>(<span class="at">uid =</span> <span class="fu">str_glue</span>(<span class="st">&quot;{index}_{index_y}&quot;</span>))</span></code></pre></div>
+<!-- ======================================================= -->
+</div>
+<div id="observation-time" class="section level2" number="26.4">
+<h2><span class="header-section-number">26.4</span> Observation time</h2>
+<p>For mortality surveys we want to now how long each individual was present for in
+the location to be able to calculate an appropriate mortality rate for our period
+of interest. This is not relevant to all surveys, but particularly for mortality
+surveys this is important as they are conducted frequently among mobile or displaced
+populations.</p>
+<p>To do this we first define our time period of interest, also known as a recall
+period (i.e. the time that participants are asked to report on when answering
+questions).
+We can then use this period to set inappropriate dates to missing, i.e. if deaths
+are reported from outside the period of interest.</p>
+<div class="sourceCode" id="cb1239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1239-1"><a href="phân-tích-kh-o-sát.html#cb1239-1" aria-hidden="true" tabindex="-1"></a><span class="do">## set the start/end of recall period</span></span>
+<span id="cb1239-2"><a href="phân-tích-kh-o-sát.html#cb1239-2" aria-hidden="true" tabindex="-1"></a><span class="do">## can be changed to date variables from dataset </span></span>
+<span id="cb1239-3"><a href="phân-tích-kh-o-sát.html#cb1239-3" aria-hidden="true" tabindex="-1"></a><span class="do">## (e.g. arrival date &amp; date questionnaire)</span></span>
+<span id="cb1239-4"><a href="phân-tích-kh-o-sát.html#cb1239-4" aria-hidden="true" tabindex="-1"></a>survey_data <span class="ot">&lt;-</span> survey_data <span class="sc">%&gt;%</span> </span>
+<span id="cb1239-5"><a href="phân-tích-kh-o-sát.html#cb1239-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">recall_start =</span> <span class="fu">as.Date</span>(<span class="st">&quot;2018-01-01&quot;</span>), </span>
+<span id="cb1239-6"><a href="phân-tích-kh-o-sát.html#cb1239-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">recall_end   =</span> <span class="fu">as.Date</span>(<span class="st">&quot;2018-05-01&quot;</span>)</span>
+<span id="cb1239-7"><a href="phân-tích-kh-o-sát.html#cb1239-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1239-8"><a href="phân-tích-kh-o-sát.html#cb1239-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1239-9"><a href="phân-tích-kh-o-sát.html#cb1239-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1239-10"><a href="phân-tích-kh-o-sát.html#cb1239-10" aria-hidden="true" tabindex="-1"></a><span class="co"># set inappropriate dates to NA based on rules </span></span>
+<span id="cb1239-11"><a href="phân-tích-kh-o-sát.html#cb1239-11" aria-hidden="true" tabindex="-1"></a><span class="do">## e.g. arrivals before start, departures departures after end</span></span>
+<span id="cb1239-12"><a href="phân-tích-kh-o-sát.html#cb1239-12" aria-hidden="true" tabindex="-1"></a>survey_data <span class="ot">&lt;-</span> survey_data <span class="sc">%&gt;%</span></span>
+<span id="cb1239-13"><a href="phân-tích-kh-o-sát.html#cb1239-13" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(</span>
+<span id="cb1239-14"><a href="phân-tích-kh-o-sát.html#cb1239-14" aria-hidden="true" tabindex="-1"></a>           <span class="at">arrived_date =</span> <span class="fu">if_else</span>(arrived_date <span class="sc">&lt;</span> recall_start, </span>
+<span id="cb1239-15"><a href="phân-tích-kh-o-sát.html#cb1239-15" aria-hidden="true" tabindex="-1"></a>                                 <span class="fu">as.Date</span>(<span class="cn">NA</span>),</span>
+<span id="cb1239-16"><a href="phân-tích-kh-o-sát.html#cb1239-16" aria-hidden="true" tabindex="-1"></a>                                  arrived_date),</span>
+<span id="cb1239-17"><a href="phân-tích-kh-o-sát.html#cb1239-17" aria-hidden="true" tabindex="-1"></a>           <span class="at">birthday_date =</span> <span class="fu">if_else</span>(birthday_date <span class="sc">&lt;</span> recall_start,</span>
+<span id="cb1239-18"><a href="phân-tích-kh-o-sát.html#cb1239-18" aria-hidden="true" tabindex="-1"></a>                                  <span class="fu">as.Date</span>(<span class="cn">NA</span>),</span>
+<span id="cb1239-19"><a href="phân-tích-kh-o-sát.html#cb1239-19" aria-hidden="true" tabindex="-1"></a>                                  birthday_date),</span>
+<span id="cb1239-20"><a href="phân-tích-kh-o-sát.html#cb1239-20" aria-hidden="true" tabindex="-1"></a>           <span class="at">left_date =</span> <span class="fu">if_else</span>(left_date <span class="sc">&gt;</span> recall_end,</span>
+<span id="cb1239-21"><a href="phân-tích-kh-o-sát.html#cb1239-21" aria-hidden="true" tabindex="-1"></a>                              <span class="fu">as.Date</span>(<span class="cn">NA</span>),</span>
+<span id="cb1239-22"><a href="phân-tích-kh-o-sát.html#cb1239-22" aria-hidden="true" tabindex="-1"></a>                               left_date),</span>
+<span id="cb1239-23"><a href="phân-tích-kh-o-sát.html#cb1239-23" aria-hidden="true" tabindex="-1"></a>           <span class="at">death_date =</span> <span class="fu">if_else</span>(death_date <span class="sc">&gt;</span> recall_end,</span>
+<span id="cb1239-24"><a href="phân-tích-kh-o-sát.html#cb1239-24" aria-hidden="true" tabindex="-1"></a>                               <span class="fu">as.Date</span>(<span class="cn">NA</span>),</span>
+<span id="cb1239-25"><a href="phân-tích-kh-o-sát.html#cb1239-25" aria-hidden="true" tabindex="-1"></a>                               death_date)</span>
+<span id="cb1239-26"><a href="phân-tích-kh-o-sát.html#cb1239-26" aria-hidden="true" tabindex="-1"></a>           )</span></code></pre></div>
+<p>We can then use our date variables to define start and end dates for each individual.
+We can use the <code>find_start_date()</code> function from <strong>sitrep</strong> to fine the causes for
+the dates and then use that to calculate the difference between days (person-time).</p>
+<p>start date:
+Earliest appropriate arrival event within your recall period
+Either the beginning of your recall period (which you define in advance), or a
+date after the start of recall if applicable (e.g. arrivals or births)</p>
+<p>end date:
+Earliest appropriate departure event within your recall period
+Either the end of your recall period, or a date before the end of recall
+if applicable (e.g. departures, deaths)</p>
+<div class="sourceCode" id="cb1240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1240-1"><a href="phân-tích-kh-o-sát.html#cb1240-1" aria-hidden="true" tabindex="-1"></a><span class="do">## create new variables for start and end dates/causes</span></span>
+<span id="cb1240-2"><a href="phân-tích-kh-o-sát.html#cb1240-2" aria-hidden="true" tabindex="-1"></a>survey_data <span class="ot">&lt;-</span> survey_data <span class="sc">%&gt;%</span> </span>
+<span id="cb1240-3"><a href="phân-tích-kh-o-sát.html#cb1240-3" aria-hidden="true" tabindex="-1"></a>     <span class="do">## choose earliest date entered in survey</span></span>
+<span id="cb1240-4"><a href="phân-tích-kh-o-sát.html#cb1240-4" aria-hidden="true" tabindex="-1"></a>     <span class="do">## from births, household arrivals, and camp arrivals </span></span>
+<span id="cb1240-5"><a href="phân-tích-kh-o-sát.html#cb1240-5" aria-hidden="true" tabindex="-1"></a>     <span class="fu">find_start_date</span>(<span class="st">&quot;birthday_date&quot;</span>,</span>
+<span id="cb1240-6"><a href="phân-tích-kh-o-sát.html#cb1240-6" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;arrived_date&quot;</span>,</span>
+<span id="cb1240-7"><a href="phân-tích-kh-o-sát.html#cb1240-7" aria-hidden="true" tabindex="-1"></a>                  <span class="at">period_start =</span> <span class="st">&quot;recall_start&quot;</span>,</span>
+<span id="cb1240-8"><a href="phân-tích-kh-o-sát.html#cb1240-8" aria-hidden="true" tabindex="-1"></a>                  <span class="at">period_end   =</span> <span class="st">&quot;recall_end&quot;</span>,</span>
+<span id="cb1240-9"><a href="phân-tích-kh-o-sát.html#cb1240-9" aria-hidden="true" tabindex="-1"></a>                  <span class="at">datecol      =</span> <span class="st">&quot;startdate&quot;</span>,</span>
+<span id="cb1240-10"><a href="phân-tích-kh-o-sát.html#cb1240-10" aria-hidden="true" tabindex="-1"></a>                  <span class="at">datereason   =</span> <span class="st">&quot;startcause&quot;</span> </span>
+<span id="cb1240-11"><a href="phân-tích-kh-o-sát.html#cb1240-11" aria-hidden="true" tabindex="-1"></a>                 ) <span class="sc">%&gt;%</span></span>
+<span id="cb1240-12"><a href="phân-tích-kh-o-sát.html#cb1240-12" aria-hidden="true" tabindex="-1"></a>     <span class="do">## choose earliest date entered in survey</span></span>
+<span id="cb1240-13"><a href="phân-tích-kh-o-sát.html#cb1240-13" aria-hidden="true" tabindex="-1"></a>     <span class="do">## from camp departures, death and end of the study</span></span>
+<span id="cb1240-14"><a href="phân-tích-kh-o-sát.html#cb1240-14" aria-hidden="true" tabindex="-1"></a>     <span class="fu">find_end_date</span>(<span class="st">&quot;left_date&quot;</span>,</span>
+<span id="cb1240-15"><a href="phân-tích-kh-o-sát.html#cb1240-15" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;death_date&quot;</span>,</span>
+<span id="cb1240-16"><a href="phân-tích-kh-o-sát.html#cb1240-16" aria-hidden="true" tabindex="-1"></a>                <span class="at">period_start =</span> <span class="st">&quot;recall_start&quot;</span>,</span>
+<span id="cb1240-17"><a href="phân-tích-kh-o-sát.html#cb1240-17" aria-hidden="true" tabindex="-1"></a>                <span class="at">period_end   =</span> <span class="st">&quot;recall_end&quot;</span>,</span>
+<span id="cb1240-18"><a href="phân-tích-kh-o-sát.html#cb1240-18" aria-hidden="true" tabindex="-1"></a>                <span class="at">datecol      =</span> <span class="st">&quot;enddate&quot;</span>,</span>
+<span id="cb1240-19"><a href="phân-tích-kh-o-sát.html#cb1240-19" aria-hidden="true" tabindex="-1"></a>                <span class="at">datereason   =</span> <span class="st">&quot;endcause&quot;</span> </span>
+<span id="cb1240-20"><a href="phân-tích-kh-o-sát.html#cb1240-20" aria-hidden="true" tabindex="-1"></a>               )</span>
+<span id="cb1240-21"><a href="phân-tích-kh-o-sát.html#cb1240-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1240-22"><a href="phân-tích-kh-o-sát.html#cb1240-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1240-23"><a href="phân-tích-kh-o-sát.html#cb1240-23" aria-hidden="true" tabindex="-1"></a><span class="do">## label those that were present at the start/end (except births/deaths)</span></span>
+<span id="cb1240-24"><a href="phân-tích-kh-o-sát.html#cb1240-24" aria-hidden="true" tabindex="-1"></a>survey_data <span class="ot">&lt;-</span> survey_data <span class="sc">%&gt;%</span> </span>
+<span id="cb1240-25"><a href="phân-tích-kh-o-sát.html#cb1240-25" aria-hidden="true" tabindex="-1"></a>     <span class="fu">mutate</span>(</span>
+<span id="cb1240-26"><a href="phân-tích-kh-o-sát.html#cb1240-26" aria-hidden="true" tabindex="-1"></a>       <span class="do">## fill in start date to be the beginning of recall period (for those empty) </span></span>
+<span id="cb1240-27"><a href="phân-tích-kh-o-sát.html#cb1240-27" aria-hidden="true" tabindex="-1"></a>       <span class="at">startdate =</span> <span class="fu">if_else</span>(<span class="fu">is.na</span>(startdate), recall_start, startdate), </span>
+<span id="cb1240-28"><a href="phân-tích-kh-o-sát.html#cb1240-28" aria-hidden="true" tabindex="-1"></a>       <span class="do">## set the start cause to present at start if equal to recall period </span></span>
+<span id="cb1240-29"><a href="phân-tích-kh-o-sát.html#cb1240-29" aria-hidden="true" tabindex="-1"></a>       <span class="do">## unless it is equal to the birth date </span></span>
+<span id="cb1240-30"><a href="phân-tích-kh-o-sát.html#cb1240-30" aria-hidden="true" tabindex="-1"></a>       <span class="at">startcause =</span> <span class="fu">if_else</span>(startdate <span class="sc">==</span> recall_start <span class="sc">&amp;</span> startcause <span class="sc">!=</span> <span class="st">&quot;birthday_date&quot;</span>,</span>
+<span id="cb1240-31"><a href="phân-tích-kh-o-sát.html#cb1240-31" aria-hidden="true" tabindex="-1"></a>                              <span class="st">&quot;Present at start&quot;</span>, startcause), </span>
+<span id="cb1240-32"><a href="phân-tích-kh-o-sát.html#cb1240-32" aria-hidden="true" tabindex="-1"></a>       <span class="do">## fill in end date to be end of recall period (for those empty) </span></span>
+<span id="cb1240-33"><a href="phân-tích-kh-o-sát.html#cb1240-33" aria-hidden="true" tabindex="-1"></a>       <span class="at">enddate =</span> <span class="fu">if_else</span>(<span class="fu">is.na</span>(enddate), recall_end, enddate), </span>
+<span id="cb1240-34"><a href="phân-tích-kh-o-sát.html#cb1240-34" aria-hidden="true" tabindex="-1"></a>       <span class="do">## set the end cause to present at end if equall to recall end </span></span>
+<span id="cb1240-35"><a href="phân-tích-kh-o-sát.html#cb1240-35" aria-hidden="true" tabindex="-1"></a>       <span class="do">## unless it is equal to the death date</span></span>
+<span id="cb1240-36"><a href="phân-tích-kh-o-sát.html#cb1240-36" aria-hidden="true" tabindex="-1"></a>       <span class="at">endcause =</span> <span class="fu">if_else</span>(enddate <span class="sc">==</span> recall_end <span class="sc">&amp;</span> endcause <span class="sc">!=</span> <span class="st">&quot;death_date&quot;</span>, </span>
+<span id="cb1240-37"><a href="phân-tích-kh-o-sát.html#cb1240-37" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Present at end&quot;</span>, endcause))</span>
+<span id="cb1240-38"><a href="phân-tích-kh-o-sát.html#cb1240-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1240-39"><a href="phân-tích-kh-o-sát.html#cb1240-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1240-40"><a href="phân-tích-kh-o-sát.html#cb1240-40" aria-hidden="true" tabindex="-1"></a><span class="do">## Define observation time in days</span></span>
+<span id="cb1240-41"><a href="phân-tích-kh-o-sát.html#cb1240-41" aria-hidden="true" tabindex="-1"></a>survey_data <span class="ot">&lt;-</span> survey_data <span class="sc">%&gt;%</span> </span>
+<span id="cb1240-42"><a href="phân-tích-kh-o-sát.html#cb1240-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">obstime =</span> <span class="fu">as.numeric</span>(enddate <span class="sc">-</span> startdate))</span></code></pre></div>
+<!-- ======================================================= -->
+</div>
+<div id="weighting" class="section level2" number="26.5">
+<h2><span class="header-section-number">26.5</span> Weighting</h2>
+<p>It is important that you drop erroneous observations before adding survey weights.
+For example if you have observations with negative observation time, you will need
+to check those (you can do this with the <code>assert_positive_timespan()</code> function
+from <strong>sitrep</strong>.
+Another thing is if you want to drop empty rows (e.g. with <code>drop_na(uid)</code>)
+or remove duplicates (see handbook section on [De-duplication]
+for details).
+Those without consent need to be dropped too.</p>
+<p>In this example we filter for the cases we want to drop and store them in a separate
+data frame - this way we can describe those that were excluded from the survey.
+We then use the <code>anti_join()</code> function from <strong>dplyr</strong> to remove these dropped cases
+from our survey data.</p>
+<p><span style="color: red;"><strong><em>DANGER:</em></strong> You cant have missing values in your weight variable, or any of the variables relevant to your survey design (e.g. age, sex, strata or cluster variables).</span></p>
+<div class="sourceCode" id="cb1241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1241-1"><a href="phân-tích-kh-o-sát.html#cb1241-1" aria-hidden="true" tabindex="-1"></a><span class="do">## store the cases that you drop so you can describe them (e.g. non-consenting </span></span>
+<span id="cb1241-2"><a href="phân-tích-kh-o-sát.html#cb1241-2" aria-hidden="true" tabindex="-1"></a><span class="do">## or wrong village/cluster)</span></span>
+<span id="cb1241-3"><a href="phân-tích-kh-o-sát.html#cb1241-3" aria-hidden="true" tabindex="-1"></a>dropped <span class="ot">&lt;-</span> survey_data <span class="sc">%&gt;%</span> </span>
+<span id="cb1241-4"><a href="phân-tích-kh-o-sát.html#cb1241-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>consent <span class="sc">|</span> <span class="fu">is.na</span>(startdate) <span class="sc">|</span> <span class="fu">is.na</span>(enddate) <span class="sc">|</span> village_name <span class="sc">==</span> <span class="st">&quot;other&quot;</span>)</span>
+<span id="cb1241-5"><a href="phân-tích-kh-o-sát.html#cb1241-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1241-6"><a href="phân-tích-kh-o-sát.html#cb1241-6" aria-hidden="true" tabindex="-1"></a><span class="do">## use the dropped cases to remove the unused rows from the survey data set  </span></span>
+<span id="cb1241-7"><a href="phân-tích-kh-o-sát.html#cb1241-7" aria-hidden="true" tabindex="-1"></a>survey_data <span class="ot">&lt;-</span> <span class="fu">anti_join</span>(survey_data, dropped, <span class="at">by =</span> <span class="fu">names</span>(dropped))</span></code></pre></div>
+<p>As mentioned above we demonstrate how to add weights for three different study
+designs (stratified, cluster and stratified cluster). These require information
+on the source population and/or the clusters surveyed.
+We will use the stratified cluster code for this example, but use whichever is
+most appropriate for your study design.</p>
+<div class="sourceCode" id="cb1242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1242-1"><a href="phân-tích-kh-o-sát.html#cb1242-1" aria-hidden="true" tabindex="-1"></a><span class="co"># stratified ------------------------------------------------------------------</span></span>
+<span id="cb1242-2"><a href="phân-tích-kh-o-sát.html#cb1242-2" aria-hidden="true" tabindex="-1"></a><span class="co"># create a variable called &quot;surv_weight_strata&quot;</span></span>
+<span id="cb1242-3"><a href="phân-tích-kh-o-sát.html#cb1242-3" aria-hidden="true" tabindex="-1"></a><span class="co"># contains weights for each individual - by age group, sex and health district</span></span>
+<span id="cb1242-4"><a href="phân-tích-kh-o-sát.html#cb1242-4" aria-hidden="true" tabindex="-1"></a>survey_data <span class="ot">&lt;-</span> <span class="fu">add_weights_strata</span>(<span class="at">x =</span> survey_data,</span>
+<span id="cb1242-5"><a href="phân-tích-kh-o-sát.html#cb1242-5" aria-hidden="true" tabindex="-1"></a>                                         <span class="at">p =</span> population,</span>
+<span id="cb1242-6"><a href="phân-tích-kh-o-sát.html#cb1242-6" aria-hidden="true" tabindex="-1"></a>                                         <span class="at">surv_weight =</span> <span class="st">&quot;surv_weight_strata&quot;</span>,</span>
+<span id="cb1242-7"><a href="phân-tích-kh-o-sát.html#cb1242-7" aria-hidden="true" tabindex="-1"></a>                                         <span class="at">surv_weight_ID =</span> <span class="st">&quot;surv_weight_ID_strata&quot;</span>,</span>
+<span id="cb1242-8"><a href="phân-tích-kh-o-sát.html#cb1242-8" aria-hidden="true" tabindex="-1"></a>                                         age_group, sex, health_district)</span>
+<span id="cb1242-9"><a href="phân-tích-kh-o-sát.html#cb1242-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1242-10"><a href="phân-tích-kh-o-sát.html#cb1242-10" aria-hidden="true" tabindex="-1"></a><span class="do">## cluster ---------------------------------------------------------------------</span></span>
+<span id="cb1242-11"><a href="phân-tích-kh-o-sát.html#cb1242-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1242-12"><a href="phân-tích-kh-o-sát.html#cb1242-12" aria-hidden="true" tabindex="-1"></a><span class="co"># get the number of people of individuals interviewed per household</span></span>
+<span id="cb1242-13"><a href="phân-tích-kh-o-sát.html#cb1242-13" aria-hidden="true" tabindex="-1"></a><span class="co"># adds a variable with counts of the household (parent) index variable</span></span>
+<span id="cb1242-14"><a href="phân-tích-kh-o-sát.html#cb1242-14" aria-hidden="true" tabindex="-1"></a>survey_data <span class="ot">&lt;-</span> survey_data <span class="sc">%&gt;%</span></span>
+<span id="cb1242-15"><a href="phân-tích-kh-o-sát.html#cb1242-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_count</span>(index, <span class="at">name =</span> <span class="st">&quot;interviewed&quot;</span>)</span>
+<span id="cb1242-16"><a href="phân-tích-kh-o-sát.html#cb1242-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1242-17"><a href="phân-tích-kh-o-sát.html#cb1242-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1242-18"><a href="phân-tích-kh-o-sát.html#cb1242-18" aria-hidden="true" tabindex="-1"></a><span class="do">## create cluster weights</span></span>
+<span id="cb1242-19"><a href="phân-tích-kh-o-sát.html#cb1242-19" aria-hidden="true" tabindex="-1"></a>survey_data <span class="ot">&lt;-</span> <span class="fu">add_weights_cluster</span>(<span class="at">x =</span> survey_data,</span>
+<span id="cb1242-20"><a href="phân-tích-kh-o-sát.html#cb1242-20" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">cl =</span> cluster_counts,</span>
+<span id="cb1242-21"><a href="phân-tích-kh-o-sát.html#cb1242-21" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">eligible =</span> member_number,</span>
+<span id="cb1242-22"><a href="phân-tích-kh-o-sát.html#cb1242-22" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">interviewed =</span> interviewed,</span>
+<span id="cb1242-23"><a href="phân-tích-kh-o-sát.html#cb1242-23" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">cluster_x =</span> village_name,</span>
+<span id="cb1242-24"><a href="phân-tích-kh-o-sát.html#cb1242-24" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">cluster_cl =</span> cluster,</span>
+<span id="cb1242-25"><a href="phân-tích-kh-o-sát.html#cb1242-25" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">household_x =</span> index,</span>
+<span id="cb1242-26"><a href="phân-tích-kh-o-sát.html#cb1242-26" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">household_cl =</span> households,</span>
+<span id="cb1242-27"><a href="phân-tích-kh-o-sát.html#cb1242-27" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">surv_weight =</span> <span class="st">&quot;surv_weight_cluster&quot;</span>,</span>
+<span id="cb1242-28"><a href="phân-tích-kh-o-sát.html#cb1242-28" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">surv_weight_ID =</span> <span class="st">&quot;surv_weight_ID_cluster&quot;</span>,</span>
+<span id="cb1242-29"><a href="phân-tích-kh-o-sát.html#cb1242-29" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">ignore_cluster =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb1242-30"><a href="phân-tích-kh-o-sát.html#cb1242-30" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">ignore_household =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1242-31"><a href="phân-tích-kh-o-sát.html#cb1242-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1242-32"><a href="phân-tích-kh-o-sát.html#cb1242-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1242-33"><a href="phân-tích-kh-o-sát.html#cb1242-33" aria-hidden="true" tabindex="-1"></a><span class="co"># stratified and cluster ------------------------------------------------------</span></span>
+<span id="cb1242-34"><a href="phân-tích-kh-o-sát.html#cb1242-34" aria-hidden="true" tabindex="-1"></a><span class="co"># create a survey weight for cluster and strata</span></span>
+<span id="cb1242-35"><a href="phân-tích-kh-o-sát.html#cb1242-35" aria-hidden="true" tabindex="-1"></a>survey_data <span class="ot">&lt;-</span> survey_data <span class="sc">%&gt;%</span></span>
+<span id="cb1242-36"><a href="phân-tích-kh-o-sát.html#cb1242-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">surv_weight_cluster_strata =</span> surv_weight_strata <span class="sc">*</span> surv_weight_cluster)</span></code></pre></div>
+<!-- ======================================================= -->
+</div>
+<div id="survey-design-objects" class="section level2" number="26.6">
+<h2><span class="header-section-number">26.6</span> Survey design objects</h2>
+<p>Create survey object according to your study design.
+Used the same way as data frames to calculate weight proportions etc.
+Make sure that all necessary variables are created before this.</p>
+<p>There are four options, comment out those you do not use:
+- Simple random
+- Stratified
+- Cluster
+- Stratified cluster</p>
+<p>For this template - we will pretend that we cluster surveys in two separate
+strata (health districts A and B).
+So to get overall estimates we need have combined cluster and strata weights.</p>
+<p>As mentioned previously, there are two packages available for doing this. The
+classic one is <strong>survey</strong> and then there is a wrapper package called <strong>srvyr</strong>
+that makes tidyverse-friendly objects and functions. We will demonstrate both,
+but note that most of the code in this chapter will use <strong>srvyr</strong> based objects.
+The one exception is that the <strong>gtsummary</strong> package only accepts <strong>survey</strong> objects.</p>
+<div id="survey-package" class="section level3" number="26.6.1">
+<h3><span class="header-section-number">26.6.1</span> <strong>Survey</strong> package</h3>
+<p>The <strong>survey</strong> package effectively uses <strong>base</strong> <em>R</em> coding, and so it is not
+possible to use pipes (<code>%&gt;%</code>) or other <strong>dplyr</strong> syntax.
+With the <strong>survey</strong> package we use the <code>svydesign()</code> function to define a survey
+object with appropriate clusters, weights and strata.</p>
+<p><span style="color: black;"><strong><em>NOTE:</em></strong> we need to use the tilde (<code>~</code>) in front of variables, this is because the package uses the <strong>base</strong> <em>R</em> syntax of assigning variables based on formulae. </span></p>
+<div class="sourceCode" id="cb1243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1243-1"><a href="phân-tích-kh-o-sát.html#cb1243-1" aria-hidden="true" tabindex="-1"></a><span class="co"># simple random ---------------------------------------------------------------</span></span>
+<span id="cb1243-2"><a href="phân-tích-kh-o-sát.html#cb1243-2" aria-hidden="true" tabindex="-1"></a>base_survey_design_simple <span class="ot">&lt;-</span> <span class="fu">svydesign</span>(<span class="at">ids =</span> <span class="sc">~</span><span class="dv">1</span>, <span class="co"># 1 for no cluster ids</span></span>
+<span id="cb1243-3"><a href="phân-tích-kh-o-sát.html#cb1243-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">weights =</span> <span class="cn">NULL</span>,               <span class="co"># No weight added</span></span>
+<span id="cb1243-4"><a href="phân-tích-kh-o-sát.html#cb1243-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">strata =</span> <span class="cn">NULL</span>,                <span class="co"># sampling was simple (no strata)</span></span>
+<span id="cb1243-5"><a href="phân-tích-kh-o-sát.html#cb1243-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">data =</span> survey_data            <span class="co"># have to specify the dataset</span></span>
+<span id="cb1243-6"><a href="phân-tích-kh-o-sát.html#cb1243-6" aria-hidden="true" tabindex="-1"></a>                  )</span>
+<span id="cb1243-7"><a href="phân-tích-kh-o-sát.html#cb1243-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1243-8"><a href="phân-tích-kh-o-sát.html#cb1243-8" aria-hidden="true" tabindex="-1"></a><span class="do">## stratified ------------------------------------------------------------------</span></span>
+<span id="cb1243-9"><a href="phân-tích-kh-o-sát.html#cb1243-9" aria-hidden="true" tabindex="-1"></a>base_survey_design_strata <span class="ot">&lt;-</span> <span class="fu">svydesign</span>(<span class="at">ids =</span> <span class="sc">~</span><span class="dv">1</span>,  <span class="co"># 1 for no cluster ids</span></span>
+<span id="cb1243-10"><a href="phân-tích-kh-o-sát.html#cb1243-10" aria-hidden="true" tabindex="-1"></a>                   <span class="at">weights =</span> <span class="sc">~</span>surv_weight_strata, <span class="co"># weight variable created above</span></span>
+<span id="cb1243-11"><a href="phân-tích-kh-o-sát.html#cb1243-11" aria-hidden="true" tabindex="-1"></a>                   <span class="at">strata =</span> <span class="sc">~</span>health_district,     <span class="co"># sampling was stratified by district</span></span>
+<span id="cb1243-12"><a href="phân-tích-kh-o-sát.html#cb1243-12" aria-hidden="true" tabindex="-1"></a>                   <span class="at">data =</span> survey_data             <span class="co"># have to specify the dataset</span></span>
+<span id="cb1243-13"><a href="phân-tích-kh-o-sát.html#cb1243-13" aria-hidden="true" tabindex="-1"></a>                  )</span>
+<span id="cb1243-14"><a href="phân-tích-kh-o-sát.html#cb1243-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1243-15"><a href="phân-tích-kh-o-sát.html#cb1243-15" aria-hidden="true" tabindex="-1"></a><span class="co"># cluster ---------------------------------------------------------------------</span></span>
+<span id="cb1243-16"><a href="phân-tích-kh-o-sát.html#cb1243-16" aria-hidden="true" tabindex="-1"></a>base_survey_design_cluster <span class="ot">&lt;-</span> <span class="fu">svydesign</span>(<span class="at">ids =</span> <span class="sc">~</span>village_name, <span class="co"># cluster ids</span></span>
+<span id="cb1243-17"><a href="phân-tích-kh-o-sát.html#cb1243-17" aria-hidden="true" tabindex="-1"></a>                   <span class="at">weights =</span> <span class="sc">~</span>surv_weight_cluster, <span class="co"># weight variable created above</span></span>
+<span id="cb1243-18"><a href="phân-tích-kh-o-sát.html#cb1243-18" aria-hidden="true" tabindex="-1"></a>                   <span class="at">strata =</span> <span class="cn">NULL</span>,                 <span class="co"># sampling was simple (no strata)</span></span>
+<span id="cb1243-19"><a href="phân-tích-kh-o-sát.html#cb1243-19" aria-hidden="true" tabindex="-1"></a>                   <span class="at">data =</span> survey_data              <span class="co"># have to specify the dataset</span></span>
+<span id="cb1243-20"><a href="phân-tích-kh-o-sát.html#cb1243-20" aria-hidden="true" tabindex="-1"></a>                  )</span>
+<span id="cb1243-21"><a href="phân-tích-kh-o-sát.html#cb1243-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1243-22"><a href="phân-tích-kh-o-sát.html#cb1243-22" aria-hidden="true" tabindex="-1"></a><span class="co"># stratified cluster ----------------------------------------------------------</span></span>
+<span id="cb1243-23"><a href="phân-tích-kh-o-sát.html#cb1243-23" aria-hidden="true" tabindex="-1"></a>base_survey_design <span class="ot">&lt;-</span> <span class="fu">svydesign</span>(<span class="at">ids =</span> <span class="sc">~</span>village_name,      <span class="co"># cluster ids</span></span>
+<span id="cb1243-24"><a href="phân-tích-kh-o-sát.html#cb1243-24" aria-hidden="true" tabindex="-1"></a>                   <span class="at">weights =</span> <span class="sc">~</span>surv_weight_cluster_strata, <span class="co"># weight variable created above</span></span>
+<span id="cb1243-25"><a href="phân-tích-kh-o-sát.html#cb1243-25" aria-hidden="true" tabindex="-1"></a>                   <span class="at">strata =</span> <span class="sc">~</span>health_district,             <span class="co"># sampling was stratified by district</span></span>
+<span id="cb1243-26"><a href="phân-tích-kh-o-sát.html#cb1243-26" aria-hidden="true" tabindex="-1"></a>                   <span class="at">data =</span> survey_data                     <span class="co"># have to specify the dataset</span></span>
+<span id="cb1243-27"><a href="phân-tích-kh-o-sát.html#cb1243-27" aria-hidden="true" tabindex="-1"></a>                  )</span></code></pre></div>
+</div>
+<div id="srvyr-package" class="section level3" number="26.6.2">
+<h3><span class="header-section-number">26.6.2</span> <strong>Srvyr</strong> package</h3>
+<p>With the <strong>srvyr</strong> package we can use the <code>as_survey_design()</code> function, which
+has all the same arguments as above but allows pipes (<code>%&gt;%</code>), and so we do not
+need to use the tilde (<code>~</code>).</p>
+<div class="sourceCode" id="cb1244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1244-1"><a href="phân-tích-kh-o-sát.html#cb1244-1" aria-hidden="true" tabindex="-1"></a><span class="do">## simple random ---------------------------------------------------------------</span></span>
+<span id="cb1244-2"><a href="phân-tích-kh-o-sát.html#cb1244-2" aria-hidden="true" tabindex="-1"></a>survey_design_simple <span class="ot">&lt;-</span> survey_data <span class="sc">%&gt;%</span> </span>
+<span id="cb1244-3"><a href="phân-tích-kh-o-sát.html#cb1244-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_survey_design</span>(<span class="at">ids =</span> <span class="dv">1</span>, <span class="co"># 1 for no cluster ids </span></span>
+<span id="cb1244-4"><a href="phân-tích-kh-o-sát.html#cb1244-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">weights =</span> <span class="cn">NULL</span>, <span class="co"># No weight added</span></span>
+<span id="cb1244-5"><a href="phân-tích-kh-o-sát.html#cb1244-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">strata =</span> <span class="cn">NULL</span> <span class="co"># sampling was simple (no strata)</span></span>
+<span id="cb1244-6"><a href="phân-tích-kh-o-sát.html#cb1244-6" aria-hidden="true" tabindex="-1"></a>                  )</span>
+<span id="cb1244-7"><a href="phân-tích-kh-o-sát.html#cb1244-7" aria-hidden="true" tabindex="-1"></a><span class="do">## stratified ------------------------------------------------------------------</span></span>
+<span id="cb1244-8"><a href="phân-tích-kh-o-sát.html#cb1244-8" aria-hidden="true" tabindex="-1"></a>survey_design_strata <span class="ot">&lt;-</span> survey_data <span class="sc">%&gt;%</span></span>
+<span id="cb1244-9"><a href="phân-tích-kh-o-sát.html#cb1244-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_survey_design</span>(<span class="at">ids =</span> <span class="dv">1</span>, <span class="co"># 1 for no cluster ids</span></span>
+<span id="cb1244-10"><a href="phân-tích-kh-o-sát.html#cb1244-10" aria-hidden="true" tabindex="-1"></a>                   <span class="at">weights =</span> surv_weight_strata, <span class="co"># weight variable created above</span></span>
+<span id="cb1244-11"><a href="phân-tích-kh-o-sát.html#cb1244-11" aria-hidden="true" tabindex="-1"></a>                   <span class="at">strata =</span> health_district <span class="co"># sampling was stratified by district</span></span>
+<span id="cb1244-12"><a href="phân-tích-kh-o-sát.html#cb1244-12" aria-hidden="true" tabindex="-1"></a>                  )</span>
+<span id="cb1244-13"><a href="phân-tích-kh-o-sát.html#cb1244-13" aria-hidden="true" tabindex="-1"></a><span class="do">## cluster ---------------------------------------------------------------------</span></span>
+<span id="cb1244-14"><a href="phân-tích-kh-o-sát.html#cb1244-14" aria-hidden="true" tabindex="-1"></a>survey_design_cluster <span class="ot">&lt;-</span> survey_data <span class="sc">%&gt;%</span></span>
+<span id="cb1244-15"><a href="phân-tích-kh-o-sát.html#cb1244-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_survey_design</span>(<span class="at">ids =</span> village_name, <span class="co"># cluster ids</span></span>
+<span id="cb1244-16"><a href="phân-tích-kh-o-sát.html#cb1244-16" aria-hidden="true" tabindex="-1"></a>                   <span class="at">weights =</span> surv_weight_cluster, <span class="co"># weight variable created above</span></span>
+<span id="cb1244-17"><a href="phân-tích-kh-o-sát.html#cb1244-17" aria-hidden="true" tabindex="-1"></a>                   <span class="at">strata =</span> <span class="cn">NULL</span> <span class="co"># sampling was simple (no strata)</span></span>
+<span id="cb1244-18"><a href="phân-tích-kh-o-sát.html#cb1244-18" aria-hidden="true" tabindex="-1"></a>                  )</span>
+<span id="cb1244-19"><a href="phân-tích-kh-o-sát.html#cb1244-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1244-20"><a href="phân-tích-kh-o-sát.html#cb1244-20" aria-hidden="true" tabindex="-1"></a><span class="do">## stratified cluster ----------------------------------------------------------</span></span>
+<span id="cb1244-21"><a href="phân-tích-kh-o-sát.html#cb1244-21" aria-hidden="true" tabindex="-1"></a>survey_design <span class="ot">&lt;-</span> survey_data <span class="sc">%&gt;%</span></span>
+<span id="cb1244-22"><a href="phân-tích-kh-o-sát.html#cb1244-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_survey_design</span>(<span class="at">ids =</span> village_name, <span class="co"># cluster ids</span></span>
+<span id="cb1244-23"><a href="phân-tích-kh-o-sát.html#cb1244-23" aria-hidden="true" tabindex="-1"></a>                   <span class="at">weights =</span> surv_weight_cluster_strata, <span class="co"># weight variable created above</span></span>
+<span id="cb1244-24"><a href="phân-tích-kh-o-sát.html#cb1244-24" aria-hidden="true" tabindex="-1"></a>                   <span class="at">strata =</span> health_district <span class="co"># sampling was stratified by district</span></span>
+<span id="cb1244-25"><a href="phân-tích-kh-o-sát.html#cb1244-25" aria-hidden="true" tabindex="-1"></a>                  )</span></code></pre></div>
+<!-- ======================================================= -->
+</div>
+</div>
+<div id="descriptive-analysis-2" class="section level2" number="26.7">
+<h2><span class="header-section-number">26.7</span> Descriptive analysis</h2>
+<p>Basic descriptive analysis and visualisation is covered extensively in other
+chapters of the handbook, so we will not dwell on it here.
+For details see the chapters on <a href="https://epirhandbook.com/descriptive-tables.html">descriptive tables</a>,
+<a href="https://epirhandbook.com/simple-statistical-tests.html">statistical tests</a>,
+<a href="https://epirhandbook.com/tables-for-presentation.html">tables for presentation</a>,
+<a href="https://epirhandbook.com/ggplot-basics.html">ggplot basics</a> and
+<a href="https://epirhandbook.com/r-markdown-reports.html">R markdown reports</a>.</p>
+<p>In this section we will focus on how to investigate bias in your sample and visualise this.
+We will also look at visualising population flow in a survey setting using
+alluvial/sankey diagrams.</p>
+<p>In general, you should consider including the following descriptive analyses:</p>
+<ul>
+<li>Final number of clusters, households and individuals included<br />
+</li>
+<li>Number of excluded individuals and the reasons for exclusion</li>
+<li>Median (range) number of households per cluster and individuals per household</li>
+</ul>
+<div id="sampling-bias" class="section level3" number="26.7.1">
+<h3><span class="header-section-number">26.7.1</span> Sampling bias</h3>
+<p>Compare the proportions in each age group between your sample and
+the source population.
+This is important to be able to highlight potential sampling bias.
+You could similarly repeat this looking at distributions by sex.</p>
+<p>Note that these p-values are just indicative, and a descriptive discussion (or
+visualisation with age-pyramids below) of the distributions in your study sample
+compared to the source population is more important than the binomial test itself.
+This is because increasing sample size will more often than not lead to
+differences that may be irrelevant after weighting your data.</p>
+<div class="sourceCode" id="cb1245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1245-1"><a href="phân-tích-kh-o-sát.html#cb1245-1" aria-hidden="true" tabindex="-1"></a><span class="do">## counts and props of the study population</span></span>
+<span id="cb1245-2"><a href="phân-tích-kh-o-sát.html#cb1245-2" aria-hidden="true" tabindex="-1"></a>ag <span class="ot">&lt;-</span> survey_data <span class="sc">%&gt;%</span> </span>
+<span id="cb1245-3"><a href="phân-tích-kh-o-sát.html#cb1245-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(age_group) <span class="sc">%&gt;%</span> </span>
+<span id="cb1245-4"><a href="phân-tích-kh-o-sát.html#cb1245-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(age_group) <span class="sc">%&gt;%</span> </span>
+<span id="cb1245-5"><a href="phân-tích-kh-o-sát.html#cb1245-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tally</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb1245-6"><a href="phân-tích-kh-o-sát.html#cb1245-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">proportion =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n), </span>
+<span id="cb1245-7"><a href="phân-tích-kh-o-sát.html#cb1245-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">n_total =</span> <span class="fu">sum</span>(n))</span>
+<span id="cb1245-8"><a href="phân-tích-kh-o-sát.html#cb1245-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1245-9"><a href="phân-tích-kh-o-sát.html#cb1245-9" aria-hidden="true" tabindex="-1"></a><span class="do">## counts and props of the source population</span></span>
+<span id="cb1245-10"><a href="phân-tích-kh-o-sát.html#cb1245-10" aria-hidden="true" tabindex="-1"></a>propcount <span class="ot">&lt;-</span> population <span class="sc">%&gt;%</span> </span>
+<span id="cb1245-11"><a href="phân-tích-kh-o-sát.html#cb1245-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(age_group) <span class="sc">%&gt;%</span></span>
+<span id="cb1245-12"><a href="phân-tích-kh-o-sát.html#cb1245-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tally</span>(population) <span class="sc">%&gt;%</span></span>
+<span id="cb1245-13"><a href="phân-tích-kh-o-sát.html#cb1245-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">proportion =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n))</span>
+<span id="cb1245-14"><a href="phân-tích-kh-o-sát.html#cb1245-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1245-15"><a href="phân-tích-kh-o-sát.html#cb1245-15" aria-hidden="true" tabindex="-1"></a><span class="do">## bind together the columns of two tables, group by age, and perform a </span></span>
+<span id="cb1245-16"><a href="phân-tích-kh-o-sát.html#cb1245-16" aria-hidden="true" tabindex="-1"></a><span class="do">## binomial test to see if n/total is significantly different from population</span></span>
+<span id="cb1245-17"><a href="phân-tích-kh-o-sát.html#cb1245-17" aria-hidden="true" tabindex="-1"></a><span class="do">## proportion.</span></span>
+<span id="cb1245-18"><a href="phân-tích-kh-o-sát.html#cb1245-18" aria-hidden="true" tabindex="-1"></a>  <span class="do">## suffix here adds to text to the end of columns in each of the two datasets</span></span>
+<span id="cb1245-19"><a href="phân-tích-kh-o-sát.html#cb1245-19" aria-hidden="true" tabindex="-1"></a><span class="fu">left_join</span>(ag, propcount, <span class="at">by =</span> <span class="st">&quot;age_group&quot;</span>, <span class="at">suffix =</span> <span class="fu">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;_pop&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb1245-20"><a href="phân-tích-kh-o-sát.html#cb1245-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(age_group) <span class="sc">%&gt;%</span></span>
+<span id="cb1245-21"><a href="phân-tích-kh-o-sát.html#cb1245-21" aria-hidden="true" tabindex="-1"></a>  <span class="do">## broom::tidy(binom.test()) makes a data frame out of the binomial test and</span></span>
+<span id="cb1245-22"><a href="phân-tích-kh-o-sát.html#cb1245-22" aria-hidden="true" tabindex="-1"></a>  <span class="do">## will add the variables p.value, parameter, conf.low, conf.high, method, and</span></span>
+<span id="cb1245-23"><a href="phân-tích-kh-o-sát.html#cb1245-23" aria-hidden="true" tabindex="-1"></a>  <span class="do">## alternative. We will only use p.value here. You can include other</span></span>
+<span id="cb1245-24"><a href="phân-tích-kh-o-sát.html#cb1245-24" aria-hidden="true" tabindex="-1"></a>  <span class="do">## columns if you want to report confidence intervals</span></span>
+<span id="cb1245-25"><a href="phân-tích-kh-o-sát.html#cb1245-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">binom =</span> <span class="fu">list</span>(broom<span class="sc">::</span><span class="fu">tidy</span>(<span class="fu">binom.test</span>(n, n_total, proportion_pop)))) <span class="sc">%&gt;%</span></span>
+<span id="cb1245-26"><a href="phân-tích-kh-o-sát.html#cb1245-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(<span class="at">cols =</span> <span class="fu">c</span>(binom)) <span class="sc">%&gt;%</span> <span class="co"># important for expanding the binom.test data frame</span></span>
+<span id="cb1245-27"><a href="phân-tích-kh-o-sát.html#cb1245-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">proportion_pop =</span> proportion_pop <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1245-28"><a href="phân-tích-kh-o-sát.html#cb1245-28" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Adjusting the p-values to correct for false positives </span></span>
+<span id="cb1245-29"><a href="phân-tích-kh-o-sát.html#cb1245-29" aria-hidden="true" tabindex="-1"></a>  <span class="do">## (because testing multiple age groups). This will only make </span></span>
+<span id="cb1245-30"><a href="phân-tích-kh-o-sát.html#cb1245-30" aria-hidden="true" tabindex="-1"></a>  <span class="do">## a difference if you have many age categories</span></span>
+<span id="cb1245-31"><a href="phân-tích-kh-o-sát.html#cb1245-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">p.value =</span> <span class="fu">p.adjust</span>(p.value, <span class="at">method =</span> <span class="st">&quot;holm&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb1245-32"><a href="phân-tích-kh-o-sát.html#cb1245-32" aria-hidden="true" tabindex="-1"></a>                      </span>
+<span id="cb1245-33"><a href="phân-tích-kh-o-sát.html#cb1245-33" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Only show p-values over 0.001 (those under report as &lt;0.001)</span></span>
+<span id="cb1245-34"><a href="phân-tích-kh-o-sát.html#cb1245-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">p.value =</span> <span class="fu">ifelse</span>(p.value <span class="sc">&lt;</span> <span class="fl">0.001</span>, </span>
+<span id="cb1245-35"><a href="phân-tích-kh-o-sát.html#cb1245-35" aria-hidden="true" tabindex="-1"></a>                          <span class="st">&quot;&lt;0.001&quot;</span>, </span>
+<span id="cb1245-36"><a href="phân-tích-kh-o-sát.html#cb1245-36" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">as.character</span>(<span class="fu">round</span>(p.value, <span class="dv">3</span>)))) <span class="sc">%&gt;%</span> </span>
+<span id="cb1245-37"><a href="phân-tích-kh-o-sát.html#cb1245-37" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1245-38"><a href="phân-tích-kh-o-sát.html#cb1245-38" aria-hidden="true" tabindex="-1"></a>  <span class="do">## rename the columns appropriately</span></span>
+<span id="cb1245-39"><a href="phân-tích-kh-o-sát.html#cb1245-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
+<span id="cb1245-40"><a href="phân-tích-kh-o-sát.html#cb1245-40" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Age group&quot;</span> <span class="ot">=</span> age_group,</span>
+<span id="cb1245-41"><a href="phân-tích-kh-o-sát.html#cb1245-41" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Study population (n)&quot;</span> <span class="ot">=</span> n,</span>
+<span id="cb1245-42"><a href="phân-tích-kh-o-sát.html#cb1245-42" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Study population (%)&quot;</span> <span class="ot">=</span> proportion,</span>
+<span id="cb1245-43"><a href="phân-tích-kh-o-sát.html#cb1245-43" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Source population (n)&quot;</span> <span class="ot">=</span> n_pop,</span>
+<span id="cb1245-44"><a href="phân-tích-kh-o-sát.html#cb1245-44" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Source population (%)&quot;</span> <span class="ot">=</span> proportion_pop,</span>
+<span id="cb1245-45"><a href="phân-tích-kh-o-sát.html#cb1245-45" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;P-value&quot;</span> <span class="ot">=</span> p.value</span>
+<span id="cb1245-46"><a href="phân-tích-kh-o-sát.html#cb1245-46" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<pre><code>## # A tibble: 5 x 6
+## # Groups:   Age group [5]
+##   `Age group` `Study population (n)` `Study population (%)` `Source population (n)` `Source population (%)` `P-value`
+##   &lt;chr&gt;                        &lt;int&gt;                  &lt;dbl&gt;                   &lt;dbl&gt;                   &lt;dbl&gt; &lt;chr&gt;    
+## 1 0-2                             12                 0.0256                    1360                     6.8 &lt;0.001   
+## 2 3-14                            42                 0.0896                    7244                    36.2 &lt;0.001   
+## 3 15-29                           64                 0.136                     5520                    27.6 &lt;0.001   
+## 4 30-44                           52                 0.111                     3232                    16.2 0.002    
+## 5 45+                            299                 0.638                     2644                    13.2 &lt;0.001</code></pre>
+</div>
+<div id="demographic-pyramids" class="section level3" number="26.7.2">
+<h3><span class="header-section-number">26.7.2</span> Demographic pyramids</h3>
+<p>Demographic (or age-sex) pyramids are an easy way of visualising the distribution
+in your survey population. It is also worth considering creating
+<a href="https://epirhandbook.com/descriptive-tables.html">descriptive tables</a> of age
+and sex by survey strata.
+We will demonstrate using the <strong>apyramid</strong> package as it allows for weighted
+proportions using our survey design object created above. Other options for creating
+<a href="https://epirhandbook.com/demographic-pyramids-and-likert-scales.html">demographic pyramids</a>
+are covered extensively in that chapter of the handbook. We will also use a
+wrapper function from <strong>sitrep</strong> called <code>plot_age_pyramid()</code> which saves a few lines
+of coding for producing a plot with proportions.</p>
+<p>As with the formal binomial test of difference, seen above in the sampling bias
+section, we are interested here in visualising whether our sampled population
+is substantially different from the source population and whether weighting corrects
+this difference. To do this we will use the <strong>patchwork</strong> package to show our
+<strong>ggplot</strong> visualisations side-by-side; for details see the section on
+combining plots in <a href="https://epirhandbook.com/ggplot-tips.html?q=patch#combine-plots">ggplot tips</a>
+chapter of the handbook.
+We will visualise our source population, our un-weighted survey population and
+our weighted survey population.
+You may also consider visualising by each strata of your survey - in our example
+here that would be by using the argument <code>stack_by  = "health_district"</code>
+(see <code>?plot_age_pyramid</code> for details).</p>
+<p><span style="color: black;"><strong><em>NOTE:</em></strong> The x and y axes are flipped in pyramids </span></p>
+<div class="sourceCode" id="cb1247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1247-1"><a href="phân-tích-kh-o-sát.html#cb1247-1" aria-hidden="true" tabindex="-1"></a><span class="do">## define x-axis limits and labels ---------------------------------------------</span></span>
+<span id="cb1247-2"><a href="phân-tích-kh-o-sát.html#cb1247-2" aria-hidden="true" tabindex="-1"></a><span class="do">## (update these numbers to be the values for your graph)</span></span>
+<span id="cb1247-3"><a href="phân-tích-kh-o-sát.html#cb1247-3" aria-hidden="true" tabindex="-1"></a>max_prop <span class="ot">&lt;-</span> <span class="dv">35</span>      <span class="co"># choose the highest proportion you want to show </span></span>
+<span id="cb1247-4"><a href="phân-tích-kh-o-sát.html#cb1247-4" aria-hidden="true" tabindex="-1"></a>step <span class="ot">&lt;-</span> <span class="dv">5</span>           <span class="co"># choose the space you want beween labels </span></span>
+<span id="cb1247-5"><a href="phân-tích-kh-o-sát.html#cb1247-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1247-6"><a href="phân-tích-kh-o-sát.html#cb1247-6" aria-hidden="true" tabindex="-1"></a><span class="do">## this part defines vector using the above numbers with axis breaks</span></span>
+<span id="cb1247-7"><a href="phân-tích-kh-o-sát.html#cb1247-7" aria-hidden="true" tabindex="-1"></a>breaks <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb1247-8"><a href="phân-tích-kh-o-sát.html#cb1247-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">seq</span>(max_prop<span class="sc">/</span><span class="dv">100</span> <span class="sc">*</span> <span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span> <span class="sc">-</span> step<span class="sc">/</span><span class="dv">100</span>, step<span class="sc">/</span><span class="dv">100</span>), </span>
+<span id="cb1247-9"><a href="phân-tích-kh-o-sát.html#cb1247-9" aria-hidden="true" tabindex="-1"></a>    <span class="dv">0</span>, </span>
+<span id="cb1247-10"><a href="phân-tích-kh-o-sát.html#cb1247-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">seq</span>(<span class="dv">0</span> <span class="sc">+</span> step <span class="sc">/</span> <span class="dv">100</span>, max_prop<span class="sc">/</span><span class="dv">100</span>, step<span class="sc">/</span><span class="dv">100</span>)</span>
+<span id="cb1247-11"><a href="phân-tích-kh-o-sát.html#cb1247-11" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1247-12"><a href="phân-tích-kh-o-sát.html#cb1247-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1247-13"><a href="phân-tích-kh-o-sát.html#cb1247-13" aria-hidden="true" tabindex="-1"></a><span class="do">## this part defines vector using the above numbers with axis limits</span></span>
+<span id="cb1247-14"><a href="phân-tích-kh-o-sát.html#cb1247-14" aria-hidden="true" tabindex="-1"></a>limits <span class="ot">&lt;-</span> <span class="fu">c</span>(max_prop<span class="sc">/</span><span class="dv">100</span> <span class="sc">*</span> <span class="sc">-</span><span class="dv">1</span>, max_prop<span class="sc">/</span><span class="dv">100</span>)</span>
+<span id="cb1247-15"><a href="phân-tích-kh-o-sát.html#cb1247-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1247-16"><a href="phân-tích-kh-o-sát.html#cb1247-16" aria-hidden="true" tabindex="-1"></a><span class="do">## this part defines vector using the above numbers with axis labels</span></span>
+<span id="cb1247-17"><a href="phân-tích-kh-o-sát.html#cb1247-17" aria-hidden="true" tabindex="-1"></a>labels <span class="ot">&lt;-</span>  <span class="fu">c</span>(</span>
+<span id="cb1247-18"><a href="phân-tích-kh-o-sát.html#cb1247-18" aria-hidden="true" tabindex="-1"></a>      <span class="fu">seq</span>(max_prop, step, <span class="sc">-</span>step), </span>
+<span id="cb1247-19"><a href="phân-tích-kh-o-sát.html#cb1247-19" aria-hidden="true" tabindex="-1"></a>      <span class="dv">0</span>, </span>
+<span id="cb1247-20"><a href="phân-tích-kh-o-sát.html#cb1247-20" aria-hidden="true" tabindex="-1"></a>      <span class="fu">seq</span>(step, max_prop, step)</span>
+<span id="cb1247-21"><a href="phân-tích-kh-o-sát.html#cb1247-21" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1247-22"><a href="phân-tích-kh-o-sát.html#cb1247-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1247-23"><a href="phân-tích-kh-o-sát.html#cb1247-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1247-24"><a href="phân-tích-kh-o-sát.html#cb1247-24" aria-hidden="true" tabindex="-1"></a><span class="do">## create plots individually  --------------------------------------------------</span></span>
+<span id="cb1247-25"><a href="phân-tích-kh-o-sát.html#cb1247-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1247-26"><a href="phân-tích-kh-o-sát.html#cb1247-26" aria-hidden="true" tabindex="-1"></a><span class="do">## plot the source population </span></span>
+<span id="cb1247-27"><a href="phân-tích-kh-o-sát.html#cb1247-27" aria-hidden="true" tabindex="-1"></a><span class="do">## nb: this needs to be collapsed for the overall population (i.e. removing health districts)</span></span>
+<span id="cb1247-28"><a href="phân-tích-kh-o-sát.html#cb1247-28" aria-hidden="true" tabindex="-1"></a>source_population <span class="ot">&lt;-</span> population <span class="sc">%&gt;%</span></span>
+<span id="cb1247-29"><a href="phân-tích-kh-o-sát.html#cb1247-29" aria-hidden="true" tabindex="-1"></a>  <span class="do">## ensure that age and sex are factors</span></span>
+<span id="cb1247-30"><a href="phân-tích-kh-o-sát.html#cb1247-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_group =</span> <span class="fu">factor</span>(age_group, </span>
+<span id="cb1247-31"><a href="phân-tích-kh-o-sát.html#cb1247-31" aria-hidden="true" tabindex="-1"></a>                            <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;0-2&quot;</span>, </span>
+<span id="cb1247-32"><a href="phân-tích-kh-o-sát.html#cb1247-32" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">&quot;3-14&quot;</span>, </span>
+<span id="cb1247-33"><a href="phân-tích-kh-o-sát.html#cb1247-33" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">&quot;15-29&quot;</span>,</span>
+<span id="cb1247-34"><a href="phân-tích-kh-o-sát.html#cb1247-34" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">&quot;30-44&quot;</span>, </span>
+<span id="cb1247-35"><a href="phân-tích-kh-o-sát.html#cb1247-35" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">&quot;45+&quot;</span>)), </span>
+<span id="cb1247-36"><a href="phân-tích-kh-o-sát.html#cb1247-36" aria-hidden="true" tabindex="-1"></a>         <span class="at">sex =</span> <span class="fu">factor</span>(sex)) <span class="sc">%&gt;%</span> </span>
+<span id="cb1247-37"><a href="phân-tích-kh-o-sát.html#cb1247-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(age_group, sex) <span class="sc">%&gt;%</span> </span>
+<span id="cb1247-38"><a href="phân-tích-kh-o-sát.html#cb1247-38" aria-hidden="true" tabindex="-1"></a>  <span class="do">## add the counts for each health district together </span></span>
+<span id="cb1247-39"><a href="phân-tích-kh-o-sát.html#cb1247-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">population =</span> <span class="fu">sum</span>(population)) <span class="sc">%&gt;%</span> </span>
+<span id="cb1247-40"><a href="phân-tích-kh-o-sát.html#cb1247-40" aria-hidden="true" tabindex="-1"></a>  <span class="do">## remove the grouping so can calculate overall proportion</span></span>
+<span id="cb1247-41"><a href="phân-tích-kh-o-sát.html#cb1247-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb1247-42"><a href="phân-tích-kh-o-sát.html#cb1247-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">proportion =</span> population <span class="sc">/</span> <span class="fu">sum</span>(population)) <span class="sc">%&gt;%</span> </span>
+<span id="cb1247-43"><a href="phân-tích-kh-o-sát.html#cb1247-43" aria-hidden="true" tabindex="-1"></a>  <span class="do">## plot pyramid </span></span>
+<span id="cb1247-44"><a href="phân-tích-kh-o-sát.html#cb1247-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">age_pyramid</span>(</span>
+<span id="cb1247-45"><a href="phân-tích-kh-o-sát.html#cb1247-45" aria-hidden="true" tabindex="-1"></a>            <span class="at">age_group =</span> age_group, </span>
+<span id="cb1247-46"><a href="phân-tích-kh-o-sát.html#cb1247-46" aria-hidden="true" tabindex="-1"></a>            <span class="at">split_by =</span> sex, </span>
+<span id="cb1247-47"><a href="phân-tích-kh-o-sát.html#cb1247-47" aria-hidden="true" tabindex="-1"></a>            <span class="at">count =</span> proportion, </span>
+<span id="cb1247-48"><a href="phân-tích-kh-o-sát.html#cb1247-48" aria-hidden="true" tabindex="-1"></a>            <span class="at">proportional =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
+<span id="cb1247-49"><a href="phân-tích-kh-o-sát.html#cb1247-49" aria-hidden="true" tabindex="-1"></a>  <span class="do">## only show the y axis label (otherwise repeated in all three plots)</span></span>
+<span id="cb1247-50"><a href="phân-tích-kh-o-sát.html#cb1247-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Source population&quot;</span>, </span>
+<span id="cb1247-51"><a href="phân-tích-kh-o-sát.html#cb1247-51" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;&quot;</span>, </span>
+<span id="cb1247-52"><a href="phân-tích-kh-o-sát.html#cb1247-52" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Age group (years)&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb1247-53"><a href="phân-tích-kh-o-sát.html#cb1247-53" aria-hidden="true" tabindex="-1"></a>  <span class="do">## make the x axis the same for all plots </span></span>
+<span id="cb1247-54"><a href="phân-tích-kh-o-sát.html#cb1247-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> breaks, </span>
+<span id="cb1247-55"><a href="phân-tích-kh-o-sát.html#cb1247-55" aria-hidden="true" tabindex="-1"></a>    <span class="at">limits =</span> limits, </span>
+<span id="cb1247-56"><a href="phân-tích-kh-o-sát.html#cb1247-56" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> labels)</span>
+<span id="cb1247-57"><a href="phân-tích-kh-o-sát.html#cb1247-57" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1247-58"><a href="phân-tích-kh-o-sát.html#cb1247-58" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1247-59"><a href="phân-tích-kh-o-sát.html#cb1247-59" aria-hidden="true" tabindex="-1"></a><span class="do">## plot the unweighted sample population </span></span>
+<span id="cb1247-60"><a href="phân-tích-kh-o-sát.html#cb1247-60" aria-hidden="true" tabindex="-1"></a>sample_population <span class="ot">&lt;-</span> <span class="fu">plot_age_pyramid</span>(survey_data, </span>
+<span id="cb1247-61"><a href="phân-tích-kh-o-sát.html#cb1247-61" aria-hidden="true" tabindex="-1"></a>                 <span class="at">age_group =</span> <span class="st">&quot;age_group&quot;</span>, </span>
+<span id="cb1247-62"><a href="phân-tích-kh-o-sát.html#cb1247-62" aria-hidden="true" tabindex="-1"></a>                 <span class="at">split_by =</span> <span class="st">&quot;sex&quot;</span>,</span>
+<span id="cb1247-63"><a href="phân-tích-kh-o-sát.html#cb1247-63" aria-hidden="true" tabindex="-1"></a>                 <span class="at">proportion =</span> <span class="cn">TRUE</span>) <span class="sc">+</span> </span>
+<span id="cb1247-64"><a href="phân-tích-kh-o-sát.html#cb1247-64" aria-hidden="true" tabindex="-1"></a>  <span class="do">## only show the x axis label (otherwise repeated in all three plots)</span></span>
+<span id="cb1247-65"><a href="phân-tích-kh-o-sát.html#cb1247-65" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Unweighted sample population&quot;</span>, </span>
+<span id="cb1247-66"><a href="phân-tích-kh-o-sát.html#cb1247-66" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Proportion (%)&quot;</span>, </span>
+<span id="cb1247-67"><a href="phân-tích-kh-o-sát.html#cb1247-67" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb1247-68"><a href="phân-tích-kh-o-sát.html#cb1247-68" aria-hidden="true" tabindex="-1"></a>  <span class="do">## make the x axis the same for all plots </span></span>
+<span id="cb1247-69"><a href="phân-tích-kh-o-sát.html#cb1247-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> breaks, </span>
+<span id="cb1247-70"><a href="phân-tích-kh-o-sát.html#cb1247-70" aria-hidden="true" tabindex="-1"></a>    <span class="at">limits =</span> limits, </span>
+<span id="cb1247-71"><a href="phân-tích-kh-o-sát.html#cb1247-71" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> labels)</span>
+<span id="cb1247-72"><a href="phân-tích-kh-o-sát.html#cb1247-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1247-73"><a href="phân-tích-kh-o-sát.html#cb1247-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1247-74"><a href="phân-tích-kh-o-sát.html#cb1247-74" aria-hidden="true" tabindex="-1"></a><span class="do">## plot the weighted sample population </span></span>
+<span id="cb1247-75"><a href="phân-tích-kh-o-sát.html#cb1247-75" aria-hidden="true" tabindex="-1"></a>weighted_population <span class="ot">&lt;-</span> survey_design <span class="sc">%&gt;%</span> </span>
+<span id="cb1247-76"><a href="phân-tích-kh-o-sát.html#cb1247-76" aria-hidden="true" tabindex="-1"></a>  <span class="do">## make sure the variables are factors</span></span>
+<span id="cb1247-77"><a href="phân-tích-kh-o-sát.html#cb1247-77" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_group =</span> <span class="fu">factor</span>(age_group), </span>
+<span id="cb1247-78"><a href="phân-tích-kh-o-sát.html#cb1247-78" aria-hidden="true" tabindex="-1"></a>         <span class="at">sex =</span> <span class="fu">factor</span>(sex)) <span class="sc">%&gt;%</span></span>
+<span id="cb1247-79"><a href="phân-tích-kh-o-sát.html#cb1247-79" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_age_pyramid</span>(</span>
+<span id="cb1247-80"><a href="phân-tích-kh-o-sát.html#cb1247-80" aria-hidden="true" tabindex="-1"></a>    <span class="at">age_group =</span> <span class="st">&quot;age_group&quot;</span>,</span>
+<span id="cb1247-81"><a href="phân-tích-kh-o-sát.html#cb1247-81" aria-hidden="true" tabindex="-1"></a>    <span class="at">split_by =</span> <span class="st">&quot;sex&quot;</span>, </span>
+<span id="cb1247-82"><a href="phân-tích-kh-o-sát.html#cb1247-82" aria-hidden="true" tabindex="-1"></a>    <span class="at">proportion =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
+<span id="cb1247-83"><a href="phân-tích-kh-o-sát.html#cb1247-83" aria-hidden="true" tabindex="-1"></a>  <span class="do">## only show the x axis label (otherwise repeated in all three plots)</span></span>
+<span id="cb1247-84"><a href="phân-tích-kh-o-sát.html#cb1247-84" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Weighted sample population&quot;</span>, </span>
+<span id="cb1247-85"><a href="phân-tích-kh-o-sát.html#cb1247-85" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;&quot;</span>, </span>
+<span id="cb1247-86"><a href="phân-tích-kh-o-sát.html#cb1247-86" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;&quot;</span>)  <span class="sc">+</span> </span>
+<span id="cb1247-87"><a href="phân-tích-kh-o-sát.html#cb1247-87" aria-hidden="true" tabindex="-1"></a>  <span class="do">## make the x axis the same for all plots </span></span>
+<span id="cb1247-88"><a href="phân-tích-kh-o-sát.html#cb1247-88" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> breaks, </span>
+<span id="cb1247-89"><a href="phân-tích-kh-o-sát.html#cb1247-89" aria-hidden="true" tabindex="-1"></a>    <span class="at">limits =</span> limits, </span>
+<span id="cb1247-90"><a href="phân-tích-kh-o-sát.html#cb1247-90" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> labels)</span>
+<span id="cb1247-91"><a href="phân-tích-kh-o-sát.html#cb1247-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1247-92"><a href="phân-tích-kh-o-sát.html#cb1247-92" aria-hidden="true" tabindex="-1"></a><span class="do">## combine all three plots  ----------------------------------------------------</span></span>
+<span id="cb1247-93"><a href="phân-tích-kh-o-sát.html#cb1247-93" aria-hidden="true" tabindex="-1"></a><span class="do">## combine three plots next to eachother using + </span></span>
+<span id="cb1247-94"><a href="phân-tích-kh-o-sát.html#cb1247-94" aria-hidden="true" tabindex="-1"></a>source_population <span class="sc">+</span> sample_population <span class="sc">+</span> weighted_population <span class="sc">+</span> </span>
+<span id="cb1247-95"><a href="phân-tích-kh-o-sát.html#cb1247-95" aria-hidden="true" tabindex="-1"></a>  <span class="do">## only show one legend and define theme </span></span>
+<span id="cb1247-96"><a href="phân-tích-kh-o-sát.html#cb1247-96" aria-hidden="true" tabindex="-1"></a>  <span class="do">## note the use of &amp; for combining theme with plot_layout()</span></span>
+<span id="cb1247-97"><a href="phân-tích-kh-o-sát.html#cb1247-97" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_layout</span>(<span class="at">guides =</span> <span class="st">&quot;collect&quot;</span>) <span class="sc">&amp;</span> </span>
+<span id="cb1247-98"><a href="phân-tích-kh-o-sát.html#cb1247-98" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>,                    <span class="co"># move legend to bottom</span></span>
+<span id="cb1247-99"><a href="phân-tích-kh-o-sát.html#cb1247-99" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.title =</span> <span class="fu">element_blank</span>(),                <span class="co"># remove title</span></span>
+<span id="cb1247-100"><a href="phân-tích-kh-o-sát.html#cb1247-100" aria-hidden="true" tabindex="-1"></a>        <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">18</span>),                <span class="co"># change text size</span></span>
+<span id="cb1247-101"><a href="phân-tích-kh-o-sát.html#cb1247-101" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>, <span class="at">vjust =</span> <span class="dv">1</span>) <span class="co"># turn x-axis text</span></span>
+<span id="cb1247-102"><a href="phân-tích-kh-o-sát.html#cb1247-102" aria-hidden="true" tabindex="-1"></a>       )</span></code></pre></div>
+<p><img src="_main_files/figure-html/weighted_age_pyramid-1.png" width="1440" /></p>
+</div>
+<div id="alluvialsankey-diagram" class="section level3" number="26.7.3">
+<h3><span class="header-section-number">26.7.3</span> Alluvial/sankey diagram</h3>
+<p>Visualising starting points and outcomes for individuals can be very helpful to
+get an overview. There is quite an obvious application for mobile populations,
+however there are numerous other applications such as cohorts or any other situation
+where there are transitions in states for individuals. These diagrams have several
+different names including alluvial, sankey and parallel sets - the details are
+in the handbook chapter on <a href="https://epirhandbook.com/diagrams-and-charts.html#alluvialsankey-diagrams">diagrams and charts</a>.</p>
+<div class="sourceCode" id="cb1248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1248-1"><a href="phân-tích-kh-o-sát.html#cb1248-1" aria-hidden="true" tabindex="-1"></a><span class="do">## summarize data</span></span>
+<span id="cb1248-2"><a href="phân-tích-kh-o-sát.html#cb1248-2" aria-hidden="true" tabindex="-1"></a>flow_table <span class="ot">&lt;-</span> survey_data <span class="sc">%&gt;%</span></span>
+<span id="cb1248-3"><a href="phân-tích-kh-o-sát.html#cb1248-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(startcause, endcause, sex) <span class="sc">%&gt;%</span>  <span class="co"># get counts </span></span>
+<span id="cb1248-4"><a href="phân-tích-kh-o-sát.html#cb1248-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather_set_data</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="st">&quot;startcause&quot;</span>, <span class="st">&quot;endcause&quot;</span>)) <span class="sc">%&gt;%</span>     <span class="co"># change format for plotting</span></span>
+<span id="cb1248-5"><a href="phân-tích-kh-o-sát.html#cb1248-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">x =</span> <span class="fu">fct_relevel</span>(x, <span class="fu">c</span>(<span class="st">&quot;startcause&quot;</span>, <span class="st">&quot;endcause&quot;</span>)),  <span class="co"># set startcause as first level</span></span>
+<span id="cb1248-6"><a href="phân-tích-kh-o-sát.html#cb1248-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> <span class="fu">fct_recode</span>(x, </span>
+<span id="cb1248-7"><a href="phân-tích-kh-o-sát.html#cb1248-7" aria-hidden="true" tabindex="-1"></a>                        <span class="st">&quot;Start </span><span class="sc">\n</span><span class="st"> cause&quot;</span> <span class="ot">=</span> <span class="st">&quot;startcause&quot;</span>,   <span class="co"># add line break (\n) after start</span></span>
+<span id="cb1248-8"><a href="phân-tích-kh-o-sát.html#cb1248-8" aria-hidden="true" tabindex="-1"></a>                        <span class="st">&quot;End </span><span class="sc">\n</span><span class="st"> cause&quot;</span>   <span class="ot">=</span> <span class="st">&quot;endcause&quot;</span>)</span>
+<span id="cb1248-9"><a href="phân-tích-kh-o-sát.html#cb1248-9" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb1248-10"><a href="phân-tích-kh-o-sát.html#cb1248-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1248-11"><a href="phân-tích-kh-o-sát.html#cb1248-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1248-12"><a href="phân-tích-kh-o-sát.html#cb1248-12" aria-hidden="true" tabindex="-1"></a><span class="do">## plot your dataset </span></span>
+<span id="cb1248-13"><a href="phân-tích-kh-o-sát.html#cb1248-13" aria-hidden="true" tabindex="-1"></a>  <span class="do">## on the x axis is the start and end causes</span></span>
+<span id="cb1248-14"><a href="phân-tích-kh-o-sát.html#cb1248-14" aria-hidden="true" tabindex="-1"></a>  <span class="do">## gather_set_data generates an ID for each possible combination</span></span>
+<span id="cb1248-15"><a href="phân-tích-kh-o-sát.html#cb1248-15" aria-hidden="true" tabindex="-1"></a>  <span class="do">## splitting by y gives the possible start/end combos</span></span>
+<span id="cb1248-16"><a href="phân-tích-kh-o-sát.html#cb1248-16" aria-hidden="true" tabindex="-1"></a>  <span class="do">## value as n gives it as counts (could also be changed to proportion)</span></span>
+<span id="cb1248-17"><a href="phân-tích-kh-o-sát.html#cb1248-17" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(flow_table, <span class="fu">aes</span>(x, <span class="at">id =</span> id, <span class="at">split =</span> y, <span class="at">value =</span> n)) <span class="sc">+</span></span>
+<span id="cb1248-18"><a href="phân-tích-kh-o-sát.html#cb1248-18" aria-hidden="true" tabindex="-1"></a>  <span class="do">## colour lines by sex </span></span>
+<span id="cb1248-19"><a href="phân-tích-kh-o-sát.html#cb1248-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_parallel_sets</span>(<span class="fu">aes</span>(<span class="at">fill =</span> sex), <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">axis.width =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb1248-20"><a href="phân-tích-kh-o-sát.html#cb1248-20" aria-hidden="true" tabindex="-1"></a>  <span class="do">## fill in the label boxes grey</span></span>
+<span id="cb1248-21"><a href="phân-tích-kh-o-sát.html#cb1248-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_parallel_sets_axes</span>(<span class="at">axis.width =</span> <span class="fl">0.15</span>, <span class="at">fill =</span> <span class="st">&quot;grey80&quot;</span>, <span class="at">color =</span> <span class="st">&quot;grey80&quot;</span>) <span class="sc">+</span></span>
+<span id="cb1248-22"><a href="phân-tích-kh-o-sát.html#cb1248-22" aria-hidden="true" tabindex="-1"></a>  <span class="do">## change text colour and angle (needs to be adjusted)</span></span>
+<span id="cb1248-23"><a href="phân-tích-kh-o-sát.html#cb1248-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_parallel_sets_labels</span>(<span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">angle =</span> <span class="dv">0</span>, <span class="at">size =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb1248-24"><a href="phân-tích-kh-o-sát.html#cb1248-24" aria-hidden="true" tabindex="-1"></a>  <span class="do">## adjusted y and x axes (probably needs more vertical space)</span></span>
+<span id="cb1248-25"><a href="phân-tích-kh-o-sát.html#cb1248-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">name =</span> <span class="cn">NULL</span>, <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.2</span>)) <span class="sc">+</span> </span>
+<span id="cb1248-26"><a href="phân-tích-kh-o-sát.html#cb1248-26" aria-hidden="true" tabindex="-1"></a>  <span class="do">## remove axis labels</span></span>
+<span id="cb1248-27"><a href="phân-tích-kh-o-sát.html#cb1248-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb1248-28"><a href="phân-tích-kh-o-sát.html#cb1248-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">26</span>),</span>
+<span id="cb1248-29"><a href="phân-tích-kh-o-sát.html#cb1248-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">26</span>),</span>
+<span id="cb1248-30"><a href="phân-tích-kh-o-sát.html#cb1248-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.line =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb1248-31"><a href="phân-tích-kh-o-sát.html#cb1248-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb1248-32"><a href="phân-tích-kh-o-sát.html#cb1248-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.y =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb1248-33"><a href="phân-tích-kh-o-sát.html#cb1248-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.background =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb1248-34"><a href="phân-tích-kh-o-sát.html#cb1248-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>,                    <span class="co"># move legend to bottom</span></span>
+<span id="cb1248-35"><a href="phân-tích-kh-o-sát.html#cb1248-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.title =</span> <span class="fu">element_blank</span>(),                <span class="co"># remove title</span></span>
+<span id="cb1248-36"><a href="phân-tích-kh-o-sát.html#cb1248-36" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<p><img src="_main_files/figure-html/visualise_population_flow-1.png" width="672" /></p>
+<!-- ======================================================= -->
+</div>
+</div>
+<div id="weighted-proportions" class="section level2" number="26.8">
+<h2><span class="header-section-number">26.8</span> Weighted proportions</h2>
+<p>This section will detail how to produce tables for weighted counts and proportions,
+with associated confidence intervals and design effect.
+There are four different options using functions from the following packages:
+<strong>survey</strong>, <strong>srvyr</strong>, <strong>sitrep</strong> and <strong>gtsummary</strong>.
+For minimal coding to produce a standard epidemiology style table, we would
+recommend the <strong>sitrep</strong> function - which is a wrapper for <strong>srvyr</strong> code; note
+however that this is not yet on CRAN and may change in the future.
+Otherwise, the <strong>survey</strong> code is likely to be the most stable long-term, whereas
+<strong>srvyr</strong> will fit most nicely within tidyverse work-flows. While <strong>gtsummary</strong>
+functions hold a lot of potential, they appear to be experimental and incomplete
+at the time of writing.</p>
+<div id="survey-package-1" class="section level3" number="26.8.1">
+<h3><span class="header-section-number">26.8.1</span> <strong>Survey</strong> package</h3>
+<p>We can use the <code>svyciprop()</code> function from <strong>survey</strong> to get weighted proportions
+and accompanying 95% confidence intervals. An appropriate design effect can be
+extracted using the <code>svymean()</code> rather than <code>svyprop()</code> function.
+It is worth noting that <code>svyprop()</code> only appears to accept variables between 0 and
+1 (or TRUE/FALSE), so categorical variables will not work.</p>
+<p><span style="color: black;"><strong><em>NOTE:</em></strong> Functions from <strong>survey</strong> also accept <strong>srvyr</strong> design objects, but here we have used the <strong>survey</strong> design object just for consistency </span></p>
+<div class="sourceCode" id="cb1249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1249-1"><a href="phân-tích-kh-o-sát.html#cb1249-1" aria-hidden="true" tabindex="-1"></a><span class="do">## produce weighted counts </span></span>
+<span id="cb1249-2"><a href="phân-tích-kh-o-sát.html#cb1249-2" aria-hidden="true" tabindex="-1"></a><span class="fu">svytable</span>(<span class="sc">~</span>died, base_survey_design)</span></code></pre></div>
+<pre><code>## died
+##      FALSE       TRUE 
+## 1406244.43   76213.01</code></pre>
+<div class="sourceCode" id="cb1251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1251-1"><a href="phân-tích-kh-o-sát.html#cb1251-1" aria-hidden="true" tabindex="-1"></a><span class="do">## produce weighted proportions</span></span>
+<span id="cb1251-2"><a href="phân-tích-kh-o-sát.html#cb1251-2" aria-hidden="true" tabindex="-1"></a><span class="fu">svyciprop</span>(<span class="sc">~</span>died, base_survey_design, <span class="at">na.rm =</span> T)</span></code></pre></div>
+<pre><code>##               2.5% 97.5%
+## died 0.0514 0.0208  0.12</code></pre>
+<div class="sourceCode" id="cb1253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1253-1"><a href="phân-tích-kh-o-sát.html#cb1253-1" aria-hidden="true" tabindex="-1"></a><span class="do">## get the design effect </span></span>
+<span id="cb1253-2"><a href="phân-tích-kh-o-sát.html#cb1253-2" aria-hidden="true" tabindex="-1"></a><span class="fu">svymean</span>(<span class="sc">~</span>died, base_survey_design, <span class="at">na.rm =</span> T, <span class="at">deff =</span> T) <span class="sc">%&gt;%</span> </span>
+<span id="cb1253-3"><a href="phân-tích-kh-o-sát.html#cb1253-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">deff</span>()</span></code></pre></div>
+<pre><code>## diedFALSE  diedTRUE 
+##  3.755508  3.755508</code></pre>
+<p>We can combine the functions from <strong>survey</strong> shown above in to a function which
+we define ourselves below, called <code>svy_prop</code>; and we can then use that function
+together with <code>map()</code> from the purrr package to iterate over several variables
+and create a table. See the handbook <a href="https://epirhandbook.com/iteration-loops-and-lists.html">iteration</a>
+chapter for details on <strong>purrr</strong>.</p>
+<div class="sourceCode" id="cb1255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1255-1"><a href="phân-tích-kh-o-sát.html#cb1255-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define function to calculate weighted counts, proportions, CI and design effect</span></span>
+<span id="cb1255-2"><a href="phân-tích-kh-o-sát.html#cb1255-2" aria-hidden="true" tabindex="-1"></a><span class="co"># x is the variable in quotation marks </span></span>
+<span id="cb1255-3"><a href="phân-tích-kh-o-sát.html#cb1255-3" aria-hidden="true" tabindex="-1"></a><span class="co"># design is your survey design object</span></span>
+<span id="cb1255-4"><a href="phân-tích-kh-o-sát.html#cb1255-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1255-5"><a href="phân-tích-kh-o-sát.html#cb1255-5" aria-hidden="true" tabindex="-1"></a>svy_prop <span class="ot">&lt;-</span> <span class="cf">function</span>(design, x) {</span>
+<span id="cb1255-6"><a href="phân-tích-kh-o-sát.html#cb1255-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1255-7"><a href="phân-tích-kh-o-sát.html#cb1255-7" aria-hidden="true" tabindex="-1"></a>  <span class="do">## put the variable of interest in a formula </span></span>
+<span id="cb1255-8"><a href="phân-tích-kh-o-sát.html#cb1255-8" aria-hidden="true" tabindex="-1"></a>  form <span class="ot">&lt;-</span> <span class="fu">as.formula</span>(<span class="fu">paste0</span>( <span class="st">&quot;~&quot;</span> , x))</span>
+<span id="cb1255-9"><a href="phân-tích-kh-o-sát.html#cb1255-9" aria-hidden="true" tabindex="-1"></a>  <span class="do">## only keep the TRUE column of counts from svytable</span></span>
+<span id="cb1255-10"><a href="phân-tích-kh-o-sát.html#cb1255-10" aria-hidden="true" tabindex="-1"></a>  weighted_counts <span class="ot">&lt;-</span> <span class="fu">svytable</span>(form, design)[[<span class="dv">2</span>]]</span>
+<span id="cb1255-11"><a href="phân-tích-kh-o-sát.html#cb1255-11" aria-hidden="true" tabindex="-1"></a>  <span class="do">## calculate proportions (multiply by 100 to get percentages)</span></span>
+<span id="cb1255-12"><a href="phân-tích-kh-o-sát.html#cb1255-12" aria-hidden="true" tabindex="-1"></a>  weighted_props <span class="ot">&lt;-</span> <span class="fu">svyciprop</span>(form, design, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb1255-13"><a href="phân-tích-kh-o-sát.html#cb1255-13" aria-hidden="true" tabindex="-1"></a>  <span class="do">## extract the confidence intervals and multiply to get percentages</span></span>
+<span id="cb1255-14"><a href="phân-tích-kh-o-sát.html#cb1255-14" aria-hidden="true" tabindex="-1"></a>  weighted_confint <span class="ot">&lt;-</span> <span class="fu">confint</span>(weighted_props) <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb1255-15"><a href="phân-tích-kh-o-sát.html#cb1255-15" aria-hidden="true" tabindex="-1"></a>  <span class="do">## use svymean to calculate design effect and only keep the TRUE column</span></span>
+<span id="cb1255-16"><a href="phân-tích-kh-o-sát.html#cb1255-16" aria-hidden="true" tabindex="-1"></a>  design_eff <span class="ot">&lt;-</span> <span class="fu">deff</span>(<span class="fu">svymean</span>(form, design, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">deff =</span> <span class="cn">TRUE</span>))[[<span class="cn">TRUE</span>]]</span>
+<span id="cb1255-17"><a href="phân-tích-kh-o-sát.html#cb1255-17" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1255-18"><a href="phân-tích-kh-o-sát.html#cb1255-18" aria-hidden="true" tabindex="-1"></a>  <span class="do">## combine in to one data frame</span></span>
+<span id="cb1255-19"><a href="phân-tích-kh-o-sát.html#cb1255-19" aria-hidden="true" tabindex="-1"></a>  full_table <span class="ot">&lt;-</span> <span class="fu">cbind</span>(</span>
+<span id="cb1255-20"><a href="phân-tích-kh-o-sát.html#cb1255-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Variable&quot;</span>        <span class="ot">=</span> x,</span>
+<span id="cb1255-21"><a href="phân-tích-kh-o-sát.html#cb1255-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Count&quot;</span>           <span class="ot">=</span> weighted_counts,</span>
+<span id="cb1255-22"><a href="phân-tích-kh-o-sát.html#cb1255-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Proportion&quot;</span>      <span class="ot">=</span> weighted_props,</span>
+<span id="cb1255-23"><a href="phân-tích-kh-o-sát.html#cb1255-23" aria-hidden="true" tabindex="-1"></a>    weighted_confint, </span>
+<span id="cb1255-24"><a href="phân-tích-kh-o-sát.html#cb1255-24" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Design effect&quot;</span>   <span class="ot">=</span> design_eff</span>
+<span id="cb1255-25"><a href="phân-tích-kh-o-sát.html#cb1255-25" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1255-26"><a href="phân-tích-kh-o-sát.html#cb1255-26" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1255-27"><a href="phân-tích-kh-o-sát.html#cb1255-27" aria-hidden="true" tabindex="-1"></a>  <span class="do">## return table as a dataframe</span></span>
+<span id="cb1255-28"><a href="phân-tích-kh-o-sát.html#cb1255-28" aria-hidden="true" tabindex="-1"></a>  full_table <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(full_table, </span>
+<span id="cb1255-29"><a href="phân-tích-kh-o-sát.html#cb1255-29" aria-hidden="true" tabindex="-1"></a>             <span class="do">## remove the variable names from rows (is a separate column now)</span></span>
+<span id="cb1255-30"><a href="phân-tích-kh-o-sát.html#cb1255-30" aria-hidden="true" tabindex="-1"></a>             <span class="at">row.names =</span> <span class="cn">NULL</span>)</span>
+<span id="cb1255-31"><a href="phân-tích-kh-o-sát.html#cb1255-31" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1255-32"><a href="phân-tích-kh-o-sát.html#cb1255-32" aria-hidden="true" tabindex="-1"></a>  <span class="do">## change numerics back to numeric</span></span>
+<span id="cb1255-33"><a href="phân-tích-kh-o-sát.html#cb1255-33" aria-hidden="true" tabindex="-1"></a>  full_table[ , <span class="dv">2</span><span class="sc">:</span><span class="dv">6</span>] <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(full_table[, <span class="dv">2</span><span class="sc">:</span><span class="dv">6</span>])</span>
+<span id="cb1255-34"><a href="phân-tích-kh-o-sát.html#cb1255-34" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1255-35"><a href="phân-tích-kh-o-sát.html#cb1255-35" aria-hidden="true" tabindex="-1"></a>  <span class="do">## return dataframe</span></span>
+<span id="cb1255-36"><a href="phân-tích-kh-o-sát.html#cb1255-36" aria-hidden="true" tabindex="-1"></a>  full_table</span>
+<span id="cb1255-37"><a href="phân-tích-kh-o-sát.html#cb1255-37" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1255-38"><a href="phân-tích-kh-o-sát.html#cb1255-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1255-39"><a href="phân-tích-kh-o-sát.html#cb1255-39" aria-hidden="true" tabindex="-1"></a><span class="do">## iterate over several variables to create a table </span></span>
+<span id="cb1255-40"><a href="phân-tích-kh-o-sát.html#cb1255-40" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">map</span>(</span>
+<span id="cb1255-41"><a href="phân-tích-kh-o-sát.html#cb1255-41" aria-hidden="true" tabindex="-1"></a>  <span class="do">## define variables of interest</span></span>
+<span id="cb1255-42"><a href="phân-tích-kh-o-sát.html#cb1255-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">&quot;left&quot;</span>, <span class="st">&quot;died&quot;</span>, <span class="st">&quot;arrived&quot;</span>), </span>
+<span id="cb1255-43"><a href="phân-tích-kh-o-sát.html#cb1255-43" aria-hidden="true" tabindex="-1"></a>  <span class="do">## state function using and arguments for that function (design)</span></span>
+<span id="cb1255-44"><a href="phân-tích-kh-o-sát.html#cb1255-44" aria-hidden="true" tabindex="-1"></a>  svy_prop, <span class="at">design =</span> base_survey_design) <span class="sc">%&gt;%</span> </span>
+<span id="cb1255-45"><a href="phân-tích-kh-o-sát.html#cb1255-45" aria-hidden="true" tabindex="-1"></a>  <span class="do">## collapse list in to a single data frame</span></span>
+<span id="cb1255-46"><a href="phân-tích-kh-o-sát.html#cb1255-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb1255-47"><a href="phân-tích-kh-o-sát.html#cb1255-47" aria-hidden="true" tabindex="-1"></a>  <span class="do">## round </span></span>
+<span id="cb1255-48"><a href="phân-tích-kh-o-sát.html#cb1255-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), round, <span class="at">digits =</span> <span class="dv">1</span>))</span></code></pre></div>
+<pre><code>##   Variable    Count Proportion X2.5. X97.5. Design.effect
+## 1     left 701199.1       47.3  39.2   55.5           2.4
+## 2     died  76213.0        5.1   2.1   12.1           3.8
+## 3  arrived 761799.0       51.4  40.9   61.7           3.9</code></pre>
+</div>
+<div id="srvyr-package-1" class="section level3" number="26.8.2">
+<h3><span class="header-section-number">26.8.2</span> <strong>Srvyr</strong> package</h3>
+<p>With <strong>srvyr</strong> we can use <strong>dplyr</strong> syntax to create a table. Note that the
+<code>survey_mean()</code> function is used and the proportion argument is specified, and
+also that the same function is used to calculate design effect. This is because
+<strong>srvyr</strong> wraps around both of the <strong>survey</strong> package functions <code>svyciprop()</code> and
+<code>svymean()</code>, which are used in the above section.</p>
+<p><span style="color: black;"><strong><em>NOTE:</em></strong> It does not seem to be possible to get proportions from categorical variables using <strong>srvyr</strong> either, if you need this then check out the section below using <strong>sitrep</strong> </span></p>
+<div class="sourceCode" id="cb1257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1257-1"><a href="phân-tích-kh-o-sát.html#cb1257-1" aria-hidden="true" tabindex="-1"></a><span class="do">## use the srvyr design object</span></span>
+<span id="cb1257-2"><a href="phân-tích-kh-o-sát.html#cb1257-2" aria-hidden="true" tabindex="-1"></a>survey_design <span class="sc">%&gt;%</span> </span>
+<span id="cb1257-3"><a href="phân-tích-kh-o-sát.html#cb1257-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb1257-4"><a href="phân-tích-kh-o-sát.html#cb1257-4" aria-hidden="true" tabindex="-1"></a>    <span class="do">## produce the weighted counts </span></span>
+<span id="cb1257-5"><a href="phân-tích-kh-o-sát.html#cb1257-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">counts =</span> <span class="fu">survey_total</span>(died), </span>
+<span id="cb1257-6"><a href="phân-tích-kh-o-sát.html#cb1257-6" aria-hidden="true" tabindex="-1"></a>    <span class="do">## produce weighted proportions and confidence intervals </span></span>
+<span id="cb1257-7"><a href="phân-tích-kh-o-sát.html#cb1257-7" aria-hidden="true" tabindex="-1"></a>    <span class="do">## multiply by 100 to get a percentage </span></span>
+<span id="cb1257-8"><a href="phân-tích-kh-o-sát.html#cb1257-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">props =</span> <span class="fu">survey_mean</span>(died, </span>
+<span id="cb1257-9"><a href="phân-tích-kh-o-sát.html#cb1257-9" aria-hidden="true" tabindex="-1"></a>                        <span class="at">proportion =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb1257-10"><a href="phân-tích-kh-o-sát.html#cb1257-10" aria-hidden="true" tabindex="-1"></a>                        <span class="at">vartype =</span> <span class="st">&quot;ci&quot;</span>) <span class="sc">*</span> <span class="dv">100</span>, </span>
+<span id="cb1257-11"><a href="phân-tích-kh-o-sát.html#cb1257-11" aria-hidden="true" tabindex="-1"></a>    <span class="do">## produce the design effect </span></span>
+<span id="cb1257-12"><a href="phân-tích-kh-o-sát.html#cb1257-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">deff =</span> <span class="fu">survey_mean</span>(died, <span class="at">deff =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb1257-13"><a href="phân-tích-kh-o-sát.html#cb1257-13" aria-hidden="true" tabindex="-1"></a>  <span class="do">## only keep the rows of interest</span></span>
+<span id="cb1257-14"><a href="phân-tích-kh-o-sát.html#cb1257-14" aria-hidden="true" tabindex="-1"></a>  <span class="do">## (drop standard errors and repeat proportion calculation)</span></span>
+<span id="cb1257-15"><a href="phân-tích-kh-o-sát.html#cb1257-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(counts, props, props_low, props_upp, deff_deff)</span></code></pre></div>
+<pre><code>##     counts    props props_low props_upp deff_deff
+## 1 76213.01 5.140991  2.082773  12.13328  3.755508</code></pre>
+<p>Here too we could write a function to then iterate over multiple variables using
+the <strong>purrr</strong> package.
+See the handbook <a href="https://epirhandbook.com/iteration-loops-and-lists.html">iteration</a>
+chapter for details on <strong>purrr</strong>.</p>
+<div class="sourceCode" id="cb1259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1259-1"><a href="phân-tích-kh-o-sát.html#cb1259-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define function to calculate weighted counts, proportions, CI and design effect</span></span>
+<span id="cb1259-2"><a href="phân-tích-kh-o-sát.html#cb1259-2" aria-hidden="true" tabindex="-1"></a><span class="co"># design is your survey design object</span></span>
+<span id="cb1259-3"><a href="phân-tích-kh-o-sát.html#cb1259-3" aria-hidden="true" tabindex="-1"></a><span class="co"># x is the variable in quotation marks </span></span>
+<span id="cb1259-4"><a href="phân-tích-kh-o-sát.html#cb1259-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1259-5"><a href="phân-tích-kh-o-sát.html#cb1259-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1259-6"><a href="phân-tích-kh-o-sát.html#cb1259-6" aria-hidden="true" tabindex="-1"></a>srvyr_prop <span class="ot">&lt;-</span> <span class="cf">function</span>(design, x) {</span>
+<span id="cb1259-7"><a href="phân-tích-kh-o-sát.html#cb1259-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1259-8"><a href="phân-tích-kh-o-sát.html#cb1259-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb1259-9"><a href="phân-tích-kh-o-sát.html#cb1259-9" aria-hidden="true" tabindex="-1"></a>    <span class="do">## using the survey design object</span></span>
+<span id="cb1259-10"><a href="phân-tích-kh-o-sát.html#cb1259-10" aria-hidden="true" tabindex="-1"></a>    design, </span>
+<span id="cb1259-11"><a href="phân-tích-kh-o-sát.html#cb1259-11" aria-hidden="true" tabindex="-1"></a>    <span class="do">## produce the weighted counts </span></span>
+<span id="cb1259-12"><a href="phân-tích-kh-o-sát.html#cb1259-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">counts =</span> <span class="fu">survey_total</span>(.data[[x]]), </span>
+<span id="cb1259-13"><a href="phân-tích-kh-o-sát.html#cb1259-13" aria-hidden="true" tabindex="-1"></a>    <span class="do">## produce weighted proportions and confidence intervals </span></span>
+<span id="cb1259-14"><a href="phân-tích-kh-o-sát.html#cb1259-14" aria-hidden="true" tabindex="-1"></a>    <span class="do">## multiply by 100 to get a percentage </span></span>
+<span id="cb1259-15"><a href="phân-tích-kh-o-sát.html#cb1259-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">props =</span> <span class="fu">survey_mean</span>(.data[[x]], </span>
+<span id="cb1259-16"><a href="phân-tích-kh-o-sát.html#cb1259-16" aria-hidden="true" tabindex="-1"></a>                        <span class="at">proportion =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb1259-17"><a href="phân-tích-kh-o-sát.html#cb1259-17" aria-hidden="true" tabindex="-1"></a>                        <span class="at">vartype =</span> <span class="st">&quot;ci&quot;</span>) <span class="sc">*</span> <span class="dv">100</span>, </span>
+<span id="cb1259-18"><a href="phân-tích-kh-o-sát.html#cb1259-18" aria-hidden="true" tabindex="-1"></a>    <span class="do">## produce the design effect </span></span>
+<span id="cb1259-19"><a href="phân-tích-kh-o-sát.html#cb1259-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">deff =</span> <span class="fu">survey_mean</span>(.data[[x]], <span class="at">deff =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb1259-20"><a href="phân-tích-kh-o-sát.html#cb1259-20" aria-hidden="true" tabindex="-1"></a>  <span class="do">## add in the variable name</span></span>
+<span id="cb1259-21"><a href="phân-tích-kh-o-sát.html#cb1259-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">variable =</span> x) <span class="sc">%&gt;%</span> </span>
+<span id="cb1259-22"><a href="phân-tích-kh-o-sát.html#cb1259-22" aria-hidden="true" tabindex="-1"></a>  <span class="do">## only keep the rows of interest</span></span>
+<span id="cb1259-23"><a href="phân-tích-kh-o-sát.html#cb1259-23" aria-hidden="true" tabindex="-1"></a>  <span class="do">## (drop standard errors and repeat proportion calculation)</span></span>
+<span id="cb1259-24"><a href="phân-tích-kh-o-sát.html#cb1259-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(variable, counts, props, props_low, props_upp, deff_deff)</span>
+<span id="cb1259-25"><a href="phân-tích-kh-o-sát.html#cb1259-25" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1259-26"><a href="phân-tích-kh-o-sát.html#cb1259-26" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1259-27"><a href="phân-tích-kh-o-sát.html#cb1259-27" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1259-28"><a href="phân-tích-kh-o-sát.html#cb1259-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1259-29"><a href="phân-tích-kh-o-sát.html#cb1259-29" aria-hidden="true" tabindex="-1"></a><span class="do">## iterate over several variables to create a table </span></span>
+<span id="cb1259-30"><a href="phân-tích-kh-o-sát.html#cb1259-30" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">map</span>(</span>
+<span id="cb1259-31"><a href="phân-tích-kh-o-sát.html#cb1259-31" aria-hidden="true" tabindex="-1"></a>  <span class="do">## define variables of interest</span></span>
+<span id="cb1259-32"><a href="phân-tích-kh-o-sát.html#cb1259-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">&quot;left&quot;</span>, <span class="st">&quot;died&quot;</span>, <span class="st">&quot;arrived&quot;</span>), </span>
+<span id="cb1259-33"><a href="phân-tích-kh-o-sát.html#cb1259-33" aria-hidden="true" tabindex="-1"></a>  <span class="do">## state function using and arguments for that function (design)</span></span>
+<span id="cb1259-34"><a href="phân-tích-kh-o-sát.html#cb1259-34" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span><span class="fu">srvyr_prop</span>(.x, <span class="at">design =</span> survey_design)) <span class="sc">%&gt;%</span> </span>
+<span id="cb1259-35"><a href="phân-tích-kh-o-sát.html#cb1259-35" aria-hidden="true" tabindex="-1"></a>  <span class="do">## collapse list in to a single data frame</span></span>
+<span id="cb1259-36"><a href="phân-tích-kh-o-sát.html#cb1259-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>()</span></code></pre></div>
+<pre><code>##   variable    counts     props props_low props_upp deff_deff
+## 1     left 701199.14 47.299782 39.235598  55.50736  2.379761
+## 2     died  76213.01  5.140991  2.082773  12.13328  3.755508
+## 3  arrived 761799.05 51.387583 40.927349  61.72766  3.925504</code></pre>
+</div>
+<div id="sitrep-package" class="section level3" number="26.8.3">
+<h3><span class="header-section-number">26.8.3</span> <strong>Sitrep</strong> package</h3>
+<p>The <code>tab_survey()</code> function from <strong>sitrep</strong> is a wrapper for <strong>srvyr</strong>, allowing
+you to create weighted tables with minimal coding. It also allows you to calculate
+weighted proportions for categorical variables.</p>
+<div class="sourceCode" id="cb1261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1261-1"><a href="phân-tích-kh-o-sát.html#cb1261-1" aria-hidden="true" tabindex="-1"></a><span class="do">## using the survey design object</span></span>
+<span id="cb1261-2"><a href="phân-tích-kh-o-sát.html#cb1261-2" aria-hidden="true" tabindex="-1"></a>survey_design <span class="sc">%&gt;%</span> </span>
+<span id="cb1261-3"><a href="phân-tích-kh-o-sát.html#cb1261-3" aria-hidden="true" tabindex="-1"></a>  <span class="do">## pass the names of variables of interest unquoted</span></span>
+<span id="cb1261-4"><a href="phân-tích-kh-o-sát.html#cb1261-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_survey</span>(arrived, left, died, education_level,</span>
+<span id="cb1261-5"><a href="phân-tích-kh-o-sát.html#cb1261-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">deff =</span> <span class="cn">TRUE</span>,   <span class="co"># calculate the design effect</span></span>
+<span id="cb1261-6"><a href="phân-tích-kh-o-sát.html#cb1261-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">pretty =</span> <span class="cn">TRUE</span>  <span class="co"># merge the proportion and 95%CI</span></span>
+<span id="cb1261-7"><a href="phân-tích-kh-o-sát.html#cb1261-7" aria-hidden="true" tabindex="-1"></a>             )</span></code></pre></div>
+<pre><code>## Warning: removing 257 missing value(s) from `education_level`</code></pre>
+<pre><code>## # A tibble: 9 x 5
+##   variable        value            n  deff ci                
+##   &lt;chr&gt;           &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;             
+## 1 arrived         TRUE       761799.  3.93 51.4% (40.9--61.7)
+## 2 arrived         FALSE      720658.  3.93 48.6% (38.3--59.1)
+## 3 left            TRUE       701199.  2.38 47.3% (39.2--55.5)
+## 4 left            FALSE      781258.  2.38 52.7% (44.5--60.8)
+## 5 died            TRUE        76213.  3.76 5.1% (2.1--12.1)  
+## 6 died            FALSE     1406244.  3.76 94.9% (87.9--97.9)
+## 7 education_level higher     171644.  4.70 42.4% (26.9--59.7)
+## 8 education_level primary    102609.  2.37 25.4% (16.2--37.3)
+## 9 education_level secondary  130201.  6.68 32.2% (16.5--53.3)</code></pre>
+</div>
+<div id="gtsummary-package" class="section level3" number="26.8.4">
+<h3><span class="header-section-number">26.8.4</span> <strong>Gtsummary</strong> package</h3>
+<p>With <strong>gtsummary</strong> there does not seem to be inbuilt functions yet to add confidence
+intervals or design effect.
+Here we show how to define a function for adding confidence intervals and then
+add confidence intervals to a <strong>gtsummary</strong> table created using the <code>tbl_svysummary()</code>
+function.</p>
+<div class="sourceCode" id="cb1264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1264-1"><a href="phân-tích-kh-o-sát.html#cb1264-1" aria-hidden="true" tabindex="-1"></a>confidence_intervals <span class="ot">&lt;-</span> <span class="cf">function</span>(data, variable, by, ...) {</span>
+<span id="cb1264-2"><a href="phân-tích-kh-o-sát.html#cb1264-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1264-3"><a href="phân-tích-kh-o-sát.html#cb1264-3" aria-hidden="true" tabindex="-1"></a>  <span class="do">## extract the confidence intervals and multiply to get percentages</span></span>
+<span id="cb1264-4"><a href="phân-tích-kh-o-sát.html#cb1264-4" aria-hidden="true" tabindex="-1"></a>  props <span class="ot">&lt;-</span> <span class="fu">svyciprop</span>(<span class="fu">as.formula</span>(<span class="fu">paste0</span>( <span class="st">&quot;~&quot;</span> , variable)),</span>
+<span id="cb1264-5"><a href="phân-tích-kh-o-sát.html#cb1264-5" aria-hidden="true" tabindex="-1"></a>              data, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1264-6"><a href="phân-tích-kh-o-sát.html#cb1264-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1264-7"><a href="phân-tích-kh-o-sát.html#cb1264-7" aria-hidden="true" tabindex="-1"></a>  <span class="do">## extract the confidence intervals </span></span>
+<span id="cb1264-8"><a href="phân-tích-kh-o-sát.html#cb1264-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.numeric</span>(<span class="fu">confint</span>(props) <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span> <span class="do">## make numeric and multiply for percentage</span></span>
+<span id="cb1264-9"><a href="phân-tích-kh-o-sát.html#cb1264-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>(., <span class="at">digits =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span>           <span class="do">## round to one digit</span></span>
+<span id="cb1264-10"><a href="phân-tích-kh-o-sát.html#cb1264-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(.) <span class="sc">%&gt;%</span>                           <span class="do">## extract the numbers from matrix</span></span>
+<span id="cb1264-11"><a href="phân-tích-kh-o-sát.html#cb1264-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste0</span>(., <span class="at">collapse =</span> <span class="st">&quot;-&quot;</span>)          <span class="do">## combine to single character</span></span>
+<span id="cb1264-12"><a href="phân-tích-kh-o-sát.html#cb1264-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1264-13"><a href="phân-tích-kh-o-sát.html#cb1264-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1264-14"><a href="phân-tích-kh-o-sát.html#cb1264-14" aria-hidden="true" tabindex="-1"></a><span class="do">## using the survey package design object</span></span>
+<span id="cb1264-15"><a href="phân-tích-kh-o-sát.html#cb1264-15" aria-hidden="true" tabindex="-1"></a><span class="fu">tbl_svysummary</span>(base_survey_design, </span>
+<span id="cb1264-16"><a href="phân-tích-kh-o-sát.html#cb1264-16" aria-hidden="true" tabindex="-1"></a>               <span class="at">include =</span> <span class="fu">c</span>(arrived, left, died),   <span class="do">## define variables want to include</span></span>
+<span id="cb1264-17"><a href="phân-tích-kh-o-sát.html#cb1264-17" aria-hidden="true" tabindex="-1"></a>               <span class="at">statistic =</span> <span class="fu">list</span>(<span class="fu">everything</span>() <span class="sc">~</span> <span class="fu">c</span>(<span class="st">&quot;{n} ({p}%)&quot;</span>))) <span class="sc">%&gt;%</span> <span class="do">## define stats of interest</span></span>
+<span id="cb1264-18"><a href="phân-tích-kh-o-sát.html#cb1264-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_n</span>() <span class="sc">%&gt;%</span>  <span class="do">## add the weighted total </span></span>
+<span id="cb1264-19"><a href="phân-tích-kh-o-sát.html#cb1264-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_stat</span>(<span class="at">fns =</span> <span class="fu">everything</span>() <span class="sc">~</span> confidence_intervals) <span class="sc">%&gt;%</span> <span class="do">## add CIs</span></span>
+<span id="cb1264-20"><a href="phân-tích-kh-o-sát.html#cb1264-20" aria-hidden="true" tabindex="-1"></a>  <span class="do">## modify the column headers</span></span>
+<span id="cb1264-21"><a href="phân-tích-kh-o-sát.html#cb1264-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">modify_header</span>(</span>
+<span id="cb1264-22"><a href="phân-tích-kh-o-sát.html#cb1264-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">list</span>(</span>
+<span id="cb1264-23"><a href="phân-tích-kh-o-sát.html#cb1264-23" aria-hidden="true" tabindex="-1"></a>      n <span class="sc">~</span> <span class="st">&quot;**Weighted total (N)**&quot;</span>,</span>
+<span id="cb1264-24"><a href="phân-tích-kh-o-sát.html#cb1264-24" aria-hidden="true" tabindex="-1"></a>      stat_0 <span class="sc">~</span> <span class="st">&quot;**Weighted Count**&quot;</span>,</span>
+<span id="cb1264-25"><a href="phân-tích-kh-o-sát.html#cb1264-25" aria-hidden="true" tabindex="-1"></a>      add_stat_1 <span class="sc">~</span> <span class="st">&quot;**95%CI**&quot;</span></span>
+<span id="cb1264-26"><a href="phân-tích-kh-o-sát.html#cb1264-26" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1264-27"><a href="phân-tích-kh-o-sát.html#cb1264-27" aria-hidden="true" tabindex="-1"></a>    )</span></code></pre></div>
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#tjjzherqoz .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#tjjzherqoz .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#tjjzherqoz .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#tjjzherqoz .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#tjjzherqoz .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#tjjzherqoz .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#tjjzherqoz .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#tjjzherqoz .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#tjjzherqoz .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#tjjzherqoz .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#tjjzherqoz .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#tjjzherqoz .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#tjjzherqoz .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#tjjzherqoz .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#tjjzherqoz .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#tjjzherqoz .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#tjjzherqoz .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#tjjzherqoz .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tjjzherqoz .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#tjjzherqoz .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tjjzherqoz .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#tjjzherqoz .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#tjjzherqoz .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#tjjzherqoz .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#tjjzherqoz .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#tjjzherqoz .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#tjjzherqoz .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#tjjzherqoz .gt_left {
+  text-align: left;
+}
+
+#tjjzherqoz .gt_center {
+  text-align: center;
+}
+
+#tjjzherqoz .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#tjjzherqoz .gt_font_normal {
+  font-weight: normal;
+}
+
+#tjjzherqoz .gt_font_bold {
+  font-weight: bold;
+}
+
+#tjjzherqoz .gt_font_italic {
+  font-style: italic;
+}
+
+#tjjzherqoz .gt_super {
+  font-size: 65%;
+}
+
+#tjjzherqoz .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="tjjzherqoz" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"><strong>Characteristic</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Weighted total (N)</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Weighted Count</strong><sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>95%CI</strong></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr>
+      <td class="gt_row gt_left">arrived</td>
+      <td class="gt_row gt_center">1,482,457</td>
+      <td class="gt_row gt_center">761,799 (51%)</td>
+      <td class="gt_row gt_center">40.9-61.7</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">left</td>
+      <td class="gt_row gt_center">1,482,457</td>
+      <td class="gt_row gt_center">701,199 (47%)</td>
+      <td class="gt_row gt_center">39.2-55.5</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">died</td>
+      <td class="gt_row gt_center">1,482,457</td>
+      <td class="gt_row gt_center">76,213 (5.1%)</td>
+      <td class="gt_row gt_center">2.1-12.1</td>
+    </tr>
+  </tbody>
+  
+  <tfoot>
+    <tr class="gt_footnotes">
+      <td colspan="4">
+        <p class="gt_footnote">
+          <sup class="gt_footnote_marks">
+            <em>1</em>
+          </sup>
+           
+          n (%)
+          <br />
+        </p>
+      </td>
+    </tr>
+  </tfoot>
+</table></div>
+<!-- ======================================================= -->
+</div>
+</div>
+<div id="weighted-ratios" class="section level2" number="26.9">
+<h2><span class="header-section-number">26.9</span> Weighted ratios</h2>
+<p>Similarly for weighted ratios (such as for mortality ratios) you can use the
+<strong>survey</strong> or the <strong>srvyr</strong> package.
+You could similarly write functions (similar to those above) to iterate over
+several variables. You could also create a function for <strong>gtsummary</strong> as above
+but currently it does not have inbuilt functionality.</p>
+<div id="survey-package-2" class="section level3" number="26.9.1">
+<h3><span class="header-section-number">26.9.1</span> <strong>Survey</strong> package</h3>
+<div class="sourceCode" id="cb1265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1265-1"><a href="phân-tích-kh-o-sát.html#cb1265-1" aria-hidden="true" tabindex="-1"></a>ratio <span class="ot">&lt;-</span> <span class="fu">svyratio</span>(<span class="sc">~</span>died, </span>
+<span id="cb1265-2"><a href="phân-tích-kh-o-sát.html#cb1265-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">denominator =</span> <span class="sc">~</span>obstime, </span>
+<span id="cb1265-3"><a href="phân-tích-kh-o-sát.html#cb1265-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">design =</span> base_survey_design)</span>
+<span id="cb1265-4"><a href="phân-tích-kh-o-sát.html#cb1265-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1265-5"><a href="phân-tích-kh-o-sát.html#cb1265-5" aria-hidden="true" tabindex="-1"></a>ci <span class="ot">&lt;-</span> <span class="fu">confint</span>(ratio)</span>
+<span id="cb1265-6"><a href="phân-tích-kh-o-sát.html#cb1265-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1265-7"><a href="phân-tích-kh-o-sát.html#cb1265-7" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(</span>
+<span id="cb1265-8"><a href="phân-tích-kh-o-sát.html#cb1265-8" aria-hidden="true" tabindex="-1"></a>  ratio<span class="sc">$</span>ratio <span class="sc">*</span> <span class="dv">10000</span>, </span>
+<span id="cb1265-9"><a href="phân-tích-kh-o-sát.html#cb1265-9" aria-hidden="true" tabindex="-1"></a>  ci <span class="sc">*</span> <span class="dv">10000</span></span>
+<span id="cb1265-10"><a href="phân-tích-kh-o-sát.html#cb1265-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>##       obstime    2.5 %   97.5 %
+## died 5.981922 1.194294 10.76955</code></pre>
+</div>
+<div id="srvyr-package-2" class="section level3" number="26.9.2">
+<h3><span class="header-section-number">26.9.2</span> <strong>Srvyr</strong> package</h3>
+<div class="sourceCode" id="cb1267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1267-1"><a href="phân-tích-kh-o-sát.html#cb1267-1" aria-hidden="true" tabindex="-1"></a>survey_design <span class="sc">%&gt;%</span> </span>
+<span id="cb1267-2"><a href="phân-tích-kh-o-sát.html#cb1267-2" aria-hidden="true" tabindex="-1"></a>  <span class="do">## survey ratio used to account for observation time </span></span>
+<span id="cb1267-3"><a href="phân-tích-kh-o-sát.html#cb1267-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb1267-4"><a href="phân-tích-kh-o-sát.html#cb1267-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mortality =</span> <span class="fu">survey_ratio</span>(</span>
+<span id="cb1267-5"><a href="phân-tích-kh-o-sát.html#cb1267-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">as.numeric</span>(died) <span class="sc">*</span> <span class="dv">10000</span>, </span>
+<span id="cb1267-6"><a href="phân-tích-kh-o-sát.html#cb1267-6" aria-hidden="true" tabindex="-1"></a>      obstime, </span>
+<span id="cb1267-7"><a href="phân-tích-kh-o-sát.html#cb1267-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">vartype =</span> <span class="st">&quot;ci&quot;</span>)</span>
+<span id="cb1267-8"><a href="phân-tích-kh-o-sát.html#cb1267-8" aria-hidden="true" tabindex="-1"></a>    )</span></code></pre></div>
+<pre><code>##   mortality mortality_low mortality_upp
+## 1  5.981922     0.3490176      11.61483</code></pre>
+<!-- ======================================================= -->
+</div>
+</div>
+<div id="resources-18" class="section level2" number="26.10">
+<h2><span class="header-section-number">26.10</span> Resources</h2>
+<p><a href="https://stats.idre.ucla.edu/r/seminars/survey-data-analysis-with-r/">UCLA stats page</a></p>
+<p><a href="http://asdfree.com/">Analyze survey data free</a></p>
+<p><a href="http://gdfe.co/srvyr/">srvyr packge</a></p>
+<p><a href="http://www.danieldsjoberg.com/gtsummary/reference/index.html">gtsummary package</a></p>
+<p><a href="https://github.com/EPIET/RapidAssessmentSurveys">EPIET survey case studies</a></p>
+
+<!-- ======================================================= -->
+<!-- ======================================================= -->
+<!-- ======================================================= -->
+</div>
+</div>
+  </main>
+
+  <div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page">
+      <h2>On this page</h2>
+      <div id="book-on-this-page"></div>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          <li><a id="book-source" href="#">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="#">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5">
+  <div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Sổ tay dịch tễ học với R</strong>" was written by the handbook team. It was last built on 2021-06-14.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

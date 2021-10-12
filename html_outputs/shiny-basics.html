@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>43 Dashboards với Shiny | Cẩm nang dịch tễ học với R</title>
+<meta name="author" content="the handbook team">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.4/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="libs/datatables-binding-0.16/datatables.js"></script><link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script><link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet">
+<script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script><link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet">
+<script src="libs/selectize-0.12.0/selectize.min.js"></script><link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet">
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet">
+<script src="libs/tabwid-1.0.0/tabwid.js"></script><link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<script src="libs/leaflet-1.3.1/leaflet.js"></script><link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+<script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script><script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+<script src="libs/leaflet-binding-2.0.3/leaflet.js"></script><script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script><script src="libs/leaflet-providers-plugin-2.0.3/leaflet-providers-plugin.js"></script><script src="libs/viz-1.8.2/viz.js"></script><link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
+<script src="libs/grViz-binding-1.0.6.1/grViz.js"></script><script src="libs/d3-4.5.0/d3.min.js"></script><script src="libs/sankey-1/sankey.js"></script><script src="libs/sankeyNetwork-binding-0.4/sankeyNetwork.js"></script><script src="libs/plotly-binding-4.9.2.1/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script><link href="libs/vis-4.20.1/vis.css" rel="stylesheet">
+<script src="libs/vis-4.20.1/vis.min.js"></script><script src="libs/visNetwork-binding-2.0.9/visNetwork.js"></script><link href="libs/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="libs/plotly-basic-1.52.2/plotly-basic-1.52.2.min.js"></script><script src="libs/plotly-cartesian-1.52.2/plotly-cartesian-1.52.2.min.js"></script><script src="libs/proj4js-2.3.15/proj4.js"></script><link href="libs/highcharts-8.1.2/css/motion.css" rel="stylesheet">
+<script src="libs/highcharts-8.1.2/highcharts.js"></script><script src="libs/highcharts-8.1.2/highcharts-3d.js"></script><script src="libs/highcharts-8.1.2/highcharts-more.js"></script><script src="libs/highcharts-8.1.2/modules/stock.js"></script><script src="libs/highcharts-8.1.2/modules/map.js"></script><script src="libs/highcharts-8.1.2/modules/annotations.js"></script><script src="libs/highcharts-8.1.2/modules/data.js"></script><script src="libs/highcharts-8.1.2/modules/drilldown.js"></script><script src="libs/highcharts-8.1.2/modules/item-series.js"></script><script src="libs/highcharts-8.1.2/modules/offline-exporting.js"></script><script src="libs/highcharts-8.1.2/modules/overlapping-datalabels.js"></script><script src="libs/highcharts-8.1.2/modules/exporting.js"></script><script src="libs/highcharts-8.1.2/modules/export-data.js"></script><script src="libs/highcharts-8.1.2/modules/funnel.js"></script><script src="libs/highcharts-8.1.2/modules/heatmap.js"></script><script src="libs/highcharts-8.1.2/modules/treemap.js"></script><script src="libs/highcharts-8.1.2/modules/sankey.js"></script><script src="libs/highcharts-8.1.2/modules/dependency-wheel.js"></script><script src="libs/highcharts-8.1.2/modules/organization.js"></script><script src="libs/highcharts-8.1.2/modules/solid-gauge.js"></script><script src="libs/highcharts-8.1.2/modules/streamgraph.js"></script><script src="libs/highcharts-8.1.2/modules/sunburst.js"></script><script src="libs/highcharts-8.1.2/modules/vector.js"></script><script src="libs/highcharts-8.1.2/modules/wordcloud.js"></script><script src="libs/highcharts-8.1.2/modules/xrange.js"></script><script src="libs/highcharts-8.1.2/modules/tilemap.js"></script><script src="libs/highcharts-8.1.2/modules/venn.js"></script><script src="libs/highcharts-8.1.2/modules/gantt.js"></script><script src="libs/highcharts-8.1.2/modules/timeline.js"></script><script src="libs/highcharts-8.1.2/modules/parallel-coordinates.js"></script><script src="libs/highcharts-8.1.2/modules/bullet.js"></script><script src="libs/highcharts-8.1.2/modules/coloraxis.js"></script><script src="libs/highcharts-8.1.2/modules/dumbbell.js"></script><script src="libs/highcharts-8.1.2/modules/lollipop.js"></script><script src="libs/highcharts-8.1.2/modules/series-label.js"></script><script src="libs/highcharts-8.1.2/plugins/motion.js"></script><script src="libs/highcharts-8.1.2/custom/reset.js"></script><script src="libs/highcharts-8.1.2/modules/boost.js"></script><script src="libs/highchart-binding-0.8.2/highchart.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS --><link rel="stylesheet" href="style_bs4.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Cẩm nang dịch tễ học với R</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"></a></li>
+<li class="book-part">Về cuốn sách này</li>
+<li><a class="" href="editorial-style.html"><span class="header-section-number">1</span> Biên tập và ghi chú kỹ thuật</a></li>
+<li><a class="" href="data-used.html"><span class="header-section-number">2</span> Tải sách và dữ liệu</a></li>
+<li class="book-part">Nhập môn về R</li>
+<li><a class="" href="basics.html"><span class="header-section-number">3</span> R Cơ bản</a></li>
+<li><a class="" href="transition-to-R.html"><span class="header-section-number">4</span> Chuyển đổi sang R</a></li>
+<li><a class="" href="packages-suggested.html"><span class="header-section-number">5</span> Package đề xuất</a></li>
+<li><a class="" href="r-projects.html"><span class="header-section-number">6</span> Dự án R</a></li>
+<li><a class="" href="importing.html"><span class="header-section-number">7</span> Nhập xuất dữ liệu</a></li>
+<li class="book-part">Quản lý dữ liệu</li>
+<li><a class="" href="cleaning.html"><span class="header-section-number">8</span> Làm sạch số liệu và các hàm quan trọng</a></li>
+<li><a class="" href="dates.html"><span class="header-section-number">9</span> Làm việc với ngày tháng</a></li>
+<li><a class="" href="characters-strings.html"><span class="header-section-number">10</span> Ký tự và chuỗi</a></li>
+<li><a class="" href="factors.html"><span class="header-section-number">11</span> Factors</a></li>
+<li><a class="" href="pivoting.html"><span class="header-section-number">12</span> Xoay trục dữ liệu</a></li>
+<li><a class="" href="grouping.html"><span class="header-section-number">13</span> Nhóm dữ liệu</a></li>
+<li><a class="" href="joining-matching.html"><span class="header-section-number">14</span> Nối dữ liệu</a></li>
+<li><a class="" href="deduplication.html"><span class="header-section-number">15</span> Loại bỏ trùng lặp</a></li>
+<li><a class="" href="iteration.html"><span class="header-section-number">16</span> Lặp, vòng lặp, và danh sách</a></li>
+<li class="book-part">Phân tích dữ liệu</li>
+<li><a class="" href="tables-descriptive.html"><span class="header-section-number">17</span> Bảng mô tả</a></li>
+<li><a class="" href="stat-tests.html"><span class="header-section-number">18</span> Các kiểm định thống kê cơ bản</a></li>
+<li><a class="" href="regression.html"><span class="header-section-number">19</span> Hồi quy đơn và đa biến</a></li>
+<li><a class="" href="missing-data.html"><span class="header-section-number">20</span> Dữ liệu Missing</a></li>
+<li><a class="" href="standardization.html"><span class="header-section-number">21</span> Tỷ suất chuẩn hóa</a></li>
+<li><a class="" href="moving-average.html"><span class="header-section-number">22</span> Đường trung bình động</a></li>
+<li><a class="" href="time-series.html"><span class="header-section-number">23</span> Chuỗi thời gian và phát hiện ổ dịch</a></li>
+<li><a class="" href="epidemic-models.html"><span class="header-section-number">24</span> Mô hình hóa dịch bệnh</a></li>
+<li><a class="" href="contact-tracing.html"><span class="header-section-number">25</span> Truy vết tiếp xúc</a></li>
+<li><a class="" href="survey-analysis.html"><span class="header-section-number">26</span> Phân tích khảo sát</a></li>
+<li><a class="" href="survival-analysis.html"><span class="header-section-number">27</span> Phân tích sống còn</a></li>
+<li><a class="" href="gis.html"><span class="header-section-number">28</span> GIS cơ bản</a></li>
+<li class="book-part">Trực quan hóa dữ liệu</li>
+<li><a class="" href="tables-presentation.html"><span class="header-section-number">29</span> Trình bày bảng</a></li>
+<li><a class="" href="ggplot-basics.html"><span class="header-section-number">30</span> ggplot cơ bản</a></li>
+<li><a class="" href="ggplot-tips.html"><span class="header-section-number">31</span> Các tips với ggplot</a></li>
+<li><a class="" href="epicurves.html"><span class="header-section-number">32</span> Đường cong dịch bệnh</a></li>
+<li><a class="" href="age-pyramid.html"><span class="header-section-number">33</span> Tháp dân số và thang đo Likert</a></li>
+<li><a class="" href="heatmaps.html"><span class="header-section-number">34</span> Biểu đồ nhiệt</a></li>
+<li><a class="" href="diagrams.html"><span class="header-section-number">35</span> Sơ đồ và biểu đồ</a></li>
+<li><a class="" href="combination-analysis.html"><span class="header-section-number">36</span> Biểu đồ kết hợp</a></li>
+<li><a class="" href="transmission-chains.html"><span class="header-section-number">37</span> Chuỗi lây nhiễm</a></li>
+<li><a class="" href="phylogenetic-trees.html"><span class="header-section-number">38</span> Cây phả hệ</a></li>
+<li><a class="" href="interactive-plots.html"><span class="header-section-number">39</span> Biểu đồ tương tác</a></li>
+<li class="book-part">Báo cáo và dashboards</li>
+<li><a class="" href="rmarkdown.html"><span class="header-section-number">40</span> Báo cáo với R Markdown</a></li>
+<li><a class="" href="reportfactory.html"><span class="header-section-number">41</span> Tổ chức báo cáo định kỳ</a></li>
+<li><a class="" href="flexdashboard.html"><span class="header-section-number">42</span> Dashboards với R Markdown</a></li>
+<li><a class="active" href="shiny-basics.html"><span class="header-section-number">43</span> Dashboards với Shiny</a></li>
+<li class="book-part">Tổng hợp</li>
+<li><a class="" href="writing-functions.html"><span class="header-section-number">44</span> Viết hàm</a></li>
+<li><a class="" href="directories.html"><span class="header-section-number">45</span> Tương tác với thư mục làm việc</a></li>
+<li><a class="" href="collaboration.html"><span class="header-section-number">46</span> Version control với Git và Github</a></li>
+<li><a class="" href="errors.html"><span class="header-section-number">47</span> Các lỗi thường gặp</a></li>
+<li><a class="" href="help.html"><span class="header-section-number">48</span> Nhờ sự trợ giúp</a></li>
+<li><a class="" href="network-drives.html"><span class="header-section-number">49</span> R trên ổ cứng mạng</a></li>
+<li><a class="" href="data-table.html"><span class="header-section-number">50</span> Data Table</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="shiny-basics" class="section level1" number="43">
+<h1>
+<span class="header-section-number">43</span> Dashboards với Shiny<a class="anchor" aria-label="anchor" href="#shiny-basics"><i class="fas fa-link"></i></a>
+</h1>
+<p>Dashboards thường là một cách tuyệt vời để chia sẻ kết quả từ các phân tích với những người khác. Tạo ra một dashboard với <strong>shiny</strong> đòi hỏi kiến thức tương đối nâng cao về ngôn ngữ R, nhưng cũng cung cấp cho bạn khả năng tùy chỉnh đáng kinh ngạc.</p>
+<!-- One of the largest drawbacks of `R` is its usability for people who are new to or have no experience with programming languages. While these skills are very valuable, most people will find that this represents a barrier to sharing analyses, especially in multidisciplinary environments. It requires some work to maintain an `R` installation, and not everyone will be comfortable running shared code, even if it's well documented and easy to read. This is *especially* true when users have to change parameters of code!  -->
+<!-- R based dashboards are also advantageous in that they centralise how code is run - when the same code is run on different machines, often people will have to deal with differing file paths, different R versions, and different package installations. For this reason, dashboards are a great way to share code with others in a user friendly way! -->
+<p>Chúng tôi khuyến nghị rằng ai đó đang học dashboards với <strong>shiny</strong> phải có kiến thức tốt về biến đổi và trực quan hóa dữ liệu, đồng thời có thể tự tin gỡ lỗi code và viết hàm. Làm việc với dashboards không dễ khi bạn mới bắt đầu và đôi khi khó hiểu, nhưng là một kỹ năng tuyệt vời để học và trở nên dễ dàng hơn nhiều khi thực hành!</p>
+<p>Chương này sẽ cung cấp tổng quan ngắn gọn về cách tạo dashboards với <strong>shiny</strong> và các tiện ích mở rộng của nó.<br>
+Để biết một phương pháp thay thế tạo dashboards nhanh hơn, dễ dàng hơn nhưng có thể ít tùy chỉnh hơn, hãy xem thêm về <strong>flextable</strong> trong chương (<a href="data-used.html#flexdashboard">Dashboards với R Markdown</a>).</p>
+<div id="chuẩn-bị-35" class="section level2" number="43.1">
+<h2>
+<span class="header-section-number">43.1</span> Chuẩn bị<a class="anchor" aria-label="anchor" href="#chu%E1%BA%A9n-b%E1%BB%8B-35"><i class="fas fa-link"></i></a>
+</h2>
+<div id="gọi-packages-17" class="section level3 unnumbered">
+<h3>Gọi packages<a class="anchor" aria-label="anchor" href="#g%E1%BB%8Di-packages-17"><i class="fas fa-link"></i></a>
+</h3>
+<p>Trong cuốn sách này, chúng tôi nhấn mạnh việc sử dụng hàm <code><a href="https://rdrr.io/pkg/pacman/man/p_load.html">p_load()</a></code> từ package <strong>pacman</strong>, giúp cài đặt các package cần thiết <em>và</em> gọi chúng ra để sử dụng. Bạn cũng có thể gọi các packages đã cài đặt với hàm <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> của <strong>base</strong> R. Xem thêm chương <a href="basics.html#basics">R cơ bản</a> để có thêm thông tin về các packages trong R.</p>
+<p>Chúng ta bắt đầu bằng cách cài đặt package <strong>shiny</strong>:</p>
+<div class="sourceCode" id="cb1842"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">pacman</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pacman/man/p_load.html">p_load</a></span><span class="op">(</span><span class="st">"shiny"</span><span class="op">)</span></code></pre></div>
+</div>
+<div id="nhập-dữ-liệu-25" class="section level3 unnumbered">
+<h3>Nhập dữ liệu<a class="anchor" aria-label="anchor" href="#nh%E1%BA%ADp-d%E1%BB%AF-li%E1%BB%87u-25"><i class="fas fa-link"></i></a>
+</h3>
+<p>Nếu bạn muốn theo dõi chương này, hãy xem phần này trong chương <a href="data-used.html#data_shiny">Tải sách và dữ liệu</a>. Có các liên kết để tải xuống scripts R và các tệp dữ liệu tạo ra ứng dụng Shiny cuối cùng.</p>
+<p>Nếu bạn cố gắng xây dựng lại app bằng các tệp này, hãy lưu ý về cấu trúc thư mục dự án R được tạo trong quá trình thực hiện (ví dụ: thư mục cho “data” và “funcs”).</p>
+<!-- ======================================================= -->
+</div>
+</div>
+<div id="cấu-trúc-của-một-ứng-dụng-shiny" class="section level2" number="43.2">
+<h2>
+<span class="header-section-number">43.2</span> Cấu trúc của một ứng dụng shiny<a class="anchor" aria-label="anchor" href="#c%E1%BA%A5u-tr%C3%BAc-c%E1%BB%A7a-m%E1%BB%99t-%E1%BB%A9ng-d%E1%BB%A5ng-shiny"><i class="fas fa-link"></i></a>
+</h2>
+<div id="cấu-trúc-tệp-cơ-bản" class="section level3 unnumbered">
+<h3>Cấu trúc tệp cơ bản<a class="anchor" aria-label="anchor" href="#c%E1%BA%A5u-tr%C3%BAc-t%E1%BB%87p-c%C6%A1-b%E1%BA%A3n"><i class="fas fa-link"></i></a>
+</h3>
+<p>Để hiểu về <code>shiny</code>, trước tiên chúng ta cần hiểu cấu trúc tệp của một ứng dụng hoạt động như thế nào! Chúng ta nên tạo một thư mục hoàn toàn mới trước khi bắt đầu. Điều này thực sự có thể được thực hiện dễ dàng hơn bằng cách chọn <em>New project</em> trong <em>Rstudio</em> và chọn <em>Shiny Web Application</em>. Điều này sẽ giúp tạo ra cấu trúc cơ bản của một ứng dụng shiny cho bạn.</p>
+<p>Khi mở dự án này, bạn sẽ nhận thấy có một tệp <code>.R</code> có tên là <em>app.R</em>. <em>Điều cần thiết</em> là chúng ta có một trong hai cấu trúc tệp cơ bản:</p>
+<ol style="list-style-type: decimal">
+<li>Một tệp có tên là <em>app.R</em>, <em>hoặc</em><br>
+</li>
+<li>Hai tệp, một tệp có tên là <em>ui.R</em> và tệp còn lại là <em>server.R</em>
+</li>
+</ol>
+<p>Trong chương này, chúng tôi sẽ sử dụng cách tiếp cận đầu tiên là có một tệp có tên là <em>app.R</em>. Đây là một script ví dụ:</p>
+<div class="sourceCode" id="cb1843"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># an example of app.R</span>
+
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://shiny.rstudio.com/">shiny</a></span><span class="op">)</span>
+
+<span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html">fluidPage</a></span><span class="op">(</span>
+
+    <span class="co"># Application title</span>
+    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/titlePanel.html">titlePanel</a></span><span class="op">(</span><span class="st">"My app"</span><span class="op">)</span>,
+
+    <span class="co"># Sidebar with a slider input widget</span>
+    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html">sidebarLayout</a></span><span class="op">(</span>
+        <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html">sidebarPanel</a></span><span class="op">(</span>
+            <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sliderInput.html">sliderInput</a></span><span class="op">(</span><span class="st">"input_1"</span><span class="op">)</span>
+        <span class="op">)</span>,
+
+        <span class="co"># Show a plot </span>
+        <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html">mainPanel</a></span><span class="op">(</span>
+           <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/plotOutput.html">plotOutput</a></span><span class="op">(</span><span class="st">"my_plot"</span><span class="op">)</span>
+        <span class="op">)</span>
+    <span class="op">)</span>
+<span class="op">)</span>
+
+<span class="co"># Define server logic required to draw a histogram</span>
+<span class="va">server</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span><span class="op">)</span> <span class="op">{</span>
+     
+     <span class="va">plot_1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/reactive.html">reactive</a></span><span class="op">(</span><span class="op">{</span>
+          <span class="fu">plot_func</span><span class="op">(</span>param <span class="op">=</span> <span class="va">input_1</span><span class="op">)</span>
+     <span class="op">}</span><span class="op">)</span>
+     
+    <span class="va">output</span><span class="op">$</span><span class="va">my_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/renderPlot.html">renderPlot</a></span><span class="op">(</span><span class="op">{</span>
+       <span class="fu">plot_1</span><span class="op">(</span><span class="op">)</span>
+    <span class="op">}</span><span class="op">)</span>
+<span class="op">}</span>
+
+
+<span class="co"># Run the application </span>
+<span class="fu"><a href="https://rdrr.io/pkg/shiny/man/shinyApp.html">shinyApp</a></span><span class="op">(</span>ui <span class="op">=</span> <span class="va">ui</span>, server <span class="op">=</span> <span class="va">server</span><span class="op">)</span></code></pre></div>
+<p>Nếu bạn mở tệp này, bạn sẽ nhận thấy rằng hai đối tượng được xác định - một đối tượng được gọi là <code>ui</code> và đối tượng khác được gọi là <code>server</code>. Các đối tượng này <em>phải</em> được xác định trong <em>mọi</em> ứng dụng shiny và là trung tâm cấu trúc của chính ứng dụng đó! Trên thực tế, sự khác biệt duy nhất giữa hai cấu trúc tệp được mô tả ở trên là trong cấu trúc 1, cả <code>ui</code> và <code>server</code> đều được xác định trong một tệp, trong khi ở cấu trúc 2, chúng được định nghĩa trong các tệp riêng biệt. Lưu ý: chúng ta cũng có thể (và nên có nếu chúng ta có một ứng dụng lớn hơn) có các tệp .R khác trong cấu trúc để chúng ta có thể nhúng <code><a href="https://rdrr.io/r/base/source.html">source()</a></code> vào ứng dụng của mình.</p>
+</div>
+<div id="máy-chủ-và-giao-diện-người-dùng" class="section level3 unnumbered">
+<h3>Máy chủ và giao diện người dùng<a class="anchor" aria-label="anchor" href="#m%C3%A1y-ch%E1%BB%A7-v%C3%A0-giao-di%E1%BB%87n-ng%C6%B0%E1%BB%9Di-d%C3%B9ng"><i class="fas fa-link"></i></a>
+</h3>
+<p>Tiếp theo, chúng ta cần hiểu các đối tượng <code>server</code> và <code>ui</code> thực sự <em>làm gì</em>. <em>Nói một cách đơn giản, đây là hai đối tượng tương tác với nhau bất cứ khi nào người dùng tương tác với ứng dụng shiny.</em></p>
+<p>Phần tử UI (giao diện người dùng) của một ứng dụng shiny, ở cấp độ cơ bản, là code R tạo ra giao diện HTML. Điều này có nghĩa là mọi thứ <em>được hiển thị</em> trong giao diện người dùng của một ứng dụng. Điều này thường bao gồm:</p>
+<ul>
+<li>“Widgets (thành phần điều khiển)” - menu thả xuống, hộp kiểm, thanh trượt, v.v. mà người dùng có thể tương tác</li>
+<li>Đồ thị, bảng, v.v. - kết quả đầu ra được tạo bằng code R</li>
+<li>Các khía cạnh điều hướng của một ứng dụng - tab, cửa sổ, v.v.</li>
+<li>Văn bản chung, đường liên kết, v.v.</li>
+<li>Các phần tử HTML và CSS</li>
+</ul>
+<p>Điều quan trọng nhất cần hiểu về UI là nó <em>nhận đầu vào</em> từ người dùng và <em>hiển thị đầu ra</em> từ máy chủ. Không có code <em>hoạt động</em> chạy trong ui <em>tại bất kỳ thời điểm nào</em> - tất cả các thay đổi được nhìn thấy trong UI đều được chuyển qua máy chủ (nhiều hơn hoặc ít hơn). Vì vậy, chúng ta phải tạo các đồ thị, tải xuống, v.v. trong máy chủ</p>
+<p>Máy chủ của ứng dụng shiny là nơi tất cả code đang được chạy khi ứng dụng khởi động. Cách nó hoạt động hơi khó hiểu một chút. Chức năng máy chủ sẽ <em>phản hồi</em> một cách hiệu quả đối theo những gì người dùng giao tiếp với UI và chạy các đoạn code phản hồi tương ứng. Nếu mọi thứ thay đổi trong máy chủ, những thứ này sẽ được chuyển trở lại ui, nơi có thể nhìn thấy những thay đổi. Quan trọng là code trong máy chủ sẽ được thực thi <em>không liên tiếp</em> (hoặc tốt nhất là bạn nên nghĩ theo cách này). Về cơ bản, bất cứ khi nào đầu vào ui ảnh hưởng đến một đoạn code trong máy chủ, nó sẽ tự động chạy và đầu ra đó sẽ được tạo ra và hiển thị.</p>
+<p>Tất cả điều này bây giờ có vẻ rất trừu tượng, vì vậy chúng ta sẽ phải đi sâu vào một số ví dụ để có một ý tưởng rõ ràng về cách nó thực sự hoạt động.</p>
+</div>
+<div id="trước-khi-bạn-bắt-đầu-tạo-một-ứng-dụng" class="section level3 unnumbered">
+<h3>Trước khi bạn bắt đầu tạo một ứng dụng<a class="anchor" aria-label="anchor" href="#tr%C6%B0%E1%BB%9Bc-khi-b%E1%BA%A1n-b%E1%BA%AFt-%C4%91%E1%BA%A7u-t%E1%BA%A1o-m%E1%BB%99t-%E1%BB%A9ng-d%E1%BB%A5ng"><i class="fas fa-link"></i></a>
+</h3>
+<p>Trước khi bạn bắt đầu xây dựng một ứng dụng, việc biết <em>những gì</em> bạn muốn tạo sẽ vô cùng hữu ích. Vì UI của bạn sẽ được viết bằng code, bạn không thể thực sự hình dung những gì bạn đang tạo trừ khi bạn đang nhắm đến một cái gì đó cụ thể. Vì lý do này, sẽ vô cùng hữu ích khi xem xét rất nhiều ví dụ về các ứng dụng shiny để biết được những gì bạn có thể tạo ra - thậm chí còn tốt hơn nếu bạn có thể xem code gốc đằng sau các ứng dụng này! Một số tài nguyên tuyệt vời cho việc này là:</p>
+<ul>
+<li><a href="https://shiny.rstudio.com/gallery/">Thư viện ứng dụng của Rstudio</a></li>
+</ul>
+<p>Khi bạn có ý tưởng về những gì có thể thực hiện, sẽ rất hữu ích nếu bạn phác thảo ra diện mạo sản phẩm - bạn có thể thực hiện việc này trên giấy hoặc trong bất kỳ phần mềm vẽ nào (PowerPoint, MS paint, v.v.). Sẽ hữu ích khi bắt đầu đơn giản cho ứng dụng đầu tiên của bạn! Cũng không có gì phải xấu hổ nếu bạn sử dụng code có sẵn trên mạng của một ứng dụng mẫu phục vụ cho công việc của bạn - việc này dễ dàng hơn nhiều so với việc xây dựng thứ gì đó từ đầu!</p>
+</div>
+</div>
+<div id="tạo-một-ui" class="section level2" number="43.3">
+<h2>
+<span class="header-section-number">43.3</span> Tạo một UI<a class="anchor" aria-label="anchor" href="#t%E1%BA%A1o-m%E1%BB%99t-ui"><i class="fas fa-link"></i></a>
+</h2>
+<p>Khi xây dựng ứng dụng, trước tiên, bạn nên làm việc trên UI để chúng ta có thể thấy những gì đang làm và không có nguy cơ ứng dụng bị lỗi do bất kỳ lỗi máy chủ nào. Như đã đề cập trước đây, bạn nên sử dụng một mẫu có sẵn khi tạo UI. Bạn có thể tìm thấy một số bố cục tiêu chuẩn có sẵn trong package shiny, ngoài ra là ở các package mở rộng khác, chằng hạn như <code>shinydashboard</code>. Chúng tôi sẽ sử dụng một ví dụ từ package shiny cơ sở để bắt đầu.</p>
+<p>Một shiny UI thường được định nghĩa là một loạt các hàm lồng nhau, theo thứ tự sau</p>
+<ol style="list-style-type: decimal">
+<li>Một hàm xác định bố cục chung (cơ bản nhất là <code><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html">fluidPage()</a></code>, nhưng có nhiều hàm khác)<br>
+</li>
+<li>Các ô điều khiển trong bố cục như:
+<ul>
+<li>một thanh bên (<code><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html">sidebarPanel()</a></code>)</li>
+<li>một bảng điều khiển “chính” (<code><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html">mainPanel()</a></code>)</li>
+<li>một tab (<code><a href="https://rdrr.io/pkg/shiny/man/tabPanel.html">tabPanel()</a></code>)</li>
+<li>một “cột” chung (<code><a href="https://rdrr.io/pkg/shiny/man/column.html">column()</a></code>)</li>
+</ul>
+</li>
+<li>Các widget và đầu ra - những thứ này có thể đưa đầu vào cho máy chủ (tiện ích) hoặc đưa ra từ máy chủ (đầu ra)
+<ul>
+<li>Các widget thường được thiết kế kiểu như <code>xxxInput()</code>, ví dụ: <code><a href="https://rdrr.io/pkg/shiny/man/selectInput.html">selectInput()</a></code><br>
+</li>
+<li>Kết quả đầu ra thường được thiết kế kiểu như <code>xxxOutput()</code>, ví dụ: <code><a href="https://rdrr.io/pkg/shiny/man/plotOutput.html">plotOutput()</a></code>
+</li>
+</ul>
+</li>
+</ol>
+<p>Cần phải nói lại rằng những thứ này không thể được hình dung một cách dễ dàng theo cách trừu tượng, vì vậy tốt nhất hãy xem một ví dụ! Hãy xem xét tạo một ứng dụng cơ bản hiển thị dữ liệu số lượng cơ sở sốt rét theo quận. Dữ liệu này có rất nhiều tham số khác nhau, vì vậy sẽ thật tuyệt nếu cuối cùng người dùng có thể áp dụng một số bộ lọc để xem dữ liệu theo nhóm tuổi/quận khi họ thấy phù hợp! Chúng ta có thể sử dụng một bố cục shiny rất đơn giản để bắt đầu - bố cục thanh bên. Đây là một bố cục trong đó các widget được đặt trong một thanh bên ở bên trái và đồ thị được đặt ở bên phải.</p>
+<p>Hãy lập kế hoạch cho ứng dụng của chúng ta - chúng ta có thể bắt đầu với một bộ chọn cho phép chúng ta chọn quận nơi chúng ta muốn trực quan hóa dữ liệu và một bộ chọn khác để biểu diễn nhóm tuổi quan tâm. Chúng ta sẽ sử dụng các bộ lọc này để hiển thị một đường cong dịch bệnh phản ánh các tham số này. Vì vậy, chúng ta cần:</p>
+<ol style="list-style-type: decimal">
+<li>Hai menu thả xuống cho phép chúng ta chọn quận chúng ta muốn và nhóm tuổi quan tâm.<br>
+</li>
+<li>Một khu vực mà chúng ta có thể hiển thị đường cong dịch bệnh kết quả.</li>
+</ol>
+<p>Code minh họa có thể trông giống như sau:</p>
+<div class="sourceCode" id="cb1844"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://shiny.rstudio.com/">shiny</a></span><span class="op">)</span>
+
+<span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html">fluidPage</a></span><span class="op">(</span>
+
+  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/titlePanel.html">titlePanel</a></span><span class="op">(</span><span class="st">"Malaria facility visualisation app"</span><span class="op">)</span>,
+
+  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html">sidebarLayout</a></span><span class="op">(</span>
+
+    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html">sidebarPanel</a></span><span class="op">(</span>
+         <span class="co"># selector for district</span>
+         <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/selectInput.html">selectInput</a></span><span class="op">(</span>
+              inputId <span class="op">=</span> <span class="st">"select_district"</span>,
+              label <span class="op">=</span> <span class="st">"Select district"</span>,
+              choices <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
+                   <span class="st">"All"</span>,
+                   <span class="st">"Spring"</span>,
+                   <span class="st">"Bolo"</span>,
+                   <span class="st">"Dingo"</span>,
+                   <span class="st">"Barnard"</span>
+              <span class="op">)</span>,
+              selected <span class="op">=</span> <span class="st">"All"</span>,
+              multiple <span class="op">=</span> <span class="cn">TRUE</span>
+         <span class="op">)</span>,
+         <span class="co"># selector for age group</span>
+         <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/selectInput.html">selectInput</a></span><span class="op">(</span>
+              inputId <span class="op">=</span> <span class="st">"select_agegroup"</span>,
+              label <span class="op">=</span> <span class="st">"Select age group"</span>,
+              choices <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
+                   <span class="st">"All ages"</span> <span class="op">=</span> <span class="st">"malaria_tot"</span>,
+                   <span class="st">"0-4 yrs"</span> <span class="op">=</span> <span class="st">"malaria_rdt_0-4"</span>,
+                   <span class="st">"5-14 yrs"</span> <span class="op">=</span> <span class="st">"malaria_rdt_5-14"</span>,
+                   <span class="st">"15+ yrs"</span> <span class="op">=</span> <span class="st">"malaria_rdt_15"</span>
+              <span class="op">)</span>, 
+              selected <span class="op">=</span> <span class="st">"All"</span>,
+              multiple <span class="op">=</span> <span class="cn">FALSE</span>
+         <span class="op">)</span>
+
+    <span class="op">)</span>,
+
+    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html">mainPanel</a></span><span class="op">(</span>
+      <span class="co"># epicurve goes here</span>
+      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/plotOutput.html">plotOutput</a></span><span class="op">(</span><span class="st">"malaria_epicurve"</span><span class="op">)</span>
+    <span class="op">)</span>
+    
+  <span class="op">)</span>
+<span class="op">)</span></code></pre></div>
+<p>Khi app.R được chạy với code UI ở trên (không có code đang hoạt động trong phần <code>server</code> của app.R), bố cục sẽ xuất hiện như thế này - lưu ý rằng sẽ không có đồ thị nếu không có máy chủ để hiển thị nó, nhưng đầu vào của chúng ta đang hoạt động!</p>
+<div class="inline-figure"><img src="images/shiny/simple_UI_view.png" width="100%" height="100%"></div>
+<p>Đây là cơ hội tốt để thảo luận về cách mà các widget hoạt động - lưu ý rằng mỗi widget đang chấp nhận một <code>inputId</code>, một <code>label</code> và một loạt các tùy chọn khác dành riêng cho loại widget. <code>InputId</code> này cực kỳ quan trọng - đây là những ID được sử dụng để truyền thông tin từ UI đến máy chủ. Vì lý do này, chúng <em>phải là duy nhất</em>. Bạn nên cố gắng đặt cho chúng một cái tên gì đó hợp lý và cụ thể theo chức năng của chúng trong các trường hợp thiết kế một ứng dụng lớn.</p>
+<p>Bạn nên đọc kỹ tài liệu để biết chi tiết đầy đủ về chức năng của mỗi widget này. Các widget sẽ chuyển các loại dữ liệu cụ thể đến máy chủ tùy thuộc vào loại widget và điều này cần được hiểu đầy đủ. Ví dụ: <code><a href="https://rdrr.io/pkg/shiny/man/selectInput.html">selectInput()</a></code> sẽ chuyển dữ liệu dạng ký tự cho máy chủ:</p>
+<ul>
+<li>Nếu chúng ta chọn <em>Spring</em> cho widget đầu tiên ở đây, nó sẽ chuyển đối tượng ký tự <code>"Spring"</code> đến máy chủ.<br>
+</li>
+<li>Nếu chúng ta chọn hai mục từ menu thả xuống, chúng sẽ đi qua dưới dạng vectơ ký tự (ví dụ: <code><a href="https://rdrr.io/r/base/c.html">c("Spring", "Bolo")</a></code>).</li>
+</ul>
+<p>Các widget khác sẽ chuyển các loại đối tượng khác nhau đến máy chủ! Ví dụ:</p>
+<ul>
+<li>
+<code><a href="https://rdrr.io/pkg/shiny/man/numericInput.html">numericInput()</a></code> sẽ chuyển một đối tượng dạng số đến máy chủ<br>
+</li>
+<li>
+<code><a href="https://rdrr.io/pkg/shiny/man/checkboxInput.html">checkboxInput()</a></code> sẽ chuyển một đối tượng kiểu logic đến máy chủ (<code>TRUE</code> hoặc <code>FALSE</code>)</li>
+</ul>
+<p>Cũng cần lưu ý <em>vectơ được đặt tên</em> mà chúng ta đã sử dụng cho dữ liệu độ tuổi ở đây. Đối với nhiều widget, việc sử dụng vectơ được đặt tên làm các lựa chọn sẽ hiển thị <em>tên</em> của vectơ dưới dạng các lựa chọn hiển thị, nhưng chuyển <em>giá trị</em> thực của lựa chọn từ vectơ đến máy chủ. Ví dụng chúng ta chọn “15+” từ menu thả xuống và UI sẽ chuyển <code>"malaria_rdt_15"</code> đến máy chủ - đây chính là tên của cột mà chúng ta quan tâm!</p>
+<p>Có rất nhiều widget mà bạn có thể sử dụng để làm nhiều việc với ứng dụng của mình. Các widget cũng cho phép bạn tải tệp lên ứng dụng của mình và tải xuống kết quả đầu ra. Ngoài ra còn có một số gói shiny mở rộng tuyệt vời cho phép bạn truy cập vào nhiều widget hơn so với shiny cơ bản - package <strong>shinyWidgets</strong> là một ví dụ tuyệt vời về điều này. Để xem một số ví dụ, bạn có thể xem các liên kết sau:</p>
+<ul>
+<li><a href="https://shiny.rstudio.com/gallery/widget-gallery.html">base shiny widget gallery</a></li>
+<li><a href="https://github.com/dreamRs/shinyWidgets">shinyWidgets gallery</a></li>
+</ul>
+</div>
+<div id="tải-dữ-liệu-vào-ứng-dụng" class="section level2" number="43.4">
+<h2>
+<span class="header-section-number">43.4</span> Tải dữ liệu vào ứng dụng<a class="anchor" aria-label="anchor" href="#t%E1%BA%A3i-d%E1%BB%AF-li%E1%BB%87u-v%C3%A0o-%E1%BB%A9ng-d%E1%BB%A5ng"><i class="fas fa-link"></i></a>
+</h2>
+<p>Bước tiếp theo trong quá trình phát triển ứng dụng là thiết lập và chạy máy chủ. Tuy nhiên, để làm điều này, chúng ta cần đưa một số dữ liệu vào ứng dụng của mình và tìm ra tất cả các phép tính mà chúng ta sẽ thực hiện. Một ứng dụng shiny không dễ để gỡ lỗi, vì thường không rõ lỗi đến từ đâu, do đó, lý tưởng nhất là hãy chắc chắn tất cả code dùng để trực quan và xử lý dữ liệu của chúng ta hoạt động tốt trước khi chúng ta bắt đầu tự tạo máy chủ.</p>
+<p>Bây giờ chúng ta muốn tạo một ứng dụng hiển thị các đường cong dịch bệnh thay đổi dựa trên đầu vào của người dùng, chúng ta nên nghĩ về code chúng ta sẽ cần để chạy chúng trong một R script bình thường. Chúng ta sẽ cần:</p>
+<ol style="list-style-type: decimal">
+<li>Gọi các packages</li>
+<li>Tải dữ liệu</li>
+<li>Chuyển đổi dữ liệu</li>
+<li>Phát triển một <em>hàm</em> để trực quan hóa dữ liệu của chúng ta dựa trên đầu vào của người dùng</li>
+</ol>
+<p>Danh sách này khá đơn giản và không quá khó để thực hiện. Bây giờ, điều quan trọng là phải nghĩ về những phần nào của quy trình này <em>chỉ được thực hiện một lần</em> và những phần nào cần <em>chạy dựa theo các đầu vào của người dùng</em>. Điều này là do các ứng dụng shiny thường chạy một số code trước khi chạy, code này chỉ được thực hiện một lần. Nó sẽ giúp cải thiện hiệu suất ứng dụng của chúng ta nếu có thể chuyển nhiều code đến phần này. Đối với ví dụ này, chúng ta chỉ cần tải dữ liệu/packages của mình và thực hiện các phép biến đổi cơ bản một lần, vì vậy chúng ta có thể đặt code đó <em>bên ngoài máy chủ</em>. Điều này có nghĩa là thứ duy nhất chúng ta cần trong máy chủ là code để trực quan hóa dữ liệu của chúng ta. Trước tiên, hãy phát triển tất cả các thành phần này trong một script. Tuy nhiên, vì chúng ta đang trực quan hóa dữ liệu của mình bằng một hàm, chúng ta cũng có thể đặt code <em>cho hàm</em> bên ngoài máy chủ để hàm của chúng ta ở trong môi trường khi ứng dụng chạy!</p>
+<p>Đầu tiên, hãy tải dữ liệu của chúng ta. Vì chúng ta đang làm việc với một dự án mới và chúng ta cần làm sạch số liệu, chúng ta có thể tạo một thư mục mới có tên là data và thêm bộ dữ liệu sốt rét vào đó. Chúng ta có thể chạy code bên dưới trong một script thử nghiệm mà cuối cùng chúng ta sẽ xóa khi chúng ta dọn cấu trúc ứng dụng của mình.</p>
+<div class="sourceCode" id="cb1845"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">pacman</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pacman/man/p_load.html">p_load</a></span><span class="op">(</span><span class="st">"tidyverse"</span>, <span class="st">"lubridate"</span><span class="op">)</span>
+
+<span class="co"># read data</span>
+<span class="va">malaria_data</span> <span class="op">&lt;-</span> <span class="fu">rio</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rio/man/import.html">import</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"data"</span>, <span class="st">"malaria_facility_count_data.rds"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">as_tibble</span><span class="op">(</span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">malaria_data</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 3,038 x 10
+##    location_name data_date  submitted_date Province District `malaria_rdt_0-4` `malaria_rdt_5-14` malaria_rdt_15 malaria_tot newid
+##    &lt;chr&gt;         &lt;date&gt;     &lt;date&gt;         &lt;chr&gt;    &lt;chr&gt;                &lt;int&gt;              &lt;int&gt;          &lt;int&gt;       &lt;int&gt; &lt;int&gt;
+##  1 Facility 1    2020-08-11 2020-08-12     North    Spring                  11                 12             23          46     1
+##  2 Facility 2    2020-08-11 2020-08-12     North    Bolo                    11                 10              5          26     2
+##  3 Facility 3    2020-08-11 2020-08-12     North    Dingo                    8                  5              5          18     3
+##  4 Facility 4    2020-08-11 2020-08-12     North    Bolo                    16                 16             17          49     4
+##  5 Facility 5    2020-08-11 2020-08-12     North    Bolo                     9                  2              6          17     5
+##  6 Facility 6    2020-08-11 2020-08-12     North    Dingo                    3                  1              4           8     6
+##  7 Facility 6    2020-08-10 2020-08-12     North    Dingo                    4                  0              3           7     6
+##  8 Facility 5    2020-08-10 2020-08-12     North    Bolo                    15                 14             13          42     5
+##  9 Facility 5    2020-08-09 2020-08-12     North    Bolo                    11                 11             13          35     5
+## 10 Facility 5    2020-08-08 2020-08-12     North    Bolo                    19                 15             15          49     5
+## # ... with 3,028 more rows</code></pre>
+<p>Sẽ dễ dàng hơn để làm việc với dữ liệu này nếu chúng ta sử dụng các tiêu chuẩn dữ liệu tidy, vì vậy chúng ta cũng nên chuyển đổi dữ liệu sang định dạng dài hơn, trong đó nhóm tuổi là một cột và các trường hợp là một cột khác. Chúng ta có thể thực hiện việc này một cách dễ dàng bằng cách sử dụng những gì chúng ta đã học được trong chương <a href="pivoting.html#pivoting">Xoay trục dữ liệu</a>.</p>
+<div class="sourceCode" id="cb1847"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">malaria_data</span> <span class="op">&lt;-</span> <span class="va">malaria_data</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">newid</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">pivot_longer</span><span class="op">(</span>cols <span class="op">=</span> <span class="fu">starts_with</span><span class="op">(</span><span class="st">"malaria_"</span><span class="op">)</span>, names_to <span class="op">=</span> <span class="st">"age_group"</span>, values_to <span class="op">=</span> <span class="st">"cases_reported"</span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">malaria_data</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 12,152 x 7
+##    location_name data_date  submitted_date Province District age_group        cases_reported
+##    &lt;chr&gt;         &lt;date&gt;     &lt;date&gt;         &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;                     &lt;int&gt;
+##  1 Facility 1    2020-08-11 2020-08-12     North    Spring   malaria_rdt_0-4              11
+##  2 Facility 1    2020-08-11 2020-08-12     North    Spring   malaria_rdt_5-14             12
+##  3 Facility 1    2020-08-11 2020-08-12     North    Spring   malaria_rdt_15               23
+##  4 Facility 1    2020-08-11 2020-08-12     North    Spring   malaria_tot                  46
+##  5 Facility 2    2020-08-11 2020-08-12     North    Bolo     malaria_rdt_0-4              11
+##  6 Facility 2    2020-08-11 2020-08-12     North    Bolo     malaria_rdt_5-14             10
+##  7 Facility 2    2020-08-11 2020-08-12     North    Bolo     malaria_rdt_15                5
+##  8 Facility 2    2020-08-11 2020-08-12     North    Bolo     malaria_tot                  26
+##  9 Facility 3    2020-08-11 2020-08-12     North    Dingo    malaria_rdt_0-4               8
+## 10 Facility 3    2020-08-11 2020-08-12     North    Dingo    malaria_rdt_5-14              5
+## # ... with 12,142 more rows</code></pre>
+<p>Và cùng với đó, chúng ta đã chuẩn bị xong dữ liệu của mình! Chúng ta đã hoàn thành các mục 1, 2 và 3 trong danh sách những thứ cần phát triển cho một “script R thử nghiệm”. Nhiệm vụ cuối cùng và khó khăn nhất sẽ là xây dựng một hàm để tạo ra một đường cong dịch bệnh dựa trên các thông số do người dùng xác định. Như đã đề cập trước đây, chúng tôi <em>rất khuyến khích</em> bất kỳ ai học shiny trước tiên hãy xem phần về lập trình hướng chức năng (<a href="writing-functions.html#writing-functions">Viết hàm</a>) để hiểu cách thức hoạt động của nó!</p>
+<p>Khi định nghĩa một hàm, có thể khó khăn khi nghĩ về những tham số chúng ta muốn đưa vào. Đối với lập trình hướng chức năng với shiny, mọi tham số liên quan thường sẽ có một widget liên kết với nó, vì vậy việc suy nghĩ về điều này thường khá dễ dàng! Ví dụ: trong ứng dụng hiện tại, chúng ta muốn có thể lọc theo quận và có một widget cho việc này, vì vậy chúng ta có thể thêm thông số quận để phản ánh điều này. Chúng ta (hiện tại) <em>không</em> có bất kỳ chức năng ứng dụng nào để lọc theo cơ sở, vì vậy chúng ta không cần thêm thông số này làm tham số. Hãy bắt đầu bằng cách tạo một hàm với ba tham số:</p>
+<ol style="list-style-type: decimal">
+<li>Bộ dữ liệu cốt lõi<br>
+</li>
+<li>Quận được lựa chọn<br>
+</li>
+<li>Nhóm tuổi được lựa chọn</li>
+</ol>
+<div class="sourceCode" id="cb1849"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">plot_epicurve</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span>, <span class="va">district</span> <span class="op">=</span> <span class="st">"All"</span>, <span class="va">agegroup</span> <span class="op">=</span> <span class="st">"malaria_tot"</span><span class="op">)</span> <span class="op">{</span>
+  
+  <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="op">(</span><span class="st">"All"</span> <span class="op">%in%</span> <span class="va">district</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+    <span class="va">data</span> <span class="op">&lt;-</span> <span class="va">data</span> <span class="op">%&gt;%</span>
+      <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">District</span> <span class="op">%in%</span> <span class="va">district</span><span class="op">)</span>
+    
+    <span class="va">plot_title_district</span> <span class="op">&lt;-</span> <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue</a></span><span class="op">(</span><span class="st">"{paste0(district, collapse = ', ')} districts"</span><span class="op">)</span>
+    
+  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
+    
+    <span class="va">plot_title_district</span> <span class="op">&lt;-</span> <span class="st">"all districts"</span>
+    
+  <span class="op">}</span>
+  
+  <span class="co"># if no remaining data, return NULL</span>
+  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span>
+    
+    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="cn">NULL</span><span class="op">)</span>
+  <span class="op">}</span>
+  
+  <span class="va">data</span> <span class="op">&lt;-</span> <span class="va">data</span> <span class="op">%&gt;%</span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">age_group</span> <span class="op">==</span> <span class="va">agegroup</span><span class="op">)</span>
+  
+  
+  <span class="co"># if no remaining data, return NULL</span>
+  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span>
+    
+    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="cn">NULL</span><span class="op">)</span>
+  <span class="op">}</span>
+  
+  <span class="kw">if</span> <span class="op">(</span><span class="va">agegroup</span> <span class="op">==</span> <span class="st">"malaria_tot"</span><span class="op">)</span> <span class="op">{</span>
+      <span class="va">agegroup_title</span> <span class="op">&lt;-</span> <span class="st">"All ages"</span>
+  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
+    <span class="va">agegroup_title</span> <span class="op">&lt;-</span> <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue</a></span><span class="op">(</span><span class="st">"{str_remove(agegroup, 'malaria_rdt')} years"</span><span class="op">)</span>
+  <span class="op">}</span>
+  
+  
+  <span class="fu">ggplot</span><span class="op">(</span><span class="va">data</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">data_date</span>, y <span class="op">=</span> <span class="va">cases_reported</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu">geom_col</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">1</span>, fill <span class="op">=</span> <span class="st">"darkred"</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu">labs</span><span class="op">(</span>
+      x <span class="op">=</span> <span class="st">"date"</span>,
+      y <span class="op">=</span> <span class="st">"number of cases"</span>,
+      title <span class="op">=</span> <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue</a></span><span class="op">(</span><span class="st">"Malaria cases - {plot_title_district}"</span><span class="op">)</span>,
+      subtitle <span class="op">=</span> <span class="va">agegroup_title</span>
+    <span class="op">)</span>
+  
+  
+  
+<span class="op">}</span></code></pre></div>
+<p>Chúng ta sẽ không đi sâu vào chi tiết về hàm này, vì nó tương đối đơn giản về cách hoạt động. Tuy nhiên, một điều cần lưu ý là chúng ta xử lý lỗi bằng cách trả về <code>NULL</code> khi nó sẽ xuất hiện lỗi. Lý do là khi một máy chủ shiny tạo ra một đối tượng <code>NULL</code> thay vì một đối tượng đồ thị, sẽ không có gì được hiển thị trong ui! Điều này rất quan trọng, vì nếu không, các lỗi thường sẽ khiến ứng dụng của bạn ngừng hoạt động.</p>
+<p>Một điều khác cần lưu ý là việc sử dụng toán tử <code><a href="https://rdrr.io/r/base/match.html">%in%</a></code> khi đánh giá đầu vào <code>district</code>. Như đã đề cập ở trên, toán tử này có thể đến dưới dạng một vectơ ký tự có nhiều giá trị, vì vậy việc sử dụng <code><a href="https://rdrr.io/r/base/match.html">%in%</a></code> sẽ linh hoạt hơn so với nói,<code><a href="https://rdrr.io/r/base/Comparison.html">==</a></code>.</p>
+<p>Hãy kiểm tra hàm này!</p>
+<div class="sourceCode" id="cb1850"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">plot_epicurve</span><span class="op">(</span><span class="va">malaria_data</span>, district <span class="op">=</span> <span class="st">"Bolo"</span>, agegroup <span class="op">=</span> <span class="st">"malaria_rdt_0-4"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="_main_files/figure-html/unnamed-chunk-1444-1.png" width="672"></div>
+<p>Với một hàm hoạt động được, bây giờ chúng ta phải hiểu cách mà tất cả những thứ này sẽ được fit vào một ứng dụng shiny như thế nào. Chúng ta đã đề cập đến khái niệm <em>code khởi động (startup code)</em> trước đây, nhưng hãy xem cách chúng ta thực sự có thể kết hợp nó vào cấu trúc ứng dụng của chúng ta. Có hai cách chúng ta có thể làm điều này!</p>
+<ol style="list-style-type: decimal">
+<li>Đặt code này vào tệp <em>app.R</em> của bạn ở phần đầu script (phía trên UI) hoặc</li>
+<li>Tạo một tệp mới trong thư mục của ứng dụng có tên <em>global.R</em> và đặt code khởi động vào tệp này.</li>
+</ol>
+<p>Có một lưu ý ở điểm này đó là nó sẽ thường dễ dàng hơn, đặc biệt là với các ứng dụng lớn, khi bạn sử dụng cấu trúc tệp thứ hai, vì nó cho phép bạn tách cấu trúc tệp của mình theo cách đơn giản. Hãy phát triển đầy đủ script global.R này ngay bây giờ. Đây là những gì nó có thể hiển thị:</p>
+<div class="sourceCode" id="cb1851"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># global.R script</span>
+
+<span class="fu">pacman</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pacman/man/p_load.html">p_load</a></span><span class="op">(</span><span class="st">"tidyverse"</span>, <span class="st">"lubridate"</span>, <span class="st">"shiny"</span><span class="op">)</span>
+
+<span class="co"># read data</span>
+<span class="va">malaria_data</span> <span class="op">&lt;-</span> <span class="fu">rio</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rio/man/import.html">import</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"data"</span>, <span class="st">"malaria_facility_count_data.rds"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">as_tibble</span><span class="op">(</span><span class="op">)</span>
+
+<span class="co"># clean data and pivot longer</span>
+<span class="va">malaria_data</span> <span class="op">&lt;-</span> <span class="va">malaria_data</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">newid</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">pivot_longer</span><span class="op">(</span>cols <span class="op">=</span> <span class="fu">starts_with</span><span class="op">(</span><span class="st">"malaria_"</span><span class="op">)</span>, names_to <span class="op">=</span> <span class="st">"age_group"</span>, values_to <span class="op">=</span> <span class="st">"cases_reported"</span><span class="op">)</span>
+
+
+<span class="co"># define plotting function</span>
+<span class="va">plot_epicurve</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span>, <span class="va">district</span> <span class="op">=</span> <span class="st">"All"</span>, <span class="va">agegroup</span> <span class="op">=</span> <span class="st">"malaria_tot"</span><span class="op">)</span> <span class="op">{</span>
+  
+  <span class="co"># create plot title</span>
+  <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="op">(</span><span class="st">"All"</span> <span class="op">%in%</span> <span class="va">district</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>            
+    <span class="va">data</span> <span class="op">&lt;-</span> <span class="va">data</span> <span class="op">%&gt;%</span>
+      <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">District</span> <span class="op">%in%</span> <span class="va">district</span><span class="op">)</span>
+    
+    <span class="va">plot_title_district</span> <span class="op">&lt;-</span> <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue</a></span><span class="op">(</span><span class="st">"{paste0(district, collapse = ', ')} districts"</span><span class="op">)</span>
+    
+  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
+    
+    <span class="va">plot_title_district</span> <span class="op">&lt;-</span> <span class="st">"all districts"</span>
+    
+  <span class="op">}</span>
+  
+  <span class="co"># if no remaining data, return NULL</span>
+  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span>
+    
+    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="cn">NULL</span><span class="op">)</span>
+  <span class="op">}</span>
+  
+  <span class="co"># filter to age group</span>
+  <span class="va">data</span> <span class="op">&lt;-</span> <span class="va">data</span> <span class="op">%&gt;%</span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">age_group</span> <span class="op">==</span> <span class="va">agegroup</span><span class="op">)</span>
+  
+  
+  <span class="co"># if no remaining data, return NULL</span>
+  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span>
+    
+    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="cn">NULL</span><span class="op">)</span>
+  <span class="op">}</span>
+  
+  <span class="kw">if</span> <span class="op">(</span><span class="va">agegroup</span> <span class="op">==</span> <span class="st">"malaria_tot"</span><span class="op">)</span> <span class="op">{</span>
+      <span class="va">agegroup_title</span> <span class="op">&lt;-</span> <span class="st">"All ages"</span>
+  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
+    <span class="va">agegroup_title</span> <span class="op">&lt;-</span> <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue</a></span><span class="op">(</span><span class="st">"{str_remove(agegroup, 'malaria_rdt')} years"</span><span class="op">)</span>
+  <span class="op">}</span>
+  
+  
+  <span class="fu">ggplot</span><span class="op">(</span><span class="va">data</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">data_date</span>, y <span class="op">=</span> <span class="va">cases_reported</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu">geom_col</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">1</span>, fill <span class="op">=</span> <span class="st">"darkred"</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu">labs</span><span class="op">(</span>
+      x <span class="op">=</span> <span class="st">"date"</span>,
+      y <span class="op">=</span> <span class="st">"number of cases"</span>,
+      title <span class="op">=</span> <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue</a></span><span class="op">(</span><span class="st">"Malaria cases - {plot_title_district}"</span><span class="op">)</span>,
+      subtitle <span class="op">=</span> <span class="va">agegroup_title</span>
+    <span class="op">)</span>
+  
+  
+  
+<span class="op">}</span></code></pre></div>
+<p>Thật đơn giản! Một tính năng tuyệt vời của shiny là nó sẽ hiểu các tệp có tên <em>app.R</em>, <em>server.R</em>, <em>ui.R</em> và <em>global.R</em> dùng để làm gì, vì vậy không cần phải kết nối chúng với nhau thông qua bất kỳ code nào. Vì vậy, chỉ cần có code này trong <em>global.R</em> trong thư mục, nó sẽ chạy trước khi chúng ta khởi động ứng dụng của mình!</p>
+<p>Chúng ta cũng nên lưu ý rằng có thể cải thiện tổ chức ứng dụng nếu chúng ta chuyển hàm vẽ biểu đồ sang tệp riêng của nó - điều này sẽ đặc biệt hữu ích khi các ứng dụng trở nên lớn hơn. Để làm điều này, chúng ta có thể tạo một thư mục khác có tên <em>funcs</em> và đặt hàm này dưới một tệp có tên <em>plot_epicurve.R</em>. Sau đó, chúng ta có thể đọc hàm này thông qua lệnh sau trong <em>global.R</em></p>
+<div class="sourceCode" id="cb1852"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"funcs"</span>, <span class="st">"plot_epicurve.R"</span><span class="op">)</span>, local <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<p>Lưu ý rằng bạn nên <em>luôn</em> chỉ định <code>local = TRUE</code> trong các ứng dụng shiny, vì nó sẽ ảnh hưởng đến việc tìm nguồn khi/nếu ứng dụng được xuất bản trên máy chủ.</p>
+</div>
+<div id="phát-triển-một-máy-chủ-ứng-dụng" class="section level2" number="43.5">
+<h2>
+<span class="header-section-number">43.5</span> Phát triển một máy chủ ứng dụng<a class="anchor" aria-label="anchor" href="#ph%C3%A1t-tri%E1%BB%83n-m%E1%BB%99t-m%C3%A1y-ch%E1%BB%A7-%E1%BB%A9ng-d%E1%BB%A5ng"><i class="fas fa-link"></i></a>
+</h2>
+<p>Bây giờ chúng ta đã có hầu hết code cần thiết, chúng ta chỉ cần phát triển thêm máy chủ. Đây là phần cuối cùng của ứng dụng và có lẽ là phần khó hiểu nhất. Máy chủ là một hàm R lớn, nhưng sẽ hữu ích nếu coi nó như một chuỗi các hàm hoặc nhiệm vụ nhỏ hơn mà ứng dụng có thể thực hiện. Điều quan trọng là phải hiểu rằng các hàm này không được thực thi theo thứ tự tuyến tính. Nghĩa là có một thứ tự cho chúng, nhưng không cần phải hiểu đầy đủ khi bắt đầu với shiny. Ở cấp độ rất cơ bản, các tác vụ hoặc chức năng này sẽ kích hoạt khi có thay đổi về đầu vào của người dùng ảnh hưởng đến chúng, <em>trừ khi nhà phát triển đã thiết lập chúng để chúng hoạt động khác biệt</em>. Một lần nữa, nó khá trừu tượng, nhưng trước tiên hãy xem qua ba loại cơ bản của <em>đối tượng</em> shiny</p>
+<ol style="list-style-type: decimal">
+<li><p>Nguồn phản hồi (Reactive sources) - đây là một thuật ngữ khác của đầu vào người dùng. Máy chủ shiny có quyền truy cập vào các đầu ra từ UI thông qua các widget mà chúng ta đã lập trình. Mỗi khi các giá trị được thay đổi, chúng được chuyển đến máy chủ.</p></li>
+<li><p>Vật dẫn phản hồi (Reactive conductors) - đây là những đối tượng tồn tại <em>chỉ</em> bên trong máy chủ shiny. Chúng ta không thực sự cần những thứ này cho các ứng dụng đơn giản, nhưng chúng tạo ra các đối tượng chỉ có thể được nhìn thấy bên trong máy chủ và được sử dụng trong các hoạt động khác. Chúng thường phụ thuộc vào các nguồn phản ứng.</p></li>
+<li><p>Điểm cuối (Endpoints) - đây là các đầu ra được chuyển từ máy chủ đến UI. Trong ví dụ của chúng ta, đây sẽ là đường cong dịch bệnh mà chúng ta đang tạo.</p></li>
+</ol>
+<p>Với các khái niệm này, chúng ta hãy xây dựng máy chủ theo từng bước. Chúng tôi hiển thị lại code UI một lần nữa ở đây để bạn tham khảo:</p>
+<div class="sourceCode" id="cb1853"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html">fluidPage</a></span><span class="op">(</span>
+
+  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/titlePanel.html">titlePanel</a></span><span class="op">(</span><span class="st">"Malaria facility visualisation app"</span><span class="op">)</span>,
+
+  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html">sidebarLayout</a></span><span class="op">(</span>
+
+    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html">sidebarPanel</a></span><span class="op">(</span>
+         <span class="co"># selector for district</span>
+         <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/selectInput.html">selectInput</a></span><span class="op">(</span>
+              inputId <span class="op">=</span> <span class="st">"select_district"</span>,
+              label <span class="op">=</span> <span class="st">"Select district"</span>,
+              choices <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
+                   <span class="st">"All"</span>,
+                   <span class="st">"Spring"</span>,
+                   <span class="st">"Bolo"</span>,
+                   <span class="st">"Dingo"</span>,
+                   <span class="st">"Barnard"</span>
+              <span class="op">)</span>,
+              selected <span class="op">=</span> <span class="st">"All"</span>,
+              multiple <span class="op">=</span> <span class="cn">TRUE</span>
+         <span class="op">)</span>,
+         <span class="co"># selector for age group</span>
+         <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/selectInput.html">selectInput</a></span><span class="op">(</span>
+              inputId <span class="op">=</span> <span class="st">"select_agegroup"</span>,
+              label <span class="op">=</span> <span class="st">"Select age group"</span>,
+              choices <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
+                   <span class="st">"All ages"</span> <span class="op">=</span> <span class="st">"malaria_tot"</span>,
+                   <span class="st">"0-4 yrs"</span> <span class="op">=</span> <span class="st">"malaria_rdt_0-4"</span>,
+                   <span class="st">"5-14 yrs"</span> <span class="op">=</span> <span class="st">"malaria_rdt_5-14"</span>,
+                   <span class="st">"15+ yrs"</span> <span class="op">=</span> <span class="st">"malaria_rdt_15"</span>
+              <span class="op">)</span>, 
+              selected <span class="op">=</span> <span class="st">"All"</span>,
+              multiple <span class="op">=</span> <span class="cn">FALSE</span>
+         <span class="op">)</span>
+
+    <span class="op">)</span>,
+
+    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html">mainPanel</a></span><span class="op">(</span>
+      <span class="co"># epicurve goes here</span>
+      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/plotOutput.html">plotOutput</a></span><span class="op">(</span><span class="st">"malaria_epicurve"</span><span class="op">)</span>
+    <span class="op">)</span>
+    
+  <span class="op">)</span>
+<span class="op">)</span></code></pre></div>
+<p>Từ UI code này, chúng ta có:</p>
+<ul>
+<li>Hai đầu vào:
+<ul>
+<li>Bộ chọn quận (với inputId là <code>select_district</code>)<br>
+</li>
+<li>Bộ chọn nhóm tuổi (với inputId là <code>select_agegroup</code>)<br>
+</li>
+</ul>
+</li>
+<li>Một đầu ra:
+<ul>
+<li>Đường cong dịch bệnh (với outputId là <code>malaria_epicurve</code>)</li>
+</ul>
+</li>
+</ul>
+<p>Như đã nói ở trên, những tên riêng mà chúng ta đã gán cho các đầu vào và đầu ra là rất quan trọng. Chúng <em>phải là duy nhất</em> và được sử dụng để chuyển thông tin giữa ui và máy chủ. Trong máy chủ, chúng ta truy cập tới các đầu vào thông qua cú pháp <code>input$inputID</code> và các đầu ra, và chuyển đến ui thông qua cú pháp <code>output$output_name</code> Hãy cùng xem xét một ví dụ, bởi vì điều này rất khó hiểu!</p>
+<div class="sourceCode" id="cb1854"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">server</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span>, <span class="va">session</span><span class="op">)</span> <span class="op">{</span>
+  
+  <span class="va">output</span><span class="op">$</span><span class="va">malaria_epicurve</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/renderPlot.html">renderPlot</a></span><span class="op">(</span>
+    <span class="fu">plot_epicurve</span><span class="op">(</span><span class="va">malaria_data</span>, district <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">select_district</span>, agegroup <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">select_agegroup</span><span class="op">)</span>
+  <span class="op">)</span>
+  
+<span class="op">}</span></code></pre></div>
+<p>Máy chủ cho một ứng dụng đơn giản như thế này thực sự khá dễ dàng! Bạn sẽ nhận thấy rằng máy chủ là một hàm có ba tham số - <code>input</code>, <code>output</code> và <code>session</code> - điều này không quan trọng để hiểu ngay bây giờ, nhưng điều quan trọng là phải tuân theo thiết lập này! Trong máy chủ bên trên, chúng ta chỉ có một nhiệm vụ - đó là kết xuất một biểu đồ dựa trên hàm mà chúng ta đã thực hiện trước đó và các đầu vào từ máy chủ. Lưu ý cách tên của các đối tượng đầu vào và đầu ra tương ứng chính xác với các đối tượng trong ui.</p>
+<p>Để hiểu những điều cơ bản về cách máy chủ phản hồi với thông tin đầu vào của người dùng, bạn cần lưu ý rằng đầu ra sẽ biết (thông qua package nhầm) khi đầu vào thay đổi và chạy lại hàm này để tạo biểu đồ mỗi khi chúng thay đổi. Lưu ý rằng chúng tôi cũng sử dụng hàm <code><a href="https://rdrr.io/pkg/shiny/man/renderPlot.html">renderPlot()</a></code> ở đây - đây là một trong số họ các hàm dành riêng cho lớp truyền các đối tượng đó đến đầu ra ui. Có một số hàm hoạt động tương tự, nhưng bạn cần đảm bảo hàm được sử dụng khớp với lớp đối tượng mà bạn đang chuyển tới ui! Ví dụ:</p>
+<ul>
+<li>
+<code><a href="https://rdrr.io/pkg/shiny/man/renderPrint.html">renderText()</a></code> - gửi văn bản tới ui<br>
+</li>
+<li>
+<code>renderDataTable</code> - gửi bảng tương tác tới ui.</li>
+</ul>
+<p>Hãy nhớ rằng chúng cũng cần phải khớp với <em>hàm</em> đầu ra được sử dụng trong ui - vì vậy <code><a href="https://rdrr.io/pkg/shiny/man/renderPlot.html">renderPlot()</a></code> được ghép cặp với <code><a href="https://rdrr.io/pkg/shiny/man/plotOutput.html">plotOutput()</a></code> và <code><a href="https://rdrr.io/pkg/shiny/man/renderPrint.html">renderText()</a></code> được kết hợp với <code><a href="https://rdrr.io/pkg/shiny/man/textOutput.html">textOutput()</a></code>.</p>
+<p>Cuối cùng chúng ta đã tạo ra một ứng dụng hoạt động! Chúng ta có thể chạy ứng dùng bằng cách nhấn nút Run App ở trên cùng bên phải của cửa sổ script trong Rstudio. Bạn nên lưu ý rằng bạn có thể chọn chạy ứng dụng của mình trong trình duyệt mặc định (thay vì Rstudio), điều này sẽ phản ánh chính xác hơn giao diện của ứng dụng đối với những người dùng khác.</p>
+<div class="inline-figure"><img src="images/shiny/app_simple_view.gif" width="100%" height="100%"></div>
+<p>Lưu ý vui rằng trong R console, ứng dụng đang “lắng nghe”! Hãy nói về sự phản hồi!</p>
+<div class="inline-figure"><img src="images/shiny/listening.png" width="195"></div>
+<!-- TO DO: *ADD SOMETHING ON DOWNLOADING A ZIP FILE OF THE APP?*  -->
+</div>
+<div id="thêm-nhiều-chức-năng-hơn" class="section level2" number="43.6">
+<h2>
+<span class="header-section-number">43.6</span> Thêm nhiều chức năng hơn<a class="anchor" aria-label="anchor" href="#th%C3%AAm-nhi%E1%BB%81u-ch%E1%BB%A9c-n%C4%83ng-h%C6%A1n"><i class="fas fa-link"></i></a>
+</h2>
+<p>Tại thời điểm này, cuối cùng chúng ta đã có một ứng dụng đang chạy, nhưng chúng ta có rất ít chức năng. Chúng ta cũng không thực sự khai thác hết những gì shiny có thể làm, vì vậy có nhiều thứ để tìm hiểu thêm! Hãy tiếp tục xây dựng ứng dụng hiện có của chúng ta bằng cách thêm một số tính năng bổ sung. Một số thứ hay bạn có thể thêm vào là:</p>
+<ol style="list-style-type: decimal">
+<li>Một văn bản giải thích</li>
+<li>Nút tải đồ thị xuống - Cung cấp cho người dùng phiên bản chất lượng cao của hình ảnh mà họ đang tạo trong ứng dụng</li>
+<li>Một bộ chọn cho các cơ sở cụ thể</li>
+<li>Một trang dashboard khác - Có thể hiển thị một bảng cho dữ liệu của chúng ta.</li>
+</ol>
+<p>Có rất nhiều thứ để thêm, nhưng chúng ta có thể sử dụng nó để tìm hiểu về một loạt các tính năng shiny khác nhau sau này. Có rất nhiều thứ để tìm hiểu về Shiny (nó có thể trở nên <em>rất</em> nâng cao, nhưng hy vọng nó là trường hợp một khi người dùng có ý tưởng tốt hơn về cách sử dụng nó, họ có thể trở nên thoải mái hơn khi sử dụng các nguồn học tập bên ngoài).</p>
+<div id="thêm-văn-bản-tĩnh" class="section level3 unnumbered">
+<h3>Thêm văn bản tĩnh<a class="anchor" aria-label="anchor" href="#th%C3%AAm-v%C4%83n-b%E1%BA%A3n-t%C4%A9nh"><i class="fas fa-link"></i></a>
+</h3>
+<p>Trước tiên hãy thảo luận về việc thêm văn bản tĩnh vào ứng dụng shiny. Thêm văn bản vào ứng dụng của chúng ta cực kỳ dễ dàng khi bạn có kiến thức cơ bản về nó. Vì văn bản tĩnh không thay đổi trong ứng dụng shiny (nếu bạn muốn thay đổi, bạn có thể sử dụng hàm <em>kết xuất văn bản (text rendering)</em> trong máy chủ!), Tất cả văn bản tĩnh của Shiny thường được thêm vào UI của ứng dụng. Chúng tôi sẽ không đi vào chi tiết cho điều này, nhưng bạn có thể thêm nhiều yếu tố khác nhau vào giao diện UI (và thậm chí cả tùy chỉnh) bằng cách giao tiếp R với <em>HTML</em> và <em>css</em>.</p>
+<p>HTML và css là các ngôn ngữ có liên quan mật thiết trong thiết kế giao diện người dùng. Chúng ta không cần phải hiểu quá rõ những thứ này, nhưng <em>HTML</em> tạo các đối tượng trong UI (như hộp văn bản hoặc bảng) và <em>css</em> thường được sử dụng để thay đổi kiểu và tính thẩm mỹ của các đối tượng đó. Shiny có quyền truy cập vào một mảng lớn của <em>các thẻ HTML</em> - các thẻ này trình bày các đối tượng hoạt động theo một cách cụ thể, chẳng hạn như các tiêu đề, đoạn văn bản, ngắt dòng, bảng, v.v. Chúng ta có thể sử dụng một số ví dụ này như sau:</p>
+<ul>
+<li>
+<p><code><a href="https://rdrr.io/pkg/htmltools/man/builder.html">h1()</a></code> - đây là một thẻ <em>đầu mục</em>, sẽ tự động tạo văn bản lớn hơn và thay đổi mặc định khi chúng liên quan đến mặt phông chữ, màu v.v (tùy thuộc vào theme tổng thể ứng dụng của bạn). Bạn có thể truy cập tiêu đề phụ <em>nhỏ hơn và nhỏ hơn</em> với <code><a href="https://rdrr.io/pkg/htmltools/man/builder.html">h2()</a></code> xuống tới cả <code><a href="https://rdrr.io/pkg/htmltools/man/builder.html">h6()</a></code>. Cách sử dụng sẽ trông như sau:</p>
+<ul>
+<li><code><a href="https://rdrr.io/pkg/htmltools/man/builder.html">h1("my header - section 1")</a></code></li>
+</ul>
+</li>
+<li>
+<p><code><a href="https://rdrr.io/pkg/htmltools/man/builder.html">p()</a></code> - đây là thẻ <em>đoạn</em>, sẽ khiến văn bản được chọn tương tự như văn bản trong một thân văn bản. Văn bản này sẽ tự động bao quanh, và có kích thước tương đối nhỏ (footers có thể còn nhỏ hơn). Hãy nghĩ về nó như phần thân văn bản của tài liệu Word. Cách sử dụng trông như sau</p>
+<ul>
+<li><code><a href="https://rdrr.io/pkg/htmltools/man/builder.html">p("This is a larger body of text where I am explaining the function of my app")</a></code></li>
+</ul>
+</li>
+<li><p><code>tags$b()</code> và <code>tags$i()</code> - chúng được sử dụng để tạo in đậm <code>tags$b()</code> và in nghiêng <code>tags$i()</code> với bất kỳ văn bản nào được chọn!</p></li>
+<li><p><code>tags$ul()</code>, <code>tags$ol()</code> và <code>tags$li()</code> - đây là các thẻ được sử dụng trong việc tạo <em>danh sách</em>. Tất cả đều được sử dụng trong cú pháp bên dưới và cho phép người dùng tạo một danh sách theo thứ tự (<code>tags$ol()</code>; nghĩa là được đánh số) hoặc danh sách không có thứ tự (<code>tags$ul()</code>, nghĩa là tạo gạch đầu dòng). <code>tags$li()</code> được sử dụng để biểu thị các mục trong danh sách, bất kể loại danh sách nào được sử dụng. ví dụ:</p></li>
+</ul>
+<div class="sourceCode" id="cb1855"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">tags</span><span class="op">$</span><span class="fu">ol</span><span class="op">(</span>
+  
+  <span class="va">tags</span><span class="op">$</span><span class="fu">li</span><span class="op">(</span><span class="st">"Item 1"</span><span class="op">)</span>,
+  
+  <span class="va">tags</span><span class="op">$</span><span class="fu">li</span><span class="op">(</span><span class="st">"Item 2"</span><span class="op">)</span>,
+  
+  <span class="va">tags</span><span class="op">$</span><span class="fu">li</span><span class="op">(</span><span class="st">"Item 3"</span><span class="op">)</span>
+  
+<span class="op">)</span></code></pre></div>
+<ul>
+<li><p><code><a href="https://rdrr.io/pkg/htmltools/man/builder.html">br()</a></code> và <code><a href="https://rdrr.io/pkg/htmltools/man/builder.html">hr()</a></code> - các thẻ này tương ứng tạo <em>ngắt dòng</em> và <em>dòng ngang</em> (với một ngắt dòng). Sử dụng chúng để tách riêng các phần của ứng dụng và văn bản của bạn! Không cần phải chuyền bất kỳ đối tượng nào vào các thẻ này (dấu ngoặc đơn có thể vẫn trống).</p></li>
+<li><p><code><a href="https://rdrr.io/pkg/htmltools/man/builder.html">div()</a></code> - Đây là thẻ <em>chung</em> có thể <em>chứa bất cứ thứ gì</em> và có thể <em>có bất cứ tên gì</em>. Khi bạn tiến bộ với thiết kế UI, bạn có thể sử dụng chúng để phân các UI ra từng loại, cung cấp các style cho từng phần cụ thể và tạo các tương tác giữa các phần tử máy chủ và UI. Chúng tôi sẽ không đi sâu vào những chi tiết này, nhưng quan trọng để biết qua về chúng!</p></li>
+</ul>
+<p>Lưu ý rằng mỗi đối tượng này có thể được truy cập thông qua các thẻ <code>tags$...</code> hoặc chỉ qua hàm với một số khác. Chúng có hiệu quả như nhau, nhưng nó có thể giúp sử dụng kiểu <code>tags$...</code> nếu bạn thích rõ ràng hơn và không vô tình ghi đè các hàm. Điều này cũng không có nghĩa là có sẵn một danh sách thẻ đầy đủ. Có một danh sách khá đầy đủ tất cả các thẻ có sẵn trong shiny <a href="https://shiny.rstudio.com/articles/tag-glossary.html">ở đây</a> và thậm chí nhiều thẻ có thể được sử dụng hơn nếu bạn biết cách chèn HTML trực tiếp vào UI của bạn!</p>
+<p>Nếu bạn cảm thấy tự tin, bạn cũng có thể thêm bất kỳ <em>phần tử tạo kiểu css</em> nào vào các thẻ HTML của mình với đối số <code>style</code> trong bất kỳ phần tử nào. Chúng ta sẽ không đi vào chi tiết cách thức hoạt động, nhưng một mẹo để thử nghiệm các thay đổi thẩm mỹ đối với UI đang sử dụng chế độ HTML inspector trong Chrome (bên trong ứng dụng shiny của bạn khi bạn đang chạy trong trình duyệt) và tự chỉnh sửa style của các đối tượng!</p>
+<p>Hãy thêm một số văn bản vào ứng dụng của chúng ta</p>
+<div class="sourceCode" id="cb1856"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html">fluidPage</a></span><span class="op">(</span>
+
+  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/titlePanel.html">titlePanel</a></span><span class="op">(</span><span class="st">"Malaria facility visualisation app"</span><span class="op">)</span>,
+
+  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html">sidebarLayout</a></span><span class="op">(</span>
+
+    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html">sidebarPanel</a></span><span class="op">(</span>
+         <span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/builder.html">h4</a></span><span class="op">(</span><span class="st">"Options"</span><span class="op">)</span>,
+         <span class="co"># selector for district</span>
+         <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/selectInput.html">selectInput</a></span><span class="op">(</span>
+              inputId <span class="op">=</span> <span class="st">"select_district"</span>,
+              label <span class="op">=</span> <span class="st">"Select district"</span>,
+              choices <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
+                   <span class="st">"All"</span>,
+                   <span class="st">"Spring"</span>,
+                   <span class="st">"Bolo"</span>,
+                   <span class="st">"Dingo"</span>,
+                   <span class="st">"Barnard"</span>
+              <span class="op">)</span>,
+              selected <span class="op">=</span> <span class="st">"All"</span>,
+              multiple <span class="op">=</span> <span class="cn">TRUE</span>
+         <span class="op">)</span>,
+         <span class="co"># selector for age group</span>
+         <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/selectInput.html">selectInput</a></span><span class="op">(</span>
+              inputId <span class="op">=</span> <span class="st">"select_agegroup"</span>,
+              label <span class="op">=</span> <span class="st">"Select age group"</span>,
+              choices <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
+                   <span class="st">"All ages"</span> <span class="op">=</span> <span class="st">"malaria_tot"</span>,
+                   <span class="st">"0-4 yrs"</span> <span class="op">=</span> <span class="st">"malaria_rdt_0-4"</span>,
+                   <span class="st">"5-14 yrs"</span> <span class="op">=</span> <span class="st">"malaria_rdt_5-14"</span>,
+                   <span class="st">"15+ yrs"</span> <span class="op">=</span> <span class="st">"malaria_rdt_15"</span>
+              <span class="op">)</span>, 
+              selected <span class="op">=</span> <span class="st">"All"</span>,
+              multiple <span class="op">=</span> <span class="cn">FALSE</span>
+         <span class="op">)</span>,
+    <span class="op">)</span>,
+
+    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html">mainPanel</a></span><span class="op">(</span>
+      <span class="co"># epicurve goes here</span>
+      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/plotOutput.html">plotOutput</a></span><span class="op">(</span><span class="st">"malaria_epicurve"</span><span class="op">)</span>,
+      <span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/builder.html">br</a></span><span class="op">(</span><span class="op">)</span>,
+      <span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/builder.html">hr</a></span><span class="op">(</span><span class="op">)</span>,
+      <span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/builder.html">p</a></span><span class="op">(</span><span class="st">"Welcome to the malaria facility visualisation app! To use this app, manipulate the widgets on the side to change the epidemic curve according to your preferences! To download a high quality image of the plot you've created, you can also download it with the download button. To see the raw data, use the raw data tab for an interactive form of the table. The data dictionary is as follows:"</span><span class="op">)</span>,
+    <span class="va">tags</span><span class="op">$</span><span class="fu">ul</span><span class="op">(</span>
+      <span class="va">tags</span><span class="op">$</span><span class="fu">li</span><span class="op">(</span><span class="va">tags</span><span class="op">$</span><span class="fu">b</span><span class="op">(</span><span class="st">"location_name"</span><span class="op">)</span>, <span class="st">" - the facility that the data were collected at"</span><span class="op">)</span>,
+      <span class="va">tags</span><span class="op">$</span><span class="fu">li</span><span class="op">(</span><span class="va">tags</span><span class="op">$</span><span class="fu">b</span><span class="op">(</span><span class="st">"data_date"</span><span class="op">)</span>, <span class="st">" - the date the data were collected at"</span><span class="op">)</span>,
+      <span class="va">tags</span><span class="op">$</span><span class="fu">li</span><span class="op">(</span><span class="va">tags</span><span class="op">$</span><span class="fu">b</span><span class="op">(</span><span class="st">"submitted_daate"</span><span class="op">)</span>, <span class="st">" - the date the data were submitted at"</span><span class="op">)</span>,
+      <span class="va">tags</span><span class="op">$</span><span class="fu">li</span><span class="op">(</span><span class="va">tags</span><span class="op">$</span><span class="fu">b</span><span class="op">(</span><span class="st">"Province"</span><span class="op">)</span>, <span class="st">" - the province the data were collected at (all 'North' for this dataset)"</span><span class="op">)</span>,
+      <span class="va">tags</span><span class="op">$</span><span class="fu">li</span><span class="op">(</span><span class="va">tags</span><span class="op">$</span><span class="fu">b</span><span class="op">(</span><span class="st">"District"</span><span class="op">)</span>, <span class="st">" - the district the data were collected at"</span><span class="op">)</span>,
+      <span class="va">tags</span><span class="op">$</span><span class="fu">li</span><span class="op">(</span><span class="va">tags</span><span class="op">$</span><span class="fu">b</span><span class="op">(</span><span class="st">"age_group"</span><span class="op">)</span>, <span class="st">" - the age group the data were collected for (0-5, 5-14, 15+, and all ages)"</span><span class="op">)</span>,
+      <span class="va">tags</span><span class="op">$</span><span class="fu">li</span><span class="op">(</span><span class="va">tags</span><span class="op">$</span><span class="fu">b</span><span class="op">(</span><span class="st">"cases_reported"</span><span class="op">)</span>, <span class="st">" - the number of cases reported for the facility/age group on the given date"</span><span class="op">)</span>
+    <span class="op">)</span>
+    
+  <span class="op">)</span>
+<span class="op">)</span>
+<span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="images/shiny/app_text_view.png" width="435"></div>
+</div>
+<div id="thêm-liên-kết" class="section level3 unnumbered">
+<h3>Thêm liên kết<a class="anchor" aria-label="anchor" href="#th%C3%AAm-li%C3%AAn-k%E1%BA%BFt"><i class="fas fa-link"></i></a>
+</h3>
+<p>Để thêm một liên kết đến một trang web, hãy sử dụng <code>tags$a()</code> với liên kết và văn bản hiển thị như bên dưới. Để có một đoạn độc lập, hãy đặt nó trong <code><a href="https://rdrr.io/pkg/htmltools/man/builder.html">p()</a></code>. Để chỉ có một vài từ của một câu được gắn liên kết, hãy chia câu thành các phần và sử dụng <code>tags$a()</code> cho thành phần gắn hyperlink. Để đảm bảo liên kết được mở trong một cửa sổ trình duyệt <em>mới</em>, hãy thêm <code>target = "_blank"</code> dưới dạng một đối số.</p>
+<div class="sourceCode" id="cb1857"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">tags</span><span class="op">$</span><span class="fu">a</span><span class="op">(</span>href <span class="op">=</span> <span class="st">"www.epiRhandbook.com"</span>, <span class="st">"Visit our website!"</span><span class="op">)</span></code></pre></div>
+</div>
+<div id="thêm-nút-tải-về" class="section level3 unnumbered">
+<h3>Thêm nút tải về<a class="anchor" aria-label="anchor" href="#th%C3%AAm-n%C3%BAt-t%E1%BA%A3i-v%E1%BB%81"><i class="fas fa-link"></i></a>
+</h3>
+<p>Hãy cùng chuyển sang tính năng thứ hai. Nút tải xuống là một điều khá phổ biến để thêm vào một ứng dụng và khá dễ thực hiện. Chúng ta cần thêm một Widget khác vào giao diện người dùng và thêm một đầu ra khác tới máy chủ của chúng ta để đính kèm vào Widget đó. Chúng tôi cũng có thể giới thiệu về <em>vật dẫn phản hồi</em> trong ví dụ này!</p>
+<p>Hãy cập nhật giao diện người dùng của chúng ta trước - Điều này dễ dàng khi Shiny đi kèm với một widget có tên là <code><a href="https://rdrr.io/pkg/shiny/man/downloadButton.html">downloadButton()</a></code> - cho phép đặt inputId và nhãn.</p>
+<div class="sourceCode" id="cb1858"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html">fluidPage</a></span><span class="op">(</span>
+
+  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/titlePanel.html">titlePanel</a></span><span class="op">(</span><span class="st">"Malaria facility visualisation app"</span><span class="op">)</span>,
+
+  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html">sidebarLayout</a></span><span class="op">(</span>
+
+    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html">sidebarPanel</a></span><span class="op">(</span>
+         <span class="co"># selector for district</span>
+         <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/selectInput.html">selectInput</a></span><span class="op">(</span>
+              inputId <span class="op">=</span> <span class="st">"select_district"</span>,
+              label <span class="op">=</span> <span class="st">"Select district"</span>,
+              choices <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
+                   <span class="st">"All"</span>,
+                   <span class="st">"Spring"</span>,
+                   <span class="st">"Bolo"</span>,
+                   <span class="st">"Dingo"</span>,
+                   <span class="st">"Barnard"</span>
+              <span class="op">)</span>,
+              selected <span class="op">=</span> <span class="st">"All"</span>,
+              multiple <span class="op">=</span> <span class="cn">FALSE</span>
+         <span class="op">)</span>,
+         <span class="co"># selector for age group</span>
+         <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/selectInput.html">selectInput</a></span><span class="op">(</span>
+              inputId <span class="op">=</span> <span class="st">"select_agegroup"</span>,
+              label <span class="op">=</span> <span class="st">"Select age group"</span>,
+              choices <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
+                   <span class="st">"All ages"</span> <span class="op">=</span> <span class="st">"malaria_tot"</span>,
+                   <span class="st">"0-4 yrs"</span> <span class="op">=</span> <span class="st">"malaria_rdt_0-4"</span>,
+                   <span class="st">"5-14 yrs"</span> <span class="op">=</span> <span class="st">"malaria_rdt_5-14"</span>,
+                   <span class="st">"15+ yrs"</span> <span class="op">=</span> <span class="st">"malaria_rdt_15"</span>
+              <span class="op">)</span>, 
+              selected <span class="op">=</span> <span class="st">"All"</span>,
+              multiple <span class="op">=</span> <span class="cn">FALSE</span>
+         <span class="op">)</span>,
+         <span class="co"># horizontal line</span>
+         <span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/builder.html">hr</a></span><span class="op">(</span><span class="op">)</span>,
+         <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/downloadButton.html">downloadButton</a></span><span class="op">(</span>
+           outputId <span class="op">=</span> <span class="st">"download_epicurve"</span>,
+           label <span class="op">=</span> <span class="st">"Download plot"</span>
+         <span class="op">)</span>
+
+    <span class="op">)</span>,
+
+    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html">mainPanel</a></span><span class="op">(</span>
+      <span class="co"># epicurve goes here</span>
+      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/plotOutput.html">plotOutput</a></span><span class="op">(</span><span class="st">"malaria_epicurve"</span><span class="op">)</span>,
+      <span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/builder.html">br</a></span><span class="op">(</span><span class="op">)</span>,
+      <span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/builder.html">hr</a></span><span class="op">(</span><span class="op">)</span>,
+      <span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/builder.html">p</a></span><span class="op">(</span><span class="st">"Welcome to the malaria facility visualisation app! To use this app, manipulate the widgets on the side to change the epidemic curve according to your preferences! To download a high quality image of the plot you've created, you can also download it with the download button. To see the raw data, use the raw data tab for an interactive form of the table. The data dictionary is as follows:"</span><span class="op">)</span>,
+      <span class="va">tags</span><span class="op">$</span><span class="fu">ul</span><span class="op">(</span>
+        <span class="va">tags</span><span class="op">$</span><span class="fu">li</span><span class="op">(</span><span class="va">tags</span><span class="op">$</span><span class="fu">b</span><span class="op">(</span><span class="st">"location_name"</span><span class="op">)</span>, <span class="st">" - the facility that the data were collected at"</span><span class="op">)</span>,
+        <span class="va">tags</span><span class="op">$</span><span class="fu">li</span><span class="op">(</span><span class="va">tags</span><span class="op">$</span><span class="fu">b</span><span class="op">(</span><span class="st">"data_date"</span><span class="op">)</span>, <span class="st">" - the date the data were collected at"</span><span class="op">)</span>,
+        <span class="va">tags</span><span class="op">$</span><span class="fu">li</span><span class="op">(</span><span class="va">tags</span><span class="op">$</span><span class="fu">b</span><span class="op">(</span><span class="st">"submitted_daate"</span><span class="op">)</span>, <span class="st">" - the date the data were submitted at"</span><span class="op">)</span>,
+        <span class="va">tags</span><span class="op">$</span><span class="fu">li</span><span class="op">(</span><span class="va">tags</span><span class="op">$</span><span class="fu">b</span><span class="op">(</span><span class="st">"Province"</span><span class="op">)</span>, <span class="st">" - the province the data were collected at (all 'North' for this dataset)"</span><span class="op">)</span>,
+        <span class="va">tags</span><span class="op">$</span><span class="fu">li</span><span class="op">(</span><span class="va">tags</span><span class="op">$</span><span class="fu">b</span><span class="op">(</span><span class="st">"District"</span><span class="op">)</span>, <span class="st">" - the district the data were collected at"</span><span class="op">)</span>,
+        <span class="va">tags</span><span class="op">$</span><span class="fu">li</span><span class="op">(</span><span class="va">tags</span><span class="op">$</span><span class="fu">b</span><span class="op">(</span><span class="st">"age_group"</span><span class="op">)</span>, <span class="st">" - the age group the data were collected for (0-5, 5-14, 15+, and all ages)"</span><span class="op">)</span>,
+        <span class="va">tags</span><span class="op">$</span><span class="fu">li</span><span class="op">(</span><span class="va">tags</span><span class="op">$</span><span class="fu">b</span><span class="op">(</span><span class="st">"cases_reported"</span><span class="op">)</span>, <span class="st">" - the number of cases reported for the facility/age group on the given date"</span><span class="op">)</span>
+      <span class="op">)</span>
+      
+    <span class="op">)</span>
+    
+  <span class="op">)</span>
+<span class="op">)</span></code></pre></div>
+<p>Lưu ý rằng chúng ta cũng đã thêm vào thẻ <code><a href="https://rdrr.io/pkg/htmltools/man/builder.html">hr()</a></code> - Điều này thêm một đường ngang ngăn cách các widget điều khiển với các widget tải xuống của chúng ta. Đây là một trong những thẻ HTML khác mà chúng ta đã thảo luận trước đây.</p>
+<p>Bây giờ khi giao diện người dùng của chúng ta đã sẵn sàng, chúng ta cần thêm thành phần máy chủ. Việc thiết kế tải xuống đã được hoàn thành trong máy chủ với hàm <code><a href="https://rdrr.io/pkg/shiny/man/downloadHandler.html">downloadHandler()</a></code>. Tương tự như đồ thị, chúng ta cần đính kèm nó vào một đầu ra có cùng inputId như là nút tải xuống. Hàm này có hai đối số - <code>filename</code> và <code>content</code> - cả hai đều là các hàm. Như bạn có thể đoán, <code>fileName</code> được sử dụng để chỉ định tên của tệp đã tải xuống và <code>content</code> được sử dụng để chỉ định những gì nên tải xuống. <code>content</code> chứa một hàm mà bạn sẽ sử dụng để lưu dữ liệu cục bộ - vì vậy nếu bạn đang tải xuống tệp CSV, bạn có thể sử dụng hàm <code><a href="https://rdrr.io/pkg/rio/man/export.html">rio::export()</a></code>. Bởi vì chúng ta đang tải xuống một đồ thị, chúng ta sẽ sử dụng hàm <code><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggplot2::ggsave()</a></code>. Hãy xem cách chúng ta sẽ lập trình nó như sau (chúng ta sẽ không thêm nó vào máy chủ).</p>
+<div class="sourceCode" id="cb1859"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">server</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span>, <span class="va">session</span><span class="op">)</span> <span class="op">{</span>
+  
+  <span class="va">output</span><span class="op">$</span><span class="va">malaria_epicurve</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/renderPlot.html">renderPlot</a></span><span class="op">(</span>
+    <span class="fu">plot_epicurve</span><span class="op">(</span><span class="va">malaria_data</span>, district <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">select_district</span>, agegroup <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">select_agegroup</span><span class="op">)</span>
+  <span class="op">)</span>
+  
+  <span class="va">output</span><span class="op">$</span><span class="va">download_epicurve</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/downloadHandler.html">downloadHandler</a></span><span class="op">(</span>
+    filename <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span>
+      <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue</a></span><span class="op">(</span><span class="st">"malaria_epicurve_{input$select_district}.png"</span><span class="op">)</span>
+    <span class="op">}</span>,
+    
+    content <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">file</span><span class="op">)</span> <span class="op">{</span>
+      <span class="fu">ggsave</span><span class="op">(</span><span class="va">file</span>, 
+             <span class="fu">plot_epicurve</span><span class="op">(</span><span class="va">malaria_data</span>, district <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">select_district</span>, agegroup <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">select_agegroup</span><span class="op">)</span>,
+             width <span class="op">=</span> <span class="fl">8</span>, height <span class="op">=</span> <span class="fl">5</span>, dpi <span class="op">=</span> <span class="fl">300</span><span class="op">)</span>
+    <span class="op">}</span>
+    
+  <span class="op">)</span>
+  
+<span class="op">}</span></code></pre></div>
+<p>Lưu ý rằng hàm <code>content</code> luôn có đối số <code>file</code>, đối số giúp chúng ta chỉ định tên tệp đầu ra. Bạn cũng có thể nhận thấy rằng chúng ta đang lặp lại code tại đây - chúng ta đang sử dụng hàm <code>plot_epicurve()</code> hai lần trong máy chủ, một lần để tải xuống và một lần cho hình ảnh được hiển thị trong ứng dụng. Trong khi điều này sẽ không ảnh hưởng lớn đến hiệu suất, nghĩa là code để tạo ra đồ thị này sẽ phải chạy khi người dùng thay đổi các widget xác định nhóm quận và tuổi, <em>và</em> một lần nữa khi bạn muốn tải xuống đồ thị. Trong các ứng dụng lớn hơn, các quyết định làm giảm hiệu quả tối ưu như thế này sẽ càng ngày càng làm chậm mọi thứ, vì vậy sẽ tốt khi bạn học cách làm cho ứng dụng của chúng ta hiệu quả hơn theo nghĩa này. Sẽ hợp lý hơn nếu chúng ta có cách chạy code epicurve khi các nhóm quận/tuổi thay đổi, <em>và để chúng được sử dụng bởi</em> các hàm renderPlot() và downloadHandler(). Đây là khi mà các vật dẫn phản hồi có tác dụng!</p>
+<p>Vật dẫn phản hồi là các đối tượng được tạo trong máy chủ shiny theo cơ chế <em>tương tác</em>, nhưng không xuất hiện - chúng chỉ có thể được sử dụng bởi các phần khác của máy chủ. Có một số loại <em>vật dẫn phản hồi</em> khác nhau, nhưng chúng ta sẽ đi qua hai loại cơ bản.</p>
+<p>1.<code><a href="https://rdrr.io/pkg/shiny/man/reactive.html">reactive()</a></code> - đây là vật dẫn phản hồi cơ bản nhất - nó sẽ phản hồi bất cứ khi nào bất kỳ đầu vào nào được sử dụng bên trong bởi nó thay đổi (các widget nhóm/nhóm tuổi)<br>
+2. <code><a href="https://rdrr.io/pkg/shiny/man/observeEvent.html">eventReactive()</a></code> - vật dẫn phản hồi này hoạt động giống với <code><a href="https://rdrr.io/pkg/shiny/man/reactive.html">reactive()</a></code>, ngoại trừ người dùng có thể quy định các đầu vào nào khiến nó tiến hành chạy lại. Cách này rất hữu ích nếu vật dẫn phản hồi của bạn mất nhiều thời gian để xử lý, nhưng chúng tôi sẽ giải thích rõ hơn ở phần sau</p>
+<p>Hãy xem hai ví dụ:</p>
+<div class="sourceCode" id="cb1860"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">malaria_plot_r</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/reactive.html">reactive</a></span><span class="op">(</span><span class="op">{</span>
+  
+  <span class="fu">plot_epicurve</span><span class="op">(</span><span class="va">malaria_data</span>, district <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">select_district</span>, agegroup <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">select_agegroup</span><span class="op">)</span>
+  
+<span class="op">}</span><span class="op">)</span>
+
+
+<span class="co"># only runs when the district selector changes!</span>
+<span class="va">malaria_plot_er</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/observeEvent.html">eventReactive</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">select_district</span>, <span class="op">{</span>
+  
+  <span class="fu">plot_epicurve</span><span class="op">(</span><span class="va">malaria_data</span>, district <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">select_district</span>, agegroup <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">select_agegroup</span><span class="op">)</span>
+  
+<span class="op">}</span><span class="op">)</span></code></pre></div>
+<p>Khi chúng ta sử dụng thiết lập <code><a href="https://rdrr.io/pkg/shiny/man/observeEvent.html">eventReactive()</a></code>, chúng ta có thể chỉ định các đầu vào nào chạy đoạn code này - điều này không hữu ích với chúng ta vào lúc này, nên chúng ta có thể bỏ qua nó. Lưu ý rằng bạn có thể bao gồm nhiều đầu vào với <code><a href="https://rdrr.io/r/base/c.html">c()</a></code></p>
+<p>Hãy xem cách chúng ta có thể tích hợp vào code máy chủ:</p>
+<div class="sourceCode" id="cb1861"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">server</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span>, <span class="va">session</span><span class="op">)</span> <span class="op">{</span>
+  
+  <span class="va">malaria_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/reactive.html">reactive</a></span><span class="op">(</span><span class="op">{</span>
+    <span class="fu">plot_epicurve</span><span class="op">(</span><span class="va">malaria_data</span>, district <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">select_district</span>, agegroup <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">select_agegroup</span><span class="op">)</span>
+  <span class="op">}</span><span class="op">)</span>
+  
+  
+  
+  <span class="va">output</span><span class="op">$</span><span class="va">malaria_epicurve</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/renderPlot.html">renderPlot</a></span><span class="op">(</span>
+    <span class="fu">malaria_plot</span><span class="op">(</span><span class="op">)</span>
+  <span class="op">)</span>
+  
+  <span class="va">output</span><span class="op">$</span><span class="va">download_epicurve</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/downloadHandler.html">downloadHandler</a></span><span class="op">(</span>
+    
+    filename <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span>
+      <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue</a></span><span class="op">(</span><span class="st">"malaria_epicurve_{input$select_district}.png"</span><span class="op">)</span>
+    <span class="op">}</span>,
+    
+    content <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">file</span><span class="op">)</span> <span class="op">{</span>
+      <span class="fu">ggsave</span><span class="op">(</span><span class="va">file</span>, 
+             <span class="fu">malaria_plot</span><span class="op">(</span><span class="op">)</span>,
+             width <span class="op">=</span> <span class="fl">8</span>, height <span class="op">=</span> <span class="fl">5</span>, dpi <span class="op">=</span> <span class="fl">300</span><span class="op">)</span>
+    <span class="op">}</span>
+    
+  <span class="op">)</span>
+  
+<span class="op">}</span></code></pre></div>
+<p>Bạn có thể thấy chúng ta chỉ cần gọi đầu ra của phản hồi mà chúng ta đã xác định trong cả hai hàm tải xuống và tạo biểu đồ. Một điều cần lưu ý là bạn phải sử dụng các đầu ra của các phản hồi như thể chúng là các hàm - vì vậy bạn <em>phải thêm dấu đơn ngoặc trống ở cuối chúng</em> (tức là <code>malaria_plot()</code> là chính xác, còn <code>malaria_plot</code> thì không). Bây giờ khi chúng ta đã thêm giải pháp này, ứng dụng của chúng ta trở nên gọn gẽ hơn, nhanh hơn và dễ thay đổi hơn vì tất cả các code chạy hàm epicurve đều ở một nơi.</p>
+<div class="inline-figure"><img src="images/shiny/download_button_view.png" width="457"></div>
+</div>
+<div id="thêm-bộ-chọn-cơ-sở-y-tế" class="section level3 unnumbered">
+<h3>Thêm bộ chọn cơ sở y tế<a class="anchor" aria-label="anchor" href="#th%C3%AAm-b%E1%BB%99-ch%E1%BB%8Dn-c%C6%A1-s%E1%BB%9F-y-t%E1%BA%BF"><i class="fas fa-link"></i></a>
+</h3>
+<p>Hãy chuyển sang tính năng tiếp theo của chúng ta - một bộ chọn cho các cơ sở cụ thể. Chúng ta sẽ thêm một tham số khác vào hàm của mình để có thể biến nó thành đối số từ code của chúng ta. Trước tiên, hãy xem việc thực hiện điều này - nó chỉ hoạt động theo các nguyên tắc tương tự như các tham số khác mà chúng ta đã thiết lập. Hãy cập nhật và kiểm tra hàm của chúng ta.</p>
+<div class="sourceCode" id="cb1862"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">plot_epicurve</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span>, <span class="va">district</span> <span class="op">=</span> <span class="st">"All"</span>, <span class="va">agegroup</span> <span class="op">=</span> <span class="st">"malaria_tot"</span>, <span class="va">facility</span> <span class="op">=</span> <span class="st">"All"</span><span class="op">)</span> <span class="op">{</span>
+  
+  <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="op">(</span><span class="st">"All"</span> <span class="op">%in%</span> <span class="va">district</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+    <span class="va">data</span> <span class="op">&lt;-</span> <span class="va">data</span> <span class="op">%&gt;%</span>
+      <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">District</span> <span class="op">%in%</span> <span class="va">district</span><span class="op">)</span>
+    
+    <span class="va">plot_title_district</span> <span class="op">&lt;-</span> <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue</a></span><span class="op">(</span><span class="st">"{paste0(district, collapse = ', ')} districts"</span><span class="op">)</span>
+    
+  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
+    
+    <span class="va">plot_title_district</span> <span class="op">&lt;-</span> <span class="st">"all districts"</span>
+    
+  <span class="op">}</span>
+  
+  <span class="co"># if no remaining data, return NULL</span>
+  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span>
+    
+    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="cn">NULL</span><span class="op">)</span>
+  <span class="op">}</span>
+  
+  <span class="va">data</span> <span class="op">&lt;-</span> <span class="va">data</span> <span class="op">%&gt;%</span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">age_group</span> <span class="op">==</span> <span class="va">agegroup</span><span class="op">)</span>
+  
+  
+  <span class="co"># if no remaining data, return NULL</span>
+  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span>
+    
+    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="cn">NULL</span><span class="op">)</span>
+  <span class="op">}</span>
+  
+  <span class="kw">if</span> <span class="op">(</span><span class="va">agegroup</span> <span class="op">==</span> <span class="st">"malaria_tot"</span><span class="op">)</span> <span class="op">{</span>
+      <span class="va">agegroup_title</span> <span class="op">&lt;-</span> <span class="st">"All ages"</span>
+  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
+    <span class="va">agegroup_title</span> <span class="op">&lt;-</span> <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue</a></span><span class="op">(</span><span class="st">"{str_remove(agegroup, 'malaria_rdt')} years"</span><span class="op">)</span>
+  <span class="op">}</span>
+  
+    <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="op">(</span><span class="st">"All"</span> <span class="op">%in%</span> <span class="va">facility</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+    <span class="va">data</span> <span class="op">&lt;-</span> <span class="va">data</span> <span class="op">%&gt;%</span>
+      <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">location_name</span> <span class="op">==</span> <span class="va">facility</span><span class="op">)</span>
+    
+    <span class="va">plot_title_facility</span> <span class="op">&lt;-</span> <span class="va">facility</span>
+    
+  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
+    
+    <span class="va">plot_title_facility</span> <span class="op">&lt;-</span> <span class="st">"all facilities"</span>
+    
+  <span class="op">}</span>
+  
+  <span class="co"># if no remaining data, return NULL</span>
+  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span>
+    
+    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="cn">NULL</span><span class="op">)</span>
+  <span class="op">}</span>
+
+  
+  
+  <span class="fu">ggplot</span><span class="op">(</span><span class="va">data</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">data_date</span>, y <span class="op">=</span> <span class="va">cases_reported</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu">geom_col</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">1</span>, fill <span class="op">=</span> <span class="st">"darkred"</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu">labs</span><span class="op">(</span>
+      x <span class="op">=</span> <span class="st">"date"</span>,
+      y <span class="op">=</span> <span class="st">"number of cases"</span>,
+      title <span class="op">=</span> <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue</a></span><span class="op">(</span><span class="st">"Malaria cases - {plot_title_district}; {plot_title_facility}"</span><span class="op">)</span>,
+      subtitle <span class="op">=</span> <span class="va">agegroup_title</span>
+    <span class="op">)</span>
+  
+  
+  
+<span class="op">}</span></code></pre></div>
+<p>Hãy kiểm tra nó:</p>
+<div class="sourceCode" id="cb1863"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">plot_epicurve</span><span class="op">(</span><span class="va">malaria_data</span>, district <span class="op">=</span> <span class="st">"Spring"</span>, agegroup <span class="op">=</span> <span class="st">"malaria_rdt_0-4"</span>, facility <span class="op">=</span> <span class="st">"Facility 1"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="_main_files/figure-html/unnamed-chunk-1461-1.png" width="672"></div>
+<p>Với tất cả các cơ sở trong dữ liệu của chúng ta, sẽ khó để biết cơ sở nào tương ứng với các quận nào - và người dùng cuối cũng sẽ không biết. Điều này có thể làm cho việc sử dụng ứng dụng trở nên không trực quan. Vì lý do này, chúng ta nên làm cho các tùy chọn cơ sở trong UI thay đổi động khi người dùng thay đổi khu vực - để cái này lọc cái kia! Vì chúng ta có rất nhiều biến đang sử dụng trong các tùy chọn, chúng ta cũng có thể muốn tạo một số tùy chọn cho ui trong tệp <em>global.R</em> <em>từ số liệu</em>. Ví dụ: chúng ta có thể thêm đoạn code này vào <em>global.R</em> sau khi đọc dữ liệu của mình:</p>
+<div class="sourceCode" id="cb1864"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">all_districts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"All"</span>, <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">malaria_data</span><span class="op">$</span><span class="va">District</span><span class="op">)</span><span class="op">)</span>
+
+<span class="co"># data frame of location names by district</span>
+<span class="va">facility_list</span> <span class="op">&lt;-</span> <span class="va">malaria_data</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">location_name</span>, <span class="va">District</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<p>Hãy xem chúng:</p>
+<div class="sourceCode" id="cb1865"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">all_districts</span></code></pre></div>
+<pre><code>## [1] "All"     "Spring"  "Bolo"    "Dingo"   "Barnard"</code></pre>
+<div class="sourceCode" id="cb1867"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">facility_list</span></code></pre></div>
+<pre><code>## # A tibble: 65 x 2
+##    location_name District
+##    &lt;chr&gt;         &lt;chr&gt;   
+##  1 Facility 1    Spring  
+##  2 Facility 10   Bolo    
+##  3 Facility 11   Spring  
+##  4 Facility 12   Dingo   
+##  5 Facility 13   Bolo    
+##  6 Facility 14   Dingo   
+##  7 Facility 15   Barnard 
+##  8 Facility 16   Barnard 
+##  9 Facility 17   Barnard 
+## 10 Facility 18   Bolo    
+## # ... with 55 more rows</code></pre>
+<p>Chúng ta có thể chuyển các biến mới này tới giao diện người dùng mà không gặp bất kỳ vấn đề gì, vì chúng được hiển thị trên toàn bộ cả server và ui! Hãy cập nhật UI của chúng ta:</p>
+<div class="sourceCode" id="cb1869"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html">fluidPage</a></span><span class="op">(</span>
+
+  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/titlePanel.html">titlePanel</a></span><span class="op">(</span><span class="st">"Malaria facility visualisation app"</span><span class="op">)</span>,
+
+  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html">sidebarLayout</a></span><span class="op">(</span>
+
+    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html">sidebarPanel</a></span><span class="op">(</span>
+         <span class="co"># selector for district</span>
+         <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/selectInput.html">selectInput</a></span><span class="op">(</span>
+              inputId <span class="op">=</span> <span class="st">"select_district"</span>,
+              label <span class="op">=</span> <span class="st">"Select district"</span>,
+              choices <span class="op">=</span> <span class="va">all_districts</span>,
+              selected <span class="op">=</span> <span class="st">"All"</span>,
+              multiple <span class="op">=</span> <span class="cn">FALSE</span>
+         <span class="op">)</span>,
+         <span class="co"># selector for age group</span>
+         <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/selectInput.html">selectInput</a></span><span class="op">(</span>
+              inputId <span class="op">=</span> <span class="st">"select_agegroup"</span>,
+              label <span class="op">=</span> <span class="st">"Select age group"</span>,
+              choices <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
+                   <span class="st">"All ages"</span> <span class="op">=</span> <span class="st">"malaria_tot"</span>,
+                   <span class="st">"0-4 yrs"</span> <span class="op">=</span> <span class="st">"malaria_rdt_0-4"</span>,
+                   <span class="st">"5-14 yrs"</span> <span class="op">=</span> <span class="st">"malaria_rdt_5-14"</span>,
+                   <span class="st">"15+ yrs"</span> <span class="op">=</span> <span class="st">"malaria_rdt_15"</span>
+              <span class="op">)</span>, 
+              selected <span class="op">=</span> <span class="st">"All"</span>,
+              multiple <span class="op">=</span> <span class="cn">FALSE</span>
+         <span class="op">)</span>,
+         <span class="co"># selector for facility</span>
+         <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/selectInput.html">selectInput</a></span><span class="op">(</span>
+           inputId <span class="op">=</span> <span class="st">"select_facility"</span>,
+           label <span class="op">=</span> <span class="st">"Select Facility"</span>,
+           choices <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"All"</span>, <span class="va">facility_list</span><span class="op">$</span><span class="va">location_name</span><span class="op">)</span>,
+           selected <span class="op">=</span> <span class="st">"All"</span>
+         <span class="op">)</span>,
+         
+         <span class="co"># horizontal line</span>
+         <span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/builder.html">hr</a></span><span class="op">(</span><span class="op">)</span>,
+         <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/downloadButton.html">downloadButton</a></span><span class="op">(</span>
+           outputId <span class="op">=</span> <span class="st">"download_epicurve"</span>,
+           label <span class="op">=</span> <span class="st">"Download plot"</span>
+         <span class="op">)</span>
+
+    <span class="op">)</span>,
+
+    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html">mainPanel</a></span><span class="op">(</span>
+      <span class="co"># epicurve goes here</span>
+      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/plotOutput.html">plotOutput</a></span><span class="op">(</span><span class="st">"malaria_epicurve"</span><span class="op">)</span>,
+      <span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/builder.html">br</a></span><span class="op">(</span><span class="op">)</span>,
+      <span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/builder.html">hr</a></span><span class="op">(</span><span class="op">)</span>,
+      <span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/builder.html">p</a></span><span class="op">(</span><span class="st">"Welcome to the malaria facility visualisation app! To use this app, manipulate the widgets on the side to change the epidemic curve according to your preferences! To download a high quality image of the plot you've created, you can also download it with the download button. To see the raw data, use the raw data tab for an interactive form of the table. The data dictionary is as follows:"</span><span class="op">)</span>,
+      <span class="va">tags</span><span class="op">$</span><span class="fu">ul</span><span class="op">(</span>
+        <span class="va">tags</span><span class="op">$</span><span class="fu">li</span><span class="op">(</span><span class="va">tags</span><span class="op">$</span><span class="fu">b</span><span class="op">(</span><span class="st">"location_name"</span><span class="op">)</span>, <span class="st">" - the facility that the data were collected at"</span><span class="op">)</span>,
+        <span class="va">tags</span><span class="op">$</span><span class="fu">li</span><span class="op">(</span><span class="va">tags</span><span class="op">$</span><span class="fu">b</span><span class="op">(</span><span class="st">"data_date"</span><span class="op">)</span>, <span class="st">" - the date the data were collected at"</span><span class="op">)</span>,
+        <span class="va">tags</span><span class="op">$</span><span class="fu">li</span><span class="op">(</span><span class="va">tags</span><span class="op">$</span><span class="fu">b</span><span class="op">(</span><span class="st">"submitted_daate"</span><span class="op">)</span>, <span class="st">" - the date the data were submitted at"</span><span class="op">)</span>,
+        <span class="va">tags</span><span class="op">$</span><span class="fu">li</span><span class="op">(</span><span class="va">tags</span><span class="op">$</span><span class="fu">b</span><span class="op">(</span><span class="st">"Province"</span><span class="op">)</span>, <span class="st">" - the province the data were collected at (all 'North' for this dataset)"</span><span class="op">)</span>,
+        <span class="va">tags</span><span class="op">$</span><span class="fu">li</span><span class="op">(</span><span class="va">tags</span><span class="op">$</span><span class="fu">b</span><span class="op">(</span><span class="st">"District"</span><span class="op">)</span>, <span class="st">" - the district the data were collected at"</span><span class="op">)</span>,
+        <span class="va">tags</span><span class="op">$</span><span class="fu">li</span><span class="op">(</span><span class="va">tags</span><span class="op">$</span><span class="fu">b</span><span class="op">(</span><span class="st">"age_group"</span><span class="op">)</span>, <span class="st">" - the age group the data were collected for (0-5, 5-14, 15+, and all ages)"</span><span class="op">)</span>,
+        <span class="va">tags</span><span class="op">$</span><span class="fu">li</span><span class="op">(</span><span class="va">tags</span><span class="op">$</span><span class="fu">b</span><span class="op">(</span><span class="st">"cases_reported"</span><span class="op">)</span>, <span class="st">" - the number of cases reported for the facility/age group on the given date"</span><span class="op">)</span>
+      <span class="op">)</span>
+      
+    <span class="op">)</span>
+    
+  <span class="op">)</span>
+<span class="op">)</span></code></pre></div>
+<p>Lưu ý cách chúng ta hiện đang chuyển các biến cho các lựa chọn thay vì mã hóa cứng chúng trong ui! Điều này cũng có thể làm cho code của chúng ta nhỏ gọn hơn! Cuối cùng, chúng ta sẽ phải cập nhật máy chủ. Sẽ dễ dàng cập nhật hàm của chúng ta để kết hợp với đầu vào mới (chúng ta chỉ cần chuyển nó làm đối số cho tham số mới), nhưng nên nhớ rằng chúng ta cũng muốn ui cập nhật khi người dùng thay đổi khu vực đã chọn. Điều quan trọng cần hiểu ở đây là chúng ta <em>có thể thay đổi các tham số và đặc tính của widget</em> trong khi ứng dụng đang chạy, nhưng điều này cần được thực hiện <em>trên máy chủ</em>. Chúng ta cần tìm hiểu một cách mới để xuất ra máy chủ.</p>
+<p>Các hàm chúng ta cần hiểu cách thực hiện điều này được gọi là các hàm <em>observer (trình quan sát)</em> và tương tự như các hàm <em>reactive (phản ứng)</em> về cách chúng hoạt động. Tuy nhiên, chúng có một điểm khác biệt chính:</p>
+<ul>
+<li>Các hàm phản ứng không ảnh hưởng trực tiếp đến kết quả đầu ra và tạo ra các đối tượng có thể được nhìn thấy ở các vị trí khác trong máy chủ<br>
+</li>
+<li>Các hàm quan sát <em>có thể</em> ảnh hưởng đến kết quả đầu ra của máy chủ, nhưng làm như vậy thông qua các hiệu ứng bên ngoài của các hàm khác. (Chúng cũng có thể làm những việc khác, nhưng đây là chức năng chính của chúng trong thực tế)</li>
+</ul>
+<p>Tương tự như các hàm phản ứng, có hai loại của các hàm quan sát và chúng được phân chia theo cùng một logic phân chia các hàm phản ứng:</p>
+<ol style="list-style-type: decimal">
+<li>
+<code><a href="https://rdrr.io/pkg/shiny/man/observe.html">observe()</a></code> - hàm này chạy bất cứ khi nào bất kỳ đầu vào nào được sử dụng bên trong nó thay đổi<br>
+</li>
+<li>
+<code><a href="https://rdrr.io/pkg/shiny/man/observeEvent.html">observeEvent()</a></code> - hàm này chạy khi đầu vào <em>do người dùng chỉ định</em> thay đổi</li>
+</ol>
+<p>Chúng ta cũng cần hiểu các hàm được shiny cung cấp giúp cập nhật các widget. Chúng khá đơn giản để chạy - trước tiên chúng lấy đối tượng <code>session</code> từ hàm máy chủ (tại thời điểm này bạn chưa cần phải hiểu), và sau đó thay đổi <code>inputId</code> của hàm. Sau đó, chúng ta chuyển các phiên bản mới của tất cả các tham số đã được lấy bởi <code><a href="https://rdrr.io/pkg/shiny/man/selectInput.html">selectInput()</a></code> - những tham số này sẽ được cập nhật tự động trong widget.</p>
+<p>Hãy xem một ví dụ riêng lẻ về cách chúng ta có thể sử dụng điều này trong máy chủ của mình. Khi người dùng thay đổi quận, chúng ta muốn lọc các cơ sở theo quận và cập nhật các lựa chọn để <em>chỉ hiển thị những cơ sở có sẵn trong quận đó</em> (và một tùy chọn cho tất cả các cơ sở)</p>
+<div class="sourceCode" id="cb1870"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/shiny/man/observe.html">observe</a></span><span class="op">(</span><span class="op">{</span>
+  
+  <span class="kw">if</span> <span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">select_district</span> <span class="op">==</span> <span class="st">"All"</span><span class="op">)</span> <span class="op">{</span>
+    <span class="va">new_choices</span> <span class="op">&lt;-</span> <span class="va">facility_list</span><span class="op">$</span><span class="va">location_name</span>
+  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
+    <span class="va">new_choices</span> <span class="op">&lt;-</span> <span class="va">facility_list</span> <span class="op">%&gt;%</span>
+      <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">District</span> <span class="op">==</span> <span class="va">input</span><span class="op">$</span><span class="va">select_district</span><span class="op">)</span> <span class="op">%&gt;%</span>
+      <span class="fu">pull</span><span class="op">(</span><span class="va">location_name</span><span class="op">)</span>
+  <span class="op">}</span>
+  
+  <span class="va">new_choices</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"All"</span>, <span class="va">new_choices</span><span class="op">)</span>
+  
+  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/updateSelectInput.html">updateSelectInput</a></span><span class="op">(</span><span class="va">session</span>, inputId <span class="op">=</span> <span class="st">"select_facility"</span>,
+                    choices <span class="op">=</span> <span class="va">new_choices</span><span class="op">)</span>
+  
+<span class="op">}</span><span class="op">)</span></code></pre></div>
+<p>Vậy đó! Chúng ta có thể thêm nó vào máy chủ và đặc tính đó bây giờ sẽ hoạt động. Đây là giao diện máy chủ mới của chúng ta:</p>
+<div class="sourceCode" id="cb1871"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">server</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span>, <span class="va">session</span><span class="op">)</span> <span class="op">{</span>
+  
+  <span class="va">malaria_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/reactive.html">reactive</a></span><span class="op">(</span><span class="op">{</span>
+    <span class="fu">plot_epicurve</span><span class="op">(</span><span class="va">malaria_data</span>, district <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">select_district</span>, agegroup <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">select_agegroup</span>, facility <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">select_facility</span><span class="op">)</span>
+  <span class="op">}</span><span class="op">)</span>
+  
+  
+  
+  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/observe.html">observe</a></span><span class="op">(</span><span class="op">{</span>
+    
+    <span class="kw">if</span> <span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">select_district</span> <span class="op">==</span> <span class="st">"All"</span><span class="op">)</span> <span class="op">{</span>
+      <span class="va">new_choices</span> <span class="op">&lt;-</span> <span class="va">facility_list</span><span class="op">$</span><span class="va">location_name</span>
+    <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
+      <span class="va">new_choices</span> <span class="op">&lt;-</span> <span class="va">facility_list</span> <span class="op">%&gt;%</span>
+        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">District</span> <span class="op">==</span> <span class="va">input</span><span class="op">$</span><span class="va">select_district</span><span class="op">)</span> <span class="op">%&gt;%</span>
+        <span class="fu">pull</span><span class="op">(</span><span class="va">location_name</span><span class="op">)</span>
+    <span class="op">}</span>
+    
+    <span class="va">new_choices</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"All"</span>, <span class="va">new_choices</span><span class="op">)</span>
+    
+    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/updateSelectInput.html">updateSelectInput</a></span><span class="op">(</span><span class="va">session</span>, inputId <span class="op">=</span> <span class="st">"select_facility"</span>,
+                      choices <span class="op">=</span> <span class="va">new_choices</span><span class="op">)</span>
+    
+  <span class="op">}</span><span class="op">)</span>
+  
+  
+  <span class="va">output</span><span class="op">$</span><span class="va">malaria_epicurve</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/renderPlot.html">renderPlot</a></span><span class="op">(</span>
+    <span class="fu">malaria_plot</span><span class="op">(</span><span class="op">)</span>
+  <span class="op">)</span>
+  
+  <span class="va">output</span><span class="op">$</span><span class="va">download_epicurve</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/downloadHandler.html">downloadHandler</a></span><span class="op">(</span>
+    
+    filename <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span>
+      <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue</a></span><span class="op">(</span><span class="st">"malaria_epicurve_{input$select_district}.png"</span><span class="op">)</span>
+    <span class="op">}</span>,
+    
+    content <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">file</span><span class="op">)</span> <span class="op">{</span>
+      <span class="fu">ggsave</span><span class="op">(</span><span class="va">file</span>, 
+             <span class="fu">malaria_plot</span><span class="op">(</span><span class="op">)</span>,
+             width <span class="op">=</span> <span class="fl">8</span>, height <span class="op">=</span> <span class="fl">5</span>, dpi <span class="op">=</span> <span class="fl">300</span><span class="op">)</span>
+    <span class="op">}</span>
+    
+  <span class="op">)</span>
+  
+  
+  
+<span class="op">}</span></code></pre></div>
+<div class="inline-figure"><img src="images/shiny/app_menu_view.gif" width="100%"></div>
+</div>
+<div id="thêm-một-bảng-vào-một-tab-khác" class="section level3 unnumbered">
+<h3>Thêm một bảng vào một tab khác<a class="anchor" aria-label="anchor" href="#th%C3%AAm-m%E1%BB%99t-b%E1%BA%A3ng-v%C3%A0o-m%E1%BB%99t-tab-kh%C3%A1c"><i class="fas fa-link"></i></a>
+</h3>
+<p>Bây giờ chúng ta sẽ chuyển sang thành phần cuối cùng mà chúng ta muốn thêm vào ứng dụng của mình. Chúng ta sẽ muốn tách giao diện thành hai tab, trong đó 1 tab sẽ hiện thị một bảng tương tác nơi người dùng có thể xem dữ liệu mà họ đang tạo đường cong dịch bệnh. Để làm điều này, chúng ta có thể sử dụng các phần tử giao diện được đóng gói sẵn đi kèm với các tab shiny có liên quan. Ở cấp độ cơ bản, chúng ta có thể bao gồm hầu hết cửa sổ chính trong cấu trúc chung này:</p>
+<div class="sourceCode" id="cb1872"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># ... the rest of ui</span>
+
+<span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html">mainPanel</a></span><span class="op">(</span>
+  
+  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/tabsetPanel.html">tabsetPanel</a></span><span class="op">(</span>
+    type <span class="op">=</span> <span class="st">"tabs"</span>,
+    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/tabPanel.html">tabPanel</a></span><span class="op">(</span>
+      <span class="st">"Epidemic Curves"</span>,
+      <span class="va">...</span>
+    <span class="op">)</span>,
+    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/tabPanel.html">tabPanel</a></span><span class="op">(</span>
+      <span class="st">"Data"</span>,
+      <span class="va">...</span>
+    <span class="op">)</span>
+  <span class="op">)</span>
+<span class="op">)</span></code></pre></div>
+<p>Bây giờ hãy áp dụng nó vào giao diện. Chúng ta sẽ sử dụng package <strong>DT</strong> ở đây - đây là một package tuyệt vời để tạo bảng tương tác từ dữ liệu có sẵn. Chúng ta có thể thấy nó được sử dụng cho <code>DT::datatableOutput()</code> trong ví dụ này.</p>
+<div class="sourceCode" id="cb1873"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html">fluidPage</a></span><span class="op">(</span>
+     
+     <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/titlePanel.html">titlePanel</a></span><span class="op">(</span><span class="st">"Malaria facility visualisation app"</span><span class="op">)</span>,
+     
+     <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html">sidebarLayout</a></span><span class="op">(</span>
+          
+          <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html">sidebarPanel</a></span><span class="op">(</span>
+               <span class="co"># selector for district</span>
+               <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/selectInput.html">selectInput</a></span><span class="op">(</span>
+                    inputId <span class="op">=</span> <span class="st">"select_district"</span>,
+                    label <span class="op">=</span> <span class="st">"Select district"</span>,
+                    choices <span class="op">=</span> <span class="va">all_districts</span>,
+                    selected <span class="op">=</span> <span class="st">"All"</span>,
+                    multiple <span class="op">=</span> <span class="cn">FALSE</span>
+               <span class="op">)</span>,
+               <span class="co"># selector for age group</span>
+               <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/selectInput.html">selectInput</a></span><span class="op">(</span>
+                    inputId <span class="op">=</span> <span class="st">"select_agegroup"</span>,
+                    label <span class="op">=</span> <span class="st">"Select age group"</span>,
+                    choices <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
+                         <span class="st">"All ages"</span> <span class="op">=</span> <span class="st">"malaria_tot"</span>,
+                         <span class="st">"0-4 yrs"</span> <span class="op">=</span> <span class="st">"malaria_rdt_0-4"</span>,
+                         <span class="st">"5-14 yrs"</span> <span class="op">=</span> <span class="st">"malaria_rdt_5-14"</span>,
+                         <span class="st">"15+ yrs"</span> <span class="op">=</span> <span class="st">"malaria_rdt_15"</span>
+                    <span class="op">)</span>, 
+                    selected <span class="op">=</span> <span class="st">"All"</span>,
+                    multiple <span class="op">=</span> <span class="cn">FALSE</span>
+               <span class="op">)</span>,
+               <span class="co"># selector for facility</span>
+               <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/selectInput.html">selectInput</a></span><span class="op">(</span>
+                    inputId <span class="op">=</span> <span class="st">"select_facility"</span>,
+                    label <span class="op">=</span> <span class="st">"Select Facility"</span>,
+                    choices <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"All"</span>, <span class="va">facility_list</span><span class="op">$</span><span class="va">location_name</span><span class="op">)</span>,
+                    selected <span class="op">=</span> <span class="st">"All"</span>
+               <span class="op">)</span>,
+               
+               <span class="co"># horizontal line</span>
+               <span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/builder.html">hr</a></span><span class="op">(</span><span class="op">)</span>,
+               <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/downloadButton.html">downloadButton</a></span><span class="op">(</span>
+                    outputId <span class="op">=</span> <span class="st">"download_epicurve"</span>,
+                    label <span class="op">=</span> <span class="st">"Download plot"</span>
+               <span class="op">)</span>
+               
+          <span class="op">)</span>,
+          
+          <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html">mainPanel</a></span><span class="op">(</span>
+               <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/tabsetPanel.html">tabsetPanel</a></span><span class="op">(</span>
+                    type <span class="op">=</span> <span class="st">"tabs"</span>,
+                    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/tabPanel.html">tabPanel</a></span><span class="op">(</span>
+                         <span class="st">"Epidemic Curves"</span>,
+                         <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/plotOutput.html">plotOutput</a></span><span class="op">(</span><span class="st">"malaria_epicurve"</span><span class="op">)</span>
+                    <span class="op">)</span>,
+                    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/tabPanel.html">tabPanel</a></span><span class="op">(</span>
+                         <span class="st">"Data"</span>,
+                         <span class="fu">DT</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/DT/man/dataTableOutput.html">dataTableOutput</a></span><span class="op">(</span><span class="st">"raw_data"</span><span class="op">)</span>
+                    <span class="op">)</span>
+               <span class="op">)</span>,
+               <span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/builder.html">br</a></span><span class="op">(</span><span class="op">)</span>,
+               <span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/builder.html">hr</a></span><span class="op">(</span><span class="op">)</span>,
+               <span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/builder.html">p</a></span><span class="op">(</span><span class="st">"Welcome to the malaria facility visualisation app! To use this app, manipulate the widgets on the side to change the epidemic curve according to your preferences! To download a high quality image of the plot you've created, you can also download it with the download button. To see the raw data, use the raw data tab for an interactive form of the table. The data dictionary is as follows:"</span><span class="op">)</span>,
+               <span class="va">tags</span><span class="op">$</span><span class="fu">ul</span><span class="op">(</span>
+                    <span class="va">tags</span><span class="op">$</span><span class="fu">li</span><span class="op">(</span><span class="va">tags</span><span class="op">$</span><span class="fu">b</span><span class="op">(</span><span class="st">"location_name"</span><span class="op">)</span>, <span class="st">" - the facility that the data were collected at"</span><span class="op">)</span>,
+                    <span class="va">tags</span><span class="op">$</span><span class="fu">li</span><span class="op">(</span><span class="va">tags</span><span class="op">$</span><span class="fu">b</span><span class="op">(</span><span class="st">"data_date"</span><span class="op">)</span>, <span class="st">" - the date the data were collected at"</span><span class="op">)</span>,
+                    <span class="va">tags</span><span class="op">$</span><span class="fu">li</span><span class="op">(</span><span class="va">tags</span><span class="op">$</span><span class="fu">b</span><span class="op">(</span><span class="st">"submitted_daate"</span><span class="op">)</span>, <span class="st">" - the date the data were submitted at"</span><span class="op">)</span>,
+                    <span class="va">tags</span><span class="op">$</span><span class="fu">li</span><span class="op">(</span><span class="va">tags</span><span class="op">$</span><span class="fu">b</span><span class="op">(</span><span class="st">"Province"</span><span class="op">)</span>, <span class="st">" - the province the data were collected at (all 'North' for this dataset)"</span><span class="op">)</span>,
+                    <span class="va">tags</span><span class="op">$</span><span class="fu">li</span><span class="op">(</span><span class="va">tags</span><span class="op">$</span><span class="fu">b</span><span class="op">(</span><span class="st">"District"</span><span class="op">)</span>, <span class="st">" - the district the data were collected at"</span><span class="op">)</span>,
+                    <span class="va">tags</span><span class="op">$</span><span class="fu">li</span><span class="op">(</span><span class="va">tags</span><span class="op">$</span><span class="fu">b</span><span class="op">(</span><span class="st">"age_group"</span><span class="op">)</span>, <span class="st">" - the age group the data were collected for (0-5, 5-14, 15+, and all ages)"</span><span class="op">)</span>,
+                    <span class="va">tags</span><span class="op">$</span><span class="fu">li</span><span class="op">(</span><span class="va">tags</span><span class="op">$</span><span class="fu">b</span><span class="op">(</span><span class="st">"cases_reported"</span><span class="op">)</span>, <span class="st">" - the number of cases reported for the facility/age group on the given date"</span><span class="op">)</span>
+               <span class="op">)</span>
+               
+               
+          <span class="op">)</span>
+     <span class="op">)</span>
+<span class="op">)</span></code></pre></div>
+<p>Bây giờ ứng dụng của chúng ta được sắp xếp thành các tab! Hãy thực hiện các chỉnh sửa cần thiết đối với máy chủ. Vì chúng ta không cần phải thao tác với dữ liệu trước khi kết xuất nên điều này thực sự rất đơn giản - chúng ta chỉ cần kết xuất bộ dữ liệu malaria_data qua DT::renderDT() tới ui!</p>
+<div class="sourceCode" id="cb1874"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">server</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span>, <span class="va">session</span><span class="op">)</span> <span class="op">{</span>
+  
+  <span class="va">malaria_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/reactive.html">reactive</a></span><span class="op">(</span><span class="op">{</span>
+    <span class="fu">plot_epicurve</span><span class="op">(</span><span class="va">malaria_data</span>, district <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">select_district</span>, agegroup <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">select_agegroup</span>, facility <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">select_facility</span><span class="op">)</span>
+  <span class="op">}</span><span class="op">)</span>
+  
+  
+  
+  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/observe.html">observe</a></span><span class="op">(</span><span class="op">{</span>
+    
+    <span class="kw">if</span> <span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">select_district</span> <span class="op">==</span> <span class="st">"All"</span><span class="op">)</span> <span class="op">{</span>
+      <span class="va">new_choices</span> <span class="op">&lt;-</span> <span class="va">facility_list</span><span class="op">$</span><span class="va">location_name</span>
+    <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
+      <span class="va">new_choices</span> <span class="op">&lt;-</span> <span class="va">facility_list</span> <span class="op">%&gt;%</span>
+        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">District</span> <span class="op">==</span> <span class="va">input</span><span class="op">$</span><span class="va">select_district</span><span class="op">)</span> <span class="op">%&gt;%</span>
+        <span class="fu">pull</span><span class="op">(</span><span class="va">location_name</span><span class="op">)</span>
+    <span class="op">}</span>
+    
+    <span class="va">new_choices</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"All"</span>, <span class="va">new_choices</span><span class="op">)</span>
+    
+    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/updateSelectInput.html">updateSelectInput</a></span><span class="op">(</span><span class="va">session</span>, inputId <span class="op">=</span> <span class="st">"select_facility"</span>,
+                      choices <span class="op">=</span> <span class="va">new_choices</span><span class="op">)</span>
+    
+  <span class="op">}</span><span class="op">)</span>
+  
+  
+  <span class="va">output</span><span class="op">$</span><span class="va">malaria_epicurve</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/renderPlot.html">renderPlot</a></span><span class="op">(</span>
+    <span class="fu">malaria_plot</span><span class="op">(</span><span class="op">)</span>
+  <span class="op">)</span>
+  
+  <span class="va">output</span><span class="op">$</span><span class="va">download_epicurve</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/downloadHandler.html">downloadHandler</a></span><span class="op">(</span>
+    
+    filename <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span>
+      <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue</a></span><span class="op">(</span><span class="st">"malaria_epicurve_{input$select_district}.png"</span><span class="op">)</span>
+    <span class="op">}</span>,
+    
+    content <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">file</span><span class="op">)</span> <span class="op">{</span>
+      <span class="fu">ggsave</span><span class="op">(</span><span class="va">file</span>, 
+             <span class="fu">malaria_plot</span><span class="op">(</span><span class="op">)</span>,
+             width <span class="op">=</span> <span class="fl">8</span>, height <span class="op">=</span> <span class="fl">5</span>, dpi <span class="op">=</span> <span class="fl">300</span><span class="op">)</span>
+    <span class="op">}</span>
+    
+  <span class="op">)</span>
+  
+  <span class="co"># render data table to ui</span>
+  <span class="va">output</span><span class="op">$</span><span class="va">raw_data</span> <span class="op">&lt;-</span> <span class="fu">DT</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/DT/man/dataTableOutput.html">renderDT</a></span><span class="op">(</span>
+    <span class="va">malaria_data</span>
+  <span class="op">)</span>
+  
+  
+<span class="op">}</span></code></pre></div>
+<div class="inline-figure"><img src="images/shiny/app_table_view.gif" width="100%"></div>
+</div>
+</div>
+<div id="chia-sẻ-các-ứng-dụng-shiny" class="section level2" number="43.7">
+<h2>
+<span class="header-section-number">43.7</span> Chia sẻ các ứng dụng shiny<a class="anchor" aria-label="anchor" href="#chia-s%E1%BA%BB-c%C3%A1c-%E1%BB%A9ng-d%E1%BB%A5ng-shiny"><i class="fas fa-link"></i></a>
+</h2>
+<p>Sau khi bạn đã phát triển ứng dụng của riêng mình, bạn có thể muốn chia sẻ nó với những người khác - đây là lợi thế lớn nhất của shiny! Chúng ta có thể làm điều này bằng cách chia sẻ trực tiếp code hoặc chúng ta có thể xuất bản nó trên một máy chủ. Nếu chúng ta chia sẻ code, những người khác sẽ có thể thấy những gì bạn đã làm và xây dựng trên nó, nhưng điều này sẽ làm mất đi một trong những lợi thế chính của shiny - <em>loại bỏ nhu cầu của người dùng cuối việc phải duy trì cài đặt R</em> . Vì lý do này, nếu bạn đang chia sẻ ứng dụng của mình với những người dùng không cảm thấy thoải mái với R, thì việc chia sẻ ứng dụng đã được xuất bản trên máy chủ sẽ dễ dàng hơn nhiều.</p>
+<p>Nếu muốn chia sẻ code, bạn có thể tạo tệp .zip của ứng dụng hoặc tốt hơn, <em>xuất bản ứng dụng của bạn trên github và thêm cộng tác viên.</em> Bạn có thể tham khảo thêm cách thực hiện trên github tại đây.</p>
+<p>Tuy nhiên, nếu chúng ta xuất bản ứng dụng trực tuyến, chúng ta cần phải làm thêm một số bước nữa. Mục đích cuối cùng là bạn muốn ứng dụng của bạn có thể được truy cập qua URL web để những người khác có thể truy cập nhanh chóng và dễ dàng. Thật không may, để xuất bản ứng dụng của bạn trên một máy chủ, bạn cần có quyền truy cập vào một máy chủ để xuất bản nó! Có một số tùy chọn lưu trữ khi nói đến điều này:</p>
+<ul>
+<li><p><em>shinyapps.io</em>: đây là nơi dễ dàng nhất để xuất bản các ứng dụng shiny, vì bạn không cần thực hiện nhiều các tinh chỉnh cấu hình cần thiết và có một số giấy phép miễn phí nhưng có giới hạn.</p></li>
+<li><p><em>RStudio Connect</em>: đây là phiên bản mạnh hơn nhiều của máy chủ R, có thể thực hiện nhiều hoạt động, bao gồm cả xuất bản các ứng dụng shiny. Tuy nhiên, nó khó sử dụng hơn và ít được khuyến khích cho người dùng lần đầu.</p></li>
+</ul>
+<p>Đối với mục đích của tài liệu này, chúng tôi sẽ sử dụng <em>shinyapps.io</em>, vì nó dễ dàng hơn cho người dùng mới. Bạn có thể tạo một tài khoản miễn phí tại đây để bắt đầu - cũng có các gói giá khác nhau cho giấy phép máy chủ nếu cần. Nếu bạn mong đợi có nhiều người sử dụng ứng dụng của bạn, gói giá sẽ đắt hơn, vì vậy hãy cân nhắc kỹ điều này. Nếu bạn đang muốn tạo thứ gì đó cho một nhóm nhỏ cá nhân sử dụng, một giấy phép miễn phí có thể hoàn toàn phù hợp, nhưng một ứng dụng công khai có thể cần nhiều giấy phép hơn.</p>
+<p>Trước hết nên đảm bảo rằng ứng dụng của chúng ta phù hợp để xuất bản trên máy chủ. Bên trong ứng dụng, bạn nên khởi động lại phiên R và đảm bảo rằng nó chạy tốt mà không cần chạy thêm bất kỳ code nào. Điều này rất quan trọng vì một ứng dụng yêu cầu tải package hoặc đọc dữ liệu không được xác định sẽ không chạy được trên máy chủ. Bạn cũng cần lưu ý rằng bạn không thể sử dụng các đường dẫn tệp <em>đặc trưng</em> trong ứng dụng của mình - những đường dẫn này sẽ không hợp lệ trong cài đặt máy chủ - sử dụng package <code>here</code> sẽ giải quyết vấn đề này một cách triệt để. Cuối cùng, nếu bạn đang đọc dữ liệu từ một nguồn yêu cầu xác thực người dùng, chẳng hạn như máy chủ của tổ chức của bạn, thông thường nó sẽ không hoạt động trên máy chủ. Bạn sẽ cần phải làm việc với bộ phận IT (Công nghệ Thông tin) của mình để tìm ra cách đưa máy chủ shiny vào whitelist tại đây.</p>
+<p><em>đăng ký tài khoản</em></p>
+<p>Sau khi có tài khoản của mình, bạn có thể điều hướng đến trang mã đăng nhập (tokens) trong <em>Accounts</em>. Tại đây, bạn sẽ thêm mã đăng nhập mới - mã này sẽ được sử dụng để triển khai ứng dụng của bạn.</p>
+<p>Từ đây, bạn nên lưu ý rằng url của tài khoản sẽ hiển thị tên ứng dụng của bạn - vì vậy nếu ứng dụng của bạn có tên là <em>my_app</em>, url sẽ được thêm vào là <em>xxx.io/my_app/</em>. Hãy chọn tên ứng dụng của bạn một cách khôn ngoan! Khi bạn đã sẵn sàng, hãy nhấp vào triển khai (deploy) - nếu thành công, điều này sẽ chạy ứng dụng của bạn trên url web bạn đã chọn!</p>
+<p><em>something on making apps in documents?</em></p>
+</div>
+<div id="đọc-thêm" class="section level2" number="43.8">
+<h2>
+<span class="header-section-number">43.8</span> Đọc thêm<a class="anchor" aria-label="anchor" href="#%C4%91%E1%BB%8Dc-th%C3%AAm"><i class="fas fa-link"></i></a>
+</h2>
+<p>Cho tới đây, chúng tôi đã đề cập rất nhiều khía cạnh của shiny, và hầu như không đi sâu vào những gì được cung cấp bởi shiny. Hướng dẫn này có chức năng như một phần giới thiệu, còn rất nhiều thứ nữa bạn phải học để hiểu đầy đủ về shiny. Bạn nên bắt đầu bằng cách tạo một ứng dụng cơ bản và dần dần thêm các chức năng cho nó.</p>
+</div>
+<div id="các-packages-mở-rộng-được-đề-xuất" class="section level2" number="43.9">
+<h2>
+<span class="header-section-number">43.9</span> Các packages mở rộng được đề xuất<a class="anchor" aria-label="anchor" href="#c%C3%A1c-packages-m%E1%BB%9F-r%E1%BB%99ng-%C4%91%C6%B0%E1%BB%A3c-%C4%91%E1%BB%81-xu%E1%BA%A5t"><i class="fas fa-link"></i></a>
+</h2>
+<p>Những đề xuất dưới đây đại diện cho một số shiny extension chất lượng cao. Chúng tôi không sắp xếp chúng theo thứ tự đặc biệt nào cả:</p>
+<ul>
+<li><p><strong>shinyWidgets</strong> - package này cung cấp cho bạn rất nhiều widget có thể được sử dụng trong ứng dụng của bạn. Chạy <code><a href="https://rdrr.io/pkg/shinyWidgets/man/shinyWidgetsGallery.html">shinyWidgets::shinyWidgetsGallery()</a></code> để xem một số lựa chọn các tiện ích có sẵn với package này. Xem các ví dụ <a href="https://github.com/dreamrs/shinywidgets">ở đây</a></p></li>
+<li><p><strong>shinyjs</strong> - Đây là một package tuyệt vời mang đến cho người dùng khả năng mở rộng tiện ích của Shiny thông qua JavaScript. Các ứng dụng của package này từ rất đơn giản đến cực kỳ chuyên sâu, nhưng trước hết bạn sẽ muốn sử dụng nó để thao tác với giao diện người dùng theo những cách đơn giản, như ẩn/hiển thị các yếu tố hoặc bật/tắt các nút. Tìm hiểu thêm <a href="https://deanattali.com/shinyjs/basic">ở đây</a></p></li>
+<li><p><strong>shinydashboard</strong> - package này mở rộng UI có sẵn có thể được sử dụng trong shiny, đặc biệt để người dùng tạo dashboard phức tạp với nhiều bố cục phức tạp. Xem thêm <a href="https://rstudio.github.io/shinydashboard/">ở đây</a></p></li>
+<li><p><strong>shinydashboardPlus</strong> - Nhận nhiều tính năng hơn nữa so với <strong>shinydashboard</strong>! Xem thêm <a href="https://rinterface.github.io/shinydashboardplus/articles/shinydashboardplus.html">ở đây</a></p></li>
+<li><p><strong>shinythemes</strong> - Thay đổi chủ đề css mặc định cho ứng dụng shiny của bạn với một loạt các mẫu có sẵn! Xem thêm <a href="https://rstudio.github.io/shinytheme/">ở đây</a></p></li>
+</ul>
+<p>Ngoài ra còn có một số packages có thể được sử dụng để tạo các đầu ra tương tác tương thích với shiny.</p>
+<ul>
+<li><p><strong>DT</strong> được bán liên kết hóa vào bản shiny cơ sở, cung cấp một tập hợp các hàm tuyệt vời để tạo các bảng tương tác.</p></li>
+<li><p><strong>plotly</strong> là một package để tạo các đồ thị tương tác mà người dùng có thể thao tác trong ứng dụng. Bạn cũng có thể chuyển đổi đồ thị của mình sang các phiên bản tương tác thông qua <code><a href="https://rdrr.io/pkg/plotly/man/ggplotly.html">plotly::ggplotly()</a></code>! Các lựa chọn thay thế như <strong>dygraphs</strong> và <strong>highcharter</strong> cũng rất tuyệt vời.</p></li>
+</ul>
+</div>
+<div id="tài-nguyên-đề-xuất" class="section level2" number="43.10">
+<h2>
+<span class="header-section-number">43.10</span> Tài nguyên đề xuất<a class="anchor" aria-label="anchor" href="#t%C3%A0i-nguy%C3%AAn-%C4%91%E1%BB%81-xu%E1%BA%A5t"><i class="fas fa-link"></i></a>
+</h2>
+
+</div>
+</div>
+
+
+
+<div class="chapter-nav">
+<div class="prev"><a href="flexdashboard.html"><span class="header-section-number">42</span> Dashboards với R Markdown</a></div>
+<div class="next"><a href="writing-functions.html"><span class="header-section-number">44</span> Viết hàm</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#shiny-basics"><span class="header-section-number">43</span> Dashboards với Shiny</a></li>
+<li>
+<a class="nav-link" href="#chu%E1%BA%A9n-b%E1%BB%8B-35"><span class="header-section-number">43.1</span> Chuẩn bị</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#g%E1%BB%8Di-packages-17">Gọi packages</a></li>
+<li><a class="nav-link" href="#nh%E1%BA%ADp-d%E1%BB%AF-li%E1%BB%87u-25">Nhập dữ liệu</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#c%E1%BA%A5u-tr%C3%BAc-c%E1%BB%A7a-m%E1%BB%99t-%E1%BB%A9ng-d%E1%BB%A5ng-shiny"><span class="header-section-number">43.2</span> Cấu trúc của một ứng dụng shiny</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#c%E1%BA%A5u-tr%C3%BAc-t%E1%BB%87p-c%C6%A1-b%E1%BA%A3n">Cấu trúc tệp cơ bản</a></li>
+<li><a class="nav-link" href="#m%C3%A1y-ch%E1%BB%A7-v%C3%A0-giao-di%E1%BB%87n-ng%C6%B0%E1%BB%9Di-d%C3%B9ng">Máy chủ và giao diện người dùng</a></li>
+<li><a class="nav-link" href="#tr%C6%B0%E1%BB%9Bc-khi-b%E1%BA%A1n-b%E1%BA%AFt-%C4%91%E1%BA%A7u-t%E1%BA%A1o-m%E1%BB%99t-%E1%BB%A9ng-d%E1%BB%A5ng">Trước khi bạn bắt đầu tạo một ứng dụng</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#t%E1%BA%A1o-m%E1%BB%99t-ui"><span class="header-section-number">43.3</span> Tạo một UI</a></li>
+<li><a class="nav-link" href="#t%E1%BA%A3i-d%E1%BB%AF-li%E1%BB%87u-v%C3%A0o-%E1%BB%A9ng-d%E1%BB%A5ng"><span class="header-section-number">43.4</span> Tải dữ liệu vào ứng dụng</a></li>
+<li><a class="nav-link" href="#ph%C3%A1t-tri%E1%BB%83n-m%E1%BB%99t-m%C3%A1y-ch%E1%BB%A7-%E1%BB%A9ng-d%E1%BB%A5ng"><span class="header-section-number">43.5</span> Phát triển một máy chủ ứng dụng</a></li>
+<li>
+<a class="nav-link" href="#th%C3%AAm-nhi%E1%BB%81u-ch%E1%BB%A9c-n%C4%83ng-h%C6%A1n"><span class="header-section-number">43.6</span> Thêm nhiều chức năng hơn</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#th%C3%AAm-v%C4%83n-b%E1%BA%A3n-t%C4%A9nh">Thêm văn bản tĩnh</a></li>
+<li><a class="nav-link" href="#th%C3%AAm-li%C3%AAn-k%E1%BA%BFt">Thêm liên kết</a></li>
+<li><a class="nav-link" href="#th%C3%AAm-n%C3%BAt-t%E1%BA%A3i-v%E1%BB%81">Thêm nút tải về</a></li>
+<li><a class="nav-link" href="#th%C3%AAm-b%E1%BB%99-ch%E1%BB%8Dn-c%C6%A1-s%E1%BB%9F-y-t%E1%BA%BF">Thêm bộ chọn cơ sở y tế</a></li>
+<li><a class="nav-link" href="#th%C3%AAm-m%E1%BB%99t-b%E1%BA%A3ng-v%C3%A0o-m%E1%BB%99t-tab-kh%C3%A1c">Thêm một bảng vào một tab khác</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#chia-s%E1%BA%BB-c%C3%A1c-%E1%BB%A9ng-d%E1%BB%A5ng-shiny"><span class="header-section-number">43.7</span> Chia sẻ các ứng dụng shiny</a></li>
+<li><a class="nav-link" href="#%C4%91%E1%BB%8Dc-th%C3%AAm"><span class="header-section-number">43.8</span> Đọc thêm</a></li>
+<li><a class="nav-link" href="#c%C3%A1c-packages-m%E1%BB%9F-r%E1%BB%99ng-%C4%91%C6%B0%E1%BB%A3c-%C4%91%E1%BB%81-xu%E1%BA%A5t"><span class="header-section-number">43.9</span> Các packages mở rộng được đề xuất</a></li>
+<li><a class="nav-link" href="#t%C3%A0i-nguy%C3%AAn-%C4%91%E1%BB%81-xu%E1%BA%A5t"><span class="header-section-number">43.10</span> Tài nguyên đề xuất</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+</div>
+  
+
+  
+
+</div>
+ <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Cẩm nang dịch tễ học với R</strong>" was written by the handbook team. It was last built on 2021-10-06.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+</html>

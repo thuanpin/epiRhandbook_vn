@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>4 Chuyển đổi sang R | Cẩm nang dịch tễ học với R</title>
+<meta name="author" content="the handbook team">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.4/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="libs/datatables-binding-0.16/datatables.js"></script><link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script><link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet">
+<script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script><link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet">
+<script src="libs/selectize-0.12.0/selectize.min.js"></script><link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet">
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet">
+<script src="libs/tabwid-1.0.0/tabwid.js"></script><link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<script src="libs/leaflet-1.3.1/leaflet.js"></script><link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+<script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script><script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+<script src="libs/leaflet-binding-2.0.3/leaflet.js"></script><script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script><script src="libs/leaflet-providers-plugin-2.0.3/leaflet-providers-plugin.js"></script><script src="libs/viz-1.8.2/viz.js"></script><link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
+<script src="libs/grViz-binding-1.0.6.1/grViz.js"></script><script src="libs/d3-4.5.0/d3.min.js"></script><script src="libs/sankey-1/sankey.js"></script><script src="libs/sankeyNetwork-binding-0.4/sankeyNetwork.js"></script><script src="libs/plotly-binding-4.9.2.1/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script><link href="libs/vis-4.20.1/vis.css" rel="stylesheet">
+<script src="libs/vis-4.20.1/vis.min.js"></script><script src="libs/visNetwork-binding-2.0.9/visNetwork.js"></script><link href="libs/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="libs/plotly-basic-1.52.2/plotly-basic-1.52.2.min.js"></script><script src="libs/plotly-cartesian-1.52.2/plotly-cartesian-1.52.2.min.js"></script><script src="libs/proj4js-2.3.15/proj4.js"></script><link href="libs/highcharts-8.1.2/css/motion.css" rel="stylesheet">
+<script src="libs/highcharts-8.1.2/highcharts.js"></script><script src="libs/highcharts-8.1.2/highcharts-3d.js"></script><script src="libs/highcharts-8.1.2/highcharts-more.js"></script><script src="libs/highcharts-8.1.2/modules/stock.js"></script><script src="libs/highcharts-8.1.2/modules/map.js"></script><script src="libs/highcharts-8.1.2/modules/annotations.js"></script><script src="libs/highcharts-8.1.2/modules/data.js"></script><script src="libs/highcharts-8.1.2/modules/drilldown.js"></script><script src="libs/highcharts-8.1.2/modules/item-series.js"></script><script src="libs/highcharts-8.1.2/modules/offline-exporting.js"></script><script src="libs/highcharts-8.1.2/modules/overlapping-datalabels.js"></script><script src="libs/highcharts-8.1.2/modules/exporting.js"></script><script src="libs/highcharts-8.1.2/modules/export-data.js"></script><script src="libs/highcharts-8.1.2/modules/funnel.js"></script><script src="libs/highcharts-8.1.2/modules/heatmap.js"></script><script src="libs/highcharts-8.1.2/modules/treemap.js"></script><script src="libs/highcharts-8.1.2/modules/sankey.js"></script><script src="libs/highcharts-8.1.2/modules/dependency-wheel.js"></script><script src="libs/highcharts-8.1.2/modules/organization.js"></script><script src="libs/highcharts-8.1.2/modules/solid-gauge.js"></script><script src="libs/highcharts-8.1.2/modules/streamgraph.js"></script><script src="libs/highcharts-8.1.2/modules/sunburst.js"></script><script src="libs/highcharts-8.1.2/modules/vector.js"></script><script src="libs/highcharts-8.1.2/modules/wordcloud.js"></script><script src="libs/highcharts-8.1.2/modules/xrange.js"></script><script src="libs/highcharts-8.1.2/modules/tilemap.js"></script><script src="libs/highcharts-8.1.2/modules/venn.js"></script><script src="libs/highcharts-8.1.2/modules/gantt.js"></script><script src="libs/highcharts-8.1.2/modules/timeline.js"></script><script src="libs/highcharts-8.1.2/modules/parallel-coordinates.js"></script><script src="libs/highcharts-8.1.2/modules/bullet.js"></script><script src="libs/highcharts-8.1.2/modules/coloraxis.js"></script><script src="libs/highcharts-8.1.2/modules/dumbbell.js"></script><script src="libs/highcharts-8.1.2/modules/lollipop.js"></script><script src="libs/highcharts-8.1.2/modules/series-label.js"></script><script src="libs/highcharts-8.1.2/plugins/motion.js"></script><script src="libs/highcharts-8.1.2/custom/reset.js"></script><script src="libs/highcharts-8.1.2/modules/boost.js"></script><script src="libs/highchart-binding-0.8.2/highchart.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS --><link rel="stylesheet" href="style_bs4.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Cẩm nang dịch tễ học với R</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"></a></li>
+<li class="book-part">Về cuốn sách này</li>
+<li><a class="" href="editorial-style.html"><span class="header-section-number">1</span> Biên tập và ghi chú kỹ thuật</a></li>
+<li><a class="" href="data-used.html"><span class="header-section-number">2</span> Tải sách và dữ liệu</a></li>
+<li class="book-part">Nhập môn về R</li>
+<li><a class="" href="basics.html"><span class="header-section-number">3</span> R Cơ bản</a></li>
+<li><a class="active" href="transition-to-R.html"><span class="header-section-number">4</span> Chuyển đổi sang R</a></li>
+<li><a class="" href="packages-suggested.html"><span class="header-section-number">5</span> Package đề xuất</a></li>
+<li><a class="" href="r-projects.html"><span class="header-section-number">6</span> Dự án R</a></li>
+<li><a class="" href="importing.html"><span class="header-section-number">7</span> Nhập xuất dữ liệu</a></li>
+<li class="book-part">Quản lý dữ liệu</li>
+<li><a class="" href="cleaning.html"><span class="header-section-number">8</span> Làm sạch số liệu và các hàm quan trọng</a></li>
+<li><a class="" href="dates.html"><span class="header-section-number">9</span> Làm việc với ngày tháng</a></li>
+<li><a class="" href="characters-strings.html"><span class="header-section-number">10</span> Ký tự và chuỗi</a></li>
+<li><a class="" href="factors.html"><span class="header-section-number">11</span> Factors</a></li>
+<li><a class="" href="pivoting.html"><span class="header-section-number">12</span> Xoay trục dữ liệu</a></li>
+<li><a class="" href="grouping.html"><span class="header-section-number">13</span> Nhóm dữ liệu</a></li>
+<li><a class="" href="joining-matching.html"><span class="header-section-number">14</span> Nối dữ liệu</a></li>
+<li><a class="" href="deduplication.html"><span class="header-section-number">15</span> Loại bỏ trùng lặp</a></li>
+<li><a class="" href="iteration.html"><span class="header-section-number">16</span> Lặp, vòng lặp, và danh sách</a></li>
+<li class="book-part">Phân tích dữ liệu</li>
+<li><a class="" href="tables-descriptive.html"><span class="header-section-number">17</span> Bảng mô tả</a></li>
+<li><a class="" href="stat-tests.html"><span class="header-section-number">18</span> Các kiểm định thống kê cơ bản</a></li>
+<li><a class="" href="regression.html"><span class="header-section-number">19</span> Hồi quy đơn và đa biến</a></li>
+<li><a class="" href="missing-data.html"><span class="header-section-number">20</span> Dữ liệu Missing</a></li>
+<li><a class="" href="standardization.html"><span class="header-section-number">21</span> Tỷ suất chuẩn hóa</a></li>
+<li><a class="" href="moving-average.html"><span class="header-section-number">22</span> Đường trung bình động</a></li>
+<li><a class="" href="time-series.html"><span class="header-section-number">23</span> Chuỗi thời gian và phát hiện ổ dịch</a></li>
+<li><a class="" href="epidemic-models.html"><span class="header-section-number">24</span> Mô hình hóa dịch bệnh</a></li>
+<li><a class="" href="contact-tracing.html"><span class="header-section-number">25</span> Truy vết tiếp xúc</a></li>
+<li><a class="" href="survey-analysis.html"><span class="header-section-number">26</span> Phân tích khảo sát</a></li>
+<li><a class="" href="survival-analysis.html"><span class="header-section-number">27</span> Phân tích sống còn</a></li>
+<li><a class="" href="gis.html"><span class="header-section-number">28</span> GIS cơ bản</a></li>
+<li class="book-part">Trực quan hóa dữ liệu</li>
+<li><a class="" href="tables-presentation.html"><span class="header-section-number">29</span> Trình bày bảng</a></li>
+<li><a class="" href="ggplot-basics.html"><span class="header-section-number">30</span> ggplot cơ bản</a></li>
+<li><a class="" href="ggplot-tips.html"><span class="header-section-number">31</span> Các tips với ggplot</a></li>
+<li><a class="" href="epicurves.html"><span class="header-section-number">32</span> Đường cong dịch bệnh</a></li>
+<li><a class="" href="age-pyramid.html"><span class="header-section-number">33</span> Tháp dân số và thang đo Likert</a></li>
+<li><a class="" href="heatmaps.html"><span class="header-section-number">34</span> Biểu đồ nhiệt</a></li>
+<li><a class="" href="diagrams.html"><span class="header-section-number">35</span> Sơ đồ và biểu đồ</a></li>
+<li><a class="" href="combination-analysis.html"><span class="header-section-number">36</span> Biểu đồ kết hợp</a></li>
+<li><a class="" href="transmission-chains.html"><span class="header-section-number">37</span> Chuỗi lây nhiễm</a></li>
+<li><a class="" href="phylogenetic-trees.html"><span class="header-section-number">38</span> Cây phả hệ</a></li>
+<li><a class="" href="interactive-plots.html"><span class="header-section-number">39</span> Biểu đồ tương tác</a></li>
+<li class="book-part">Báo cáo và dashboards</li>
+<li><a class="" href="rmarkdown.html"><span class="header-section-number">40</span> Báo cáo với R Markdown</a></li>
+<li><a class="" href="reportfactory.html"><span class="header-section-number">41</span> Tổ chức báo cáo định kỳ</a></li>
+<li><a class="" href="flexdashboard.html"><span class="header-section-number">42</span> Dashboards với R Markdown</a></li>
+<li><a class="" href="shiny-basics.html"><span class="header-section-number">43</span> Dashboards với Shiny</a></li>
+<li class="book-part">Tổng hợp</li>
+<li><a class="" href="writing-functions.html"><span class="header-section-number">44</span> Viết hàm</a></li>
+<li><a class="" href="directories.html"><span class="header-section-number">45</span> Tương tác với thư mục làm việc</a></li>
+<li><a class="" href="collaboration.html"><span class="header-section-number">46</span> Version control với Git và Github</a></li>
+<li><a class="" href="errors.html"><span class="header-section-number">47</span> Các lỗi thường gặp</a></li>
+<li><a class="" href="help.html"><span class="header-section-number">48</span> Nhờ sự trợ giúp</a></li>
+<li><a class="" href="network-drives.html"><span class="header-section-number">49</span> R trên ổ cứng mạng</a></li>
+<li><a class="" href="data-table.html"><span class="header-section-number">50</span> Data Table</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="transition-to-R" class="section level1" number="4">
+<h1>
+<span class="header-section-number">4</span> Chuyển đổi sang R<a class="anchor" aria-label="anchor" href="#transition-to-R"><i class="fas fa-link"></i></a>
+</h1>
+<p>Dưới đây, chúng tôi cung cấp một số lời khuyên và tài nguyên nếu bạn đang chuyển đổi sang R.</p>
+<p>R được giới thiệu vào cuối những năm 1990 và kể từ đó đã phát triển quy mô mạnh mẽ. Khả năng của nó rộng đến mức các lựa chọn thương mại thay thế đã phản ứng với sự phát triển của R để duy trì tính cạnh tranh! (<a href="https://www.inwt-statistics.com/read-blog/comparison-of-r-python-sas-spss-and-stata.html">đọc bài viết so sánh R, SPSS, SAS, STATA và Python</a>).</p>
+<p>Hơn thế nữa, R đã dễ học hơn nhiều so với 10 năm trước. Trước đây, R nổi tiếng là khó sử dụng cho những người mới bắt đầu. Giờ đây việc này trở nên dễ dàng hơn nhiều với giao diện người dùng thân thiện như RStudio, code trực quan như <strong>tidyverse</strong> và có nhiều tài nguyên hướng dẫn.</p>
+<p><span style="color: darkgreen;"><strong>Đừng ngần ngại - hãy đến khám phá thế giới của R!</strong></span></p>
+<div class="inline-figure"><img src="images/transition_door.png" width="75%" height="75%" style="display: block; margin: auto;"></div>
+<div id="từ-excel" class="section level2" number="4.1">
+<h2>
+<span class="header-section-number">4.1</span> Từ Excel<a class="anchor" aria-label="anchor" href="#t%E1%BB%AB-excel"><i class="fas fa-link"></i></a>
+</h2>
+<p>Chuyển đổi từ Excel trực tiếp sang R hoàn toàn là mục tiêu có thể đạt được. Nó dường như có vẻ khó khăn, nhưng bạn có thể làm được!</p>
+<p>Sự thật là một người có kỹ năng Excel tốt có thể thực hiện các thao tác nâng cao chỉ trong Excel - ngay cả khi sử dụng các công cụ tạo script như VBA. Excel được sử dụng trên toàn thế giới và là một công cụ cần thiết cho một nhà dịch tễ học. Tuy nhiên, kết hợp nó với R có thể cải thiện và mở rộng đáng kể quy trình công việc của bạn.</p>
+<div id="lợi-ích" class="section level3 unnumbered">
+<h3>Lợi ích<a class="anchor" aria-label="anchor" href="#l%E1%BB%A3i-%C3%ADch"><i class="fas fa-link"></i></a>
+</h3>
+<p>Bạn sẽ thấy rằng việc sử dụng R mang lại những lợi ích to lớn trong việc tiết kiệm thời gian, giúp phân tích nhất quán và chính xác hơn, có khả năng tái lập, khả năng chia sẻ và sửa lỗi nhanh hơn. Giống như bất kỳ phần mềm mới nào, bạn phải đầu tư một “đường cong” thời gian học tập để trở nên quen thuộc. Bạn sẽ được mở ra những kĩ năng mới trên một phạm vi rộng đáng kể với R.</p>
+<p>Excel là một phần mềm phổ biến mà người dùng mới bắt đầu có thể dễ dàng sử dụng để tạo ra các phân tích và sơ đồ hóa đơn giản với các thao tác “trỏ và nhấp”. Trong khi đó, có thể mất vài tuần để trở nên quen thuộc với các chức năng và giao diện của R. Tuy nhiên, R đã phát triển trong những năm gần đây để trở nên thân thiện hơn với người mới bắt đầu.</p>
+<p>Nhiều quy trình làm việc của Excel phụ thuộc vào trí nhớ và sự lặp lại - do đó, có nhiều khả năng xảy ra lỗi. Hơn nữa, nhìn chung, việc làm sạch dữ liệu, phương pháp phân tích và các phương trình được sử dụng đều bị ẩn đi trong trang tính. Có thể cần đến một khoảng thời gian đáng kể để những người mới bắt đầu hiểu trang tính Excel đang làm gì và cách khắc phục sự cố. Với R, tất cả các bước được viết rõ ràng trong script và có thể dễ dàng xem, chỉnh sửa, sửa lỗi và áp dụng cho các bộ dữ liệu khác.</p>
+<p><strong>Để bắt đầu chuyển đổi từ Excel sang R, bạn phải điều chỉnh tư duy của mình theo một số hướng quan trọng:</strong></p>
+</div>
+<div id="tidy-data" class="section level3 unnumbered">
+<h3>Tidy data<a class="anchor" aria-label="anchor" href="#tidy-data"><i class="fas fa-link"></i></a>
+</h3>
+<p>Sử dụng “tidy” data để máy có thể đọc được thay vì dữ liệu lộn xộn “con người có thể đọc được”. Dưới đây là ba yêu cầu chính đối với “tidy” data”, đã được giải thích trong hướng dẫn này về <a href="https://r4ds.had.co.nz/tidy-data.html">“tidy” data trong R</a>:</p>
+<ul>
+<li>Mỗi biến số nằm trên một cột</li>
+<li>Mỗi quan sát phải nằm trên một hàng</li>
+<li>Mỗi giá trị phải có ô riêng</li>
+</ul>
+<p>Đối với người dùng Excel - hãy nghĩ đến vai trò của <a href="https://exceljet.net/excel-tables">“bảng” Excel</a> trong việc chuẩn hóa dữ liệu và làm cho định dạng trở nên dễ đoán hơn.</p>
+<p>Một ví dụ về “tidy” data là trường hợp bộ dữ liệu linelist được sử dụng trong cuốn sổ tay này - mỗi biến được chứa trong một cột, mỗi quan sát (mỗi trường hợp) có hàng riêng và mọi giá trị chỉ nằm trong một ô. Dưới đây, bạn có thể xem 50 hàng đầu tiên của bộ dữ liệu linelist:</p>
+<div id="htmlwidget-7ff46c21dd700cf19062" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7ff46c21dd700cf19062">{"x":{"filter":"top","filterHTML":"<tr>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none; position: absolute; width: 200px;\">\n      <div data-min=\"2\" data-max=\"13\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"date\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none; position: absolute; width: 200px;\">\n      <div data-min=\"1399075200000\" data-max=\"1406419200000\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"date\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none; position: absolute; width: 200px;\">\n      <div data-min=\"1399939200000\" data-max=\"1407024000000\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"date\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none; position: absolute; width: 200px;\">\n      <div data-min=\"1400025600000\" data-max=\"1407110400000\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"date\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none; position: absolute; width: 200px;\">\n      <div data-min=\"1400371200000\" data-max=\"1410566400000\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none; position: absolute; width: 200px;\">\n      <div data-min=\"0\" data-max=\"67\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none; position: absolute; width: 200px;\">\n      <div data-min=\"0\" data-max=\"67\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;0-4&quot;,&quot;5-9&quot;,&quot;10-14&quot;,&quot;15-19&quot;,&quot;20-29&quot;,&quot;30-49&quot;,&quot;50-69&quot;,&quot;70+&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;0-4&quot;,&quot;5-9&quot;,&quot;10-14&quot;,&quot;15-19&quot;,&quot;20-24&quot;,&quot;25-29&quot;,&quot;30-34&quot;,&quot;35-39&quot;,&quot;40-44&quot;,&quot;45-49&quot;,&quot;50-54&quot;,&quot;55-59&quot;,&quot;60-64&quot;,&quot;65-69&quot;,&quot;70-74&quot;,&quot;75-79&quot;,&quot;80-84&quot;,&quot;85+&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none; position: absolute; width: 200px;\">\n      <div data-min=\"-13.2697246824573\" data-max=\"-13.209391925612\" data-scale=\"13\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none; position: absolute; width: 200px;\">\n      <div data-min=\"8.45171855856465\" data-max=\"8.48802917129884\" data-scale=\"14\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none; position: absolute; width: 200px;\">\n      <div data-min=\"0\" data-max=\"100\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none; position: absolute; width: 200px;\">\n      <div data-min=\"11\" data-max=\"241\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none; position: absolute; width: 200px;\">\n      <div data-min=\"20\" data-max=\"24\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none; position: absolute; width: 200px;\">\n      <div data-min=\"35.9\" data-max=\"38\" data-scale=\"1\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none; position: absolute; width: 200px;\">\n      <div data-min=\"0\" data-max=\"428.994082840237\" data-scale=\"14\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none; position: absolute; width: 200px;\">\n      <div data-min=\"0\" data-max=\"2\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","data":[["5fe599","8689b7","11f8ea","b8812a","893f25","be99c8","07e3e8","369449","f393b4","1389ca","2978ac","57a565","fc15ef","2eaa9a","bbfa93","c97dd9","f50e8a","3a7673","7f5a01","ddddee","99e8fa","567136","9371a9","bc2adf","403057","8bd1e8","f327be","42e1a9","90e5fe","959170","8ebf6e","e56412","6d788e","a47529","67be4e","da8ecb","148f18","2cb9a5","f5c142","70a9fe","3ad520","062638","c76676","baacc1","497372","23e499","38cc4a","3789ee","c71dcd","6b70f0"],[4,4,2,3,3,3,4,4,4,4,4,4,6,5,6,9,10,8,7,6,7,6,8,6,10,8,6,12,5,8,7,9,11,5,8,5,6,11,7,9,7,8,9,12,13,9,8,10,8,7],["2014-05-08",null,null,"2014-05-04","2014-05-18","2014-05-03","2014-05-22","2014-05-28",null,null,"2014-05-30","2014-05-28","2014-06-14","2014-06-07","2014-06-09",null,null,null,"2014-06-23","2014-06-18","2014-06-24",null,null,"2014-07-03",null,"2014-07-10","2014-06-14",null,"2014-06-18","2014-06-29","2014-07-02","2014-07-12","2014-07-12","2014-06-13","2014-07-15","2014-06-20",null,null,"2014-07-20",null,"2014-07-12","2014-07-19","2014-07-18","2014-07-18","2014-07-27",null,"2014-07-19","2014-07-26","2014-07-24",null],["2014-05-13","2014-05-13","2014-05-16","2014-05-18","2014-05-21","2014-05-22","2014-05-27","2014-06-02","2014-06-05","2014-06-05","2014-06-06","2014-06-13","2014-06-16","2014-06-17","2014-06-18","2014-06-19","2014-06-22","2014-06-23","2014-06-25","2014-06-26","2014-06-28","2014-07-02","2014-07-08","2014-07-09","2014-07-09","2014-07-10","2014-07-12","2014-07-12","2014-07-13","2014-07-13","2014-07-14","2014-07-15","2014-07-16","2014-07-17","2014-07-17","2014-07-18","2014-07-19","2014-07-22","2014-07-22","2014-07-24","2014-07-24","2014-07-25","2014-07-25","2014-07-27","2014-07-29","2014-07-30",null,"2014-08-01","2014-08-02","2014-08-03"],["2014-05-15","2014-05-14","2014-05-18","2014-05-20","2014-05-22","2014-05-23","2014-05-29","2014-06-03","2014-06-06","2014-06-07","2014-06-08","2014-06-15","2014-06-17","2014-06-17","2014-06-20","2014-06-19","2014-06-23","2014-06-24","2014-06-27","2014-06-28","2014-06-29","2014-07-03","2014-07-09","2014-07-09","2014-07-11","2014-07-11","2014-07-13","2014-07-14","2014-07-14","2014-07-13","2014-07-14","2014-07-17","2014-07-17","2014-07-18","2014-07-19","2014-07-20","2014-07-20","2014-07-22","2014-07-24","2014-07-26","2014-07-24","2014-07-27","2014-07-25","2014-07-27","2014-07-31","2014-08-01","2014-08-03","2014-08-02","2014-08-02","2014-08-04"],[null,"2014-05-18","2014-05-30",null,"2014-05-29","2014-05-24","2014-06-01","2014-06-07","2014-06-18","2014-06-09","2014-06-15",null,"2014-07-09",null,"2014-06-30","2014-07-11","2014-07-01","2014-06-25","2014-07-06","2014-07-02","2014-07-09","2014-07-07","2014-07-20",null,"2014-07-22","2014-07-16","2014-07-14","2014-07-20","2014-07-16","2014-07-19","2014-07-27","2014-07-19",null,"2014-07-26","2014-08-14","2014-08-01","2014-07-23","2014-08-28","2014-07-28","2014-07-19",null,"2014-08-03",null,null,null,"2014-08-06","2014-08-21","2014-09-13","2014-08-04",null],[null,"Recover","Recover",null,"Recover","Recover","Recover","Death","Recover","Death","Death","Death","Recover","Recover",null,"Recover",null,null,"Death","Death","Recover",null,null,null,"Death",null,"Death","Death",null,"Death","Recover","Death","Recover","Death","Recover",null,"Death","Recover","Recover","Death",null,null,"Death","Death","Death","Death","Recover",null,"Death","Death"],["m","f","m","f","m","f","f","f","m","f","m","m","m","f","f","m","f","f","f","f","m","m","f","m","f","m","m","f","m","f","f","f","m","m","f","m","f","f","f","m","f","m","f","m","m","f","m","f","m","m"],[2,3,56,18,3,16,16,0,61,27,12,42,19,7,7,13,35,17,11,11,19,54,14,28,6,3,31,6,67,14,10,21,20,45,1,12,3,15,20,36,7,13,14,3,10,1,0,20,26,14],["years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years"],[2,3,56,18,3,16,16,0,61,27,12,42,19,7,7,13,35,17,11,11,19,54,14,28,6,3,31,6,67,14,10,21,20,45,1,12,3,15,20,36,7,13,14,3,10,1,0,20,26,14],["0-4","0-4","50-69","15-19","0-4","15-19","15-19","0-4","50-69","20-29","10-14","30-49","15-19","5-9","5-9","10-14","30-49","15-19","10-14","10-14","15-19","50-69","10-14","20-29","5-9","0-4","30-49","5-9","50-69","10-14","10-14","20-29","20-29","30-49","0-4","10-14","0-4","15-19","20-29","30-49","5-9","10-14","10-14","0-4","10-14","0-4","0-4","20-29","20-29","10-14"],["0-4","0-4","55-59","15-19","0-4","15-19","15-19","0-4","60-64","25-29","10-14","40-44","15-19","5-9","5-9","10-14","35-39","15-19","10-14","10-14","15-19","50-54","10-14","25-29","5-9","0-4","30-34","5-9","65-69","10-14","10-14","20-24","20-24","45-49","0-4","10-14","0-4","15-19","20-24","35-39","5-9","10-14","10-14","0-4","10-14","0-4","0-4","20-24","25-29","10-14"],["Other","Missing","St. Mark's Maternity Hospital (SMMH)","Port Hospital","Military Hospital","Port Hospital","Missing","Missing","Missing","Missing","Port Hospital","Military Hospital","Missing","Missing","Other","Port Hospital","Port Hospital","Port Hospital","Missing","Other","Port Hospital","Port Hospital","St. Mark's Maternity Hospital (SMMH)","Missing","Other","Missing","St. Mark's Maternity Hospital (SMMH)","Military Hospital","Port Hospital","Central Hospital","Military Hospital","Central Hospital","Missing","Military Hospital","Other","Missing","Missing","Port Hospital","Port Hospital","Port Hospital","Missing","Central Hospital","Military Hospital","Other","Other","Other","Missing","St. Mark's Maternity Hospital (SMMH)","St. Mark's Maternity Hospital (SMMH)","Missing"],[-13.2157351064963,-13.2152339775486,-13.212910703914,-13.2363711169728,-13.2228638912441,-13.222625321098,-13.2331547837254,-13.2320975453153,-13.2225511595637,-13.2572163655863,-13.2206286746001,-13.253989309478,-13.2385127873491,-13.209391925612,-13.2157278814899,-13.2243437095992,-13.2336087079551,-13.21422143145,-13.2339681355349,-13.2535640411465,-13.2250089377786,-13.2160657166043,-13.2680671272333,-13.2266742923612,-13.2160179088168,-13.2482584611565,-13.2156319199566,-13.2142410663192,-13.2614879104088,-13.2452992638476,-13.2630592726116,-13.2343341712241,-13.2199077448676,-13.2227293309912,-13.2343062806506,-13.218781651651,-13.2483677722899,-13.2097478342339,-13.2680867723786,-13.2587535457526,-13.262635786914,-13.2697246824573,-13.2209026809759,-13.2330734719715,-13.2680923666905,-13.2547212675054,-13.2573683214693,-13.2137356012883,-13.2175973322257,-13.2486407324245],[8.46897295100924,8.45171855856465,8.46481700596819,8.4754761613651,8.46082377490923,8.46183062600728,8.46272931462646,8.46144367534271,8.46191259217774,8.47292327643506,8.48401630165138,8.45837125340844,8.47761705512509,8.47570184950483,8.47779946878972,8.47145134147474,8.47804840685363,8.48528034195779,8.46957530395867,8.45957352078114,8.47404889511544,8.48802917129884,8.473437335922,8.48408263734462,8.46242233645879,8.47026822126572,8.46398447480533,8.4641347894342,8.45623094629607,8.48334624336805,8.47493999153642,8.47832062438022,8.4693933891765,8.48480589906514,8.47121232619015,8.48438437371817,8.48466158574339,8.47714159984428,8.46238127010609,8.45568597813113,8.4632880274758,8.47940722413856,8.46353857052336,8.46178968158864,8.47508713872833,8.45825808128071,8.4532568143863,8.4732571907655,8.47911586641933,8.48480340615605],["f547d6",null,null,"f90f5f","11f8ea","aec8ec","893f25","133ee7",null,null,"996f3a","133ee7","37a6f6","9f6884","4802b1",null,null,null,"a75c7f","8e104d","ab634e",null,null,"b799eb",null,"5d9e4d","a15e13",null,"ea3740","beb26e","567136","894024","36e2e7","a2086d","7baf73","eb2277",null,null,"d6584f",null,"312ecf","52ea64","cfd79c","d145b7","174288",null,"53608c","3b096b","f5c142",null],["other",null,null,"other","other","other","other","other",null,null,"other","other","other","other","other",null,null,null,"other","other","other",null,null,"other",null,"other","other",null,"other","funeral","other","funeral","other","other","other","funeral",null,null,"other",null,"other","other","other","other","other",null,"funeral","other","other",null],[27,25,91,41,36,56,47,0,86,69,67,84,68,44,34,66,78,47,53,47,71,86,53,69,38,46,68,37,100,56,50,57,65,72,29,69,37,48,54,71,47,61,47,35,53,16,13,59,69,67],[48,59,238,135,71,116,87,11,226,174,112,186,174,90,91,152,214,137,117,131,150,241,131,161,80,69,188,66,233,142,110,182,164,214,26,157,39,154,133,168,100,125,123,67,134,31,36,125,183,169],[22,22,21,23,23,21,21,22,22,22,22,22,22,21,23,22,23,21,22,23,21,23,21,24,23,22,24,23,20,24,24,20,24,21,22,21,23,22,23,23,23,22,23,22,22,22,23,22,22,22],["no",null,null,"no","no","no",null,"no","no","no","no","no","no","no","no","no","no","no",null,"no","no","no","no","no",null,"no","no","no",null,null,"no","no",null,"no","no",null,null,"no","no",null,"no","no",null,"no","no","no","no","no","no",null],["no",null,null,"no","no","no",null,"no","no","no","no","no","no","no","no","no","yes","no",null,"no","no","no","yes","no",null,"no","no","yes",null,null,"no","no",null,"no","no",null,null,"no","no",null,"no","no",null,"no","yes","no","no","no","no",null],["yes",null,null,"no","yes","yes",null,"yes","yes","yes","yes","yes","yes","yes","yes","yes","yes","yes",null,"yes","yes","yes","yes","yes",null,"yes","yes","yes",null,null,"yes","yes",null,"yes","yes",null,null,"yes","yes",null,"yes","yes",null,"yes","yes","yes","yes","yes","no",null],["no",null,null,"no","no","no",null,"no","no","no","no","no","no","no","no","yes","no","no",null,"no","no","no","no","no",null,"no","no","no",null,null,"no","no",null,"no","no",null,null,"yes","yes",null,"no","no",null,"no","no","no","no","no","no",null],["yes",null,null,"no","yes","yes",null,"yes","yes","no","yes","no","no","no","yes","no","no","no",null,"no","yes","no","no","no",null,"no","no","no",null,null,"no","yes",null,"yes","yes",null,null,"yes","yes",null,"yes","yes",null,"yes","yes","no","yes","yes","yes",null],[36.8,36.9,36.9,36.8,36.9,37.6,37.3,37,36.4,35.9,36.5,36.9,36.5,37.1,36.5,37.3,37,38,38,36,37,36.7,36.9,36.5,37,36.5,37.6,36.6,36.6,36.2,36.4,37.1,37.5,37.5,37.4,36.9,36.4,37.3,37,37.8,36.5,37.5,36.7,37,37.3,36.6,36.5,36.6,37.6,36.8],[null,"09:36","16:48","11:22","12:60","14:13","14:33","09:25","11:16","10:55","16:03","11:14","12:42","11:06","09:10","08:45",null,"15:41","13:34","18:58","12:43","16:33","14:29","07:18","08:11","16:32","16:17","07:32","17:45",null,"13:24","14:43","02:33","11:36","17:28","16:27",null,"20:49",null,"11:38","14:25","13:42","21:22","13:33","19:06","17:14","20:09",null,"10:23","09:09"],[117.1875,71.8184429761563,16.0652496292635,22.4965706447188,71.4144019043841,41.6171224732461,62.0953890870657,0,16.8376536925366,22.7903289734443,53.4119897959184,24.2802636142907,22.4600343506408,54.320987654321,41.0578432556455,28.5664819944598,17.0320552013276,25.0412914912888,38.7172182043977,27.3876813705495,31.5555555555556,14.8069075945662,30.8839811199813,26.6193433895297,59.375,96.6183574879227,19.2394748755093,84.9403122130395,18.4199377406104,27.7722674072605,41.3223140495868,17.2080666586161,24.1671624033314,15.7218971089178,428.994082840237,27.9930220292912,243.261012491782,20.2395007589813,30.527446435638,25.15589569161,47,39.04,31.0661643201798,77.9683671196257,29.5165961238583,166.493236212279,100.308641975309,37.76,20.6037803457852,23.458562375267],[2,1,2,2,1,1,2,1,1,2,2,2,1,0,2,0,1,1,2,2,1,1,1,0,2,1,1,2,1,0,0,2,1,1,2,2,1,0,2,2,0,2,0,0,2,2,null,1,0,1]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>case_id<\/th>\n      <th>generation<\/th>\n      <th>date_infection<\/th>\n      <th>date_onset<\/th>\n      <th>date_hospitalisation<\/th>\n      <th>date_outcome<\/th>\n      <th>outcome<\/th>\n      <th>gender<\/th>\n      <th>age<\/th>\n      <th>age_unit<\/th>\n      <th>age_years<\/th>\n      <th>age_cat<\/th>\n      <th>age_cat5<\/th>\n      <th>hospital<\/th>\n      <th>lon<\/th>\n      <th>lat<\/th>\n      <th>infector<\/th>\n      <th>source<\/th>\n      <th>wt_kg<\/th>\n      <th>ht_cm<\/th>\n      <th>ct_blood<\/th>\n      <th>fever<\/th>\n      <th>chills<\/th>\n      <th>cough<\/th>\n      <th>aches<\/th>\n      <th>vomit<\/th>\n      <th>temp<\/th>\n      <th>time_admission<\/th>\n      <th>bmi<\/th>\n      <th>days_onset_hosp<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[1,8,10,14,15,18,19,20,26,28,29]}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script><p><em>Nguyên nhân chính khiến người dùng gặp phải tình trạng non-tidy data là do nhiều bảng tính Excel được thiết kế để ưu tiên con người dễ đọc chứ không phải máy móc/phần mềm dễ đọc.</em></p>
+<p>Để giúp bạn thấy sự khác biệt, dưới đây là một số ví dụ mô phỏng về <strong>non-tidy data</strong> mà ưu tiên khả năng đọc của <em>con người</em> hơn khả năng đọc của <em>máy</em>:</p>
+<div class="inline-figure"><img src="images/Excel_nonTidy_1.png" width="100%" height="75%" style="display: block; margin: auto;"></div>
+<p><em>Vấn đề:</em> Trong bảng tính ở trên, một số ô <em>đã được ghép với nhau</em> - khiến chúng trở nên khó đọc bởi R. Hàng nào nên được coi là “tiêu đề” không rõ ràng. Từ điển dựa trên màu sắc nằm ở phía bên phải và các giá trị ô được biểu thị bằng màu sắc - điều này cũng không dễ dàng được giải thích bởi R (cũng như những người bị mù màu!). Hơn nữa, các phần thông tin khác nhau được kết hợp thành một ô (nhiều tổ chức đối tác hoạt động trong cùng một khu hoặc trạng thái “TBC” trong cùng ô với “Partner D”).</p>
+<div class="inline-figure"><img src="images/Excel_nonTidy_2.png" width="100%" height="100%" style="display: block; margin: auto;"></div>
+<p><em>Vấn đề:</em> Trong bảng tính ở trên, có rất nhiều hàng và cột trống trong bộ dữ liệu - điều này sẽ gây phiền toái khi làm sạch trong R. Hơn nữa, tọa độ GPS được trải rộng trên hai hàng cho một trung tâm điều trị nhất định. Một lưu ý nhỏ - tọa độ GPS có hai định dạng khác nhau!</p>
+<p>Các bộ dữ liệu “tidy” có thể không đọc được bằng mắt người, nhưng chúng giúp việc làm sạch và phân tích dữ liệu dễ dàng hơn rất nhiều! Tidy data có thể được lưu trữ ở nhiều định dạng khác nhau, chẳng hạn như dạng “dọc” hoặc “ngang”“(xem chương về <a href="pivoting.html#pivoting">Xoay trục dữ liệu</a>), tuy nhiên các nguyên tắc trên vẫn được tuân thủ.</p>
+</div>
+<div id="hàm" class="section level3 unnumbered">
+<h3>Hàm<a class="anchor" aria-label="anchor" href="#h%C3%A0m"><i class="fas fa-link"></i></a>
+</h3>
+<p>Từ “hàm (function)” trong R có thể mới, nhưng khái niệm này cũng tồn tại trong Excel dưới dạng <em>công thức (formulas)</em>. Công thức trong Excel cũng yêu cầu cú pháp chính xác (ví dụ: vị trí của dấu chấm phẩy và dấu ngoặc đơn). Tất cả những gì bạn cần làm là tìm hiểu một vài hàm mới và cách chúng hoạt động cùng nhau trong R.</p>
+</div>
+<div id="script" class="section level3 unnumbered">
+<h3>Script<a class="anchor" aria-label="anchor" href="#script"><i class="fas fa-link"></i></a>
+</h3>
+<p>Thay vì nhấp vào các biểu tượng và kéo các ô, bạn sẽ viết <em>mọi</em> bước và quy trình thành một “script”. Người dùng Excel có thể quen thuộc với “VBA macros”, thứ mà cũng sử dụng cách tiếp cận script.</p>
+<p><em>R script bao gồm các hướng dẫn từng bước.</em> Điều này cho phép bất kỳ đồng nghiệp nào cũng có thể đọc script và dễ dàng xem các bước bạn đã thực hiện. Điều này cũng giúp loại bỏ lỗi hoặc các tính toán không chính xác. Xem phần <a href="basics.html#basics">R cơ bản</a> về script để có thêm các ví dụ.</p>
+<p>Dưới đây là một ví dụ của một R script:</p>
+<div class="inline-figure"><img src="images/example_script.png" width="75%" height="75%" style="display: block; margin: auto;"></div>
+</div>
+<div id="tài-liệu-liên-quan-đến-chuyển-đổi-từ-excel-sang-r" class="section level3 unnumbered">
+<h3>Tài liệu liên quan đến chuyển đổi từ Excel-sang-R<a class="anchor" aria-label="anchor" href="#t%C3%A0i-li%E1%BB%87u-li%C3%AAn-quan-%C4%91%E1%BA%BFn-chuy%E1%BB%83n-%C4%91%E1%BB%95i-t%E1%BB%AB-excel-sang-r"><i class="fas fa-link"></i></a>
+</h3>
+<p>Dưới đây là một vài đường link hướng dẫn giúp bạn chuyển đổi sang R từ Excel:</p>
+<ul>
+<li>
+<a href="https://www.northeastern.edu/graduate/blog/r-vs-excel/">R vs. Excel</a><br>
+</li>
+<li><a href="https://rstudio-conf-2020.github.io/r-for-excel/">Các khóa RStudio trong R cho người dùng Excel</a></li>
+</ul>
+</div>
+<div id="tương-tác-giữa-r-và-excel" class="section level3 unnumbered">
+<h3>Tương tác giữa R và Excel<a class="anchor" aria-label="anchor" href="#t%C6%B0%C6%A1ng-t%C3%A1c-gi%E1%BB%AFa-r-v%C3%A0-excel"><i class="fas fa-link"></i></a>
+</h3>
+<p>R có khả năng mạnh trong việc nhập các Excel workbook, làm việc với dữ liệu, xuất/lưu tệp Excel và làm việc với các sắc thái của các trang tính Excel.</p>
+<p>Đúng là một số định dạng Excel có tính thẩm mỹ hơn có thể bị mất trong quá trình chuyển đổi (ví dụ: chữ nghiêng, chữ nằm ngang, v.v.). Nếu quy trình công việc của bạn yêu cầu chuyển tài liệu qua lại giữa R và Excel trong khi vẫn giữ nguyên định dạng Excel ban đầu, hãy thử các package như <strong>openxlsx</strong>.</p>
+</div>
+</div>
+<div id="từ-stata" class="section level2" number="4.2">
+<h2>
+<span class="header-section-number">4.2</span> Từ Stata<a class="anchor" aria-label="anchor" href="#t%E1%BB%AB-stata"><i class="fas fa-link"></i></a>
+</h2>
+<p><strong>Chuyển đến R từ Stata</strong></p>
+<p>Nhiều nhà dịch tễ học được dạy cách sử dụng Stata ngay từ đầu, và có vẻ khó khăn khi chuyển sang R. Tuy nhiên, nếu bạn là một người dùng quen Stata thì việc chuyển sang R chắc chắn sẽ dễ quản lý hơn bạn nghĩ. Mặc dù có một số khác biệt chính giữa Stata và R về cách tạo và sửa đổi dữ liệu, cũng như cách triển khai các chức năng phân tích – sau khi tìm hiểu những khác biệt chính này, bạn sẽ có thể chuyển đổi các kỹ năng của mình.</p>
+<p>Dưới đây là một số cách chuyển đổi chính giữa Stata và R, điều mà có thể hữu ích khi bạn xem lại hướng dẫn này.</p>
+<p><strong>Những lưu ý chung</strong></p>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="46%">
+<col width="53%">
+</colgroup>
+<thead><tr class="header">
+<th><strong>STATA</strong></th>
+<th><strong>R</strong></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Bạn chỉ có thể xem và thao tác với một bộ dữ liệu tại một thời điểm</td>
+<td>Bạn có thể xem và thao tác với nhiều bộ dữ liệu cùng một lúc, do đó, bạn sẽ thường xuyên phải xác định bộ dữ liệu của mình trong code</td>
+</tr>
+<tr class="even">
+<td>Cộng đồng trực tuyến có sẵn trên <a href="https://www.statalist.org/" class="uri">https://www.statalist.org/</a>
+</td>
+<td>Cộng đồng trực tuyến có sẵn trên <a href="https://community.rstudio.com/">RStudio</a>, <a href="https://stackoverflow.com/questions/tagged/r">StackOverFlow</a> và <a href="https://www.r-bloggers.com/">R-bloggers</a>
+</td>
+</tr>
+<tr class="odd">
+<td>Thao tác trỏ và nhấp chuột như một tùy chọn</td>
+<td>Thao tác trỏ và nhấp chuột được giảm tối thiểu</td>
+</tr>
+<tr class="even">
+<td>Trợ giúp cho các lệnh có sẵn trong <code>help [command]</code>
+</td>
+<td>Trợ giúp có sẵn trong <code>[function]?</code> hoặc tìm kiếm trong cửa sổ Help</td>
+</tr>
+<tr class="odd">
+<td>Bình luận code sử dụng * hoặc /// hoặc /* VĂN BẢN */</td>
+<td>Bình luận code sử dụng #</td>
+</tr>
+<tr class="even">
+<td>Hầu hết tất cả các lệnh đều được tích hợp sẵn trong Stata. Các lệnh mới do người dùng viết có thể được cài đặt như file <strong>ado</strong> sử dụng <strong>ssc install</strong> <a href="importing.html#package">package</a>
+</td>
+<td>R được cài đặt sẵn các lệnh <strong>cơ bản</strong>, nhưng quá trình sử dụng thông thường cần cài đặt các package khác từ CRAN (xem chương <a href="basics.html#basics">R cơ bản</a>)</td>
+</tr>
+<tr class="odd">
+<td>Phân tích thường được viết trong <strong>do</strong> file</td>
+<td>Phân tích được viết trong R script ở cửa sổ chính của RStudio. Các script của R markdown là một giải pháp thay thế.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Thư mục làm việc</strong></p>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="38%">
+<col width="61%">
+</colgroup>
+<thead><tr class="header">
+<th><strong>STATA</strong></th>
+<th><strong>R</strong></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Thư mục làm việc bao gồm các đường dẫn tuyệt đối (Ví dụ: “C:/usename/documents/projects/data/”)<br>
+</td>
+<td>Thư mục làm việc có thể là đường dẫn tuyệt đối hoặc tương đối đến thư mục gốc của dự án bằng cách sử dụng package <strong>here</strong> (xem chương <a href="importing.html#importing">Nhập xuất dữ liệu</a>)</td>
+</tr>
+<tr class="even">
+<td>Xem thư mục làm việc hiện tại với <strong>pwd</strong>
+</td>
+<td>Sử dụng <code><a href="https://rdrr.io/r/base/getwd.html">getwd()</a></code> hoặc <code><a href="https://here.r-lib.org//reference/here.html">here()</a></code> (nếu sử dụng package <strong>here</strong>), với dấu ngoặc đơn trống</td>
+</tr>
+<tr class="odd">
+<td>Cài đặt thư mục làm việc với <strong>cd</strong> “folder location”</td>
+<td>Sử dụng <code>setwd(“folder location”)</code> hoặc <code>set_here("folder location)</code> (nếu sử dụng package <strong>here</strong>)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Nhập và xem dữ liệu</strong></p>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="41%">
+<col width="58%">
+</colgroup>
+<thead><tr class="header">
+<th><strong>STATA</strong></th>
+<th><strong>R</strong></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Các lệnh cụ thể cho mỗi loại tệp</td>
+<td>Sử dụng <code><a href="https://rdrr.io/pkg/rio/man/import.html">import()</a></code> từ package <strong>rio</strong> cho hầu hết tất cả các loại tệp. Các chức năng cụ thể tồn tại dưới dạng lựa chọn thay thế (xem chương <a href="importing.html#importing">Nhập xuất dữ liệu</a>)</td>
+</tr>
+<tr class="even">
+<td>Đọc file csv được thực hiện bằng cách sử dụng <strong>import delimited</strong> “filename.csv”</td>
+<td>Sử dụng <code><a href="https://rdrr.io/pkg/rio/man/import.html">import("filename.csv")</a></code>
+</td>
+</tr>
+<tr class="odd">
+<td>Đọc file xslx được thực hiện bằng cách sử dụng <strong>import excel</strong> “filename.xlsx”</td>
+<td>Sử dụng <code><a href="https://rdrr.io/pkg/rio/man/import.html">import("filename.xlsx")</a></code>
+</td>
+</tr>
+<tr class="even">
+<td>Duyệt dữ liệu của bạn trong một cửa sổ mới bằng lệnh <strong>browse</strong>
+</td>
+<td>Xem bộ dữ liệu trong cửa sổ nguồn RStudio sử dụng <code><a href="https://rdrr.io/r/utils/View.html">View(dataset)</a></code>. <em>Bạn cần xác định tên bộ dữ liệu của mình cho hàm trong R vì nhiều bộ dữ liệu có thể được mở cùng một lúc. Lưu ý viết hoa “V” trong hàm này</em>
+</td>
+</tr>
+<tr class="odd">
+<td>Có cái nhìn tổng quan hơn về bộ dữ liệu của bạn bằng cách sử dụng <strong>summarize</strong>, lệnh này cung cấp tên biến và các thông tin cơ bản của bộ dữ liệu</td>
+<td>Có cái nhìn tổng quan hơn về bộ dữ liệu của bạn bằng cách sử dụng <code><a href="https://rdrr.io/r/base/summary.html">summary(dataset)</a></code>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Thao tác dữ liệu cơ bản</strong></p>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="32%">
+<col width="67%">
+</colgroup>
+<thead><tr class="header">
+<th><strong>STATA</strong></th>
+<th><strong>R</strong></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Các cột của bộ dữ liệu thường được gọi là “các biến (variables)”</td>
+<td>Thường được gọi là “các cột (columns)” hoặc thỉnh thoảng là “các véctơ (vectors)” hoặc “các biến (variables)”</td>
+</tr>
+<tr class="even">
+<td>Không cần xác định bộ dữ liệu</td>
+<td>Trong mỗi lệnh dưới đây, bạn cần xác định bộ dữ liệu - xem ví dụ trong chương <a href="cleaning.html#cleaning">Làm sạch số liệu và các hàm quan trọng</a>
+</td>
+</tr>
+<tr class="odd">
+<td>Các biến mới được tạo bằng lệnh <strong>generate</strong> <em>varname</em> =</td>
+<td>Tạo các biến mới bằng cách sử dụng lệnh <code>mutate(varname = )</code>. Xem chương <a href="cleaning.html#cleaning">Làm sạch số liệu và các hàm quan trọng</a> để biết tất cả chi tiết về câu lệnh <strong>dplyr</strong> bên dưới</td>
+</tr>
+<tr class="even">
+<td>Các biến được đổi tên bằng cách sử dụng <strong>rename</strong> <em>old_name new_name</em>
+</td>
+<td>Các cột có thể được đổi tên bằng cách sử dụng lệnh <code>rename(new_name = old_name)</code>
+</td>
+</tr>
+<tr class="odd">
+<td>Các biến được lược bỏ sử dụng <strong>drop</strong> <em>varname</em>
+</td>
+<td>Có thể lược bỏ các cột bằng cách sử dụng lệnh <code>select()</code> với tên cột trong ngoặc đơn sau dấu trừ</td>
+</tr>
+<tr class="even">
+<td>Các biến factor có thể được gán nhãn bằng cách sử dụng một loạt lệnh như <strong>label define</strong>
+</td>
+<td>Việc gán nhãn các giá trị có thể được thực hiện bằng cách chuyển đổi cột thành nhóm Factor và chỉ định thứ bậc. Xem chương <a href="factors.html#factors">Factors</a>. Tên cột thường không được gán nhãn như trong Stata.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Phân tích mô tả</strong></p>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="31%">
+<col width="68%">
+</colgroup>
+<thead><tr class="header">
+<th><strong>STATA</strong></th>
+<th><strong>R</strong></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Đếm số lượng bảng của một biến sử dụng <strong>tab</strong> <em>varname</em>
+</td>
+<td>Cung cấp bộ dữ liệu và tên cột cho <code><a href="https://rdrr.io/r/base/table.html">table()</a></code> ví dụ như <code><a href="https://rdrr.io/r/base/table.html">table(dataset$colname)</a></code>. Ngoài ra, có thể sử dụng lệnh <code>count(varname)</code> từ package <strong>dplyr</strong>, đã được giải thích trong chương <a href="grouping.html#grouping">Nhóm dữ liệu</a>
+</td>
+</tr>
+<tr class="even">
+<td>Lập bảng chéo của hai biến trong bảng 2x2 được thực hiện bằng <strong>tab</strong> <em>varname1 varname2</em>
+</td>
+<td>Sử dụng <code>table(dataset$varname1, dataset$varname2</code> hoặc <code>count(varname1, varname2)</code>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p>Mặc dù danh sách này cung cấp một cái nhìn tổng quan về những điều cơ bản trong việc chuyển các lệnh Stata sang R, nhưng nó vẫn chưa đầy đủ. Bạn có thể quan tâm tới nhiều nguồn tài nguyên tuyệt vời khác dành cho người dùng Stata chuyển sang R:</p>
+<ul>
+<li><a href="https://dss.princeton.edu/training/RStata.pdf" class="uri">https://dss.princeton.edu/training/RStata.pdf</a></li>
+<li><a href="https://clanfear.github.io/Stata_R_Equivalency/docs/r_stata_commands.html" class="uri">https://clanfear.github.io/Stata_R_Equivalency/docs/r_stata_commands.html</a></li>
+<li><a href="http://r4stats.com/books/r4stata/" class="uri">http://r4stats.com/books/r4stata/</a></li>
+</ul>
+</div>
+<div id="từ-sas" class="section level2" number="4.3">
+<h2>
+<span class="header-section-number">4.3</span> Từ SAS<a class="anchor" aria-label="anchor" href="#t%E1%BB%AB-sas"><i class="fas fa-link"></i></a>
+</h2>
+<p><strong>Chuyển từ SAS sang R</strong></p>
+<p>SAS thường được sử dụng tại các cơ quan y tế công cộng và các lĩnh vực nghiên cứu học thuật. Mặc dù chuyển đổi sang một ngôn ngữ mới hiếm khi là một quá trình đơn giản, nhưng hiểu được những điểm khác biệt chính giữa SAS và R có thể giúp bạn bắt đầu chuyển hướng ngôn ngữ mới bằng ngôn ngữ mẹ đẻ của mình. Dưới đây là phác thảo các bước chuyển đổi chính trong quản lý dữ liệu và phân tích mô tả giữa SAS và R.</p>
+<p><strong>Những lưu ý chung</strong></p>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="60%">
+<col width="40%">
+</colgroup>
+<thead><tr class="header">
+<th><strong>SAS</strong></th>
+<th><strong>R</strong></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Cộng đồng trực tuyến có sẵn trên <a href="https://support.sas.com/en/support-home.html">SAS Customer Support</a>
+</td>
+<td>Cộng đồng trực tuyến có sẵn trên RStudio, StackOverFlow và R-bloggers</td>
+</tr>
+<tr class="even">
+<td>Trợ giúp cho các lệnh có sẵn trong <code>help [command]</code>
+</td>
+<td>Trợ giúp có sẵn trong <code>[function]?</code> hoặc tìm kiếm trong cửa sổ Help</td>
+</tr>
+<tr class="odd">
+<td>Bình luận code sử dụng <code>* VĂN BẢN ;</code> hoặc <code>/* VĂN BẢN */</code>
+</td>
+<td>Bình luận code sử dụng #</td>
+</tr>
+<tr class="even">
+<td>Hầu hết tất cả các lệnh đều được tích hợp sẵn. Người dùng có thể viết lệnh mới bằng cách sử dụng SAS macro, SAS/IML, SAS Component Language (SCL) và mới đây nhất là, được thực hiện bằng <code>Proc Fcmp</code> và <code>Proc Proto</code>
+</td>
+<td>R được cài đặt sẵn các lệnh **cơ bản**, nhưng quá trình sử dụng thông thường cần cài đặt các package khác từ CRAN (xem chương <a href="basics.html#basics">R cơ bản</a>)</td>
+</tr>
+<tr class="odd">
+<td>Phân tích thường được viết trong chương trình SAS ở cửa sổ Editor.</td>
+<td>Phân tích được viết trong R script trong cửa sổ chính của RStudio. Các script của R markdown là một giải pháp thay thế.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Thư mục làm việc</strong></p>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="52%">
+<col width="47%">
+</colgroup>
+<thead><tr class="header">
+<th><strong>SAS</strong></th>
+<th><strong>R</strong></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Thư mục làm việc có thể là đường dẫn tuyệt đối hoặc tương đối đến thư mục gốc của dự án bằng cách sử dụng <code>%let rootdir=/root path; %include “&amp;rootdir/subfoldername/filename”</code>
+</td>
+<td>Thư mục làm việc có thể là đường dẫn tuyệt đối hoặc tương đối đến thư mục gốc của dự án bằng cách sử dụng package <strong>here</strong> (xem chương <a href="importing.html#importing">Nhập xuất dữ liệu</a>)</td>
+</tr>
+<tr class="even">
+<td>Xem thư mục làm việc hiện tại với <code>%put %sysfunc(getoption(work));</code>  </td>
+<td>Sử dụng <code><a href="https://rdrr.io/r/base/getwd.html">getwd()</a></code> hoặc <code><a href="https://here.r-lib.org//reference/here.html">here()</a></code> (nếu sử dụng package <strong>here</strong>), với dấu ngoặc đơn trống</td>
+</tr>
+<tr class="odd">
+<td>Cài đặt thư mục làm việc với <code>libname “folder location”</code>
+</td>
+<td>Sử dụng <code>setwd(“folder location”)</code> hoặc <code>set_here("folder location)</code> (nếu sử dụng package <strong>here</strong>)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Nhập và xem dữ liệu</strong></p>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="51%">
+<col width="48%">
+</colgroup>
+<thead><tr class="header">
+<th><strong>SAS</strong></th>
+<th><strong>R</strong></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Sử dụng lệnh <code>Proc Import</code> hoặc sử dụng lệnh <code>Data Step Infile</code>
+</td>
+<td>Sử dụng <code><a href="https://rdrr.io/pkg/rio/man/import.html">import()</a></code> từ package <strong>rio</strong> cho hầu hết tất cả các loại tệp. Các chức năng cụ thể tồn tại dưới dạng lựa chọn thay thế (xem chương <a href="importing.html#importing">Nhập xuất dữ liệu</a>)</td>
+</tr>
+<tr class="even">
+<td>Đọc file csv được thực hiện bằng cách sử dụng <code>Proc Import datafile=”filename.csv” out=work.filename dbms=CSV; run;</code> HOẶC sử dụng <a href="http://support.sas.com/techsup/technote/ts673.pdf">Data Step Infile statement</a>
+</td>
+<td>Sử dụng <code><a href="https://rdrr.io/pkg/rio/man/import.html">import("filename.csv")</a></code>
+</td>
+</tr>
+<tr class="odd">
+<td>Đọc các tệp xslx được thực hiện bằng cách sử dụng <code>Proc Import datafile=”filename.xlsx” out=work.filename dbms=xlsx; run;</code> HOẶC sử dụng <a href="http://support.sas.com/techsup/technote/ts673.pdf">Data Step Infile statement</a>
+</td>
+<td>Sử dụng <code><a href="https://rdrr.io/pkg/rio/man/import.html">import("filename.xlsx")</a></code>
+</td>
+</tr>
+<tr class="even">
+<td>Duyệt bộ dữ liệu của bạn trong cửa sổ mới bằng cách mở cửa sổ Explorer và chọn thư viện và tập dữ liệu mong muốn.</td>
+<td>Xem bộ dữ liệu trong cửa sổ nguồn RStudio sử dụng View(dataset). <em>Bạn cần xác định tên bộ dữ liệu của mình cho hàm trong R vì nhiều bộ dữ liệu có thể được mở cùng một lúc. Lưu ý viết hóa “V” trong hàm này</em>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Thao tác dữ liệu cơ bản</strong></p>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="50%">
+<col width="50%">
+</colgroup>
+<thead><tr class="header">
+<th><strong>SAS</strong></th>
+<th><strong>R</strong></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Các cột của bộ dữ liệu thường được gọi là “các biến (variables)”</td>
+<td>Thường được gọi là “các cột (columns)” hoặc thỉnh thoảng là “các véctơ (vectors)” hoặc “các biến (variables)”</td>
+</tr>
+<tr class="even">
+<td>Không cần thao tác đặc biệt để tạo ra một biến. Các biến mới được tạo đơn giản bằng cách nhập tên biến mới, theo sau là dấu bằng, sau đó là biểu thức cho giá trị</td>
+<td>Tạo các biến mới bằng cách sử dụng hàm <code>mutate(varname = )</code>. Xem chương <a href="cleaning.html#cleaning">Làm sạch số liệu và các hàm quan trọng</a> để biết tất cả chi tiết về câu lệnh <strong>dplyr</strong> bên dưới</td>
+</tr>
+<tr class="odd">
+<td>Các biến được đổi tên bằng cách sử dụng <code>rename *old_name=new_name*</code>
+</td>
+<td>Các cột có thể được đổi tên bằng cách sử dụng ệnh <code>rename(new_name = old_name)</code>
+</td>
+</tr>
+<tr class="even">
+<td>Các biến được giữ bằng cách sử dụng <code>**keep**=varname</code>
+</td>
+<td>Các cột có thể được chọn bằng cách sử dụng lệnh <code>select()</code> với tên cột trong ngoặc đơn</td>
+</tr>
+<tr class="odd">
+<td>Các biến được lược bỏ sử dụng <code>**drop**=varname</code>
+</td>
+<td>Có thể lược bỏ các cột bằng cách sử dụng lệnh <code>select()</code> với tên cột trong ngoặc đơn sau dấu trừ</td>
+</tr>
+<tr class="even">
+<td>Các biến Factor có thể được gán nhãn trong Data Step bằng cách sử dụng lệnh <code>Label</code>
+</td>
+<td>Việc gán nhãn các giá trị có thể được thực hiện bằng cách chuyển đổi cột thành nhóm Factor và chỉ định thứ bậc. Xem chương <a href="factors.html#factors">Factors</a>. Tên cột thường không được gán nhãn.</td>
+</tr>
+<tr class="odd">
+<td>Các bản ghi được chọn bằng cách sử dụng lệnh <code>Where</code> hoặc <code>If</code> trong Data Step. Nhiều điều kiện lựa chọn được phân tách bằng lệnh “and”.</td>
+<td>Các bản ghi được chọn bằng cách sử dụng lệnh <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code> với nhiều điều kiện lựa chọn được phân tách bằng toán tử AND (&amp;) hoặc dấu phẩy</td>
+</tr>
+<tr class="even">
+<td>Bộ dữ liệu được hợp nhất bằng cách sử dụng lệnh <code>Merge</code> trong Data Step. Các bộ dữ liệu được hợp nhất cần phải được sắp xếp trước bằng cách sử dụng thao tác <code>Proc Sort</code>.</td>
+<td>Package <strong>dplyr</strong> cung cấp một số chức năng để hợp nhất các tập dữ liệu. Xem chi tiết trong chương <a href="joining-matching.html#joining-matching">Nối dữ liệu</a>.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Phân tích mô tả</strong></p>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="39%">
+<col width="60%">
+</colgroup>
+<thead><tr class="header">
+<th><strong>SAS</strong></th>
+<th><strong>R</strong></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Có cái nhìn tổng quan hơn về bộ dữ liệu của bạn bằng cách sử dụng thao tác <code>Proc Summary</code>, thao tác mà cung cấp tên biến và các thống kê mô tả</td>
+<td>Có cái nhìn tổng quan hơn về bộ dữ liệu của bạn bằng cách sử dụng <code><a href="https://rdrr.io/r/base/summary.html">summary(dataset)</a></code> hoặc <code>skim(dataset)</code> từ package <strong>skimr</strong> package</td>
+</tr>
+<tr class="even">
+<td>Đếm số lượng bảng của một biến sử dụng <code>proc freq data=Dataset; Tables varname; Run;</code>
+</td>
+<td>Xem chương <a href="tables-descriptive.html#tables-descriptive">Bảng mô tả</a>. Các tùy chọn trong số tất cả các tùy chọn khác bao gồm <code><a href="https://rdrr.io/r/base/table.html">table()</a></code> từ <strong>base</strong> R và <code>tabyl()</code> từ package <strong>janitor</strong>. Lưu ý rằng bạn sẽ cần xác định bộ dữ liệu và tên cột vì R chứa nhiều tập dữ liệu.</td>
+</tr>
+<tr class="odd">
+<td>Lập bảng chéo của hai biến trong bảng 2x2 được thực hiện bằng <code>proc freq data=Dataset; Tables rowvar*colvar; Run;</code>
+</td>
+<td>Một lần nữa, bạn có thể sử dụng <code><a href="https://rdrr.io/r/base/table.html">table()</a></code>, <code>tabyl()</code> hoặc những cách khác đã được mô tả trong chương <a href="tables-descriptive.html#tables-descriptive">Bảng mô tả</a>.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Một số tài nguyên hữu ích:</strong></p>
+<p><a href="https://www.amazon.com/SAS-SPSS-Users-Statistics-Computing/dp/1461406846/ref=sr_1_1?dchild=1&amp;gclid=EAIaIQobChMIoqLOvf6u7wIVAhLnCh1c9w_DEAMYASAAEgJLIfD_BwE&amp;hvadid=241675955927&amp;hvdev=c&amp;hvlocphy=9032185&amp;hvnetw=g&amp;hvqmt=e&amp;hvrand=16854847287059617468&amp;hvtargid=kwd-44746119007&amp;hydadcr=16374_10302157&amp;keywords=r+for+sas+users&amp;qid=1615698213&amp;sr=8-1">R for SAS and SPSS Users (2011)</a></p>
+<p><a href="https://www.amazon.com/SAS-Management-Statistical-Analysis-Graphics-dp-1466584491/dp/1466584491/ref=dp_ob_title_bk">SAS and R, Second Edition (2014)</a></p>
+</div>
+<div id="khả-năng-tương-tác-dữ-liệu" class="section level2" number="4.4">
+<h2>
+<span class="header-section-number">4.4</span> Khả năng tương tác dữ liệu<a class="anchor" aria-label="anchor" href="#kh%E1%BA%A3-n%C4%83ng-t%C6%B0%C6%A1ng-t%C3%A1c-d%E1%BB%AF-li%E1%BB%87u"><i class="fas fa-link"></i></a>
+</h2>
+<p>Xem chương <a href="importing.html#importing">Nhập xuất dữ liệu</a> để biết chi tiết về cách R package <strong>rio</strong> có thể nhập và xuất các file như file STATA .dta, file SAS .xpt và .sas7bdat, file SPSS .por và .sav và nhiều file khác.</p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="basics.html"><span class="header-section-number">3</span> R Cơ bản</a></div>
+<div class="next"><a href="packages-suggested.html"><span class="header-section-number">5</span> Package đề xuất</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#transition-to-R"><span class="header-section-number">4</span> Chuyển đổi sang R</a></li>
+<li>
+<a class="nav-link" href="#t%E1%BB%AB-excel"><span class="header-section-number">4.1</span> Từ Excel</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#l%E1%BB%A3i-%C3%ADch">Lợi ích</a></li>
+<li><a class="nav-link" href="#tidy-data">Tidy data</a></li>
+<li><a class="nav-link" href="#h%C3%A0m">Hàm</a></li>
+<li><a class="nav-link" href="#script">Script</a></li>
+<li><a class="nav-link" href="#t%C3%A0i-li%E1%BB%87u-li%C3%AAn-quan-%C4%91%E1%BA%BFn-chuy%E1%BB%83n-%C4%91%E1%BB%95i-t%E1%BB%AB-excel-sang-r">Tài liệu liên quan đến chuyển đổi từ Excel-sang-R</a></li>
+<li><a class="nav-link" href="#t%C6%B0%C6%A1ng-t%C3%A1c-gi%E1%BB%AFa-r-v%C3%A0-excel">Tương tác giữa R và Excel</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#t%E1%BB%AB-stata"><span class="header-section-number">4.2</span> Từ Stata</a></li>
+<li><a class="nav-link" href="#t%E1%BB%AB-sas"><span class="header-section-number">4.3</span> Từ SAS</a></li>
+<li><a class="nav-link" href="#kh%E1%BA%A3-n%C4%83ng-t%C6%B0%C6%A1ng-t%C3%A1c-d%E1%BB%AF-li%E1%BB%87u"><span class="header-section-number">4.4</span> Khả năng tương tác dữ liệu</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Cẩm nang dịch tễ học với R</strong>" was written by the handbook team. It was last built on 2021-10-06.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>6 Dự án R | Sổ tay dịch tễ học với R</title>
+
+    <meta name="author" content="the handbook team" />
+  
+  <!-- JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script>
+  <script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script>
+    <script src="libs/header-attrs-2.6.4/header-attrs.js"></script>
+    <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" />
+    <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
+    <script src="libs/bs3compat-0.2.5.1/tabs.js"></script>
+    <script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script>
+    <link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet" />
+    <script src="libs/bs4_book-1.0.0/bs4_book.js"></script>
+    <script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+    <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+    <script src="libs/datatables-binding-0.16/datatables.js"></script>
+    <link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+    <script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+    <link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet" />
+    <script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
+    <link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet" />
+    <script src="libs/selectize-0.12.0/selectize.min.js"></script>
+    <link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+    <script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+    <script src="libs/kePrint-0.0.1/kePrint.js"></script>
+    <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+    <link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
+    <script src="libs/tabwid-1.0.0/tabwid.js"></script>
+    <link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+    <script src="libs/leaflet-1.3.1/leaflet.js"></script>
+    <link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+    <script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
+    <script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+    <link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+    <script src="libs/leaflet-binding-2.0.3/leaflet.js"></script>
+    <script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
+    <script src="libs/leaflet-providers-plugin-2.0.3/leaflet-providers-plugin.js"></script>
+    <script src="libs/viz-1.8.2/viz.js"></script>
+    <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+    <script src="libs/grViz-binding-1.0.6.1/grViz.js"></script>
+    <script src="libs/d3-4.5.0/d3.min.js"></script>
+    <script src="libs/sankey-1/sankey.js"></script>
+    <script src="libs/sankeyNetwork-binding-0.4/sankeyNetwork.js"></script>
+    <script src="libs/plotly-binding-4.9.2.1/plotly.js"></script>
+    <script src="libs/typedarray-0.1/typedarray.min.js"></script>
+    <link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
+    <script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
+    <link href="libs/vis-4.20.1/vis.css" rel="stylesheet" />
+    <script src="libs/vis-4.20.1/vis.min.js"></script>
+    <script src="libs/visNetwork-binding-2.0.9/visNetwork.js"></script>
+    <link href="libs/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <script src="libs/plotly-basic-1.52.2/plotly-basic-1.52.2.min.js"></script>
+    <script src="libs/plotly-cartesian-1.52.2/plotly-cartesian-1.52.2.min.js"></script>
+    <script src="libs/proj4js-2.3.15/proj4.js"></script>
+    <link href="libs/highcharts-8.1.2/css/motion.css" rel="stylesheet" />
+    <script src="libs/highcharts-8.1.2/highcharts.js"></script>
+    <script src="libs/highcharts-8.1.2/highcharts-3d.js"></script>
+    <script src="libs/highcharts-8.1.2/highcharts-more.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/stock.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/map.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/annotations.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/data.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/drilldown.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/item-series.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/offline-exporting.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/overlapping-datalabels.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/exporting.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/export-data.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/funnel.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/heatmap.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/treemap.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/sankey.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/dependency-wheel.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/organization.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/solid-gauge.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/streamgraph.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/sunburst.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/vector.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/wordcloud.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/xrange.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/tilemap.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/venn.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/gantt.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/timeline.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/parallel-coordinates.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/bullet.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/coloraxis.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/dumbbell.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/lollipop.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/series-label.js"></script>
+    <script src="libs/highcharts-8.1.2/plugins/motion.js"></script>
+    <script src="libs/highcharts-8.1.2/custom/reset.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/boost.js"></script>
+    <script src="libs/highchart-binding-0.8.2/highchart.js"></script>
+    <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script>
+
+  <!-- CSS -->
+    <link rel="stylesheet" href="style_bs4.css" />
+    
+</head>
+
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book">
+    <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Sổ tay dịch tễ học với R</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+      </form>
+
+      <nav aria-label="Table of contents">
+        <h2>Table of contents</h2>
+        <div id="book-toc"></div>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="#">View book source <i class="fab fa-github"></i></a></li></p>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="col-sm-12 col-md-9 col-lg-7" id="content">
+<div id="dự-án-r" class="section level1" number="6">
+<h1><span class="header-section-number">6</span> Dự án R</h1>
+<p>An R project enables your work to be bundled in a portable, self-contained folder. Within the project, all the relevant scripts, data files, figures/outputs, and history are stored in sub-folders and importantly - the <em>working directory</em> is the project’s root folder.</p>
+<div id="suggested-use" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> Suggested use</h2>
+<p>A common, efficient, and trouble-free way to use R is to combine these 3 elements. One discrete work project is hosted within one R project. Each element is described in the sections below.</p>
+<ol style="list-style-type: decimal">
+<li>An <strong>R project</strong>
+<ul>
+<li>A self-contained working environment with folders for data, scripts, outputs, etc.<br />
+</li>
+</ul></li>
+<li>The <strong>here</strong> package for relative filepaths
+<ul>
+<li>Filepaths are written relative to the root folder of the R project - see [Import and export] for more information<br />
+</li>
+</ul></li>
+<li>The <strong>rio</strong> package for importing/exporting
+<ul>
+<li><code>import()</code> and <code>export()</code> handle any file type by by its extension (e.g. .csv, .xlsx, .png)</li>
+</ul></li>
+</ol>
+<!-- ======================================================= -->
+</div>
+<div id="creating-an-r-project" class="section level2" number="6.2">
+<h2><span class="header-section-number">6.2</span> Creating an R project</h2>
+<p>To create an R project, select “New Project” from the File menu.</p>
+<ul>
+<li>If you want to create a new folder for the project, select “New directory” and indicate where you want it to be created.<br />
+</li>
+<li>If you want to create the project within an existing folder, click “Existing directory” and indicate the folder.<br />
+</li>
+<li>If you want to clone a Github repository, select the third option “Version Control” and then “Git”. See the page on [Version control and collaboration with Git and Github] for further details.</li>
+</ul>
+<p><img src="images/create_project.png" width="75%" style="display: block; margin: auto;" /></p>
+<p>The R project you create will come in the form of a folder containing a <em>.Rproj</em> file. This file is a shortcut and likely the primary way you will open your project. You can also open a project by selecting “Open Project” from the File menu. Alternatively on the far upper right side of RStudio you will see an R project icon and a drop-down menu of available R projects.</p>
+<p>To exit from an R project, either open a new project, or close the project (File - Close Project).</p>
+<div id="switch-projects" class="section level3 unnumbered">
+<h3>Switch projects</h3>
+<p>To switch between projects, click the R project icon and drop-down menu at the very top-right of RStudio. You will see options to Close Project, Open Project, and a list of recent projects.</p>
+<p><img src="images/Rproject_dropdown.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="settings" class="section level3 unnumbered">
+<h3>Settings</h3>
+<p>It is generally advised that you start RStudio each time with a “clean slate” - that is, with your workspace <strong>not</strong> preserved from your previous session. This will mean that your objects and results will not persist session-to-session (you must re-create them by running your scripts). This is good, because it will force you to write better scripts and avoid errors in the long run.</p>
+<p>To set RStudio to have a “clean slate” each time at start-up:</p>
+<ul>
+<li>Select “Project Options” from the Tools menu.<br />
+</li>
+<li>In the “General” tab, set RStudio to <strong>not</strong> restore .RData into workspace at startup, and to <strong>not</strong> save workspace to .RData on exit.</li>
+</ul>
+</div>
+<div id="organization" class="section level3 unnumbered">
+<h3>Organization</h3>
+<p>It is common to have subfolders in your project. Consider having folders such as “data”, “scripts”, “figures”, “presentations”. You can add folders in the typical way you would add a new folder for your computer. Alternatively, see the page on [Directory interactions] to learn how to create new folders with R commands.</p>
+</div>
+<div id="version-control" class="section level3 unnumbered">
+<h3>Version control</h3>
+<p>Consider a version control system. It could be something as simple as having dates on the names of scripts (e.g. “transmission_analysis_2020-10-03.R”) and an “archive” folder. Consider also having commented header text at the top of each script with a description, tags, authors, and change log.</p>
+<p>A more complicated method would involve using Github or a similar platform for version control. See the page on [Version control and collaboration with Git and Github].</p>
+<p>One tip is that you can search across an entire project or folder using the “Find in Files” tool (Edit menu). It can search and even replace strings across multiple files.</p>
+</div>
+</div>
+<div id="examples" class="section level2" number="6.3">
+<h2><span class="header-section-number">6.3</span> Examples</h2>
+<p>Below are some examples of import/export/saving using <code>here()</code> from within an R projct. Read more about using the <strong>here</strong> package in the [Import and export] page.</p>
+<p><em>Importing <code>linelist_raw.xlsx</code> from the “data” folder in your R project</em></p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="d-án-r.html#cb128-1" aria-hidden="true" tabindex="-1"></a>linelist <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;linelist_raw.xlsx&quot;</span>))</span></code></pre></div>
+<p><em>Exporting the R object <code>linelist</code> as “my_linelist.rds” to the “clean” folder within the “data” folder in your R project.</em></p>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="d-án-r.html#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="fu">export</span>(linelist, <span class="fu">here</span>(<span class="st">&quot;data&quot;</span>,<span class="st">&quot;clean&quot;</span>, <span class="st">&quot;my_linelist.rds&quot;</span>))</span></code></pre></div>
+<p><em>Saving the most recently printed plot as “epicurve_2021-02-15.png” within the “epicurves” folder in “outputs” folder in your R project.</em></p>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="d-án-r.html#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="fu">here</span>(<span class="st">&quot;outputs&quot;</span>, <span class="st">&quot;epicurves&quot;</span>, <span class="st">&quot;epicurve_2021-02-15.png&quot;</span>))</span></code></pre></div>
+<!-- ======================================================= -->
+</div>
+<div id="resources" class="section level2" number="6.4">
+<h2><span class="header-section-number">6.4</span> Resources</h2>
+<p>RStudio webpage on <a href="https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects">using R projects</a></p>
+
+</div>
+</div>
+  </main>
+
+  <div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page">
+      <h2>On this page</h2>
+      <div id="book-on-this-page"></div>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          <li><a id="book-source" href="#">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="#">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5">
+  <div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Sổ tay dịch tễ học với R</strong>" was written by the handbook team. It was last built on 2021-06-14.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

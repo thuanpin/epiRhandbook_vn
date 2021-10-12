@@ -1,0 +1,601 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>15 Loại bỏ trùng lặp | Sổ tay dịch tễ học với R</title>
+
+    <meta name="author" content="the handbook team" />
+  
+  <!-- JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script>
+  <script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script>
+    <script src="libs/header-attrs-2.6.4/header-attrs.js"></script>
+    <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" />
+    <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
+    <script src="libs/bs3compat-0.2.5.1/tabs.js"></script>
+    <script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script>
+    <link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet" />
+    <script src="libs/bs4_book-1.0.0/bs4_book.js"></script>
+    <script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+    <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+    <script src="libs/datatables-binding-0.16/datatables.js"></script>
+    <link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+    <script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+    <link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet" />
+    <script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
+    <link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet" />
+    <script src="libs/selectize-0.12.0/selectize.min.js"></script>
+    <link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+    <script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+    <script src="libs/kePrint-0.0.1/kePrint.js"></script>
+    <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+    <link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
+    <script src="libs/tabwid-1.0.0/tabwid.js"></script>
+    <link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+    <script src="libs/leaflet-1.3.1/leaflet.js"></script>
+    <link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+    <script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
+    <script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+    <link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+    <script src="libs/leaflet-binding-2.0.3/leaflet.js"></script>
+    <script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
+    <script src="libs/leaflet-providers-plugin-2.0.3/leaflet-providers-plugin.js"></script>
+    <script src="libs/viz-1.8.2/viz.js"></script>
+    <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+    <script src="libs/grViz-binding-1.0.6.1/grViz.js"></script>
+    <script src="libs/d3-4.5.0/d3.min.js"></script>
+    <script src="libs/sankey-1/sankey.js"></script>
+    <script src="libs/sankeyNetwork-binding-0.4/sankeyNetwork.js"></script>
+    <script src="libs/plotly-binding-4.9.2.1/plotly.js"></script>
+    <script src="libs/typedarray-0.1/typedarray.min.js"></script>
+    <link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
+    <script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
+    <link href="libs/vis-4.20.1/vis.css" rel="stylesheet" />
+    <script src="libs/vis-4.20.1/vis.min.js"></script>
+    <script src="libs/visNetwork-binding-2.0.9/visNetwork.js"></script>
+    <link href="libs/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <script src="libs/plotly-basic-1.52.2/plotly-basic-1.52.2.min.js"></script>
+    <script src="libs/plotly-cartesian-1.52.2/plotly-cartesian-1.52.2.min.js"></script>
+    <script src="libs/proj4js-2.3.15/proj4.js"></script>
+    <link href="libs/highcharts-8.1.2/css/motion.css" rel="stylesheet" />
+    <script src="libs/highcharts-8.1.2/highcharts.js"></script>
+    <script src="libs/highcharts-8.1.2/highcharts-3d.js"></script>
+    <script src="libs/highcharts-8.1.2/highcharts-more.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/stock.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/map.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/annotations.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/data.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/drilldown.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/item-series.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/offline-exporting.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/overlapping-datalabels.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/exporting.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/export-data.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/funnel.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/heatmap.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/treemap.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/sankey.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/dependency-wheel.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/organization.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/solid-gauge.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/streamgraph.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/sunburst.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/vector.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/wordcloud.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/xrange.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/tilemap.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/venn.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/gantt.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/timeline.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/parallel-coordinates.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/bullet.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/coloraxis.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/dumbbell.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/lollipop.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/series-label.js"></script>
+    <script src="libs/highcharts-8.1.2/plugins/motion.js"></script>
+    <script src="libs/highcharts-8.1.2/custom/reset.js"></script>
+    <script src="libs/highcharts-8.1.2/modules/boost.js"></script>
+    <script src="libs/highchart-binding-0.8.2/highchart.js"></script>
+    <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script>
+
+  <!-- CSS -->
+    <link rel="stylesheet" href="style_bs4.css" />
+    
+</head>
+
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book">
+    <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Sổ tay dịch tễ học với R</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+      </form>
+
+      <nav aria-label="Table of contents">
+        <h2>Table of contents</h2>
+        <div id="book-toc"></div>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="#">View book source <i class="fab fa-github"></i></a></li></p>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="col-sm-12 col-md-9 col-lg-7" id="content">
+<div id="loại-bỏ-trùng-lặp" class="section level1" number="15">
+<h1><span class="header-section-number">15</span> Loại bỏ trùng lặp</h1>
+<p><img src="images/deduplication.png" width="50%" /></p>
+<p>This page covers the following de-duplication techniques:</p>
+<ol style="list-style-type: decimal">
+<li>Identifying and removing duplicate rows<br />
+</li>
+<li>“Slicing” rows to keep only certain rows (e.g. min or max) from each group of rows<br />
+</li>
+<li>“Rolling-up”, or combining values from multiple rows into one row</li>
+</ol>
+<!-- ======================================================= -->
+<div id="preparation-6" class="section level2" number="15.1">
+<h2><span class="header-section-number">15.1</span> Preparation</h2>
+<div id="load-packages-7" class="section level3 unnumbered">
+<h3>Load packages</h3>
+<p>This code chunk shows the loading of packages required for the analyses. In this handbook we emphasize <code>p_load()</code> from <strong>pacman</strong>, which installs the package if necessary <em>and</em> loads it for use. You can also load installed packages with <code>library()</code> from <strong>base</strong> R. See the page on [R basics] for more information on R packages.</p>
+<div class="sourceCode" id="cb718"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb718-1"><a href="lo-i-b-trùng-l-p.html#cb718-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(</span>
+<span id="cb718-2"><a href="lo-i-b-trùng-l-p.html#cb718-2" aria-hidden="true" tabindex="-1"></a>  tidyverse,   <span class="co"># deduplication, grouping, and slicing functions</span></span>
+<span id="cb718-3"><a href="lo-i-b-trùng-l-p.html#cb718-3" aria-hidden="true" tabindex="-1"></a>  janitor,     <span class="co"># function for reviewing duplicates</span></span>
+<span id="cb718-4"><a href="lo-i-b-trùng-l-p.html#cb718-4" aria-hidden="true" tabindex="-1"></a>  stringr)      <span class="co"># for string searches, can be used in &quot;rolling-up&quot; values</span></span></code></pre></div>
+</div>
+<div id="import-data-8" class="section level3 unnumbered">
+<h3>Import data</h3>
+<p>For demonstration, we will use an example dataset that is created with the R code below.</p>
+<p>The data are records of COVID-19 phone encounters, including encounters with contacts and with cases. The columns include <code>recordID</code> (computer-generated), <code>personID</code>, <code>name</code>, <code>date</code> of encounter, <code>time</code> of encounter, the <code>purpose</code> of the encounter (either to interview as a case or as a contact), and <code>symptoms_ever</code> (whether the person in that encounter reported <em>ever</em> having symptoms).</p>
+<p>Here is the code to create the <code>obs</code> dataset:</p>
+<div class="sourceCode" id="cb719"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb719-1"><a href="lo-i-b-trùng-l-p.html#cb719-1" aria-hidden="true" tabindex="-1"></a>obs <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb719-2"><a href="lo-i-b-trùng-l-p.html#cb719-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">recordID  =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">14</span>,<span class="dv">15</span>,<span class="dv">16</span>,<span class="dv">17</span>,<span class="dv">18</span>),</span>
+<span id="cb719-3"><a href="lo-i-b-trùng-l-p.html#cb719-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">personID  =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">8</span>),</span>
+<span id="cb719-4"><a href="lo-i-b-trùng-l-p.html#cb719-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">name      =</span> <span class="fu">c</span>(<span class="st">&quot;adam&quot;</span>, <span class="st">&quot;adam&quot;</span>, <span class="st">&quot;amrish&quot;</span>, <span class="st">&quot;amrish&quot;</span>, <span class="st">&quot;mariah&quot;</span>, <span class="st">&quot;amrish&quot;</span>, <span class="st">&quot;nikhil&quot;</span>, <span class="st">&quot;brian&quot;</span>, <span class="st">&quot;smita&quot;</span>, <span class="st">&quot;raquel&quot;</span>, <span class="st">&quot;amrish&quot;</span>,</span>
+<span id="cb719-5"><a href="lo-i-b-trùng-l-p.html#cb719-5" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;adam&quot;</span>, <span class="st">&quot;mariah&quot;</span>, <span class="st">&quot;mariah&quot;</span>, <span class="st">&quot;nikhil&quot;</span>, <span class="st">&quot;brian&quot;</span>, <span class="st">&quot;brian&quot;</span>, <span class="st">&quot;raquel&quot;</span>, <span class="st">&quot;natalie&quot;</span>),</span>
+<span id="cb719-6"><a href="lo-i-b-trùng-l-p.html#cb719-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">date      =</span> <span class="fu">c</span>(<span class="st">&quot;1/1/2020&quot;</span>, <span class="st">&quot;1/1/2020&quot;</span>, <span class="st">&quot;2/1/2020&quot;</span>, <span class="st">&quot;2/1/2020&quot;</span>, <span class="st">&quot;5/1/2020&quot;</span>, <span class="st">&quot;5/1/2020&quot;</span>, <span class="st">&quot;5/1/2020&quot;</span>, <span class="st">&quot;5/1/2020&quot;</span>, <span class="st">&quot;5/1/2020&quot;</span>,<span class="st">&quot;5/1/2020&quot;</span>, <span class="st">&quot;2/1/2020&quot;</span>,</span>
+<span id="cb719-7"><a href="lo-i-b-trùng-l-p.html#cb719-7" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;5/1/2020&quot;</span>, <span class="st">&quot;6/1/2020&quot;</span>, <span class="st">&quot;6/1/2020&quot;</span>, <span class="st">&quot;6/1/2020&quot;</span>, <span class="st">&quot;6/1/2020&quot;</span>, <span class="st">&quot;7/1/2020&quot;</span>, <span class="st">&quot;7/1/2020&quot;</span>, <span class="st">&quot;7/1/2020&quot;</span>),</span>
+<span id="cb719-8"><a href="lo-i-b-trùng-l-p.html#cb719-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">time      =</span> <span class="fu">c</span>(<span class="st">&quot;09:00&quot;</span>, <span class="st">&quot;09:00&quot;</span>, <span class="st">&quot;14:20&quot;</span>, <span class="st">&quot;14:20&quot;</span>, <span class="st">&quot;12:00&quot;</span>, <span class="st">&quot;16:10&quot;</span>, <span class="st">&quot;13:01&quot;</span>, <span class="st">&quot;15:20&quot;</span>, <span class="st">&quot;14:20&quot;</span>, <span class="st">&quot;12:30&quot;</span>, <span class="st">&quot;10:24&quot;</span>,</span>
+<span id="cb719-9"><a href="lo-i-b-trùng-l-p.html#cb719-9" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;09:40&quot;</span>, <span class="st">&quot;07:25&quot;</span>, <span class="st">&quot;08:32&quot;</span>, <span class="st">&quot;15:36&quot;</span>, <span class="st">&quot;15:31&quot;</span>, <span class="st">&quot;07:59&quot;</span>, <span class="st">&quot;11:13&quot;</span>, <span class="st">&quot;17:12&quot;</span>),</span>
+<span id="cb719-10"><a href="lo-i-b-trùng-l-p.html#cb719-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">encounter =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,</span>
+<span id="cb719-11"><a href="lo-i-b-trùng-l-p.html#cb719-11" aria-hidden="true" tabindex="-1"></a>                <span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">1</span>),</span>
+<span id="cb719-12"><a href="lo-i-b-trùng-l-p.html#cb719-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">purpose   =</span> <span class="fu">c</span>(<span class="st">&quot;contact&quot;</span>, <span class="st">&quot;contact&quot;</span>, <span class="st">&quot;contact&quot;</span>, <span class="st">&quot;contact&quot;</span>, <span class="st">&quot;case&quot;</span>, <span class="st">&quot;case&quot;</span>, <span class="st">&quot;contact&quot;</span>, <span class="st">&quot;contact&quot;</span>, <span class="st">&quot;contact&quot;</span>, <span class="st">&quot;contact&quot;</span>, <span class="st">&quot;contact&quot;</span>,</span>
+<span id="cb719-13"><a href="lo-i-b-trùng-l-p.html#cb719-13" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;case&quot;</span>, <span class="st">&quot;contact&quot;</span>, <span class="st">&quot;contact&quot;</span>, <span class="st">&quot;contact&quot;</span>, <span class="st">&quot;contact&quot;</span>, <span class="st">&quot;case&quot;</span>, <span class="st">&quot;contact&quot;</span>, <span class="st">&quot;case&quot;</span>),</span>
+<span id="cb719-14"><a href="lo-i-b-trùng-l-p.html#cb719-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">symptoms_ever =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="cn">NA</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>, <span class="cn">NA</span>, <span class="st">&quot;Yes&quot;</span>,</span>
+<span id="cb719-15"><a href="lo-i-b-trùng-l-p.html#cb719-15" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;No&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>,<span class="st">&quot;No&quot;</span>, <span class="st">&quot;No&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb719-16"><a href="lo-i-b-trùng-l-p.html#cb719-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">date =</span> <span class="fu">as.Date</span>(date, <span class="at">format =</span> <span class="st">&quot;%d/%m/%Y&quot;</span>))</span></code></pre></div>
+<div id="dedup_data" class="section level4 unnumbered">
+<h4>Here is the data frame</h4>
+<p>Use the filter boxes along the top to review the encounters for each person.</p>
+<div id="htmlwidget-3ee9a1c42dc9728bea99" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3ee9a1c42dc9728bea99">{"x":{"filter":"top","filterHTML":"<tr>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none; position: absolute; width: 200px;\">\n      <div data-min=\"1\" data-max=\"18\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none; position: absolute; width: 200px;\">\n      <div data-min=\"1\" data-max=\"8\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"date\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none; position: absolute; width: 200px;\">\n      <div data-min=\"1577836800000\" data-max=\"1578355200000\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none; position: absolute; width: 200px;\">\n      <div data-min=\"1\" data-max=\"3\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","data":[[1,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18],[1,1,2,2,3,2,4,5,6,7,2,1,3,3,4,5,5,7,8],["adam","adam","amrish","amrish","mariah","amrish","nikhil","brian","smita","raquel","amrish","adam","mariah","mariah","nikhil","brian","brian","raquel","natalie"],["2020-01-01","2020-01-01","2020-01-02","2020-01-02","2020-01-05","2020-01-05","2020-01-05","2020-01-05","2020-01-05","2020-01-05","2020-01-02","2020-01-05","2020-01-06","2020-01-06","2020-01-06","2020-01-06","2020-01-07","2020-01-07","2020-01-07"],["09:00","09:00","14:20","14:20","12:00","16:10","13:01","15:20","14:20","12:30","10:24","09:40","07:25","08:32","15:36","15:31","07:59","11:13","17:12"],[1,1,1,1,1,3,1,1,1,1,2,2,2,3,2,2,3,2,1],["contact","contact","contact","contact","case","case","contact","contact","contact","contact","contact","case","contact","contact","contact","contact","case","contact","case"],[null,null,"No","No","No","Yes","Yes","No","Yes",null,"Yes","No","No","No","Yes","Yes","No","No","No"]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>recordID<\/th>\n      <th>personID<\/th>\n      <th>name<\/th>\n      <th>date<\/th>\n      <th>time<\/th>\n      <th>encounter<\/th>\n      <th>purpose<\/th>\n      <th>symptoms_ever<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":19,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[0,1,5]}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true,"lengthMenu":[10,19,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<p>A few things to note as you review the data:</p>
+<ul>
+<li>The first two records are 100% complete duplicates including duplicate <code>recordID</code> (must be a computer glitch!)<br />
+</li>
+<li>The second two rows are duplicates, in all columns <em>except for <code>recordID</code></em><br />
+</li>
+<li>Several people had multiple phone encounters, at various dates and times, and as contacts and/or cases<br />
+</li>
+<li>At each encounter, the person was asked if they had <strong>ever</strong> had symptoms, and some of this information is missing.</li>
+</ul>
+<p>And here is a quick summary of the people and the purposes of their encounters, using <code>tabyl()</code> from <strong>janitor</strong>:</p>
+<div class="sourceCode" id="cb720"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb720-1"><a href="lo-i-b-trùng-l-p.html#cb720-1" aria-hidden="true" tabindex="-1"></a>obs <span class="sc">%&gt;%</span> </span>
+<span id="cb720-2"><a href="lo-i-b-trùng-l-p.html#cb720-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span>(name, purpose)</span></code></pre></div>
+<pre><code>##     name case contact
+##     adam    1       2
+##   amrish    1       3
+##    brian    1       2
+##   mariah    1       2
+##  natalie    1       0
+##   nikhil    0       2
+##   raquel    0       2
+##    smita    0       1</code></pre>
+<!-- ======================================================= -->
+</div>
+</div>
+</div>
+<div id="deduplication-1" class="section level2" number="15.2">
+<h2><span class="header-section-number">15.2</span> Deduplication</h2>
+<p>This section describes how to review and remove duplicate rows in a data frame. It also show how to handle duplicate elements in a vector.</p>
+<!-- ======================================================= -->
+<div id="examine-duplicate-rows" class="section level3 unnumbered">
+<h3>Examine duplicate rows</h3>
+<p>To quickly review rows that have duplicates, you can use <code>get_dupes()</code> from the <strong>janitor</strong> package. <em>By default</em>, all columns are considered when duplicates are evaluated - rows returned by the function are 100% duplicates considering the values in <em>all</em> columns.</p>
+<p>In the <code>obs</code> data frame, the first two rows are <em>100% duplicates</em> - they have the same value in every column (including the <code>recordID</code> column, which is <em>supposed</em> to be unique - it must be some computer glitch). The returned data frame automatically includes a new column <code>dupe_count</code> on the right side, showing the number of rows with that combination of duplicate values.</p>
+<div class="sourceCode" id="cb722"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb722-1"><a href="lo-i-b-trùng-l-p.html#cb722-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 100% duplicates across all columns</span></span>
+<span id="cb722-2"><a href="lo-i-b-trùng-l-p.html#cb722-2" aria-hidden="true" tabindex="-1"></a>obs <span class="sc">%&gt;%</span> </span>
+<span id="cb722-3"><a href="lo-i-b-trùng-l-p.html#cb722-3" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">get_dupes</span>()</span></code></pre></div>
+<div id="htmlwidget-e3ebe32619cd0cbad2cb" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e3ebe32619cd0cbad2cb">{"x":{"filter":"none","data":[[1,1],[1,1],["adam","adam"],["2020-01-01","2020-01-01"],["09:00","09:00"],[1,1],["contact","contact"],[null,null],[2,2]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>recordID<\/th>\n      <th>personID<\/th>\n      <th>name<\/th>\n      <th>date<\/th>\n      <th>time<\/th>\n      <th>encounter<\/th>\n      <th>purpose<\/th>\n      <th>symptoms_ever<\/th>\n      <th>dupe_count<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":19,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[0,1,5,8]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[10,19,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<p>See the <a href="lo-i-b-trùng-l-p.html#dedup_data">original data</a></p>
+<p>However, if we choose to ignore <code>recordID</code>, the 3rd and 4th rows rows are also duplicates of each other. That is, they have the same values in all columns <em>except</em> for <code>recordID</code>. You can specify specific columns to be ignored in the function using a <code>-</code> minus symbol.</p>
+<div class="sourceCode" id="cb723"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb723-1"><a href="lo-i-b-trùng-l-p.html#cb723-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Duplicates when column recordID is not considered</span></span>
+<span id="cb723-2"><a href="lo-i-b-trùng-l-p.html#cb723-2" aria-hidden="true" tabindex="-1"></a>obs <span class="sc">%&gt;%</span> </span>
+<span id="cb723-3"><a href="lo-i-b-trùng-l-p.html#cb723-3" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">get_dupes</span>(<span class="sc">-</span>recordID)         <span class="co"># if multiple columns, wrap them in c()</span></span></code></pre></div>
+<div id="htmlwidget-3f74e5b62b78c68127be" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3f74e5b62b78c68127be">{"x":{"filter":"none","data":[[1,1,2,2],["adam","adam","amrish","amrish"],["2020-01-01","2020-01-01","2020-01-02","2020-01-02"],["09:00","09:00","14:20","14:20"],[1,1,1,1],["contact","contact","contact","contact"],[null,null,"No","No"],[2,2,2,2],[1,1,2,3]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>personID<\/th>\n      <th>name<\/th>\n      <th>date<\/th>\n      <th>time<\/th>\n      <th>encounter<\/th>\n      <th>purpose<\/th>\n      <th>symptoms_ever<\/th>\n      <th>dupe_count<\/th>\n      <th>recordID<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":19,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[0,4,7,8]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[10,19,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<p>You can also positively specify the columns to consider. Below, only rows that have the same values in the <code>name</code> and <code>purpose</code> columns are returned. Notice how “amrish” now has <code>dupe_count</code> equal to 3 to reflect his three “contact” encounters.</p>
+<p>*Scroll left for more rows**</p>
+<div class="sourceCode" id="cb724"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb724-1"><a href="lo-i-b-trùng-l-p.html#cb724-1" aria-hidden="true" tabindex="-1"></a><span class="co"># duplicates based on name and purpose columns ONLY</span></span>
+<span id="cb724-2"><a href="lo-i-b-trùng-l-p.html#cb724-2" aria-hidden="true" tabindex="-1"></a>obs <span class="sc">%&gt;%</span> </span>
+<span id="cb724-3"><a href="lo-i-b-trùng-l-p.html#cb724-3" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">get_dupes</span>(name, purpose)</span></code></pre></div>
+<div id="htmlwidget-aa20b91fb25a76528887" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-aa20b91fb25a76528887">{"x":{"filter":"none","data":[["adam","adam","amrish","amrish","amrish","brian","brian","mariah","mariah","nikhil","nikhil","raquel","raquel"],["contact","contact","contact","contact","contact","contact","contact","contact","contact","contact","contact","contact","contact"],[2,2,3,3,3,2,2,2,2,2,2,2,2],[1,1,2,3,10,7,15,12,13,6,14,9,17],[1,1,2,2,2,5,5,3,3,4,4,7,7],["2020-01-01","2020-01-01","2020-01-02","2020-01-02","2020-01-02","2020-01-05","2020-01-06","2020-01-06","2020-01-06","2020-01-05","2020-01-06","2020-01-05","2020-01-07"],["09:00","09:00","14:20","14:20","10:24","15:20","15:31","07:25","08:32","13:01","15:36","12:30","11:13"],[1,1,1,1,2,1,2,2,3,1,2,1,2],[null,null,"No","No","Yes","No","Yes","No","No","Yes","Yes",null,"No"]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>name<\/th>\n      <th>purpose<\/th>\n      <th>dupe_count<\/th>\n      <th>recordID<\/th>\n      <th>personID<\/th>\n      <th>date<\/th>\n      <th>time<\/th>\n      <th>encounter<\/th>\n      <th>symptoms_ever<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":7,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[2,3,4,7]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[7,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<p>See the <a href="lo-i-b-trùng-l-p.html#dedup_data">original data</a>.</p>
+<p>See <code>?get_dupes</code> for more details, or see this <a href="https://cran.r-project.org/web/packages/janitor/vignettes/janitor.html#explore-records-with-duplicated-values-for-specific-combinations-of-variables-with-get_dupes">online reference</a></p>
+<!-- ======================================================= -->
+</div>
+<div id="keep-only-unique-rows" class="section level3 unnumbered">
+<h3>Keep only unique rows</h3>
+<p>To keep only unique rows of a data frame, use <code>distinct()</code> from <strong>dplyr</strong> (as demonstrated in the [Cleaning data and core functions] page). Rows that are duplicates are removed such that only the first of such rows is kept. By default, “first” means the highest <code>rownumber</code> (order of rows top-to-bottom). Only unique rows remain.</p>
+<p>In the example below, we run <code>distinct()</code> such that the column <code>recordID</code> is excluded from consideration - thus <strong>two duplicate rows are removed</strong>. The first row (for “adam”) was 100% duplicated and has been removed. Also row 3 (for “amrish”) was a duplicate in every column <em>except</em> <code>recordID</code> (which is not being considered) and so is also removed. The <code>obs</code> dataset n is now <code>nrow(obs)-2</code>, not <code>nrow(obs)</code> rows).</p>
+<p><em>Scroll to the left to see the entire data frame</em></p>
+<div class="sourceCode" id="cb725"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb725-1"><a href="lo-i-b-trùng-l-p.html#cb725-1" aria-hidden="true" tabindex="-1"></a><span class="co"># added to a chain of pipes (e.g. data cleaning)</span></span>
+<span id="cb725-2"><a href="lo-i-b-trùng-l-p.html#cb725-2" aria-hidden="true" tabindex="-1"></a>obs <span class="sc">%&gt;%</span> </span>
+<span id="cb725-3"><a href="lo-i-b-trùng-l-p.html#cb725-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(<span class="fu">across</span>(<span class="sc">-</span>recordID), <span class="co"># reduces data frame to only unique rows (keeps first one of any duplicates)</span></span>
+<span id="cb725-4"><a href="lo-i-b-trùng-l-p.html#cb725-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">.keep_all =</span> <span class="cn">TRUE</span>) </span>
+<span id="cb725-5"><a href="lo-i-b-trùng-l-p.html#cb725-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb725-6"><a href="lo-i-b-trùng-l-p.html#cb725-6" aria-hidden="true" tabindex="-1"></a><span class="co"># if outside pipes, include the data as first argument </span></span>
+<span id="cb725-7"><a href="lo-i-b-trùng-l-p.html#cb725-7" aria-hidden="true" tabindex="-1"></a><span class="co"># distinct(obs)</span></span></code></pre></div>
+<div id="htmlwidget-91e7a95943e81edafca2" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-91e7a95943e81edafca2">{"x":{"filter":"none","data":[[1,2,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18],[1,2,3,2,4,5,6,7,2,1,3,3,4,5,5,7,8],["adam","amrish","mariah","amrish","nikhil","brian","smita","raquel","amrish","adam","mariah","mariah","nikhil","brian","brian","raquel","natalie"],["2020-01-01","2020-01-02","2020-01-05","2020-01-05","2020-01-05","2020-01-05","2020-01-05","2020-01-05","2020-01-02","2020-01-05","2020-01-06","2020-01-06","2020-01-06","2020-01-06","2020-01-07","2020-01-07","2020-01-07"],["09:00","14:20","12:00","16:10","13:01","15:20","14:20","12:30","10:24","09:40","07:25","08:32","15:36","15:31","07:59","11:13","17:12"],[1,1,1,3,1,1,1,1,2,2,2,3,2,2,3,2,1],["contact","contact","case","case","contact","contact","contact","contact","contact","case","contact","contact","contact","contact","case","contact","case"],[null,"No","No","Yes","Yes","No","Yes",null,"Yes","No","No","No","Yes","Yes","No","No","No"]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>recordID<\/th>\n      <th>personID<\/th>\n      <th>name<\/th>\n      <th>date<\/th>\n      <th>time<\/th>\n      <th>encounter<\/th>\n      <th>purpose<\/th>\n      <th>symptoms_ever<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":6,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[0,1,5]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[6,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<p><span style="color: orange;"><strong><em>CAUTION:</em></strong> If using <code>distinct()</code> on grouped data, the function will apply to each group.</span></p>
+<p><strong>Deduplicate based on specific columns</strong></p>
+<p>You can also specify columns to be the basis for de-duplication. In this way, the de-duplication only applies to rows that are duplicates within the specified columns. Unless you set <code>.keep_all = TRUE</code>, all columns not mentioned will be dropped.</p>
+<p>In the example below, the de-duplication only applies to rows that have identical values for <code>name</code> and <code>purpose</code> columns. Thus, “brian” has only 2 rows instead of 3 - his <em>first</em> “contact” encounter and his only “case” encounter. To adjust so that brian’s <em>latest</em> encounter of each purpose is kept, see the tab on Slicing within groups.</p>
+<p><em>Scroll to the left to see the entire data frame</em></p>
+<div class="sourceCode" id="cb726"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb726-1"><a href="lo-i-b-trùng-l-p.html#cb726-1" aria-hidden="true" tabindex="-1"></a><span class="co"># added to a chain of pipes (e.g. data cleaning)</span></span>
+<span id="cb726-2"><a href="lo-i-b-trùng-l-p.html#cb726-2" aria-hidden="true" tabindex="-1"></a>obs <span class="sc">%&gt;%</span> </span>
+<span id="cb726-3"><a href="lo-i-b-trùng-l-p.html#cb726-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(name, purpose, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span>  <span class="co"># keep rows unique by name and purpose, retain all columns</span></span>
+<span id="cb726-4"><a href="lo-i-b-trùng-l-p.html#cb726-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(name)                                  <span class="co"># arrange for easier viewing</span></span></code></pre></div>
+<div id="htmlwidget-9d76db6a112b29a19b4f" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-9d76db6a112b29a19b4f">{"x":{"filter":"none","data":[[1,11,2,5,7,16,4,12,18,6,9,8],[1,1,2,2,5,5,3,3,8,4,7,6],["adam","adam","amrish","amrish","brian","brian","mariah","mariah","natalie","nikhil","raquel","smita"],["2020-01-01","2020-01-05","2020-01-02","2020-01-05","2020-01-05","2020-01-07","2020-01-05","2020-01-06","2020-01-07","2020-01-05","2020-01-05","2020-01-05"],["09:00","09:40","14:20","16:10","15:20","07:59","12:00","07:25","17:12","13:01","12:30","14:20"],[1,2,1,3,1,3,1,2,1,1,1,1],["contact","case","contact","case","contact","case","case","contact","case","contact","contact","contact"],[null,"No","No","Yes","No","No","No","No","No","Yes",null,"Yes"]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>recordID<\/th>\n      <th>personID<\/th>\n      <th>name<\/th>\n      <th>date<\/th>\n      <th>time<\/th>\n      <th>encounter<\/th>\n      <th>purpose<\/th>\n      <th>symptoms_ever<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":6,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[0,1,5]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[6,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<p>See the <a href="lo-i-b-trùng-l-p.html#dedup_data">original data</a>.</p>
+<!-- ======================================================= -->
+</div>
+<div id="deduplicate-elements-in-a-vector" class="section level3 unnumbered">
+<h3>Deduplicate elements in a vector</h3>
+<p>The function <code>duplicated()</code> from <strong>base</strong> R will evaluate a vector (column) and return a logical vector of the same length (TRUE/FALSE). The first time a value appears, it will return FALSE (not a duplicate), and subsequent times that value appears it will return TRUE. Note how <code>NA</code> is treated the same as any other value.</p>
+<div class="sourceCode" id="cb727"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb727-1"><a href="lo-i-b-trùng-l-p.html#cb727-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb727-2"><a href="lo-i-b-trùng-l-p.html#cb727-2" aria-hidden="true" tabindex="-1"></a><span class="fu">duplicated</span>(x)</span></code></pre></div>
+<pre><code>##  [1] FALSE  TRUE FALSE FALSE  TRUE FALSE FALSE  TRUE  TRUE  TRUE  TRUE</code></pre>
+<p>To return only the duplicated elements, you can use brackets to subset the original vector:</p>
+<div class="sourceCode" id="cb729"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb729-1"><a href="lo-i-b-trùng-l-p.html#cb729-1" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">duplicated</span>(x)]</span></code></pre></div>
+<pre><code>## [1]  1 NA  4  4  1  2</code></pre>
+<p>To return only the unique elements, use <code>unique()</code> from <strong>base</strong> R. To remove <code>NA</code>s from the output, nest <code>na.omit()</code> within <code>unique()</code>.</p>
+<div class="sourceCode" id="cb731"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb731-1"><a href="lo-i-b-trùng-l-p.html#cb731-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(x)           <span class="co"># alternatively, use x[!duplicated(x)]</span></span></code></pre></div>
+<pre><code>## [1]  1  2 NA  4  5</code></pre>
+<div class="sourceCode" id="cb733"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb733-1"><a href="lo-i-b-trùng-l-p.html#cb733-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(<span class="fu">na.omit</span>(x))  <span class="co"># remove NAs </span></span></code></pre></div>
+<pre><code>## [1] 1 2 4 5</code></pre>
+<!-- ======================================================= -->
+</div>
+<div id="using-base-r-1" class="section level3 unnumbered">
+<h3>Using <strong>base</strong> R</h3>
+<p><strong>To return duplicate rows</strong></p>
+<p>In <strong>base</strong> R, you can also see which rows are 100% duplicates in a data frame <code>df</code> with the command <code>duplicated(df)</code> (returns a logical vector of the rows).</p>
+<p>Thus, you can also use the base subset <code>[ ]</code> on the data frame to see the <em>duplicated</em> rows with <code>df[duplicated(df),]</code> (don’t forget the comma, meaning that you want to see all columns!).</p>
+<p><strong>To return unique rows</strong></p>
+<p>See the notes above. To see the <em>unique</em> rows you add the logical negator <code>!</code> in front of the <code>duplicated()</code> function:<br />
+<code>df[!duplicated(df),]</code></p>
+<p><strong>To return rows that are duplicates of only certain columns</strong></p>
+<p>Subset the <code>df</code> that is <em>within the <code>duplicated()</code> parentheses</em>, so this function will operate on only certain columns of the <code>df</code>.</p>
+<p>To specify the columns, provide column numbers or names after a comma (remember, all this is <em>within</em> the <code>duplicated()</code> function).</p>
+<p>Be sure to keep the comma <code>,</code> <em>outside</em> after the <code>duplicated()</code> function as well!</p>
+<p>For example, to evaluate only columns 2 through 5 for duplicates: <code>df[!duplicated(df[, 2:5]),]</code><br />
+To evaluate only columns <code>name</code> and <code>purpose</code> for duplicates: <code>df[!duplicated(df[, c("name", "purpose)]),]</code></p>
+<!-- ======================================================= -->
+</div>
+</div>
+<div id="slicing" class="section level2" number="15.3">
+<h2><span class="header-section-number">15.3</span> Slicing</h2>
+<p>To “slice” a data frame to apply a filter on the rows by row number/position. This becomes particularly useful if you have multiple rows per functional group (e.g. per “person”) and you only want to keep one or some of them.</p>
+<p>The basic <code>slice()</code> function accepts numbers and returns rows in those positions. If the numbers provided are positive, only they are returned. If negative, those rows are <em>not</em> returned. Numbers must be either all positive or all negative.</p>
+<div class="sourceCode" id="cb735"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb735-1"><a href="lo-i-b-trùng-l-p.html#cb735-1" aria-hidden="true" tabindex="-1"></a>obs <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">4</span>)  <span class="co"># return the 4th row</span></span></code></pre></div>
+<pre><code>##   recordID personID   name       date  time encounter purpose symptoms_ever
+## 1        3        2 amrish 2020-01-02 14:20         1 contact            No</code></pre>
+<div class="sourceCode" id="cb737"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb737-1"><a href="lo-i-b-trùng-l-p.html#cb737-1" aria-hidden="true" tabindex="-1"></a>obs <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>))  <span class="co"># return rows 2 and 4</span></span></code></pre></div>
+<pre><code>##   recordID personID   name       date  time encounter purpose symptoms_ever
+## 1        1        1   adam 2020-01-01 09:00         1 contact          &lt;NA&gt;
+## 2        3        2 amrish 2020-01-02 14:20         1 contact            No</code></pre>
+<div class="sourceCode" id="cb739"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb739-1"><a href="lo-i-b-trùng-l-p.html#cb739-1" aria-hidden="true" tabindex="-1"></a><span class="co">#obs %&gt;% slice(c(2:4))  # return rows 2 through 4</span></span></code></pre></div>
+<p>See the <a href="lo-i-b-trùng-l-p.html#dedup_data">original data</a>.</p>
+<p>There are several variations: These should be provided with a column and a number of rows to return (to <code>n =</code>).</p>
+<ul>
+<li><code>slice_min()</code> and <code>slice_max()</code> keep only the row(s) with the minimium or maximum value(s) of the specified column. This also works to return the “min” and “max” of ordered factors.<br />
+</li>
+<li><code>slice_head()</code> and <code>slice_tail()</code> - keep only the <em>first</em> or <em>last</em> row(s).<br />
+</li>
+<li><code>slice_sample()</code> - keep only a random sample of the rows.</li>
+</ul>
+<div class="sourceCode" id="cb740"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb740-1"><a href="lo-i-b-trùng-l-p.html#cb740-1" aria-hidden="true" tabindex="-1"></a>obs <span class="sc">%&gt;%</span> <span class="fu">slice_max</span>(encounter, <span class="at">n =</span> <span class="dv">1</span>)  <span class="co"># return rows with the largest encounter number</span></span></code></pre></div>
+<pre><code>##   recordID personID   name       date  time encounter purpose symptoms_ever
+## 1        5        2 amrish 2020-01-05 16:10         3    case           Yes
+## 2       13        3 mariah 2020-01-06 08:32         3 contact            No
+## 3       16        5  brian 2020-01-07 07:59         3    case            No</code></pre>
+<p>Use arguments <code>n =</code> or <code>prop =</code> to specify the number or proportion of rows to keep. If not using the function in a pipe chain, provide the data argument first (e.g. <code>slice(data, n = 2)</code>). See <code>?slice</code> for more information.</p>
+<p>Other arguments:</p>
+<p><code>.order_by =</code> used in <code>slice_min()</code> and <code>slice_max()</code> this is a column to order by before slicing.<br />
+<code>with_ties =</code> TRUE by default, meaning ties are kept.<br />
+<code>.preserve =</code> FALSE by default. If TRUE then the grouping structure is re-calculated after slicing.<br />
+<code>weight_by =</code> Optional, numeric column to weight by (bigger number more likely to get sampled). Also <code>replace =</code> for whether sampling is done with/without replacement.</p>
+<p><span style="color: darkgreen;"><strong><em>TIP:</em></strong> When using <code>slice_max()</code> and <code>slice_min()</code>, be sure to specify/write the <code>n =</code> (e.g. <code>n = 2</code>, not just <code>2</code>). Otherwise you may get an error <code>Error:</code>…<code>is not empty.</code> </span></p>
+<p><span style="color: black;"><strong><em>NOTE:</em></strong> You may encounter the function <a href="https://dplyr.tidyverse.org/reference/top_n.html"><code>top_n()</code></a>, which has been superseded by the <code>slice</code> functions.</span></p>
+<!-- ======================================================= -->
+<div id="slice-with-groups" class="section level3 unnumbered">
+<h3>Slice with groups</h3>
+<p>The <code>slice_*()</code> functions can be very useful if applied to a grouped data frame because the slice operation is performed on each group separately. Use the <strong>function</strong> <code>group_by()</code> in conjunction with <code>slice()</code> to group the data to take a slice from each group.</p>
+<p>This is helpful for de-duplication if you have multiple rows per person but only want to keep one of them. You first use <code>group_by()</code> with key columns that are the same per person, and then use a slice function on a column that will differ among the grouped rows.</p>
+<p>In the example below, to keep only the <em>latest</em> encounter <em>per person</em>, we group the rows by <code>name</code> and then use <code>slice_max()</code> with <code>n = 1</code> on the <code>date</code> column. Be aware! To apply a function like <code>slice_max()</code> on dates, the date column must be class Date.</p>
+<p>By default, “ties” (e.g. same date in this scenario) are kept, and we would still get multiple rows for some people (e.g. adam). To avoid this we set <code>with_ties = FALSE</code>. We get back only one row per person.</p>
+<p><span style="color: orange;"><strong><em>CAUTION:</em></strong> If using <code>arrange()</code>, specify <code>.by_group = TRUE</code> to have the data arranged within each group.</span></p>
+<p><span style="color: red;"><strong><em>DANGER:</em></strong> If <code>with_ties = FALSE</code>, the first row of a tie is kept. This may be deceptive. See how for Mariah, she has two encounters on her latest date (6 Jan) and the first (earliest) one was kept. Likely, we want to keep her later encounter on that day. See how to “break” these ties in the next example. </span></p>
+<div class="sourceCode" id="cb742"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb742-1"><a href="lo-i-b-trùng-l-p.html#cb742-1" aria-hidden="true" tabindex="-1"></a>obs <span class="sc">%&gt;%</span> </span>
+<span id="cb742-2"><a href="lo-i-b-trùng-l-p.html#cb742-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">%&gt;%</span>       <span class="co"># group the rows by &#39;name&#39;</span></span>
+<span id="cb742-3"><a href="lo-i-b-trùng-l-p.html#cb742-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(date,          <span class="co"># keep row per group with maximum date value </span></span>
+<span id="cb742-4"><a href="lo-i-b-trùng-l-p.html#cb742-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">n =</span> <span class="dv">1</span>,         <span class="co"># keep only the single highest row </span></span>
+<span id="cb742-5"><a href="lo-i-b-trùng-l-p.html#cb742-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">with_ties =</span> F) <span class="co"># if there&#39;s a tie (of date), take the first row</span></span></code></pre></div>
+<div id="htmlwidget-7fc5ccb2bfd615e87c58" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7fc5ccb2bfd615e87c58">{"x":{"filter":"none","data":[[11,5,16,12,18,14,17,8],[1,2,5,3,8,4,7,6],["adam","amrish","brian","mariah","natalie","nikhil","raquel","smita"],["2020-01-05","2020-01-05","2020-01-07","2020-01-06","2020-01-07","2020-01-06","2020-01-07","2020-01-05"],["09:40","16:10","07:59","07:25","17:12","15:36","11:13","14:20"],[2,3,3,2,1,2,2,1],["case","case","case","contact","case","contact","contact","contact"],["No","Yes","No","No","No","Yes","No","Yes"]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>recordID<\/th>\n      <th>personID<\/th>\n      <th>name<\/th>\n      <th>date<\/th>\n      <th>time<\/th>\n      <th>encounter<\/th>\n      <th>purpose<\/th>\n      <th>symptoms_ever<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":8,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[0,1,5]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[8,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<p>Above, for example we can see that only Amrish’s row on 5 Jan was kept, and only Brian’s row on 7 Jan was kept. See the <a href="lo-i-b-trùng-l-p.html#dedup_data">original data</a>.</p>
+<p><strong>Breaking “ties”</strong></p>
+<p>Multiple slice statements can be run to “break ties”. In this case, if a person has multiple encounters on their latest <em>date</em>, the encounter with the latest <em>time</em> is kept (<code>lubridate::hm()</code> is used to convert the character times to a sortable time class).<br />
+Note how now, the one row kept for “Mariah” on 6 Jan is encounter 3 from 08:32, not encounter 2 at 07:25.</p>
+<div class="sourceCode" id="cb743"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb743-1"><a href="lo-i-b-trùng-l-p.html#cb743-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example of multiple slice statements to &quot;break ties&quot;</span></span>
+<span id="cb743-2"><a href="lo-i-b-trùng-l-p.html#cb743-2" aria-hidden="true" tabindex="-1"></a>obs <span class="sc">%&gt;%</span></span>
+<span id="cb743-3"><a href="lo-i-b-trùng-l-p.html#cb743-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">%&gt;%</span></span>
+<span id="cb743-4"><a href="lo-i-b-trùng-l-p.html#cb743-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb743-5"><a href="lo-i-b-trùng-l-p.html#cb743-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># FIRST - slice by latest date</span></span>
+<span id="cb743-6"><a href="lo-i-b-trùng-l-p.html#cb743-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(date, <span class="at">n =</span> <span class="dv">1</span>, <span class="at">with_ties =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb743-7"><a href="lo-i-b-trùng-l-p.html#cb743-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb743-8"><a href="lo-i-b-trùng-l-p.html#cb743-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># SECOND - if there is a tie, select row with latest time; ties prohibited</span></span>
+<span id="cb743-9"><a href="lo-i-b-trùng-l-p.html#cb743-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(lubridate<span class="sc">::</span><span class="fu">hm</span>(time), <span class="at">n =</span> <span class="dv">1</span>, <span class="at">with_ties =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div id="htmlwidget-b8b74ada20a08728e9fb" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b8b74ada20a08728e9fb">{"x":{"filter":"none","data":[[11,5,16,13,18,14,17,8],[1,2,5,3,8,4,7,6],["adam","amrish","brian","mariah","natalie","nikhil","raquel","smita"],["2020-01-05","2020-01-05","2020-01-07","2020-01-06","2020-01-07","2020-01-06","2020-01-07","2020-01-05"],["09:40","16:10","07:59","08:32","17:12","15:36","11:13","14:20"],[2,3,3,3,1,2,2,1],["case","case","case","contact","case","contact","contact","contact"],["No","Yes","No","No","No","Yes","No","Yes"]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>recordID<\/th>\n      <th>personID<\/th>\n      <th>name<\/th>\n      <th>date<\/th>\n      <th>time<\/th>\n      <th>encounter<\/th>\n      <th>purpose<\/th>\n      <th>symptoms_ever<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":8,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[0,1,5]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[8,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<p><em>In the example above, it would also have been possible to slice by <code>encounter</code> number, but we showed the slice on <code>date</code> and <code>time</code> for example purposes.</em></p>
+<p><span style="color: darkgreen;"><strong><em>TIP:</em></strong> To use <code>slice_max()</code> or <code>slice_min()</code> on a “character” column, mutate it to an <em>ordered</em> factor class!</span></p>
+<p>See the <a href="lo-i-b-trùng-l-p.html#dedup_data">original data</a>.</p>
+<!-- ======================================================= -->
+</div>
+<div id="keep-all-but-mark-them" class="section level3 unnumbered">
+<h3>Keep all but mark them</h3>
+<p>If you want to keep all records but mark only some for analysis, consider a two-step approach utilizing a unique recordID/encounter number:</p>
+<ol style="list-style-type: decimal">
+<li>Reduce/slice the orginal data frame to only the rows for analysis. Save/retain this reduced data frame.<br />
+</li>
+<li>In the original data frame, mark rows as appropriate with <code>case_when()</code>, based on whether their record unique identifier (recordID in this example) is present in the reduced data frame.</li>
+</ol>
+<div class="sourceCode" id="cb744"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb744-1"><a href="lo-i-b-trùng-l-p.html#cb744-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Define data frame of rows to keep for analysis</span></span>
+<span id="cb744-2"><a href="lo-i-b-trùng-l-p.html#cb744-2" aria-hidden="true" tabindex="-1"></a>obs_keep <span class="ot">&lt;-</span> obs <span class="sc">%&gt;%</span></span>
+<span id="cb744-3"><a href="lo-i-b-trùng-l-p.html#cb744-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">%&gt;%</span></span>
+<span id="cb744-4"><a href="lo-i-b-trùng-l-p.html#cb744-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(encounter, <span class="at">n =</span> <span class="dv">1</span>, <span class="at">with_ties =</span> <span class="cn">FALSE</span>) <span class="co"># keep only latest encounter per person</span></span>
+<span id="cb744-5"><a href="lo-i-b-trùng-l-p.html#cb744-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb744-6"><a href="lo-i-b-trùng-l-p.html#cb744-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb744-7"><a href="lo-i-b-trùng-l-p.html#cb744-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Mark original data frame</span></span>
+<span id="cb744-8"><a href="lo-i-b-trùng-l-p.html#cb744-8" aria-hidden="true" tabindex="-1"></a>obs_marked <span class="ot">&lt;-</span> obs <span class="sc">%&gt;%</span></span>
+<span id="cb744-9"><a href="lo-i-b-trùng-l-p.html#cb744-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb744-10"><a href="lo-i-b-trùng-l-p.html#cb744-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># make new dup_record column</span></span>
+<span id="cb744-11"><a href="lo-i-b-trùng-l-p.html#cb744-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dup_record =</span> <span class="fu">case_when</span>(</span>
+<span id="cb744-12"><a href="lo-i-b-trùng-l-p.html#cb744-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb744-13"><a href="lo-i-b-trùng-l-p.html#cb744-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># if record is in obs_keep data frame</span></span>
+<span id="cb744-14"><a href="lo-i-b-trùng-l-p.html#cb744-14" aria-hidden="true" tabindex="-1"></a>    recordID <span class="sc">%in%</span> obs_keep<span class="sc">$</span>recordID <span class="sc">~</span> <span class="st">&quot;For analysis&quot;</span>, </span>
+<span id="cb744-15"><a href="lo-i-b-trùng-l-p.html#cb744-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb744-16"><a href="lo-i-b-trùng-l-p.html#cb744-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># all else marked as &quot;Ignore&quot; for analysis purposes</span></span>
+<span id="cb744-17"><a href="lo-i-b-trùng-l-p.html#cb744-17" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span>                            <span class="sc">~</span> <span class="st">&quot;Ignore&quot;</span>))</span>
+<span id="cb744-18"><a href="lo-i-b-trùng-l-p.html#cb744-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb744-19"><a href="lo-i-b-trùng-l-p.html#cb744-19" aria-hidden="true" tabindex="-1"></a><span class="co"># print</span></span>
+<span id="cb744-20"><a href="lo-i-b-trùng-l-p.html#cb744-20" aria-hidden="true" tabindex="-1"></a>obs_marked</span></code></pre></div>
+<pre><code>##    recordID personID    name       date  time encounter purpose symptoms_ever   dup_record
+## 1         1        1    adam 2020-01-01 09:00         1 contact          &lt;NA&gt;       Ignore
+## 2         1        1    adam 2020-01-01 09:00         1 contact          &lt;NA&gt;       Ignore
+## 3         2        2  amrish 2020-01-02 14:20         1 contact            No       Ignore
+## 4         3        2  amrish 2020-01-02 14:20         1 contact            No       Ignore
+## 5         4        3  mariah 2020-01-05 12:00         1    case            No       Ignore
+## 6         5        2  amrish 2020-01-05 16:10         3    case           Yes For analysis
+## 7         6        4  nikhil 2020-01-05 13:01         1 contact           Yes       Ignore
+## 8         7        5   brian 2020-01-05 15:20         1 contact            No       Ignore
+## 9         8        6   smita 2020-01-05 14:20         1 contact           Yes For analysis
+## 10        9        7  raquel 2020-01-05 12:30         1 contact          &lt;NA&gt;       Ignore
+## 11       10        2  amrish 2020-01-02 10:24         2 contact           Yes       Ignore
+## 12       11        1    adam 2020-01-05 09:40         2    case            No For analysis
+## 13       12        3  mariah 2020-01-06 07:25         2 contact            No       Ignore
+## 14       13        3  mariah 2020-01-06 08:32         3 contact            No For analysis
+## 15       14        4  nikhil 2020-01-06 15:36         2 contact           Yes For analysis
+## 16       15        5   brian 2020-01-06 15:31         2 contact           Yes       Ignore
+## 17       16        5   brian 2020-01-07 07:59         3    case            No For analysis
+## 18       17        7  raquel 2020-01-07 11:13         2 contact            No For analysis
+## 19       18        8 natalie 2020-01-07 17:12         1    case            No For analysis</code></pre>
+<div id="htmlwidget-a12791ab8eaeafc5f2fe" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a12791ab8eaeafc5f2fe">{"x":{"filter":"none","data":[[1,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18],[1,1,2,2,3,2,4,5,6,7,2,1,3,3,4,5,5,7,8],["adam","adam","amrish","amrish","mariah","amrish","nikhil","brian","smita","raquel","amrish","adam","mariah","mariah","nikhil","brian","brian","raquel","natalie"],["2020-01-01","2020-01-01","2020-01-02","2020-01-02","2020-01-05","2020-01-05","2020-01-05","2020-01-05","2020-01-05","2020-01-05","2020-01-02","2020-01-05","2020-01-06","2020-01-06","2020-01-06","2020-01-06","2020-01-07","2020-01-07","2020-01-07"],["09:00","09:00","14:20","14:20","12:00","16:10","13:01","15:20","14:20","12:30","10:24","09:40","07:25","08:32","15:36","15:31","07:59","11:13","17:12"],[1,1,1,1,1,3,1,1,1,1,2,2,2,3,2,2,3,2,1],["contact","contact","contact","contact","case","case","contact","contact","contact","contact","contact","case","contact","contact","contact","contact","case","contact","case"],[null,null,"No","No","No","Yes","Yes","No","Yes",null,"Yes","No","No","No","Yes","Yes","No","No","No"],["Ignore","Ignore","Ignore","Ignore","Ignore","For analysis","Ignore","Ignore","For analysis","Ignore","Ignore","For analysis","Ignore","For analysis","For analysis","Ignore","For analysis","For analysis","For analysis"]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>recordID<\/th>\n      <th>personID<\/th>\n      <th>name<\/th>\n      <th>date<\/th>\n      <th>time<\/th>\n      <th>encounter<\/th>\n      <th>purpose<\/th>\n      <th>symptoms_ever<\/th>\n      <th>dup_record<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":8,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[0,1,5]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[8,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<p>See the <a href="lo-i-b-trùng-l-p.html#dedup_data">original data</a>.</p>
+<!-- ======================================================= -->
+</div>
+<div id="calculate-row-completeness" class="section level3 unnumbered">
+<h3>Calculate row completeness</h3>
+<p>Create a column that contains a metric for the row’s completeness (non-missingness). This could be helpful when deciding which rows to prioritize over others when de-duplicating/slicing.</p>
+<p>In this example, “key” columns over which you want to measure completeness are saved in a vector of column names.</p>
+<p>Then the new column <code>key_completeness</code> is created with <code>mutate()</code>. The new value in each row is defined as a calculated fraction: the number of non-missing values in that row among the key columns, divided by the number of key columns.</p>
+<p>This involves the function <code>rowSums()</code> from <strong>base</strong> R. Also used is <code>.</code>, which within piping refers to the data frame at that point in the pipe (in this case, it is being subset with brackets <code>[]</code>).</p>
+<p>*Scroll to the right to see more rows**</p>
+<div class="sourceCode" id="cb746"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb746-1"><a href="lo-i-b-trùng-l-p.html#cb746-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a &quot;key variable completeness&quot; column</span></span>
+<span id="cb746-2"><a href="lo-i-b-trùng-l-p.html#cb746-2" aria-hidden="true" tabindex="-1"></a><span class="co"># this is a *proportion* of the columns designated as &quot;key_cols&quot; that have non-missing values</span></span>
+<span id="cb746-3"><a href="lo-i-b-trùng-l-p.html#cb746-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb746-4"><a href="lo-i-b-trùng-l-p.html#cb746-4" aria-hidden="true" tabindex="-1"></a>key_cols <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;personID&quot;</span>, <span class="st">&quot;name&quot;</span>, <span class="st">&quot;symptoms_ever&quot;</span>)</span>
+<span id="cb746-5"><a href="lo-i-b-trùng-l-p.html#cb746-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb746-6"><a href="lo-i-b-trùng-l-p.html#cb746-6" aria-hidden="true" tabindex="-1"></a>obs <span class="sc">%&gt;%</span> </span>
+<span id="cb746-7"><a href="lo-i-b-trùng-l-p.html#cb746-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">key_completeness =</span> <span class="fu">rowSums</span>(<span class="sc">!</span><span class="fu">is.na</span>(.[,key_cols]))<span class="sc">/</span><span class="fu">length</span>(key_cols)) </span></code></pre></div>
+<div id="htmlwidget-a2b5096a2d146863689e" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a2b5096a2d146863689e">{"x":{"filter":"none","data":[[1,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18],[1,1,2,2,3,2,4,5,6,7,2,1,3,3,4,5,5,7,8],["adam","adam","amrish","amrish","mariah","amrish","nikhil","brian","smita","raquel","amrish","adam","mariah","mariah","nikhil","brian","brian","raquel","natalie"],["2020-01-01","2020-01-01","2020-01-02","2020-01-02","2020-01-05","2020-01-05","2020-01-05","2020-01-05","2020-01-05","2020-01-05","2020-01-02","2020-01-05","2020-01-06","2020-01-06","2020-01-06","2020-01-06","2020-01-07","2020-01-07","2020-01-07"],["09:00","09:00","14:20","14:20","12:00","16:10","13:01","15:20","14:20","12:30","10:24","09:40","07:25","08:32","15:36","15:31","07:59","11:13","17:12"],[1,1,1,1,1,3,1,1,1,1,2,2,2,3,2,2,3,2,1],["contact","contact","contact","contact","case","case","contact","contact","contact","contact","contact","case","contact","contact","contact","contact","case","contact","case"],[null,null,"No","No","No","Yes","Yes","No","Yes",null,"Yes","No","No","No","Yes","Yes","No","No","No"],[0.666666666666667,0.666666666666667,1,1,1,1,1,1,1,0.666666666666667,1,1,1,1,1,1,1,1,1]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>recordID<\/th>\n      <th>personID<\/th>\n      <th>name<\/th>\n      <th>date<\/th>\n      <th>time<\/th>\n      <th>encounter<\/th>\n      <th>purpose<\/th>\n      <th>symptoms_ever<\/th>\n      <th>key_completeness<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[0,1,5,8]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<p>See the <a href="lo-i-b-trùng-l-p.html#dedup_data">original data</a>.</p>
+<!-- ======================================================= -->
+</div>
+</div>
+<div id="str_rollup" class="section level2" number="15.4">
+<h2><span class="header-section-number">15.4</span> Roll-up values</h2>
+<p>This section describes:</p>
+<ol style="list-style-type: decimal">
+<li>How to “roll-up” values from multiple rows into just one row, with some variations<br />
+</li>
+<li>Once you have “rolled-up” values, how to overwrite/prioritize the values in each cell</li>
+</ol>
+<p>This tab uses the example dataset from the Preparation tab.</p>
+<!-- ======================================================= -->
+<div id="roll-up-values-into-one-row" class="section level3 unnumbered">
+<h3>Roll-up values into one row</h3>
+<p>The code example below uses <code>group_by()</code> and <code>summarise()</code> to group rows by person, and then paste together all unique values within the grouped rows. Thus, you get one summary row per person. A few notes:</p>
+<ul>
+<li>A suffix is appended to all new columns ("_roll" in this example)<br />
+</li>
+<li>If you want to show only unique values per cell, then wrap the <code>na.omit()</code> with <code>unique()</code><br />
+</li>
+<li><code>na.omit()</code> removes <code>NA</code> values, but if this is not desired it can be removed <code>paste0(.x)</code>…</li>
+</ul>
+<div class="sourceCode" id="cb747"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb747-1"><a href="lo-i-b-trùng-l-p.html#cb747-1" aria-hidden="true" tabindex="-1"></a><span class="co"># &quot;Roll-up&quot; values into one row per group (per &quot;personID&quot;) </span></span>
+<span id="cb747-2"><a href="lo-i-b-trùng-l-p.html#cb747-2" aria-hidden="true" tabindex="-1"></a>cases_rolled <span class="ot">&lt;-</span> obs <span class="sc">%&gt;%</span> </span>
+<span id="cb747-3"><a href="lo-i-b-trùng-l-p.html#cb747-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb747-4"><a href="lo-i-b-trùng-l-p.html#cb747-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># create groups by name</span></span>
+<span id="cb747-5"><a href="lo-i-b-trùng-l-p.html#cb747-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(personID) <span class="sc">%&gt;%</span> </span>
+<span id="cb747-6"><a href="lo-i-b-trùng-l-p.html#cb747-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb747-7"><a href="lo-i-b-trùng-l-p.html#cb747-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># order the rows within each group (e.g. by date)</span></span>
+<span id="cb747-8"><a href="lo-i-b-trùng-l-p.html#cb747-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(date, <span class="at">.by_group =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb747-9"><a href="lo-i-b-trùng-l-p.html#cb747-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb747-10"><a href="lo-i-b-trùng-l-p.html#cb747-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># For each column, paste together all values within the grouped rows, separated by &quot;;&quot;</span></span>
+<span id="cb747-11"><a href="lo-i-b-trùng-l-p.html#cb747-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb747-12"><a href="lo-i-b-trùng-l-p.html#cb747-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(<span class="fu">everything</span>(),                           <span class="co"># apply to all columns</span></span>
+<span id="cb747-13"><a href="lo-i-b-trùng-l-p.html#cb747-13" aria-hidden="true" tabindex="-1"></a>           <span class="sc">~</span><span class="fu">paste0</span>(<span class="fu">na.omit</span>(.x), <span class="at">collapse =</span> <span class="st">&quot;; &quot;</span>))) <span class="co"># function is defined which combines non-NA values</span></span></code></pre></div>
+<p>The result is one row per group (<code>ID</code>), with entries arranged by date and pasted together. <em>Scroll to the left to see more rows</em></p>
+<div id="htmlwidget-e0c979240315b50a6351" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e0c979240315b50a6351">{"x":{"filter":"none","data":[[1,2,3,4,5,6,7,8],["1; 1; 11","2; 3; 10; 5","4; 12; 13","6; 14","7; 15; 16","8","9; 17","18"],["adam; adam; adam","amrish; amrish; amrish; amrish","mariah; mariah; mariah","nikhil; nikhil","brian; brian; brian","smita","raquel; raquel","natalie"],["2020-01-01; 2020-01-01; 2020-01-05","2020-01-02; 2020-01-02; 2020-01-02; 2020-01-05","2020-01-05; 2020-01-06; 2020-01-06","2020-01-05; 2020-01-06","2020-01-05; 2020-01-06; 2020-01-07","2020-01-05","2020-01-05; 2020-01-07","2020-01-07"],["09:00; 09:00; 09:40","14:20; 14:20; 10:24; 16:10","12:00; 07:25; 08:32","13:01; 15:36","15:20; 15:31; 07:59","14:20","12:30; 11:13","17:12"],["1; 1; 2","1; 1; 2; 3","1; 2; 3","1; 2","1; 2; 3","1","1; 2","1"],["contact; contact; case","contact; contact; contact; case","case; contact; contact","contact; contact","contact; contact; case","contact","contact; contact","case"],["No","No; No; Yes; Yes","No; No; No","Yes; Yes","No; Yes; No","Yes","No","No"]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>personID<\/th>\n      <th>recordID<\/th>\n      <th>name<\/th>\n      <th>date<\/th>\n      <th>time<\/th>\n      <th>encounter<\/th>\n      <th>purpose<\/th>\n      <th>symptoms_ever<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<p>See the <a href="lo-i-b-trùng-l-p.html#dedup_data">original data</a>.</p>
+<p><strong>This variation shows unique values only:</strong></p>
+<div class="sourceCode" id="cb748"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb748-1"><a href="lo-i-b-trùng-l-p.html#cb748-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Variation - show unique values only </span></span>
+<span id="cb748-2"><a href="lo-i-b-trùng-l-p.html#cb748-2" aria-hidden="true" tabindex="-1"></a>cases_rolled <span class="ot">&lt;-</span> obs <span class="sc">%&gt;%</span> </span>
+<span id="cb748-3"><a href="lo-i-b-trùng-l-p.html#cb748-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(personID) <span class="sc">%&gt;%</span> </span>
+<span id="cb748-4"><a href="lo-i-b-trùng-l-p.html#cb748-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(date, <span class="at">.by_group =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb748-5"><a href="lo-i-b-trùng-l-p.html#cb748-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb748-6"><a href="lo-i-b-trùng-l-p.html#cb748-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(<span class="fu">everything</span>(),                                   <span class="co"># apply to all columns</span></span>
+<span id="cb748-7"><a href="lo-i-b-trùng-l-p.html#cb748-7" aria-hidden="true" tabindex="-1"></a>           <span class="sc">~</span><span class="fu">paste0</span>(<span class="fu">unique</span>(<span class="fu">na.omit</span>(.x)), <span class="at">collapse =</span> <span class="st">&quot;; &quot;</span>))) <span class="co"># function is defined which combines unique non-NA values</span></span></code></pre></div>
+<div id="htmlwidget-351aa7010a4b70ab3a24" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-351aa7010a4b70ab3a24">{"x":{"filter":"none","data":[[1,2,3,4,5,6,7,8],["1; 11","2; 3; 10; 5","4; 12; 13","6; 14","7; 15; 16","8","9; 17","18"],["adam","amrish","mariah","nikhil","brian","smita","raquel","natalie"],["2020-01-01; 2020-01-05","2020-01-02; 2020-01-05","2020-01-05; 2020-01-06","2020-01-05; 2020-01-06","2020-01-05; 2020-01-06; 2020-01-07","2020-01-05","2020-01-05; 2020-01-07","2020-01-07"],["09:00; 09:40","14:20; 10:24; 16:10","12:00; 07:25; 08:32","13:01; 15:36","15:20; 15:31; 07:59","14:20","12:30; 11:13","17:12"],["1; 2","1; 2; 3","1; 2; 3","1; 2","1; 2; 3","1","1; 2","1"],["contact; case","contact; case","case; contact","contact","contact; case","contact","contact","case"],["No","No; Yes","No","Yes","No; Yes","Yes","No","No"]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>personID<\/th>\n      <th>recordID<\/th>\n      <th>name<\/th>\n      <th>date<\/th>\n      <th>time<\/th>\n      <th>encounter<\/th>\n      <th>purpose<\/th>\n      <th>symptoms_ever<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<p><strong>This variation appends a suffix to each column.</strong><br />
+In this case "_roll" to signify that it has been rolled:</p>
+<div class="sourceCode" id="cb749"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb749-1"><a href="lo-i-b-trùng-l-p.html#cb749-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Variation - suffix added to column names </span></span>
+<span id="cb749-2"><a href="lo-i-b-trùng-l-p.html#cb749-2" aria-hidden="true" tabindex="-1"></a>cases_rolled <span class="ot">&lt;-</span> obs <span class="sc">%&gt;%</span> </span>
+<span id="cb749-3"><a href="lo-i-b-trùng-l-p.html#cb749-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(personID) <span class="sc">%&gt;%</span> </span>
+<span id="cb749-4"><a href="lo-i-b-trùng-l-p.html#cb749-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(date, <span class="at">.by_group =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb749-5"><a href="lo-i-b-trùng-l-p.html#cb749-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb749-6"><a href="lo-i-b-trùng-l-p.html#cb749-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(<span class="fu">everything</span>(),                </span>
+<span id="cb749-7"><a href="lo-i-b-trùng-l-p.html#cb749-7" aria-hidden="true" tabindex="-1"></a>           <span class="fu">list</span>(<span class="at">roll =</span> <span class="sc">~</span><span class="fu">paste0</span>(<span class="fu">na.omit</span>(.x), <span class="at">collapse =</span> <span class="st">&quot;; &quot;</span>)))) <span class="co"># _roll is appended to column names</span></span></code></pre></div>
+<div id="htmlwidget-c375377508907b8e33e5" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c375377508907b8e33e5">{"x":{"filter":"none","data":[[1,2,3,4,5,6,7,8],["1; 1; 11","2; 3; 10; 5","4; 12; 13","6; 14","7; 15; 16","8","9; 17","18"],["adam; adam; adam","amrish; amrish; amrish; amrish","mariah; mariah; mariah","nikhil; nikhil","brian; brian; brian","smita","raquel; raquel","natalie"],["2020-01-01; 2020-01-01; 2020-01-05","2020-01-02; 2020-01-02; 2020-01-02; 2020-01-05","2020-01-05; 2020-01-06; 2020-01-06","2020-01-05; 2020-01-06","2020-01-05; 2020-01-06; 2020-01-07","2020-01-05","2020-01-05; 2020-01-07","2020-01-07"],["09:00; 09:00; 09:40","14:20; 14:20; 10:24; 16:10","12:00; 07:25; 08:32","13:01; 15:36","15:20; 15:31; 07:59","14:20","12:30; 11:13","17:12"],["1; 1; 2","1; 1; 2; 3","1; 2; 3","1; 2","1; 2; 3","1","1; 2","1"],["contact; contact; case","contact; contact; contact; case","case; contact; contact","contact; contact","contact; contact; case","contact","contact; contact","case"],["No","No; No; Yes; Yes","No; No; No","Yes; Yes","No; Yes; No","Yes","No","No"]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>personID<\/th>\n      <th>recordID_roll<\/th>\n      <th>name_roll<\/th>\n      <th>date_roll<\/th>\n      <th>time_roll<\/th>\n      <th>encounter_roll<\/th>\n      <th>purpose_roll<\/th>\n      <th>symptoms_ever_roll<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<!-- ======================================================= -->
+</div>
+<div id="overwrite-valueshierarchy" class="section level3 unnumbered">
+<h3>Overwrite values/hierarchy</h3>
+<p>If you then want to evaluate all of the rolled values, and keep only a specific value (e.g. “best” or “maximum” value), you can use <code>mutate()</code> across the desired columns, to implement <code>case_when()</code>, which uses <code>str_detect()</code> from the <strong>stringr</strong> package to sequentially look for string patterns and overwrite the cell content.</p>
+<div class="sourceCode" id="cb750"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb750-1"><a href="lo-i-b-trùng-l-p.html#cb750-1" aria-hidden="true" tabindex="-1"></a><span class="co"># CLEAN CASES</span></span>
+<span id="cb750-2"><a href="lo-i-b-trùng-l-p.html#cb750-2" aria-hidden="true" tabindex="-1"></a><span class="do">#############</span></span>
+<span id="cb750-3"><a href="lo-i-b-trùng-l-p.html#cb750-3" aria-hidden="true" tabindex="-1"></a>cases_clean <span class="ot">&lt;-</span> cases_rolled <span class="sc">%&gt;%</span> </span>
+<span id="cb750-4"><a href="lo-i-b-trùng-l-p.html#cb750-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb750-5"><a href="lo-i-b-trùng-l-p.html#cb750-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># clean Yes-No-Unknown vars: replace text with &quot;highest&quot; value present in the string</span></span>
+<span id="cb750-6"><a href="lo-i-b-trùng-l-p.html#cb750-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(<span class="fu">contains</span>(<span class="st">&quot;symptoms_ever&quot;</span>)),                     <span class="co"># operates on specified columns (Y/N/U)</span></span>
+<span id="cb750-7"><a href="lo-i-b-trùng-l-p.html#cb750-7" aria-hidden="true" tabindex="-1"></a>             <span class="fu">list</span>(<span class="at">mod =</span> <span class="sc">~</span><span class="fu">case_when</span>(                                 <span class="co"># adds suffix &quot;_mod&quot; to new cols; implements case_when()</span></span>
+<span id="cb750-8"><a href="lo-i-b-trùng-l-p.html#cb750-8" aria-hidden="true" tabindex="-1"></a>               </span>
+<span id="cb750-9"><a href="lo-i-b-trùng-l-p.html#cb750-9" aria-hidden="true" tabindex="-1"></a>               <span class="fu">str_detect</span>(.x, <span class="st">&quot;Yes&quot;</span>)       <span class="sc">~</span> <span class="st">&quot;Yes&quot;</span>,                 <span class="co"># if &quot;Yes&quot; is detected, then cell value converts to yes</span></span>
+<span id="cb750-10"><a href="lo-i-b-trùng-l-p.html#cb750-10" aria-hidden="true" tabindex="-1"></a>               <span class="fu">str_detect</span>(.x, <span class="st">&quot;No&quot;</span>)        <span class="sc">~</span> <span class="st">&quot;No&quot;</span>,                  <span class="co"># then, if &quot;No&quot; is detected, then cell value converts to no</span></span>
+<span id="cb750-11"><a href="lo-i-b-trùng-l-p.html#cb750-11" aria-hidden="true" tabindex="-1"></a>               <span class="fu">str_detect</span>(.x, <span class="st">&quot;Unknown&quot;</span>)   <span class="sc">~</span> <span class="st">&quot;Unknown&quot;</span>,             <span class="co"># then, if &quot;Unknown&quot; is detected, then cell value converts to Unknown</span></span>
+<span id="cb750-12"><a href="lo-i-b-trùng-l-p.html#cb750-12" aria-hidden="true" tabindex="-1"></a>               <span class="cn">TRUE</span>                        <span class="sc">~</span> <span class="fu">as.character</span>(.x)))),   <span class="co"># then, if anything else if it kept as is</span></span>
+<span id="cb750-13"><a href="lo-i-b-trùng-l-p.html#cb750-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">.keep =</span> <span class="st">&quot;unused&quot;</span>)                                             <span class="co"># old columns removed, leaving only _mod columns</span></span></code></pre></div>
+<p>Now you can see in the column <code>symptoms_ever</code> that if the person EVER said “Yes” to symptoms, then only “Yes” is displayed.</p>
+<div id="htmlwidget-5a89dfb0bcbb354bc498" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5a89dfb0bcbb354bc498">{"x":{"filter":"none","data":[[1,2,3,4,5,6,7,8],["1; 11","2; 3; 10; 5","4; 12; 13","6; 14","7; 15; 16","8","9; 17","18"],["adam","amrish","mariah","nikhil","brian","smita","raquel","natalie"],["2020-01-01; 2020-01-05","2020-01-02; 2020-01-05","2020-01-05; 2020-01-06","2020-01-05; 2020-01-06","2020-01-05; 2020-01-06; 2020-01-07","2020-01-05","2020-01-05; 2020-01-07","2020-01-07"],["09:00; 09:40","14:20; 10:24; 16:10","12:00; 07:25; 08:32","13:01; 15:36","15:20; 15:31; 07:59","14:20","12:30; 11:13","17:12"],["1; 2","1; 2; 3","1; 2; 3","1; 2","1; 2; 3","1","1; 2","1"],["contact; case","contact; case","case; contact","contact","contact; case","contact","contact","case"],["No","Yes","No","Yes","Yes","Yes","No","No"]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>personID<\/th>\n      <th>recordID<\/th>\n      <th>name<\/th>\n      <th>date<\/th>\n      <th>time<\/th>\n      <th>encounter<\/th>\n      <th>purpose<\/th>\n      <th>symptoms_ever_mod<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":10,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<p>See the <a href="lo-i-b-trùng-l-p.html#dedup_data">original data</a>.</p>
+</div>
+</div>
+<div id="probabilistic-de-duplication" class="section level2" number="15.5">
+<h2><span class="header-section-number">15.5</span> Probabilistic de-duplication</h2>
+<p>Sometimes, you may want to identify “likely” duplicates based on similarity (e.g. string “distance”) across several columns such as name, age, sex, date of birth, etc. You can apply a probabilistic matching algorithm to identify likely duplicates.</p>
+<p>See the page on [Joining data] for an explanation on this method. The section on Probabilistic Matching contains an example of applying these algorithms to compare a data frame to <em>itself</em>, thus performing probabilistic de-duplication.</p>
+<!-- ======================================================= -->
+</div>
+<div id="resources-8" class="section level2" number="15.6">
+<h2><span class="header-section-number">15.6</span> Resources</h2>
+<p>Much of the information in this page is adapted from these resources and vignettes online:</p>
+<p><a href="https://www.datanovia.com/en/lessons/identify-and-remove-duplicate-data-in-r/">datanovia</a></p>
+<p><a href="https://dplyr.tidyverse.org/reference/slice.html">dplyr tidyverse reference</a></p>
+<p><a href="https://cran.r-project.org/web/packages/janitor/vignettes/janitor.html#explore-records-with-duplicated-values-for-specific-combinations-of-variables-with-get_dupes">cran janitor vignette</a></p>
+
+</div>
+</div>
+  </main>
+
+  <div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page">
+      <h2>On this page</h2>
+      <div id="book-on-this-page"></div>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          <li><a id="book-source" href="#">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="#">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5">
+  <div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Sổ tay dịch tễ học với R</strong>" was written by the handbook team. It was last built on 2021-06-14.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
