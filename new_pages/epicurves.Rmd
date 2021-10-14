@@ -720,21 +720,21 @@ Tuy nhiên, lưu ý rằng nếu sử dụng tuần, các đối số `date_brea
 
 ### Số mới mắc tích lũy {.unnumbered}
 
-Bạn có thể dễ dàng tạo ra một biểu đồ số mới mắc tích lũy bằng cách chuyển incidence object đến lệnh **incidence2** `cumulate()` và sau đó đến lệnh `plot()`. Điều này cũng tương tự với lệnh `facet_plot()`.
+<!-- Bạn có thể dễ dàng tạo ra một biểu đồ số mới mắc tích lũy bằng cách chuyển incidence object đến lệnh **incidence2** `cumulate()` và sau đó đến lệnh `plot()`. Điều này cũng tương tự với lệnh `facet_plot()`. -->
 
-```{r}
-# make weekly incidence object
-wkly_inci <- incidence(
-  linelist,
-  date_index = date_onset,
-  interval = "week"
-)
+<!-- ```{r} -->
+<!-- # make weekly incidence object -->
+<!-- wkly_inci <- incidence( -->
+<!--   linelist, -->
+<!--   date_index = date_onset, -->
+<!--   interval = "week" -->
+<!-- ) -->
 
-# plot cumulative incidence
-wkly_inci %>% 
-  cumulate() %>% 
-  plot()
-```
+<!-- # plot cumulative incidence -->
+<!-- wkly_inci %>%  -->
+<!--   cumulate() %>%  -->
+<!--   plot() -->
+<!-- ``` -->
 
 Xem phần sau để biết phương pháp thay thế để vẽ biểu đồ số mới mắc tích lũy với **ggplot2** - ví dụ: để chồng một đường số mới mắc tích lũy lên trên đường cong dịch bệnh.
 
