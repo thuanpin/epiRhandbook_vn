@@ -6,26 +6,40 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>45 Tương tác với thư mục làm việc | Cẩm nang dịch tễ học với R</title>
 <meta name="author" content="the handbook team">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.4/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="Trong chương này, chúng tôi sẽ bao gồm các tình huống phổ biến, nơi chúng ta sẽ tạo, tương tác, lưu và nhập với thư mục.  45.1 Chuẩn bị  fs package Package fs thuộc hệ sinh thái tidyverse giúp...">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="45 Tương tác với thư mục làm việc | Cẩm nang dịch tễ học với R">
+<meta property="og:type" content="book">
+<meta property="og:description" content="Trong chương này, chúng tôi sẽ bao gồm các tình huống phổ biến, nơi chúng ta sẽ tạo, tương tác, lưu và nhập với thư mục.  45.1 Chuẩn bị  fs package Package fs thuộc hệ sinh thái tidyverse giúp...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="45 Tương tác với thư mục làm việc | Cẩm nang dịch tễ học với R">
+<meta name="twitter:description" content="Trong chương này, chúng tôi sẽ bao gồm các tình huống phổ biến, nơi chúng ta sẽ tạo, tương tác, lưu và nhập với thư mục.  45.1 Chuẩn bị  fs package Package fs thuộc hệ sinh thái tidyverse giúp...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
-<script src="libs/datatables-binding-0.16/datatables.js"></script><link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.0/transition.js"></script><script src="libs/bs3compat-0.3.0/tabs.js"></script><script src="libs/bs3compat-0.3.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="libs/datatables-binding-0.19/datatables.js"></script><link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet">
 <script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script><link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet">
 <script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script><link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet">
 <script src="libs/selectize-0.12.0/selectize.min.js"></script><link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet">
 <script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet">
-<script src="libs/tabwid-1.0.0/tabwid.js"></script><link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
 <script src="libs/leaflet-1.3.1/leaflet.js"></script><link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
-<script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script><script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
-<script src="libs/leaflet-binding-2.0.3/leaflet.js"></script><script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script><script src="libs/leaflet-providers-plugin-2.0.3/leaflet-providers-plugin.js"></script><script src="libs/viz-1.8.2/viz.js"></script><link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
-<script src="libs/grViz-binding-1.0.6.1/grViz.js"></script><script src="libs/d3-4.5.0/d3.min.js"></script><script src="libs/sankey-1/sankey.js"></script><script src="libs/sankeyNetwork-binding-0.4/sankeyNetwork.js"></script><script src="libs/plotly-binding-4.9.2.1/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet">
-<script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script><link href="libs/vis-4.20.1/vis.css" rel="stylesheet">
-<script src="libs/vis-4.20.1/vis.min.js"></script><script src="libs/visNetwork-binding-2.0.9/visNetwork.js"></script><link href="libs/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<script src="libs/plotly-basic-1.52.2/plotly-basic-1.52.2.min.js"></script><script src="libs/plotly-cartesian-1.52.2/plotly-cartesian-1.52.2.min.js"></script><script src="libs/proj4js-2.3.15/proj4.js"></script><link href="libs/highcharts-8.1.2/css/motion.css" rel="stylesheet">
-<script src="libs/highcharts-8.1.2/highcharts.js"></script><script src="libs/highcharts-8.1.2/highcharts-3d.js"></script><script src="libs/highcharts-8.1.2/highcharts-more.js"></script><script src="libs/highcharts-8.1.2/modules/stock.js"></script><script src="libs/highcharts-8.1.2/modules/map.js"></script><script src="libs/highcharts-8.1.2/modules/annotations.js"></script><script src="libs/highcharts-8.1.2/modules/data.js"></script><script src="libs/highcharts-8.1.2/modules/drilldown.js"></script><script src="libs/highcharts-8.1.2/modules/item-series.js"></script><script src="libs/highcharts-8.1.2/modules/offline-exporting.js"></script><script src="libs/highcharts-8.1.2/modules/overlapping-datalabels.js"></script><script src="libs/highcharts-8.1.2/modules/exporting.js"></script><script src="libs/highcharts-8.1.2/modules/export-data.js"></script><script src="libs/highcharts-8.1.2/modules/funnel.js"></script><script src="libs/highcharts-8.1.2/modules/heatmap.js"></script><script src="libs/highcharts-8.1.2/modules/treemap.js"></script><script src="libs/highcharts-8.1.2/modules/sankey.js"></script><script src="libs/highcharts-8.1.2/modules/dependency-wheel.js"></script><script src="libs/highcharts-8.1.2/modules/organization.js"></script><script src="libs/highcharts-8.1.2/modules/solid-gauge.js"></script><script src="libs/highcharts-8.1.2/modules/streamgraph.js"></script><script src="libs/highcharts-8.1.2/modules/sunburst.js"></script><script src="libs/highcharts-8.1.2/modules/vector.js"></script><script src="libs/highcharts-8.1.2/modules/wordcloud.js"></script><script src="libs/highcharts-8.1.2/modules/xrange.js"></script><script src="libs/highcharts-8.1.2/modules/tilemap.js"></script><script src="libs/highcharts-8.1.2/modules/venn.js"></script><script src="libs/highcharts-8.1.2/modules/gantt.js"></script><script src="libs/highcharts-8.1.2/modules/timeline.js"></script><script src="libs/highcharts-8.1.2/modules/parallel-coordinates.js"></script><script src="libs/highcharts-8.1.2/modules/bullet.js"></script><script src="libs/highcharts-8.1.2/modules/coloraxis.js"></script><script src="libs/highcharts-8.1.2/modules/dumbbell.js"></script><script src="libs/highcharts-8.1.2/modules/lollipop.js"></script><script src="libs/highcharts-8.1.2/modules/series-label.js"></script><script src="libs/highcharts-8.1.2/plugins/motion.js"></script><script src="libs/highcharts-8.1.2/custom/reset.js"></script><script src="libs/highcharts-8.1.2/modules/boost.js"></script><script src="libs/highchart-binding-0.8.2/highchart.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS --><link rel="stylesheet" href="style_bs4.css">
+<script src="libs/proj4-2.6.2/proj4.min.js"></script><script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+<script src="libs/leaflet-binding-2.0.4.1/leaflet.js"></script><script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script><script src="libs/leaflet-providers-plugin-2.0.4.1/leaflet-providers-plugin.js"></script><script src="libs/viz-1.8.2/viz.js"></script><link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
+<script src="libs/grViz-binding-1.0.6.1/grViz.js"></script><script src="libs/d3-4.5.0/d3.min.js"></script><script src="libs/sankey-1/sankey.js"></script><script src="libs/sankeyNetwork-binding-0.4/sankeyNetwork.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script><link href="libs/vis-9.1.0/vis-network.min.css" rel="stylesheet">
+<script src="libs/vis-9.1.0/vis-network.min.js"></script><script src="libs/visNetwork-binding-2.1.0/visNetwork.js"></script><link href="libs/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="libs/plotly-basic-2.5.1/plotly-basic-2.5.1.min.js"></script><script src="libs/plotly-cartesian-2.5.1/plotly-cartesian-2.5.1.min.js"></script><script src="libs/proj4js-2.3.15/proj4.js"></script><link href="libs/highcharts-8.1.2/css/motion.css" rel="stylesheet">
+<script src="libs/highcharts-8.1.2/highcharts.js"></script><script src="libs/highcharts-8.1.2/highcharts-3d.js"></script><script src="libs/highcharts-8.1.2/highcharts-more.js"></script><script src="libs/highcharts-8.1.2/modules/stock.js"></script><script src="libs/highcharts-8.1.2/modules/map.js"></script><script src="libs/highcharts-8.1.2/modules/annotations.js"></script><script src="libs/highcharts-8.1.2/modules/data.js"></script><script src="libs/highcharts-8.1.2/modules/drilldown.js"></script><script src="libs/highcharts-8.1.2/modules/item-series.js"></script><script src="libs/highcharts-8.1.2/modules/offline-exporting.js"></script><script src="libs/highcharts-8.1.2/modules/overlapping-datalabels.js"></script><script src="libs/highcharts-8.1.2/modules/exporting.js"></script><script src="libs/highcharts-8.1.2/modules/export-data.js"></script><script src="libs/highcharts-8.1.2/modules/funnel.js"></script><script src="libs/highcharts-8.1.2/modules/heatmap.js"></script><script src="libs/highcharts-8.1.2/modules/treemap.js"></script><script src="libs/highcharts-8.1.2/modules/sankey.js"></script><script src="libs/highcharts-8.1.2/modules/dependency-wheel.js"></script><script src="libs/highcharts-8.1.2/modules/organization.js"></script><script src="libs/highcharts-8.1.2/modules/solid-gauge.js"></script><script src="libs/highcharts-8.1.2/modules/streamgraph.js"></script><script src="libs/highcharts-8.1.2/modules/sunburst.js"></script><script src="libs/highcharts-8.1.2/modules/vector.js"></script><script src="libs/highcharts-8.1.2/modules/wordcloud.js"></script><script src="libs/highcharts-8.1.2/modules/xrange.js"></script><script src="libs/highcharts-8.1.2/modules/tilemap.js"></script><script src="libs/highcharts-8.1.2/modules/venn.js"></script><script src="libs/highcharts-8.1.2/modules/gantt.js"></script><script src="libs/highcharts-8.1.2/modules/timeline.js"></script><script src="libs/highcharts-8.1.2/modules/parallel-coordinates.js"></script><script src="libs/highcharts-8.1.2/modules/bullet.js"></script><script src="libs/highcharts-8.1.2/modules/coloraxis.js"></script><script src="libs/highcharts-8.1.2/modules/dumbbell.js"></script><script src="libs/highcharts-8.1.2/modules/lollipop.js"></script><script src="libs/highcharts-8.1.2/modules/series-label.js"></script><script src="libs/highcharts-8.1.2/plugins/motion.js"></script><script src="libs/highcharts-8.1.2/custom/reset.js"></script><script src="libs/highcharts-8.1.2/modules/boost.js"></script><script src="libs/highchart-binding-0.8.2/highchart.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-QXDW878QLX"></script><script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-QXDW878QLX');
+    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="style_bs4.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -126,7 +140,7 @@
 <strong>fs</strong> package<a class="anchor" aria-label="anchor" href="#fs-package"><i class="fas fa-link"></i></a>
 </h3>
 <p>Package <strong>fs</strong> thuộc hệ sinh thái <strong>tidyverse</strong> giúp thuận tiện cho việc tương tác với thư mục, cải thiện một số hàm trong <strong>base</strong> R. Trong các phần bên dưới, chúng ta sẽ dùng các hàm từ <strong>fs</strong>.</p>
-<div class="sourceCode" id="cb1923"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1926"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">pacman</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pacman/man/p_load.html">p_load</a></span><span class="op">(</span>
   <span class="va">fs</span>,             <span class="co"># file/directory interactions</span>
   <span class="va">rio</span>,            <span class="co"># import/export</span>
@@ -138,9 +152,9 @@
 </h3>
 <p>Sử dụng hàm <code>dir_tree()</code> từ package <strong>fs</strong>.</p>
 <p>Cung cấp đường dẫn thư mục cho đối số <code>path =</code> và quyết định xem có hay không chúng ta muốn hiển thị chỉ ở một cấp độ (<code>recurse = FALSE</code>) hay tất cả các tập tin trong tất cả các thư mục con (<code>recurse = TRUE</code>). Bên dưới chúng ta sử dụng hàm <code><a href="https://here.r-lib.org//reference/here.html">here()</a></code> để hiển thị kết quả dưới dạng viết tốc ký trong dự án R và cụ thể thư mục con “data” của nó, mà chứa tất các số liệu được sử dụng cho cuốn sổ tay này. Chúng ta thiết lập nó để hiện thị tất cả các tệp bên trong thư mục “data” và các thư mục con của nó (vd: “cache”, “epidemic models”, “population”, “shp”, và “weather”).</p>
-<div class="sourceCode" id="cb1924"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1927"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="http://fs.r-lib.org/reference/dir_tree.html">dir_tree</a></span><span class="op">(</span>path <span class="op">=</span> <span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"data"</span><span class="op">)</span>, recurse <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<pre><code>## D:/Book Writing/4. EpiR Book/epiRhandbook_vn/data
+<pre><code>## C:/Users/MSFuser/Documents/epiRhandbook_repos/epiRhandbook_vn/data
 ## +-- cache
 ## |   \-- epidemic_models
 ## |       +-- 2015-04-30
@@ -272,37 +286,37 @@
 <span class="header-section-number">45.2</span> Liệt kê các tập tin trong một thư mục<a class="anchor" aria-label="anchor" href="#li%E1%BB%87t-k%C3%AA-c%C3%A1c-t%E1%BA%ADp-tin-trong-m%E1%BB%99t-th%C6%B0-m%E1%BB%A5c"><i class="fas fa-link"></i></a>
 </h2>
 <p>Để chỉ liệt kê các tên tập tin trong một thư mục, chúng ta có thể sử dụng hàm <code><a href="https://rdrr.io/r/base/list.files.html">dir()</a></code> từ <strong>base</strong> Ví dụ, lệnh này liệt kê tên các tập tin của các tập tin trong thư mục con có tên “population” trong thư mục “data” của một dự án R. Đường dẫn tập tin tương đối được cung cấp bằng cách sử dụng hàm <code><a href="https://here.r-lib.org//reference/here.html">here()</a></code> (đọc thêm trong chương <a href="importing.html#importing">Nhập xuất dữ liệu</a>).</p>
-<div class="sourceCode" id="cb1926"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1929"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># file names</span>
 <span class="fu"><a href="https://rdrr.io/r/base/list.files.html">dir</a></span><span class="op">(</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"data"</span>, <span class="st">"gis"</span>, <span class="st">"population"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "sle_admpop_adm3_2020.csv"                        "sle_population_statistics_sierraleone_2020.xlsx"</code></pre>
 <p>Để liệt kê đường dẫn đầy đủ của các tập tin trong thư mục, chúng ta có thể sử dụng hàm <code>dir_ls()</code> từ package <strong>fs</strong>. Một cách khác là dùng hàm <code><a href="https://rdrr.io/r/base/list.files.html">list.files()</a></code> trong <strong>base</strong> R.</p>
-<div class="sourceCode" id="cb1928"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1931"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># file paths</span>
 <span class="fu">dir_ls</span><span class="op">(</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"data"</span>, <span class="st">"gis"</span>, <span class="st">"population"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## D:/Book Writing/4. EpiR Book/epiRhandbook_vn/data/gis/population/sle_admpop_adm3_2020.csv
-## D:/Book Writing/4. EpiR Book/epiRhandbook_vn/data/gis/population/sle_population_statistics_sierraleone_2020.xlsx</code></pre>
+<pre><code>## C:/Users/MSFuser/Documents/epiRhandbook_repos/epiRhandbook_vn/data/gis/population/sle_admpop_adm3_2020.csv
+## C:/Users/MSFuser/Documents/epiRhandbook_repos/epiRhandbook_vn/data/gis/population/sle_population_statistics_sierraleone_2020.xlsx</code></pre>
 <p>Để lấy tất cả thông tin chi tiết của mỗi tập tin trong một thư mục (ví dụ: đường dẫn, ngày sửa đổi, .v.v.), chúng ta có thể sử dụng hàm <code>dir_info()</code> của package <strong>fs</strong>.</p>
 <p>Điều này có thể đặc biệt hữu ích nếu chúng ta muốn trích xuất thời gian sửa đổi sau cùng của tập tin, ví dụ như nếu chúng ta muốn nhập phiên bản mới nhất của tập tin. Ví dụ cho việc này, xem trong chương <a href="importing.html#importing">Nhập xuất dữ liệu</a>.</p>
-<div class="sourceCode" id="cb1930"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1933"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># file info</span>
 <span class="fu">dir_info</span><span class="op">(</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"data"</span>, <span class="st">"gis"</span>, <span class="st">"population"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>Sau đây là data frame được trả về. Cuộn qua phải để xem tất cả các cột.</p>
-<div id="htmlwidget-bde7ef1abe8bff0a9197" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-bde7ef1abe8bff0a9197">{"x":{"filter":"none","data":[["D:/Book Writing/4. EpiR Book/epiRhandbook_vn/data/gis/population/sle_admpop_adm3_2020.csv","D:/Book Writing/4. EpiR Book/epiRhandbook_vn/data/gis/population/sle_population_statistics_sierraleone_2020.xlsx"],["file","file"],[26939,57850],[33206,33206],["2021-06-04T21:52:41Z","2021-06-04T21:52:41Z"],[null,null],[null,null],[1821780192,1821780192],[1,1],[0,0],[1.97032483700279e+15,1.97032483700279e+15],[4096,4096],[56,120],[0,0],[0,0],["2021-10-06T13:36:18Z","2021-06-25T11:56:03Z"],["2021-06-04T21:52:41Z","2021-06-04T21:52:41Z"],["2021-06-04T21:52:41Z","2021-06-04T21:52:41Z"]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>path<\/th>\n      <th>type<\/th>\n      <th>size<\/th>\n      <th>permissions<\/th>\n      <th>modification_time<\/th>\n      <th>user<\/th>\n      <th>group<\/th>\n      <th>device_id<\/th>\n      <th>hard_links<\/th>\n      <th>special_device_id<\/th>\n      <th>inode<\/th>\n      <th>block_size<\/th>\n      <th>blocks<\/th>\n      <th>flags<\/th>\n      <th>generation<\/th>\n      <th>access_time<\/th>\n      <th>change_time<\/th>\n      <th>birth_time<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[2,3,7,8,9,10,11,12,13,14]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-b3003f2662a618efac47" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b3003f2662a618efac47">{"x":{"filter":"none","vertical":false,"data":[["C:/Users/MSFuser/Documents/epiRhandbook_repos/epiRhandbook_vn/data/gis/population/sle_admpop_adm3_2020.csv","C:/Users/MSFuser/Documents/epiRhandbook_repos/epiRhandbook_vn/data/gis/population/sle_population_statistics_sierraleone_2020.xlsx"],["file","file"],[26939,57850],[33206,33206],["2021-10-14T11:58:40Z","2021-10-14T11:58:40Z"],[null,null],[null,null],[1995359046,1995359046],[1,1],[0,0],[1.12589990724768e+15,1.12589990724768e+15],[4096,4096],[56,120],[0,0],[0,0],["2021-10-14T11:58:40Z","2021-10-14T11:58:40Z"],["2021-10-14T11:58:40Z","2021-10-14T11:58:40Z"],["2021-10-14T11:58:40Z","2021-10-14T11:58:40Z"]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>path<\/th>\n      <th>type<\/th>\n      <th>size<\/th>\n      <th>permissions<\/th>\n      <th>modification_time<\/th>\n      <th>user<\/th>\n      <th>group<\/th>\n      <th>device_id<\/th>\n      <th>hard_links<\/th>\n      <th>special_device_id<\/th>\n      <th>inode<\/th>\n      <th>block_size<\/th>\n      <th>blocks<\/th>\n      <th>flags<\/th>\n      <th>generation<\/th>\n      <th>access_time<\/th>\n      <th>change_time<\/th>\n      <th>birth_time<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[2,3,7,8,9,10,11,12,13,14]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="thông-tin-tệp" class="section level2" number="45.3">
 <h2>
 <span class="header-section-number">45.3</span> Thông tin tệp<a class="anchor" aria-label="anchor" href="#th%C3%B4ng-tin-t%E1%BB%87p"><i class="fas fa-link"></i></a>
 </h2>
 <p>Để trích xuất thông tin chi tiết của một tập tin cụ thể, chúng ta có thể sử dụng hàme <code>file_info()</code> từ package <strong>fs</strong> (hoặc <code><a href="https://rdrr.io/r/base/file.info.html">file.info()</a></code> từ <strong>base</strong> R).</p>
-<div class="sourceCode" id="cb1931"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1934"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">file_info</span><span class="op">(</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"data"</span>, <span class="st">"case_linelists"</span>, <span class="st">"linelist_cleaned.rds"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-355103e711ac2b1d415d" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-355103e711ac2b1d415d">{"x":{"filter":"none","data":[["D:/Book Writing/4. EpiR Book/epiRhandbook_vn/data/case_linelists/linelist_cleaned.rds"],["file"],[290215],[33206],["2021-10-06T13:28:28Z"],[null],[null],[1821780192],[1],[0],[1.97032483700275e+15],[4096],[568],[0],[0],["2021-10-06T13:45:23Z"],["2021-10-06T13:28:28Z"],["2021-06-04T21:52:41Z"]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>path<\/th>\n      <th>type<\/th>\n      <th>size<\/th>\n      <th>permissions<\/th>\n      <th>modification_time<\/th>\n      <th>user<\/th>\n      <th>group<\/th>\n      <th>device_id<\/th>\n      <th>hard_links<\/th>\n      <th>special_device_id<\/th>\n      <th>inode<\/th>\n      <th>block_size<\/th>\n      <th>blocks<\/th>\n      <th>flags<\/th>\n      <th>generation<\/th>\n      <th>access_time<\/th>\n      <th>change_time<\/th>\n      <th>birth_time<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[2,3,7,8,9,10,11,12,13,14]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script><p>Ở đây, chúng ta sử dụng ký hiệu <code><a href="https://rdrr.io/r/base/Extract.html">$</a></code> để chỉ rõ kết quả và xuất chỉ mỗi giá trị về thời gian sửa đổi <code>modification_time</code>.</p>
-<div class="sourceCode" id="cb1932"><pre class="downlit sourceCode r">
+<div id="htmlwidget-ac22c232cae9b0cf18e1" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ac22c232cae9b0cf18e1">{"x":{"filter":"none","vertical":false,"data":[["C:/Users/MSFuser/Documents/epiRhandbook_repos/epiRhandbook_vn/data/case_linelists/linelist_cleaned.rds"],["file"],[290215],[33206],["2021-10-14T11:58:39Z"],[null],[null],[1995359046],[1],[0],[1.12589990724764e+15],[4096],[568],[0],[0],["2021-10-14T11:58:39Z"],["2021-10-14T11:58:39Z"],["2021-10-14T11:58:39Z"]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>path<\/th>\n      <th>type<\/th>\n      <th>size<\/th>\n      <th>permissions<\/th>\n      <th>modification_time<\/th>\n      <th>user<\/th>\n      <th>group<\/th>\n      <th>device_id<\/th>\n      <th>hard_links<\/th>\n      <th>special_device_id<\/th>\n      <th>inode<\/th>\n      <th>block_size<\/th>\n      <th>blocks<\/th>\n      <th>flags<\/th>\n      <th>generation<\/th>\n      <th>access_time<\/th>\n      <th>change_time<\/th>\n      <th>birth_time<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[2,3,7,8,9,10,11,12,13,14]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script><p>Ở đây, chúng ta sử dụng ký hiệu <code><a href="https://rdrr.io/r/base/Extract.html">$</a></code> để chỉ rõ kết quả và xuất chỉ mỗi giá trị về thời gian sửa đổi <code>modification_time</code>.</p>
+<div class="sourceCode" id="cb1935"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">file_info</span><span class="op">(</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"data"</span>, <span class="st">"case_linelists"</span>, <span class="st">"linelist_cleaned.rds"</span><span class="op">)</span><span class="op">)</span><span class="op">$</span><span class="va">modification_time</span></code></pre></div>
-<pre><code>## [1] "2021-10-06 15:28:28 CEST"</code></pre>
+<pre><code>## [1] "2021-10-14 11:58:39 UTC"</code></pre>
 </div>
 <div id="kiểm-tra-sự-tồn-tại" class="section level2" number="45.4">
 <h2>
@@ -312,14 +326,14 @@
 <h3>Đối tượng R<a class="anchor" aria-label="anchor" href="#%C4%91%E1%BB%91i-t%C6%B0%E1%BB%A3ng-r"><i class="fas fa-link"></i></a>
 </h3>
 <p>Bạn có thể sử dụng hàm <code><a href="https://rdrr.io/r/base/exists.html">exists()</a></code> trong <strong>base</strong> R để kiểm tra xem một đối tượng R có tồn tại <em>bên trong</em> môi trường R hay không (cung cấp tên đối tượng trong dấu ngoặc kép).</p>
-<div class="sourceCode" id="cb1934"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1937"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/exists.html">exists</a></span><span class="op">(</span><span class="st">"linelist"</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>Lưu ý rằng một số gói lệnh trong <strong>base</strong> R sử dụng các tên chung làm tên cho các đối tượng như “data” trong môi trường R, mà kết quả kiểm tra sẽ là TRUE trừ khi chúng ta chỉ rõ <code>inherit = FALSE</code>. Đây là một lý do để không đặt tên cho bộ số liệu của chúng ta là “data”.</p>
-<div class="sourceCode" id="cb1936"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1939"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/exists.html">exists</a></span><span class="op">(</span><span class="st">"data"</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb1938"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1941"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/exists.html">exists</a></span><span class="op">(</span><span class="st">"data"</span>, inherit <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <p>Nếu bạn đang viết một hàm, bạn nên sử dụng hàm <code><a href="https://rdrr.io/r/base/missing.html">missing()</a></code> từ <strong>base</strong> R để kiểm tra xem có một đối số hiện diện hay không, thay vì dùng hàm <code><a href="https://rdrr.io/r/base/exists.html">exists()</a></code>.</p>
@@ -328,20 +342,20 @@
 <h3>Thư mục<a class="anchor" aria-label="anchor" href="#th%C6%B0-m%E1%BB%A5c"><i class="fas fa-link"></i></a>
 </h3>
 <p>Để kiểm tra xem một thư mục có tồn tại không, cung cấp đường dẫn tập tin (và tên tập tin) đến hàm <code>is_dir()</code> của package <strong>fs</strong>. Cuộn qua bên phải để thấy thông báo <code>TRUE</code> được in ra.</p>
-<div class="sourceCode" id="cb1940"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1943"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">is_dir</span><span class="op">(</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"data"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## D:/Book Writing/4. EpiR Book/epiRhandbook_vn/data 
-##                                              TRUE</code></pre>
+<pre><code>## C:/Users/MSFuser/Documents/epiRhandbook_repos/epiRhandbook_vn/data 
+##                                                               TRUE</code></pre>
 <p>Một cách làm khác là dùng hàm <code><a href="https://rdrr.io/r/base/files.html">file.exists()</a></code> từ <strong>base</strong> R.</p>
 </div>
 <div id="tệp" class="section level3 unnumbered">
 <h3>Tệp<a class="anchor" aria-label="anchor" href="#t%E1%BB%87p"><i class="fas fa-link"></i></a>
 </h3>
 <p>Để kiểm tra xem một tập tin cụ thể có tồn tại hay không, sử dụng hàm <code>is_file()</code> của package <strong>fs</strong>. Cuộn qua bên phải để thấy thông báo <code>TRUE</code> được in ra.</p>
-<div class="sourceCode" id="cb1942"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1945"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">is_file</span><span class="op">(</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"data"</span>, <span class="st">"case_linelists"</span>, <span class="st">"linelist_cleaned.rds"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## D:/Book Writing/4. EpiR Book/epiRhandbook_vn/data/case_linelists/linelist_cleaned.rds 
-##                                                                                  TRUE</code></pre>
+<pre><code>## C:/Users/MSFuser/Documents/epiRhandbook_repos/epiRhandbook_vn/data/case_linelists/linelist_cleaned.rds 
+##                                                                                                   TRUE</code></pre>
 <p>Một cách làm khác là dùng hàm <code><a href="https://rdrr.io/r/base/files.html">file.exists()</a></code> từ <strong>base</strong> R.</p>
 </div>
 </div>
@@ -353,7 +367,7 @@
 <h3>Thư mục<a class="anchor" aria-label="anchor" href="#th%C6%B0-m%E1%BB%A5c-1"><i class="fas fa-link"></i></a>
 </h3>
 <p>Để tạo một thư mục mới, bạn có thể sử dụng hàm <code>dir_create()</code> từ package <strong>fs</strong>. Nếu thư mục đã tồn tại, thư mục này sẽ không bị ghi đè và không bị trả lại lỗi.</p>
-<div class="sourceCode" id="cb1944"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1947"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">dir_create</span><span class="op">(</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"data"</span>, <span class="st">"test"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>Một cách làm khác là dùng hàm <code><a href="https://rdrr.io/r/base/files2.html">dir.create()</a></code> từ <strong>base</strong> R, mà sẽ hiển thị lỗi nếu thư mục đó đã tồn tại. Ngược lại, <code>dir_create()</code> sẽ không thông báo gì.</p>
 </div>
@@ -361,7 +375,7 @@
 <h3>Tệp<a class="anchor" aria-label="anchor" href="#t%E1%BB%87p-1"><i class="fas fa-link"></i></a>
 </h3>
 <p>Chúng ta có thể tạo một tâp tin (rỗng) bằng hàm <code>file_create()</code> từ package <strong>fs</strong>. Nếu tập tin này đã tồn tại, nó sẽ không bị ghi đè hoặc thay đổi.</p>
-<div class="sourceCode" id="cb1945"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1948"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">file_create</span><span class="op">(</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"data"</span>, <span class="st">"test.rds"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>Một cách làm khác là dùng hàm <code><a href="https://rdrr.io/r/base/files.html">file.create()</a></code> từ <strong>base</strong> R. Nhưng nếu tập tin này đã tồn tại, tùy chọn này sẽ cắt xén tập tin đó. Nếu dùng hàm <code>file_create()</code> tập tin này sẽ được giữ nguyên.</p>
 </div>
@@ -400,7 +414,7 @@
 <code>source()</code><a class="anchor" aria-label="anchor" href="#source"><i class="fas fa-link"></i></a>
 </h3>
 <p>Để chạy một R script từ một R script khác, bạn có thể sử dụng hàm <code><a href="https://rdrr.io/r/base/source.html">source()</a></code> (trong <strong>base</strong> R).</p>
-<div class="sourceCode" id="cb1946"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1949"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"scripts"</span>, <span class="st">"cleaning_scripts"</span>, <span class="st">"clean_testing_data.R"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>ở phía trên bên phải của tập lệnh. Điều này sẽ thực hiện tập lệnh này nhưng sẽ thực hiện một cách âm thầm (không có kết quả đầu ra trong bảng điều khiển R) trừ khi có chủ ý cụ thể. Xem các ví dụ ở chương [Bảng điều khiển tương tác] về cách sử dụng <code><a href="https://rdrr.io/r/base/source.html">source()</a></code> để tương tác với người dùng qua bảng điều khiên R ở chế độ hỏi và trả lời.</p>
 <div class="inline-figure"><img src="images/source_button.png" width="82" height="300%" style="display: block; margin: auto;"></div>
@@ -409,19 +423,19 @@
 <h3>
 <code>render()</code><a class="anchor" aria-label="anchor" href="#render"><i class="fas fa-link"></i></a>
 </h3>
-<p>Hàm <code>render()</code> là một biến thể của hàm <code><a href="https://rdrr.io/r/base/source.html">source()</a></code> mà thường được sử dụng nhất cho các tập lệnh của R markdown. Chúng ta cung cấp <code>input =</code> tập tin R markdown, và cũng vậy <code>output_format =</code> (thường là “html_document”, “pdf_document”, “word_document”, ““)</p>
+<p>Hàm <code>render()</code> là một biến thể của hàm <code><a href="https://rdrr.io/r/base/source.html">source()</a></code> mà thường được sử dụng nhất cho các tập lệnh của R markdown. Chúng ta cung cấp <code>input =</code> tập tin R markdown, và cũng vậy <code>output_format =</code> (thường là “html_document”, “pdf_document”, “word_document”, "")</p>
 <p>Xem chương <a href="rmarkdown.html#rmarkdown">Báo cáo với R Markdown</a> để biết thêm chi tiết. Ngoài ra, bạn có thể xem thêm tài liệu về <code>render()</code> <a href="https://rmarkdown.rstudio.com/docs/reference/render.html">tại đây</a> hoặc bằng cách gõ <code>?render</code>.</p>
 </div>
 <div id="chạy-các-tệp-trong-một-thư-mục" class="section level3 unnumbered">
 <h3>Chạy các tệp trong một thư mục<a class="anchor" aria-label="anchor" href="#ch%E1%BA%A1y-c%C3%A1c-t%E1%BB%87p-trong-m%E1%BB%99t-th%C6%B0-m%E1%BB%A5c"><i class="fas fa-link"></i></a>
 </h3>
 <p>Bạn có thể tạo một <em>vòng lặp for</em> và sử dụng nó để <code><a href="https://rdrr.io/r/base/source.html">source()</a></code> từng tệp trong một thư mục, đã được nhận dạng bởi hàm <code><a href="https://rdrr.io/r/base/list.files.html">dir()</a></code>.</p>
-<div class="sourceCode" id="cb1947"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1950"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw">for</span><span class="op">(</span><span class="va">script</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/list.files.html">dir</a></span><span class="op">(</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"scripts"</span><span class="op">)</span>, pattern <span class="op">=</span> <span class="st">".R$"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>   <span class="co"># for each script name in the R Project's "scripts" folder (with .R extension)</span>
   <span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"scripts"</span>, <span class="va">script</span><span class="op">)</span><span class="op">)</span>                        <span class="co"># source the file with the matching name that exists in the scripts folder</span>
 <span class="op">}</span></code></pre></div>
 <p>Nếu chúng ta chỉ muốn thực hiện một vài scripts, chúng ta có thể xác định chúng bằng tên như sau:</p>
-<div class="sourceCode" id="cb1948"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1951"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">scripts_to_run</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
      <span class="st">"epicurves.R"</span>,
      <span class="st">"demographic_tables.R"</span>,
@@ -455,7 +469,7 @@
 <span class="header-section-number">45.8</span> <strong>base</strong> R<a class="anchor" aria-label="anchor" href="#base-r-3"><i class="fas fa-link"></i></a>
 </h2>
 <p>Xem bên dưới các hàm <code><a href="https://rdrr.io/r/base/list.files.html">list.files()</a></code> và <code><a href="https://rdrr.io/r/base/list.files.html">dir()</a></code>, thực hiện cùng một thao tác liệt kê các tập tin trong một thư mục cụ thể. Chúng ta có thể cụ thể cho đối số <code>ignore.case =</code> hoặc cụ thể một pattern để tìm kiếm.</p>
-<div class="sourceCode" id="cb1949"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1952"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/list.files.html">list.files</a></span><span class="op">(</span>path <span class="op">=</span> <span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"data"</span><span class="op">)</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/base/list.files.html">list.files</a></span><span class="op">(</span>path <span class="op">=</span> <span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"data"</span><span class="op">)</span>, pattern <span class="op">=</span> <span class="st">".csv"</span><span class="op">)</span>
@@ -535,7 +549,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Cẩm nang dịch tễ học với R</strong>" was written by the handbook team. It was last built on 2021-10-06.</p>
+    <p>"<strong>Cẩm nang dịch tễ học với R</strong>" was written by the handbook team. It was last built on 2021-10-14.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -555,6 +569,22 @@
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
 </script>
 </body>
 </html>

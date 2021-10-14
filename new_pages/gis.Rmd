@@ -373,7 +373,7 @@ case_adm3 <- linelist_adm %>%          # begin with linelist with new admin cols
   as_tibble() %>%                      # convert to tibble for better display
   group_by(admin3pcod, admin3name) %>% # group by admin unit, both by name and pcode 
   summarise(cases = n()) %>%           # summarize and count rows
-  arrange(desc(cases))                     # arrange in descending order
+  arrange(desc(cases))                 # arrange in descending order
 
 case_adm3
 ```
@@ -581,6 +581,8 @@ case_adm3_sf <- case_adm3 %>%                 # begin with cases & rate by admin
          admin2name, admin1name,
          cases, total, case_10kpop,
          geometry) %>%                        # keep geometry so polygons can be plotted
+  drop_na(objectid) %>%                       # drop any empty rows
+
   st_as_sf()                                  # convert to shapefile
 
 ```
@@ -699,7 +701,7 @@ Sau đó chúng ta tạo đối tượng `map`, được xác định bằng cá
 pacman::p_load(OpenStreetMap)
 
 # Fit basemap by range of lat/long coordinates. Choose tile type
-map <- openmap(
+map <- OpenStreetMap::openmap(
   upperLeft = c(max(linelist$lat, na.rm=T), max(linelist$lon, na.rm=T)),   # limits of basemap tile
   lowerRight = c(min(linelist$lat, na.rm=T), min(linelist$lon, na.rm=T)),
   zoom = NULL,
