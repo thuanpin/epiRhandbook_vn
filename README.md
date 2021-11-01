@@ -9,9 +9,9 @@
 
 **Sổ tay này hướng tới:**
 
--   Là một tài liệu tham khảo R một cách nhanh chóng\
--   Cung cấp các ví dụ tập trung vào nhiệm vụ giải quyết các vấn đề dịch tễ học phổ biến\
--   Hỗ trợ các nhà dịch tễ học chuyển sang sử dụng R\
+-   Là một tài liệu tham khảo R một cách nhanh chóng
+-   Cung cấp các ví dụ tập trung vào nhiệm vụ giải quyết các vấn đề dịch tễ học phổ biến
+-   Hỗ trợ các nhà dịch tễ học chuyển sang sử dụng R
 -   Có thể sử dụng trong các tình huống có kết nối internet thấp thông qua **[phiên bản ngoại tuyến](https://epirhandbook.com/vn/data-used.html#data-used)**
   
 
@@ -29,8 +29,8 @@ Applied Epi là một tổ chức phi lợi nhuận và phong trào cơ sở c�
 
 
 -   Truy cập các trang trong phần Mục lục, hoặc sử dụng ô tìm kiếm
--   Nhấn biểu tượng "copy" để sao chép code\
--   Kết hợp theo dõi cùng với các bộ [dữ liệu minh họa](https://epirhandbook.com/vn/data-used.html#data-used)\
+-   Nhấn biểu tượng "copy" để sao chép code
+-   Kết hợp theo dõi cùng với các bộ [dữ liệu minh họa](https://epirhandbook.com/vn/data-used.html#data-used)
 -   Xem phần "Tài nguyên" trong từng chương để tìm thêm tài liệu
 
 **Phiên bản ngoại tuyến**
@@ -79,7 +79,7 @@ Các hỗ trợ hành chính được cung cấp bởi mạng lưới cựu sinh
 
 *Ấn phẩm này được hỗ trợ bởi Hợp đồng Hợp tác số NU2GGH001873, được tài trợ bởi Trung tâm Kiểm soát và Phòng ngừa Dịch bệnh thông qua TEPHINET, một chương trình của Lực lượng đặc nhiệm về sức khỏe toàn cầu. Nội dung của sổ tay hoàn toàn do tác giả chịu trách nhiệm và đại diện cho quan điểm chính thức của Trung tâm Kiểm soát và Phòng ngừa Dịch bệnh, Bộ Y tế và Dịch vụ Nhân sinh, Lực lượng Đặc nhiệm về Sức khỏe Toàn cầu, hoặc TEPHINET*
 
-### Cảm hứng {.unnumbered}
+### Cảm hứng
 
 Rất nhiều các hướng dẫn và tóm tắt cung cấp kiến thức sử dụng để phát triển nội dung sổ tay này được tham khảo trong các trang nội dung tương ứng.
 
@@ -102,7 +102,7 @@ Một cách tổng quát hơn, các nguồn sau đây đã truyền nguồn cả
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" alt="Creative Commons License" style="border-width:0"/></a><br />Sổ tay này được cấp phép theo <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
 
-Chúng tôi khuyến khích các khóa học và các chương trình đào tạo dịch tễ sử dụng cuốn sổ tay này cho sinh viên của mình. Nếu bạn có thắc mắc về mục đích sử dụng của mình, hãy gửi email tới [**epiRhandbook\@gmail.com**](mailto:epiRhandbook@gmail.com){.email}.
+Chúng tôi khuyến khích các khóa học và các chương trình đào tạo dịch tễ sử dụng cuốn sổ tay này cho sinh viên của mình. Nếu bạn có thắc mắc về mục đích sử dụng của mình, hãy gửi email tới [**epiRhandbook\@gmail.com**](mailto:epiRhandbook@gmail.com).
 
 ### Trích dẫn
 
