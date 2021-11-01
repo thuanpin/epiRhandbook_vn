@@ -1,69 +1,63 @@
-# The Epidemiologist R Handbook 
+# Sổ tay dịch tễ học với R
 
-# About this handbook
-**The Epi R Handbook is a R reference manual for applied epidemiology and public health.**  
+# Về cuốn số tay này
+**Sổ tay dịch tễ học với R là một tài liệu hướng dẫn về dịch tễ học ứng dụng và y tế công cộng.**  
 
-***Go to www.epiRhandbook.com to see the latest version of the online handbook.***
+***Hãy ghé thăm website www.epiRhandbook.com/vn để xem phiên bản trực tuyến mới nhất.***
 
 ![Project logo](https://github.com/appliedepi/epiRhandbook_eng/blob/master/images/Epi%20R%20Handbook%20Banner%20Beige%201500x500.png)
 
-**This book strives to:**  
+**Sổ tay này hướng tới:**
 
-* Serve as a quick epi R code reference manual  
-* Provide task-centered examples addressing common epidemiological problems  
-* Assist epidemiologists transitioning to R  
-* Be accessible in settings with low internet-connectivity via an **offline version**
+-   Là một tài liệu tham khảo R một cách nhanh chóng\
+-   Cung cấp các ví dụ tập trung vào nhiệm vụ giải quyết các vấn đề dịch tễ học phổ biến\
+-   Hỗ trợ các nhà dịch tễ học chuyển sang sử dụng R\
+-   Có thể sử dụng trong các tình huống có kết nối internet thấp thông qua **[phiên bản ngoại tuyến](https://epirhandbook.com/vn/data-used.html#data-used)**
   
 
 <img src="https://github.com/appliedepi/epiRhandbook_eng/blob/master/images/epiRhandbook_HexSticker_500x500.png" width="200" height="200">
 
-<span style="color: black;">**Written by epis, for epis**</span>
-We are applied epis from around the world, writing in our spare time to offer this resource to the community. Your encouragement and feedback is most welcome:  
+<span style="color: black;">**Được viết bởi các nhà dịch tễ học, dành cho các nhà dịch tễ học**</span>
+Applied Epi là một tổ chức phi lợi nhuận và phong trào cơ sở của các nhà dịch tễ học từ khắp mọi nơi trên thế giới. Chúng tôi dành thời gian rảnh rỗi của mình để viết và cung cấp tài nguyên này cho cộng đồng. Mọi lời động viên khuyến khích và phản hồi của bạn đều được chúng tôi chào đón:  
 
-* Structured **[feedback form](https://forms.gle/A5SnRVws7tPD15Js9)**  
-* Email **epiRhandbook@gmail.com** or tweet **[\@epiRhandbook](https://twitter.com/epirhandbook)**  
-* Submit issues to our **[Github repository](https://github.com/epirhandbook/Epi_R_handbook)**  
-
-
-## How to use this handbook  
+* Gửi **[biểu mẫu phản hồi](https://forms.gle/A5SnRVws7tPD15Js9)**  
+* Email tới **epiRhandbook@gmail.com** hoặc tweet **[\@epiRhandbook](https://twitter.com/epirhandbook)**  
+* Gửi các vấn đề cho chúng tôi tại **[Github repository](https://github.com/epirhandbook/Epi_R_handbook)**  
 
 
-* Browse the pages in the Table of Contents, or use the search box
-* Click the "copy" icons to copy code  
-* You can follow-along with [the example data][Download handbook and data]  
-* See the "Resources" section of each page for further material  
+## Sổ tay này được sử dụng như thế nào  
 
-**Offline version**  
 
-See instructions in the [Download handbook and data] page.  
+-   Truy cập các trang trong phần Mục lục, hoặc sử dụng ô tìm kiếm
+-   Nhấn biểu tượng "copy" để sao chép code\
+-   Kết hợp theo dõi cùng với các bộ [dữ liệu minh họa](https://epirhandbook.com/vn/data-used.html#data-used)\
+-   Xem phần "Tài nguyên" trong từng chương để tìm thêm tài liệu
 
-**Languages**  
+**Phiên bản ngoại tuyến**
 
-We want to translate this into languages other than English. If you can help, please contact us.  
+Xem hướng dẫn tại trang [Tải sách và dữ liệu](https://epirhandbook.com/vn/data-used.html#data-used). 
 
 
 
 
 <!-- ======================================================= -->
-## Acknowledgements   
+## Lời cảm ơn
 
-This handbook is produced by a collaboration of epidemiologists from around the world drawing upon experience with organizations including local, state, provincial, and national health agencies, the World Health Organization (WHO), Médecins Sans Frontières / Doctors without Borders (MSF), hospital systems, and academic institutions.
+Sổ tay này được tạo ra bởi sự hợp tác của các nhà dịch tễ học từ khắp nơi trên thế giới, đúc kết kinh nghiệm cùng với các tổ chức khác bao gồm các cơ quan y tế địa phương, tiểu bang, tỉnh và quốc gia, Tổ chức Y tế Thế giới (WHO), Tổ chức Bác sỹ không biên giới (MSF), hệ thống các bệnh viện, và các đơn vị nghiên cứu.
 
-This handbook is **not** an approved product of any specific organization. Although we strive for accuracy, we provide no guarantee of the content in this book.  
+Sổ tay này **không phải** là sản phẩm đã được phê duyệt của bất kỳ tổ chức cụ thể nào. Mặc dù chúng tôi cố gắng đảm bảo tính chính xác, nhưng chúng tôi không chịu trách nhiệm về nội dung trong cuốn sách này.
 
+### Những người đóng góp
 
+**Chủ biên:** [Neale Batra](https://www.linkedin.com/in/neale-batra/)
 
-### Contributors  
+**Nhóm tác giả**: [Neale Batra](https://www.linkedin.com/in/neale-batra/), [Alex Spina](https://github.com/aspina7), [Paula Blomquist](https://www.linkedin.com/in/paula-bianca-blomquist-53188186/), [Finlay Campbell](https://github.com/finlaycampbell), [Henry Laurenson-Schafer](https://github.com/henryls1), [Isaac Florence](www.Twitter.com/isaacatflorence), [Natalie Fischer](https://www.linkedin.com/in/nataliefischer211/), [Aminata Ndiaye](https://twitter.com/aminata_fadl), [Liza Coyer]( https://www.linkedin.com/in/liza-coyer-86022040/), [Jonathan Polonsky](https://twitter.com/jonny_polonsky), [Yurie Izawa](https://ch.linkedin.com/in/yurie-izawa-a1590319), [Chris Bailey](https://twitter.com/cbailey_58?lang=en), [Daniel Molling](https://www.linkedin.com/in/daniel-molling-4005716a/), [Isha Berry](https://twitter.com/ishaberry2), [Emma Buajitti](https://twitter.com/buajitti), [Mathilde Mousset](https://mathildemousset.wordpress.com/research/), [Sara Hollis](https://www.linkedin.com/in/saramhollis/), Wen Lin  
 
-**Editor:** [Neale Batra](https://www.linkedin.com/in/neale-batra/) 
+**Nhóm dịch giả**: [Nguyễn Thanh Lương](https://www.linkedin.com/in/ntluong95/), [Nguyễn Thị Khánh Huyền](https://www.linkedin.com/in/huyen-nguyen-thi-khanh-3920b51a6/), Võ Hữu Thuận, Nguyễn Trung Thành, Vũ Thu Hà, [Hồ Hoàng Dung](https://www.linkedin.com/in/dzunggg/)
 
-**Project core team:** [Neale Batra](https://www.linkedin.com/in/neale-batra/), [Alex Spina](https://github.com/aspina7), [Amrish Baidjoe](https://twitter.com/Ammer_B), Pat Keating, [Henry Laurenson-Schafer](https://github.com/henryls1), [Finlay Campbell](https://github.com/finlaycampbell)  
+**Nhóm phản biện**: Pat Keating,  [Amrish Baidjoe](https://twitter.com/Ammer_B), Annick Lenglet, Margot Charette, Danielly Xavier, Marie-Amélie Degail Chabrat, Esther Kukielka, Michelle Sloan, Aybüke Koyuncu, Rachel Burke, Kate Kelsey, [Berhe Etsay](https://www.linkedin.com/in/berhe-etsay-5752b1154/), John Rossow, Mackenzie Zendt, James Wright, Laura Haskins, [Flavio Finger](ffinger.github.io), Tim Taylor, [Jae Hyoung Tim Lee](https://www.linkedin.com/in/jaehyoungtlee/), [Brianna Bradley](https://www.linkedin.com/in/brianna-bradley-bb8658155), [Wayne Enanoria](https://www.linkedin.com/in/wenanoria), Manual Albela Miranda, [Molly Mantus](https://www.linkedin.com/in/molly-mantus-174550150/), Pattama Ulrich, Joseph Timothy, Adam Vaughan, Olivia Varsaneux, Lionel Monteiro, Joao Muianga  
 
-**Authors**: [Neale Batra](https://www.linkedin.com/in/neale-batra/), [Alex Spina](https://github.com/aspina7), [Paula Blomquist](https://www.linkedin.com/in/paula-bianca-blomquist-53188186/), [Finlay Campbell](https://github.com/finlaycampbell), [Henry Laurenson-Schafer](https://github.com/henryls1), [Isaac Florence](www.Twitter.com/isaacatflorence), [Natalie Fischer](www.linkedin.com/in/nataliefischer211), [Aminata Ndiaye](https://twitter.com/aminata_fadl), [Liza Coyer]( https://www.linkedin.com/in/liza-coyer-86022040/), [Jonathan Polonsky](https://twitter.com/jonny_polonsky), [Yurie Izawa](https://ch.linkedin.com/in/yurie-izawa-a1590319), [Chris Bailey](https://twitter.com/cbailey_58?lang=en), [Daniel Molling](https://www.linkedin.com/in/daniel-molling-4005716a/), [Isha Berry](https://twitter.com/ishaberry2), [Emma Buajitti](https://twitter.com/buajitti), [Mathilde Mousset](https://mathildemousset.wordpress.com/research/), [Sara Hollis](https://www.linkedin.com/in/saramhollis/), Wen Lin  
-
-**Reviewers**: Pat Keating, Annick Lenglet, Margot Charette, Daniely Xavier, Esther Kukielka, Michelle Sloan, Aybüke Koyuncu, Rachel Burke, Kate Kelsey, [Berhe Etsay](https://www.linkedin.com/in/berhe-etsay-5752b1154/), John Rossow, Mackenzie Zendt, James Wright, Laura Haskins, [Flavio Finger](ffinger.github.io), Tim Taylor, [Jae Hyoung Tim Lee](https://www.linkedin.com/in/jaehyoungtlee/), [Brianna Bradley](https://www.linkedin.com/in/brianna-bradley-bb8658155), [Wayne Enanoria](https://www.linkedin.com/in/wenanoria), Manual Albela Miranda, [Molly Mantus](https://www.linkedin.com/in/molly-mantus-174550150/), Pattama Ulrich, Joseph Timothy, Adam Vaughan, Olivia Varsaneux, Lionel Monteiro, Joao Muianga  
-
-**Illustrations**: Calder Fong  
+**Hình minh họa**: Calder Fong 
 
 
 <!-- **Editor-in-Chief:** Neale Batra  -->
@@ -75,28 +69,26 @@ This handbook is **not** an approved product of any specific organization. Altho
 <!-- **Reviewers**: Pat Keating, Mathilde Mousset, Annick Lenglet, Margot Charette, Isha Berry, Paula Blomquist, Natalie Fischer, Daniely Xavier, Esther Kukielka, Michelle Sloan, Aybüke Koyuncu, Rachel Burke, Daniel Molling, Kate Kelsey, Berhe Etsay, John Rossow, Mackenzie Zendt, James Wright, Wayne Enanoria, Laura Haskins, Flavio Finger, Tim Taylor, Jae Hyoung Tim Lee, Brianna Bradley, Manual Albela Miranda, Molly Mantus, Priscilla Spencer, Pattama Ulrich, Joseph Timothy, Adam Vaughan, Olivia Varsaneux, Lionel Monteiro, Joao Muianga   -->
 
 
-### Funding and support   
+### Tài trợ và hỗ trợ
 
+Sổ tay này nhận được tài trợ thông qua kinh phí hỗ trợ trợ xây dựng năng lực khẩn cấp COVID-19 từ [TEPHINET](https://www.tephinet.org/), mạng lưới toàn cầu của các Chương trình Đào tạo Dịch tễ học Thực địa (FETPs).
 
-The handbook received supportive funding via a COVID-19 emergency capacity-building grant from [TEPHINET](https://www.tephinet.org/), the global network of Field Epidemiology Training Programs (FETPs).  
+Các hỗ trợ hành chính được cung cấp bởi mạng lưới cựu sinh EPIET ([EAN](https://epietalumni.net/)), với lời cảm ơn đặc biệt tới Annika Wendland. EPIET là Chương trình đào tạo Dịch tễ học can thiệp tại Châu Âu.
 
-Administrative support was provided by the EPIET Alumni Network ([EAN](https://epietalumni.net/)), with special thanks to Annika Wendland. EPIET is the European Programme for Intervention Epidemiology Training.  
+Đặc biệt gửi lời cảm ơn tới Trung tâm Điều hành Amsterdam (OCA) của Tổ chức Bác sỹ không biên giới (MSF) cho những sự hỗ trợ của họ trong quá trình phát triển cuốn sổ tay này.
 
-Special thanks to Médecins Sans Frontières (MSF) Operational Centre Amsterdam (OCA) for their support during the development of this handbook.  
+*Ấn phẩm này được hỗ trợ bởi Hợp đồng Hợp tác số NU2GGH001873, được tài trợ bởi Trung tâm Kiểm soát và Phòng ngừa Dịch bệnh thông qua TEPHINET, một chương trình của Lực lượng đặc nhiệm về sức khỏe toàn cầu. Nội dung của sổ tay hoàn toàn do tác giả chịu trách nhiệm và đại diện cho quan điểm chính thức của Trung tâm Kiểm soát và Phòng ngừa Dịch bệnh, Bộ Y tế và Dịch vụ Nhân sinh, Lực lượng Đặc nhiệm về Sức khỏe Toàn cầu, hoặc TEPHINET*
 
+### Cảm hứng {.unnumbered}
 
-*This publication was supported by Cooperative Agreement number NU2GGH001873, funded by the Centers for Disease Control and Prevention through TEPHINET, a program of The Task Force for Global Health. Its contents are solely the responsibility of the authors and do not necessarily represent the official views of the Centers for Disease Control and Prevention, the Department of Health and Human Services, The Task Force for Global Health, Inc. or TEPHINET.*
+Rất nhiều các hướng dẫn và tóm tắt cung cấp kiến thức sử dụng để phát triển nội dung sổ tay này được tham khảo trong các trang nội dung tương ứng.
 
-### Inspiration   
-
-The multitude of tutorials and vignettes that provided knowledge for development of handbook content are credited within their respective pages.  
-
-More generally, the following sources provided inspiration for this handbook:  
-[The "R4Epis" project](https://r4epis.netlify.app/) (a collaboration between MSF and RECON)  
-[R Epidemics Consortium (RECON)](https://www.repidemicsconsortium.org/)  
-[R for Data Science book (R4DS)](https://r4ds.had.co.nz/)  
-[bookdown: Authoring Books and Technical Documents with R Markdown](https://bookdown.org/yihui/bookdown/)  
-[Netlify](https://www.netlify.com) hosts this website  
+Một cách tổng quát hơn, các nguồn sau đây đã truyền nguồn cảm hứng cho cuốn sổ tay này:\
+[The "R4Epis" project](https://r4epis.netlify.app/) (một sự hợp tác giữa MSF và RECON)\
+[R Epidemics Consortium (RECON)](https://www.repidemicsconsortium.org/)\
+[R for Data Science book (R4DS)](https://r4ds.had.co.nz/)\
+[bookdown: Authoring Books and Technical Documents with R Markdown](https://bookdown.org/yihui/bookdown/)\
+[Netlify](https://www.netlify.com) để lưu trữ trang web này
 
 
 <!-- ### Image credits {-}   -->
@@ -104,25 +96,20 @@ More generally, the following sources provided inspiration for this handbook:
 <!-- Images in logo from US CDC Public Health Image Library) include [2013 Yemen looking for mosquito breeding sites](https://phil.cdc.gov/Details.aspx?pid=19623), [Ebola virus](https://phil.cdc.gov/Details.aspx?pid=23186), and [Survey in Rajasthan](https://phil.cdc.gov/Details.aspx?pid=19838).   -->
 
 
-## Terms of Use and License   
+## Điều khoản sử dụng và đóng góp
 
-<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+### Giấy phép
 
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" alt="Creative Commons License" style="border-width:0"/></a><br />Sổ tay này được cấp phép theo <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
 
-Academic courses and epidemiologist training programs are welcome to use this handbook with their students. If you have questions about your intended use, email **epirhandbook@gmail.com**.  
+Chúng tôi khuyến khích các khóa học và các chương trình đào tạo dịch tễ sử dụng cuốn sổ tay này cho sinh viên của mình. Nếu bạn có thắc mắc về mục đích sử dụng của mình, hãy gửi email tới [**epiRhandbook\@gmail.com**](mailto:epiRhandbook@gmail.com){.email}.
 
+### Trích dẫn
 
-## Citation  
+Neale Batra và cộng sự, Cẩm nang Dịch tễ học với R. <a rel="license" href="https://zenodo.org/badge/231610102.svg"><img src="https://zenodo.org/badge/231610102.svg" alt="DOI" style="border-width:0"/></a><br />
 
-Batra, Neale, et al. The Epidemiologist R Handbook. 2021. <a rel="license" href="https://zenodo.org/badge/231610102.svg"><img alt="DOI" style="border-width:0" src="https://zenodo.org/badge/231610102.svg" /></a><br />
+### Đóng góp
 
+Nếu bạn muốn đóng góp nội dung, vui lòng liên hệ với chúng tôi thông qua Github hoặc email. Chúng tôi đang triển khai lịch trình cập nhật cho cuốn sách cũng như xây dựng hướng dẫn dành cho cộng tác viên.
 
-
-## Contribution
-
-If you would like to make a content contribution, please contact with us first via Github issues or by email. We are implementing a schedule for updates and are creating a contributor guide.  
-
-Please note that the epiRhandbook project is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
-
-
-
+Xin lưu ý rằng dự án epiRhandbook được phát hành cùng với bộ [Quy tắc ứng xử của cộng tác viên](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html). Bằng cách đóng góp cho dự án này, bạn đồng ý tuân theo các điều khoản của nó.
