@@ -6,40 +6,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>3 R Cơ bản | Cẩm nang dịch tễ học với R</title>
 <meta name="author" content="the handbook team">
-<meta name="description" content="Chào mừng bạn! Chương này sẽ mô tả những kỹ thuật cơ bản của R. Đây không phải là hướng dẫn sử dụng toàn diện, nhưng sẽ cung cấp những kiến thức cơ bản và có thể hữu ích trong việc làm mới hiểu...">
-<meta name="generator" content="bookdown 0.24 with bs4_book()">
-<meta property="og:title" content="3 R Cơ bản | Cẩm nang dịch tễ học với R">
-<meta property="og:type" content="book">
-<meta property="og:description" content="Chào mừng bạn! Chương này sẽ mô tả những kỹ thuật cơ bản của R. Đây không phải là hướng dẫn sử dụng toàn diện, nhưng sẽ cung cấp những kiến thức cơ bản và có thể hữu ích trong việc làm mới hiểu...">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="3 R Cơ bản | Cẩm nang dịch tễ học với R">
-<meta name="twitter:description" content="Chào mừng bạn! Chương này sẽ mô tả những kỹ thuật cơ bản của R. Đây không phải là hướng dẫn sử dụng toàn diện, nhưng sẽ cung cấp những kiến thức cơ bản và có thể hữu ích trong việc làm mới hiểu...">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.0/transition.js"></script><script src="libs/bs3compat-0.3.0/tabs.js"></script><script src="libs/bs3compat-0.3.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
-<script src="libs/datatables-binding-0.19/datatables.js"></script><link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="libs/datatables-binding-0.16/datatables.js"></script><link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet">
 <script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script><link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet">
 <script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script><link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet">
 <script src="libs/selectize-0.12.0/selectize.min.js"></script><link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet">
 <script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet">
-<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<script src="libs/tabwid-1.0.0/tabwid.js"></script><link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
 <script src="libs/leaflet-1.3.1/leaflet.js"></script><link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
-<script src="libs/proj4-2.6.2/proj4.min.js"></script><script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
-<script src="libs/leaflet-binding-2.0.4.1/leaflet.js"></script><script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script><script src="libs/leaflet-providers-plugin-2.0.4.1/leaflet-providers-plugin.js"></script><script src="libs/viz-1.8.2/viz.js"></script><link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
-<script src="libs/grViz-binding-1.0.6.1/grViz.js"></script><script src="libs/d3-4.5.0/d3.min.js"></script><script src="libs/sankey-1/sankey.js"></script><script src="libs/sankeyNetwork-binding-0.4/sankeyNetwork.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
-<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script><link href="libs/vis-9.1.0/vis-network.min.css" rel="stylesheet">
-<script src="libs/vis-9.1.0/vis-network.min.js"></script><script src="libs/visNetwork-binding-2.1.0/visNetwork.js"></script><link href="libs/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<script src="libs/plotly-basic-2.5.1/plotly-basic-2.5.1.min.js"></script><script src="libs/plotly-cartesian-2.5.1/plotly-cartesian-2.5.1.min.js"></script><script src="libs/proj4js-2.3.15/proj4.js"></script><link href="libs/highcharts-8.1.2/css/motion.css" rel="stylesheet">
+<script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script><script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+<script src="libs/leaflet-binding-2.0.3/leaflet.js"></script><script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script><script src="libs/leaflet-providers-plugin-2.0.3/leaflet-providers-plugin.js"></script><script src="libs/viz-1.8.2/viz.js"></script><link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
+<script src="libs/grViz-binding-1.0.6.1/grViz.js"></script><script src="libs/d3-4.5.0/d3.min.js"></script><script src="libs/sankey-1/sankey.js"></script><script src="libs/sankeyNetwork-binding-0.4/sankeyNetwork.js"></script><script src="libs/plotly-binding-4.9.2.1/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script><link href="libs/vis-4.20.1/vis.css" rel="stylesheet">
+<script src="libs/vis-4.20.1/vis.min.js"></script><script src="libs/visNetwork-binding-2.0.9/visNetwork.js"></script><link href="libs/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="libs/plotly-basic-1.52.2/plotly-basic-1.52.2.min.js"></script><script src="libs/plotly-cartesian-1.52.2/plotly-cartesian-1.52.2.min.js"></script><script src="libs/proj4js-2.3.15/proj4.js"></script><link href="libs/highcharts-8.1.2/css/motion.css" rel="stylesheet">
 <script src="libs/highcharts-8.1.2/highcharts.js"></script><script src="libs/highcharts-8.1.2/highcharts-3d.js"></script><script src="libs/highcharts-8.1.2/highcharts-more.js"></script><script src="libs/highcharts-8.1.2/modules/stock.js"></script><script src="libs/highcharts-8.1.2/modules/map.js"></script><script src="libs/highcharts-8.1.2/modules/annotations.js"></script><script src="libs/highcharts-8.1.2/modules/data.js"></script><script src="libs/highcharts-8.1.2/modules/drilldown.js"></script><script src="libs/highcharts-8.1.2/modules/item-series.js"></script><script src="libs/highcharts-8.1.2/modules/offline-exporting.js"></script><script src="libs/highcharts-8.1.2/modules/overlapping-datalabels.js"></script><script src="libs/highcharts-8.1.2/modules/exporting.js"></script><script src="libs/highcharts-8.1.2/modules/export-data.js"></script><script src="libs/highcharts-8.1.2/modules/funnel.js"></script><script src="libs/highcharts-8.1.2/modules/heatmap.js"></script><script src="libs/highcharts-8.1.2/modules/treemap.js"></script><script src="libs/highcharts-8.1.2/modules/sankey.js"></script><script src="libs/highcharts-8.1.2/modules/dependency-wheel.js"></script><script src="libs/highcharts-8.1.2/modules/organization.js"></script><script src="libs/highcharts-8.1.2/modules/solid-gauge.js"></script><script src="libs/highcharts-8.1.2/modules/streamgraph.js"></script><script src="libs/highcharts-8.1.2/modules/sunburst.js"></script><script src="libs/highcharts-8.1.2/modules/vector.js"></script><script src="libs/highcharts-8.1.2/modules/wordcloud.js"></script><script src="libs/highcharts-8.1.2/modules/xrange.js"></script><script src="libs/highcharts-8.1.2/modules/tilemap.js"></script><script src="libs/highcharts-8.1.2/modules/venn.js"></script><script src="libs/highcharts-8.1.2/modules/gantt.js"></script><script src="libs/highcharts-8.1.2/modules/timeline.js"></script><script src="libs/highcharts-8.1.2/modules/parallel-coordinates.js"></script><script src="libs/highcharts-8.1.2/modules/bullet.js"></script><script src="libs/highcharts-8.1.2/modules/coloraxis.js"></script><script src="libs/highcharts-8.1.2/modules/dumbbell.js"></script><script src="libs/highcharts-8.1.2/modules/lollipop.js"></script><script src="libs/highcharts-8.1.2/modules/series-label.js"></script><script src="libs/highcharts-8.1.2/plugins/motion.js"></script><script src="libs/highcharts-8.1.2/custom/reset.js"></script><script src="libs/highcharts-8.1.2/modules/boost.js"></script><script src="libs/highchart-binding-0.8.2/highchart.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-QXDW878QLX"></script><script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
       gtag('config', 'G-QXDW878QLX');
-    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="style_bs4.css">
+    </script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS --><link rel="stylesheet" href="style_bs4.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -258,7 +250,7 @@
 Lưu ý rằng bạn nên cài đặt R và RStudio vào một ổ đĩa mà bạn có quyền đọc và ghi lại. Nếu không, khả năng cài đặt các package R (thường xuyên xảy ra) của bạn sẽ bị ảnh hưởng. Nếu bạn gặp sự cố, hãy thử mở RStudio bằng cách nhấp chuột phải vào biểu tượng và chọn “Run as administrator”. Các mẹo khác có thể được tìm thấy trong chương <a href="network-drives.html#network-drives">R trên ổ cứng mạng</a>.</p>
 <p><strong>Làm thế nào để cập nhật R và RStudio</strong></p>
 <p>Phiên bản R của bạn được in ra R Console khi khởi động. Bạn cũng có thể chạy lệnh <code><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo()</a></code>.</p>
-<p>Để cập nhật R, truy cập đến trang web được nhắc đến ở trên và cài đặt lại R. Ngoài ra, bạn có thể sử dụng package <strong>installr</strong> (trên Windows) bằng cách chạy câu lệnh <code>installr::updateR()</code>. Thao tác này sẽ mở ra các hộp thoại giúp bạn tải xuống phiên bản R mới nhất và cập nhật các package của bạn lên phiên bản R mới. Có thể tìm thấy thêm chi tiết trong <a href="https://www.r-project.org/nosvn/pandoc/installr.html">tài liệu</a> <strong>installr</strong> .</p>
+<p>Để cập nhật R, truy cập đến trang web được nhắc đến ở trên và cài đặt lại R. Ngoài ra, bạn có thể sử dụng package <strong>installr</strong> (trên Windows) bằng cách chạy câu lệnh <code><a href="http://talgalili.github.io/installr/reference/updateR.html">installr::updateR()</a></code>. Thao tác này sẽ mở ra các hộp thoại giúp bạn tải xuống phiên bản R mới nhất và cập nhật các package của bạn lên phiên bản R mới. Có thể tìm thấy thêm chi tiết trong <a href="https://www.r-project.org/nosvn/pandoc/installr.html">tài liệu</a> <strong>installr</strong> .</p>
 <p>Lưu ý rằng phiên bản R cũ sẽ vẫn tồn tại trong máy tính của bạn. Bạn có thể tạm thời chạy phiên bản cũ hơn (“installation” cũ hơn) của R bằng cách nhấp vào “Tools” -&gt; “Global Options” trong RStudio và chọn một phiên bản R. Điều này có thể hữu ích nếu bạn muốn sử dụng một package chưa được cập nhật để hoạt động trên phiên bản R mới nhất.</p>
 <p>Để cập nhật RStudio, truy cập đến trang web được nhắc đến ở trên và cài đặt lại RStudio. Một tùy chọn khác là nhấp vào “Help” -&gt; “Check for Updates” trong RStudio, nhưng điều này có thể dẫn đến việc không hiển thị các bản cập nhật mới nhất.</p>
 <p>Để xem phiên bản R, RStudio hoặc package nào đã được sử dụng khi viết Sổ tay này, hãy xem chương <a href="editorial-style.html#editorial-style">Biên tập và ghi chú kỹ thuật</a>.</p>
@@ -626,7 +618,7 @@ Cửa sổ phía dưới bên phải bao gồm một số tab quan trọng. Các
 <p>Hàm <strong>base</strong> R để <strong>gọi</strong> một package ra sử dụng (sau khi nó đã được cài đặt) là <code><a href="https://rdrr.io/r/base/library.html">library()</a></code>. Hàm này chỉ có thể gọi một package tại một thời điểm (cách khác của lệnh <code>p_load()</code>). Bạn có thể nhập tên package có hoặc không có dấu ngoặc kép.</p>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># load packages for use, with base R</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/leeper/rio">rio</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://here.r-lib.org/">here</a></span><span class="op">)</span></code></pre></div>
 <p>Để kiểm tra xem một package đã được cài đặt và/hoặc đã được gọi hay chưa, bạn có thể xem Cửa số Package trong RStudio. Nếu package được cài đặt, nó sẽ hiển thị ở đó với số phiên bản. Nếu checkbox của nó được đánh dấu nghĩa là nó đã được gọi cho phiên làm việc hiện tại.</p>
@@ -1063,7 +1055,7 @@ Bạn có thể nghĩ về toán tử gán <code><a href="https://rdrr.io/r/base
 </tr>
 <tr class="even">
 <td>Logic</td>
-<td>Giá trị của biến chỉ có thể là hai giá trị đặc biệt sau TRUE hoặc FALSE (lưu ý đây <strong>không phải</strong> là “TRUE” và“FALSE” trong dấu ngoặc kép)</td>
+<td>Giá trị của biến chỉ có thể là hai giá trị đặc biệt sau TRUE hoặc FALSE (lưu ý đây <strong>không phải</strong> là “TRUE” và”FALSE” trong dấu ngoặc kép)</td>
 <td>TRUE hoặc FALSE</td>
 </tr>
 <tr class="odd">
@@ -2041,7 +2033,7 @@ Bạn nên sử dụng dấu cách trong khi viết code với toán tử gán �
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Cẩm nang dịch tễ học với R</strong>" was written by the handbook team. It was last built on 2021-10-14.</p>
+    <p>"<strong>Cẩm nang dịch tễ học với R</strong>" was written by the handbook team. It was last built on 2021-11-01.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -2061,22 +2053,6 @@ Bạn nên sử dụng dấu cách trong khi viết code với toán tử gán �
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
-</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
-for (let popover of popovers) {
-  const div = document.createElement('div');
-  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
-  div.innerHTML = popover.getAttribute('data-content');
-
-  var has_math = div.querySelector("span.math");
-  if (has_math) {
-    document.body.appendChild(div);
-    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
-    MathJax.Hub.Queue(function() {
-      popover.setAttribute('data-content', div.innerHTML);
-      document.body.removeChild(div);
-    })
-  }
-}
 </script>
 </body>
 </html>

@@ -6,40 +6,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>40 Báo cáo với R Markdown | Cẩm nang dịch tễ học với R</title>
 <meta name="author" content="the handbook team">
-<meta name="description" content="R Markdown là một công cụ được sử dụng rộng rãi nhằm tạo ra tài liệu tự động, tái lập và chia sẻ được, như các báo cáo. Nó có thể tạo ra kết quả thống kê hoặc tương tác, ở định dạng Word, pdf,...">
-<meta name="generator" content="bookdown 0.24 with bs4_book()">
-<meta property="og:title" content="40 Báo cáo với R Markdown | Cẩm nang dịch tễ học với R">
-<meta property="og:type" content="book">
-<meta property="og:description" content="R Markdown là một công cụ được sử dụng rộng rãi nhằm tạo ra tài liệu tự động, tái lập và chia sẻ được, như các báo cáo. Nó có thể tạo ra kết quả thống kê hoặc tương tác, ở định dạng Word, pdf,...">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="40 Báo cáo với R Markdown | Cẩm nang dịch tễ học với R">
-<meta name="twitter:description" content="R Markdown là một công cụ được sử dụng rộng rãi nhằm tạo ra tài liệu tự động, tái lập và chia sẻ được, như các báo cáo. Nó có thể tạo ra kết quả thống kê hoặc tương tác, ở định dạng Word, pdf,...">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.0/transition.js"></script><script src="libs/bs3compat-0.3.0/tabs.js"></script><script src="libs/bs3compat-0.3.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
-<script src="libs/datatables-binding-0.19/datatables.js"></script><link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="libs/datatables-binding-0.16/datatables.js"></script><link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet">
 <script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script><link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet">
 <script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script><link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet">
 <script src="libs/selectize-0.12.0/selectize.min.js"></script><link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet">
 <script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet">
-<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<script src="libs/tabwid-1.0.0/tabwid.js"></script><link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
 <script src="libs/leaflet-1.3.1/leaflet.js"></script><link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
-<script src="libs/proj4-2.6.2/proj4.min.js"></script><script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
-<script src="libs/leaflet-binding-2.0.4.1/leaflet.js"></script><script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script><script src="libs/leaflet-providers-plugin-2.0.4.1/leaflet-providers-plugin.js"></script><script src="libs/viz-1.8.2/viz.js"></script><link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
-<script src="libs/grViz-binding-1.0.6.1/grViz.js"></script><script src="libs/d3-4.5.0/d3.min.js"></script><script src="libs/sankey-1/sankey.js"></script><script src="libs/sankeyNetwork-binding-0.4/sankeyNetwork.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
-<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script><link href="libs/vis-9.1.0/vis-network.min.css" rel="stylesheet">
-<script src="libs/vis-9.1.0/vis-network.min.js"></script><script src="libs/visNetwork-binding-2.1.0/visNetwork.js"></script><link href="libs/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<script src="libs/plotly-basic-2.5.1/plotly-basic-2.5.1.min.js"></script><script src="libs/plotly-cartesian-2.5.1/plotly-cartesian-2.5.1.min.js"></script><script src="libs/proj4js-2.3.15/proj4.js"></script><link href="libs/highcharts-8.1.2/css/motion.css" rel="stylesheet">
+<script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script><script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+<script src="libs/leaflet-binding-2.0.3/leaflet.js"></script><script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script><script src="libs/leaflet-providers-plugin-2.0.3/leaflet-providers-plugin.js"></script><script src="libs/viz-1.8.2/viz.js"></script><link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
+<script src="libs/grViz-binding-1.0.6.1/grViz.js"></script><script src="libs/d3-4.5.0/d3.min.js"></script><script src="libs/sankey-1/sankey.js"></script><script src="libs/sankeyNetwork-binding-0.4/sankeyNetwork.js"></script><script src="libs/plotly-binding-4.9.2.1/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script><link href="libs/vis-4.20.1/vis.css" rel="stylesheet">
+<script src="libs/vis-4.20.1/vis.min.js"></script><script src="libs/visNetwork-binding-2.0.9/visNetwork.js"></script><link href="libs/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="libs/plotly-basic-1.52.2/plotly-basic-1.52.2.min.js"></script><script src="libs/plotly-cartesian-1.52.2/plotly-cartesian-1.52.2.min.js"></script><script src="libs/proj4js-2.3.15/proj4.js"></script><link href="libs/highcharts-8.1.2/css/motion.css" rel="stylesheet">
 <script src="libs/highcharts-8.1.2/highcharts.js"></script><script src="libs/highcharts-8.1.2/highcharts-3d.js"></script><script src="libs/highcharts-8.1.2/highcharts-more.js"></script><script src="libs/highcharts-8.1.2/modules/stock.js"></script><script src="libs/highcharts-8.1.2/modules/map.js"></script><script src="libs/highcharts-8.1.2/modules/annotations.js"></script><script src="libs/highcharts-8.1.2/modules/data.js"></script><script src="libs/highcharts-8.1.2/modules/drilldown.js"></script><script src="libs/highcharts-8.1.2/modules/item-series.js"></script><script src="libs/highcharts-8.1.2/modules/offline-exporting.js"></script><script src="libs/highcharts-8.1.2/modules/overlapping-datalabels.js"></script><script src="libs/highcharts-8.1.2/modules/exporting.js"></script><script src="libs/highcharts-8.1.2/modules/export-data.js"></script><script src="libs/highcharts-8.1.2/modules/funnel.js"></script><script src="libs/highcharts-8.1.2/modules/heatmap.js"></script><script src="libs/highcharts-8.1.2/modules/treemap.js"></script><script src="libs/highcharts-8.1.2/modules/sankey.js"></script><script src="libs/highcharts-8.1.2/modules/dependency-wheel.js"></script><script src="libs/highcharts-8.1.2/modules/organization.js"></script><script src="libs/highcharts-8.1.2/modules/solid-gauge.js"></script><script src="libs/highcharts-8.1.2/modules/streamgraph.js"></script><script src="libs/highcharts-8.1.2/modules/sunburst.js"></script><script src="libs/highcharts-8.1.2/modules/vector.js"></script><script src="libs/highcharts-8.1.2/modules/wordcloud.js"></script><script src="libs/highcharts-8.1.2/modules/xrange.js"></script><script src="libs/highcharts-8.1.2/modules/tilemap.js"></script><script src="libs/highcharts-8.1.2/modules/venn.js"></script><script src="libs/highcharts-8.1.2/modules/gantt.js"></script><script src="libs/highcharts-8.1.2/modules/timeline.js"></script><script src="libs/highcharts-8.1.2/modules/parallel-coordinates.js"></script><script src="libs/highcharts-8.1.2/modules/bullet.js"></script><script src="libs/highcharts-8.1.2/modules/coloraxis.js"></script><script src="libs/highcharts-8.1.2/modules/dumbbell.js"></script><script src="libs/highcharts-8.1.2/modules/lollipop.js"></script><script src="libs/highcharts-8.1.2/modules/series-label.js"></script><script src="libs/highcharts-8.1.2/plugins/motion.js"></script><script src="libs/highcharts-8.1.2/custom/reset.js"></script><script src="libs/highcharts-8.1.2/modules/boost.js"></script><script src="libs/highchart-binding-0.8.2/highchart.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-QXDW878QLX"></script><script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
       gtag('config', 'G-QXDW878QLX');
-    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="style_bs4.css">
+    </script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS --><link rel="stylesheet" href="style_bs4.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -175,7 +167,7 @@
 </li>
 <li>Nếu bạn muốn tạo đầu ra là tệp PDF (phức tạp hơn một chút), bạn sẽ cần cài đặt LaTex. Với những người dùng R Markdown chưa cài đặt LaTex trước đó, các bạn có thể cài đặt TinyTeX (<a href="https://yihui.name/tinytex/" class="uri">https://yihui.name/tinytex/</a>). Bạn có thể sử dụng lệnh sau để cài đặt:</li>
 </ul>
-<div class="sourceCode" id="cb1803"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1797"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">pacman</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pacman/man/p_load.html">p_load</a></span><span class="op">(</span><span class="va">tinytex</span><span class="op">)</span>     <span class="co"># install tinytex package</span>
 <span class="fu">tinytex</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tinytex/man/install_tinytex.html">install_tinytex</a></span><span class="op">(</span><span class="op">)</span>  <span class="co"># R command to install TinyTeX software </span></code></pre></div>
 <!-- ======================================================= -->
@@ -188,7 +180,7 @@
 <h3>Cài đặt package rmarkdown<a class="anchor" aria-label="anchor" href="#c%C3%A0i-%C4%91%E1%BA%B7t-package-rmarkdown"><i class="fas fa-link"></i></a>
 </h3>
 <p>Cài đặt R package <strong>rmarkdown</strong>. Trong quyển sổ tay này chúng tôi nhấn mạnh việc sử dụng hàm <code><a href="https://rdrr.io/pkg/pacman/man/p_load.html">p_load()</a></code> từ package <strong>pacman</strong>, giúp cài đặt package nếu cần <em>và</em> gọi ra để sử dụng. Bạn cũng có thể cài đặt package với <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> từ <strong>base</strong> R. Xem thêm ở chương <a href="basics.html#basics">R cơ bản</a> để biết thêm thông tin về R packages.</p>
-<div class="sourceCode" id="cb1804"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1798"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">pacman</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pacman/man/p_load.html">p_load</a></span><span class="op">(</span><span class="va">rmarkdown</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="bắt-đầu-một-tệp-rmd-mới" class="section level3 unnumbered">
@@ -228,9 +220,9 @@
 <p>‘YAML metadata’ hoặc chỉ ‘YAML’ nằm ở trên cùng trong tài liệu R Markdown. Phần này của script sẽ cho tệp Rmd của bạn biết cần tạo loại kết quả đầu ra nào, định dạng mong muốn, và metadata khác như tiêu đề tài liệu, tác giả, và ngày. Có những công dụng khác không được nhắc ở đây (nhưng được nhắc tới trong ‘Tạo kết quả đầu ra’). Lưu ý rằng có sự thụt đầu dòng, nhưng chỉ chấp nhận spaces chứ không nhận tabs.</p>
 <p>Phần này phải được bắt đầu với với một dòng gồm có 3 dấu gạch ngang <code>---</code> và phải kết thúc với một dòng chỉ có 3 dấu gạch ngang <code>---</code>. Tham số của YAML ở dạng cặp <code>key:value</code>. Dấu hai chấm trong YAML có vị trí quan trọng - cặp <code>key:value</code> được tách ra bởi dấu hai chấm (không phải dấu bằng!)</p>
 <p>YAML nên bắt đầu với metadata cho tài liệu. Thứ tự của những tham số YAML chính (không thụt lề) không quan trọng. Ví dụ:</p>
-<div class="sourceCode" id="cb1805"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1805-1"><a href="rmarkdown.html#cb1805-1" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"My document"</span></span>
-<span id="cb1805-2"><a href="rmarkdown.html#cb1805-2" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"Me"</span></span>
-<span id="cb1805-3"><a href="rmarkdown.html#cb1805-3" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">"2021-10-14"</span></span></code></pre></div>
+<div class="sourceCode" id="cb1799"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1799-1"><a href="rmarkdown.html#cb1799-1" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"My document"</span></span>
+<span id="cb1799-2"><a href="rmarkdown.html#cb1799-2" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"Me"</span></span>
+<span id="cb1799-3"><a href="rmarkdown.html#cb1799-3" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">"2021-11-01"</span></span></code></pre></div>
 <p>Bạn có thể sử dụng code R trong giá trị YAML bằng cách viết nó như code tại dòng (mở đầu bằng <code>r</code> trong dấu back-ticks/nháy đơn ngược) nhưng nằm trong trích dẫn (xem tại ví dụ phía trên với <code>date:</code>).</p>
 <p>Trong hình ảnh phía trên, vì chúng ta ấn vào kết quả đầu ra mặc định là tệp html, chúng ta có thể thấy rằng YAML hiện <code>output: html_document</code>. Tuy nhiên, chúng ta cũng có thể thay đổi thành <code>powerpoint_presentation</code> hoặc <code>word_document</code> hoặc cả <code>pdf_document</code>.</p>
 </div>
@@ -261,7 +253,7 @@
 <h4>Màu sắc<a class="anchor" aria-label="anchor" href="#m%C3%A0u-s%E1%BA%AFc-1"><i class="fas fa-link"></i></a>
 </h4>
 <p>Không có cơ chế đơn giản nào để thay đổi màu chữ trong R Markdown. Một giải pháp khác, <em>NẾU đầu ra của bạn là tệp HTML</em>, là thêm một dòng HTML vào văn bản markdown. Đoạn mã HTML dưới đây sẽ in ra một dòng văn bản có màu đỏ đậm.</p>
-<div class="sourceCode" id="cb1806"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb1806-1"><a href="rmarkdown.html#cb1806-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;span</span><span class="ot"> style=</span><span class="st">"color: red;"</span><span class="kw">&gt;</span>**_DANGER:_** This is a warning.<span class="kw">&lt;/span&gt;</span>  </span></code></pre></div>
+<div class="sourceCode" id="cb1800"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb1800-1"><a href="rmarkdown.html#cb1800-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;span</span> <span class="er">style</span><span class="ot">=</span><span class="st">"color: red;"</span><span class="kw">&gt;</span>**_DANGER:_** This is a warning.<span class="kw">&lt;/span&gt;</span>  </span></code></pre></div>
 <p><span style="color: red;"><strong><em>DANGER:</em></strong> This is a warning.</span></p>
 </div>
 <div id="tiêu-đề-và-đầu-mục" class="section level4 unnumbered">
@@ -269,23 +261,23 @@
 </h4>
 <p>Dấu thăng trong phần văn bản của một script R Markdown tạo ra đầu mục. Điều này khác với một đoạn code R trong script, trong đó ký hiệu thăng là cơ chế nhận xét/chú thích/hủy kích hoạt, như trong R script bình thường.</p>
 <p>Các mức tiêu đề khác nhau được thiết lập với số lượng ký hiệu thăng khác nhau khi bắt đầu một dòng mới. Một ký hiệu thăng là tiêu đề hoặc đầu mục chính. Hai ký hiệu thăng là một đầu mục cấp hai. Các đầu mục cấp ba và cấp bốn có thể được tạo bằng các ký hiệu thăng liên tiếp.</p>
-<div class="sourceCode" id="cb1807"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb1807-1"><a href="rmarkdown.html#cb1807-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Đầu mục cấp một / Tiêu đề</span></span>
-<span id="cb1807-2"><a href="rmarkdown.html#cb1807-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1807-3"><a href="rmarkdown.html#cb1807-3" aria-hidden="true" tabindex="-1"></a><span class="fu">## Đầu mục cấp hai</span></span>
-<span id="cb1807-4"><a href="rmarkdown.html#cb1807-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1807-5"><a href="rmarkdown.html#cb1807-5" aria-hidden="true" tabindex="-1"></a><span class="fu">### Đầu mục cấp ba</span></span></code></pre></div>
+<div class="sourceCode" id="cb1801"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb1801-1"><a href="rmarkdown.html#cb1801-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Đầu mục cấp một / Tiêu đề</span></span>
+<span id="cb1801-2"><a href="rmarkdown.html#cb1801-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1801-3"><a href="rmarkdown.html#cb1801-3" aria-hidden="true" tabindex="-1"></a><span class="fu">## Đầu mục cấp hai</span></span>
+<span id="cb1801-4"><a href="rmarkdown.html#cb1801-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1801-5"><a href="rmarkdown.html#cb1801-5" aria-hidden="true" tabindex="-1"></a><span class="fu">### Đầu mục cấp ba</span></span></code></pre></div>
 </div>
 <div id="dấu-đầu-dòng-và-đánh-số" class="section level4 unnumbered">
 <h4>Dấu đầu dòng và đánh số<a class="anchor" aria-label="anchor" href="#d%E1%BA%A5u-%C4%91%E1%BA%A7u-d%C3%B2ng-v%C3%A0-%C4%91%C3%A1nh-s%E1%BB%91"><i class="fas fa-link"></i></a>
 </h4>
 <p>Sử dụng dấu hoa thị (<code><a href="https://rdrr.io/r/base/Arithmetic.html">*</a></code>) để tạo danh sách gạch đầu dòng. Kết thúc câu trước, nhập hai dấu cách, Enter/Return <em>hai lần</em>, và bắt đầu tạo gạch đầu dòng. Thêm một dấu cách vào giữa dấu hoa thị và chữ đầu dòng. Sau mỗi đầu dòng nhập hai dấu cách và Enter/Return. Gạch đầu dòng phụ được tạo tương tự nhưng được thụt vào. Các số cũng hoạt động tương tự nhưng thay vì dấu hoa thị, viết 1), 2), v.v. Dưới đây là cách văn bản R Markdown script của bạn trông như thế nào.</p>
-<div class="sourceCode" id="cb1808"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb1808-1"><a href="rmarkdown.html#cb1808-1" aria-hidden="true" tabindex="-1"></a>Đây là gạch đầu dòng của tôi (có hai dấu cách sau dấu hai chấm này):  </span>
-<span id="cb1808-2"><a href="rmarkdown.html#cb1808-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1808-3"><a href="rmarkdown.html#cb1808-3" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Gạch đầu dòng 1 (theo sau là 2 dấu cách và Enter/Return)  </span>
-<span id="cb1808-4"><a href="rmarkdown.html#cb1808-4" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Gạch đầu dòng 2 (theo sau là 2 dấu cách và Enter/Return)  </span>
-<span id="cb1808-5"><a href="rmarkdown.html#cb1808-5" aria-hidden="true" tabindex="-1"></a><span class="ss">  * </span>Gạch đầu dòng phụ 1 (theo sau là 2 dấu cách và Enter/Return)  </span>
-<span id="cb1808-6"><a href="rmarkdown.html#cb1808-6" aria-hidden="true" tabindex="-1"></a><span class="ss">  * </span>Gạch đầu dòng phụ 2 (theo sau là 2 dấu cách và Enter/Return)  </span>
-<span id="cb1808-7"><a href="rmarkdown.html#cb1808-7" aria-hidden="true" tabindex="-1"></a>  </span></code></pre></div>
+<div class="sourceCode" id="cb1802"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb1802-1"><a href="rmarkdown.html#cb1802-1" aria-hidden="true" tabindex="-1"></a>Đây là gạch đầu dòng của tôi (có hai dấu cách sau dấu hai chấm này):  </span>
+<span id="cb1802-2"><a href="rmarkdown.html#cb1802-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1802-3"><a href="rmarkdown.html#cb1802-3" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Gạch đầu dòng 1 (theo sau là 2 dấu cách và Enter/Return)  </span>
+<span id="cb1802-4"><a href="rmarkdown.html#cb1802-4" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Gạch đầu dòng 2 (theo sau là 2 dấu cách và Enter/Return)  </span>
+<span id="cb1802-5"><a href="rmarkdown.html#cb1802-5" aria-hidden="true" tabindex="-1"></a><span class="ss">  * </span>Gạch đầu dòng phụ 1 (theo sau là 2 dấu cách và Enter/Return)  </span>
+<span id="cb1802-6"><a href="rmarkdown.html#cb1802-6" aria-hidden="true" tabindex="-1"></a><span class="ss">  * </span>Gạch đầu dòng phụ 2 (theo sau là 2 dấu cách và Enter/Return)  </span>
+<span id="cb1802-7"><a href="rmarkdown.html#cb1802-7" aria-hidden="true" tabindex="-1"></a>  </span></code></pre></div>
 </div>
 <div id="chữ-chú-giải" class="section level4 unnumbered">
 <h4>Chữ chú giải<a class="anchor" aria-label="anchor" href="#ch%E1%BB%AF-ch%C3%BA-gi%E1%BA%A3i"><i class="fas fa-link"></i></a>
@@ -341,7 +333,7 @@ Những ‘đoạn’ này sẽ có màu nền hơi khác so với phần diễn
 <div class="inline-figure"><img src="images/markdown/3_chunk.png" width="80%" style="display: block; margin: auto;"></div>
 <p>Ngoài ra còn có hai mũi tên ở trên cùng bên phải của mỗi đoạn code. Chúng rất hữu ích để chạy code trong một đoạn hoặc tất cả code trong các đoạn trước. Di chuột lên chúng để xem chúng làm gì.</p>
 <p>Để các tùy chọn toàn cục được áp dụng cho tất cả các đoạn trong tập lệnh, bạn có thể thiết lập điều này trong đoạn code R đầu tiên của mình trong tập lệnh. Ví dụ, để chỉ các kết quả đầu ra được hiển thị cho mỗi đoạn code chứ không phải bản thân code, bạn có thể đưa lệnh này vào đoạn code R:</p>
-<div class="sourceCode" id="cb1809"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1803"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">knitr</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/knitr/man/opts_chunk.html">opts_chunk</a></span><span class="op">$</span><span class="fu">set</span><span class="op">(</span>echo <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> </code></pre></div>
 <div id="code-r-trong-văn-bản" class="section level4 unnumbered">
 <h4>Code R trong văn bản<a class="anchor" aria-label="anchor" href="#code-r-trong-v%C4%83n-b%E1%BA%A3n"><i class="fas fa-link"></i></a>
@@ -358,22 +350,22 @@ Những ‘đoạn’ này sẽ có màu nền hơi khác so với phần diễn
 <h3>Ảnh<a class="anchor" aria-label="anchor" href="#%E1%BA%A3nh"><i class="fas fa-link"></i></a>
 </h3>
 <p>Bạn có thể đưa hình ảnh vào R Markdown của mình theo một trong hai cách:</p>
-<div class="sourceCode" id="cb1810"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1810-1"><a href="rmarkdown.html#cb1810-1" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>[](<span class="st">"path/to/image.png"</span>)  </span></code></pre></div>
+<div class="sourceCode" id="cb1804"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1804-1"><a href="rmarkdown.html#cb1804-1" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>[](<span class="st">"path/to/image.png"</span>)  </span></code></pre></div>
 <p>Nếu cách trên không được, thử dùng <code><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">knitr::include_graphics()</a></code></p>
-<div class="sourceCode" id="cb1811"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1805"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="st">"path/to/image.png"</span><span class="op">)</span></code></pre></div>
 <p>(hãy nhớ rằng, đường dẫn tệp của bạn có thể được viết bằng cách sử dụng package <strong>here</strong>)</p>
-<div class="sourceCode" id="cb1812"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1806"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"path"</span>, <span class="st">"to"</span>, <span class="st">"image.png"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="bảng" class="section level3 unnumbered">
 <h3>Bảng<a class="anchor" aria-label="anchor" href="#b%E1%BA%A3ng"><i class="fas fa-link"></i></a>
 </h3>
 <p>Tạo bảng bằng dấu gạch ngang ( - ) và dấu thanh ( | ). Số lượng dấu gạch nối trước/giữa các thanh cho phép số lượng khoảng trắng trong ô trước khi văn bản bắt đầu được bao lại.</p>
-<div class="sourceCode" id="cb1813"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb1813-1"><a href="rmarkdown.html#cb1813-1" aria-hidden="true" tabindex="-1"></a>Cột 1    |Cột  2    |Cột 3</span>
-<span id="cb1813-2"><a href="rmarkdown.html#cb1813-2" aria-hidden="true" tabindex="-1"></a>---------|----------|--------</span>
-<span id="cb1813-3"><a href="rmarkdown.html#cb1813-3" aria-hidden="true" tabindex="-1"></a>Ô A      |Ô B       |Ô C</span>
-<span id="cb1813-4"><a href="rmarkdown.html#cb1813-4" aria-hidden="true" tabindex="-1"></a>Ô D      |Ô E       |Ô F</span></code></pre></div>
+<div class="sourceCode" id="cb1807"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb1807-1"><a href="rmarkdown.html#cb1807-1" aria-hidden="true" tabindex="-1"></a>Cột 1    |Cột  2    |Cột 3</span>
+<span id="cb1807-2"><a href="rmarkdown.html#cb1807-2" aria-hidden="true" tabindex="-1"></a>---------|----------|--------</span>
+<span id="cb1807-3"><a href="rmarkdown.html#cb1807-3" aria-hidden="true" tabindex="-1"></a>Ô A      |Ô B       |Ô C</span>
+<span id="cb1807-4"><a href="rmarkdown.html#cb1807-4" aria-hidden="true" tabindex="-1"></a>Ô D      |Ô E       |Ô F</span></code></pre></div>
 <p>Code trên tạo ra bảng ở dưới:</p>
 <div class="inline-table"><table class="table table-sm">
 <thead><tr class="header">
@@ -444,7 +436,7 @@ Những ‘đoạn’ này sẽ có màu nền hơi khác so với phần diễn
 </h4>
 <p>Một biến thể của cách tiếp cận “khép kín” là có các đoạn code R Markdown “nguồn” (chạy) chạy các script R khác. Điều này có thể làm cho tập lệnh R Markdown của bạn ít lộn xộn hơn, đơn giản hơn và dễ tổ chức hơn. Nó cũng có thể hữu ích nếu bạn muốn hiển thị số liệu cuối cùng ở đầu báo cáo. Theo cách tiếp cận này, script R Markdown cuối cùng chỉ đơn giản là kết hợp các đầu ra được xử lý trước thành một tài liệu.</p>
 <p>Một cách để làm điều này là cung cấp script R (đường dẫn tệp và tên có phần mở rộng) cho lệnh R <strong>base</strong> <code><a href="https://rdrr.io/r/base/source.html">source()</a></code>.</p>
-<div class="sourceCode" id="cb1814"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1808"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="st">"your-script.R"</span>, local <span class="op">=</span> <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/knit_global.html">knit_global</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 <span class="co"># or sys.source("your-script.R", envir = knitr::knit_global())</span></code></pre></div>
 <p>Lưu ý rằng khi sử dụng <code><a href="https://rdrr.io/r/base/source.html">source ()</a></code> <em>trong</em> R Markdown, các tệp bên ngoài sẽ vẫn được chạy <em>trong quá trình kết xuất tệp Rmd</em> của bạn. Do đó, mỗi tập lệnh được chạy mỗi lần bạn kết xuất báo cáo. Do đó, việc có các lệnh <code><a href="https://rdrr.io/r/base/source.html">source ()</a></code> này <em>trong</em> R Markdown không tăng tốc thời gian chạy của bạn, cũng như không hỗ trợ nhiều cho việc gỡ lỗi, vì lỗi vẫn được hiển thị khi tạo R Markdown.</p>
@@ -463,7 +455,7 @@ Những ‘đoạn’ này sẽ có màu nền hơi khác so với phần diễn
 <li><p>Nếu có thể, bạn có thể chạy các bước xử lý dài trước lệnh <code>render ()</code> - chúng sẽ chỉ chạy một lần.</p></li>
 </ul>
 <p>Trong ví dụ bên dưới, chúng ta có một R script riêng biệt, trong đó chúng tôi xử lý trước một đối tượng <code>data</code> vào Môi trường R và sau đó kết xuất “create_output.Rmd” bằng cách sử dụng <code>render()</code>.</p>
-<div class="sourceCode" id="cb1815"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1809"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rio/man/import.html">import</a></span><span class="op">(</span><span class="st">"datafile.csv"</span><span class="op">)</span> <span class="op">%&gt;%</span>       <span class="co"># Load data and save to environment</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">age</span>, <span class="va">hospital</span>, <span class="va">weight</span><span class="op">)</span>          <span class="co"># Select limited columns</span>
 
@@ -498,7 +490,7 @@ Những ‘đoạn’ này sẽ có màu nền hơi khác so với phần diễn
 <h3>Cách 2: Lệnh <code>render()</code><a class="anchor" aria-label="anchor" href="#c%C3%A1ch-2-l%E1%BB%87nh-render"><i class="fas fa-link"></i></a>
 </h3>
 <p>Một cách khác để tạo đầu ra R Markdown của bạn là chạy hàm <code>render ()</code> (từ package <strong>rmarkdown</strong>). Bạn phải thực hiện lệnh này <em>bên ngoài</em> R Markdown script - vì vậy hoặc trong một tập lệnh R riêng biệt (thường được gọi là “run file”) hoặc dưới dạng lệnh độc lập trong R Console.</p>
-<div class="sourceCode" id="cb1816"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1810"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/render.html">render</a></span><span class="op">(</span>input <span class="op">=</span> <span class="st">"my_report.Rmd"</span><span class="op">)</span></code></pre></div>
 <p>Như với “knit”, cài đặt mặc định sẽ lưu đầu ra Rmd vào cùng thư mục với Rmd script, với cùng tên tệp (ngoài phần mở rộng tệp). Ví dụ: “my_report.Rmd” khi được knit sẽ tạo ra “my_report.docx” nếu bạn đang knit vào một tài liệu word. Tuy nhiên, bằng cách sử dụng <code>render ()</code>, bạn có tùy chọn sử dụng các cài đặt khác nhau. <code>render ()</code> có thể chấp nhận các đối số bao gồm:</p>
 <ul>
@@ -523,7 +515,7 @@ Những ‘đoạn’ này sẽ có màu nền hơi khác so với phần diễn
 </li>
 </ul>
 <p>Ví dụ, để cải thiện kiểm soát phiên bản, lệnh sau sẽ lưu tệp đầu ra trong thư mục con ‘đầu ra’, với ngày hiện tại trong tên tệp. Để tạo tên tệp, hàm <code>str_glue ()</code> từ package <strong>stringr</strong> được sử dụng để ‘dán’ các chuỗi tĩnh lại với nhau (được viết đơn giản) với code R động (được viết trong dấu ngoặc nhọn). Ví dụ: nếu đó là ngày 10 tháng 4 năm 2021, tên tệp từ bên dưới sẽ là “Report_2021-04-10.docx”. Xem chương <a href="characters-strings.html#characters-strings">Ký tự và chuỗi</a> để biết thêm chi tiết về <code>str_glue ()</code>.</p>
-<div class="sourceCode" id="cb1817"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1811"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/render.html">render</a></span><span class="op">(</span>
   input <span class="op">=</span> <span class="st">"create_output.Rmd"</span>,
   output_file <span class="op">=</span> <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue</a></span><span class="op">(</span><span class="st">"outputs/Report_{Sys.Date()}.docx"</span><span class="op">)</span><span class="op">)</span> </code></pre></div>
@@ -552,13 +544,13 @@ Những ‘đoạn’ này sẽ có màu nền hơi khác so với phần diễn
 <h4>Cách 1: Đặt tham số trong YAML<a class="anchor" aria-label="anchor" href="#c%C3%A1ch-1-%C4%91%E1%BA%B7t-tham-s%E1%BB%91-trong-yaml"><i class="fas fa-link"></i></a>
 </h4>
 <p>Chỉnh sửa YAML để bao gồm tùy chọn <code>params:</code>, với các biểu thức được thụt lề cho mỗi tham số bạn muốn xác định. Trong ví dụ này, chúng tôi tạo các tham số <code>date</code> và<code>hospital</code>, với các giá trị mà chúng tôi chỉ định. Các giá trị này có thể thay đổi mỗi khi chạy báo cáo. Nếu bạn sử dụng nút “Knit” để tạo ra đầu ra, các tham số sẽ có các giá trị mặc định này. Tương tự như vậy, nếu bạn sử dụng <code>render ()</code>, các tham số sẽ có các giá trị mặc định này trừ khi được chỉ định khác trong lệnh <code>render ()</code>.</p>
-<div class="sourceCode" id="cb1818"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1818-1"><a href="rmarkdown.html#cb1818-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb1818-2"><a href="rmarkdown.html#cb1818-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> Surveillance report</span></span>
-<span id="cb1818-3"><a href="rmarkdown.html#cb1818-3" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> html_document</span></span>
-<span id="cb1818-4"><a href="rmarkdown.html#cb1818-4" aria-hidden="true" tabindex="-1"></a><span class="fu">params</span><span class="kw">:</span></span>
-<span id="cb1818-5"><a href="rmarkdown.html#cb1818-5" aria-hidden="true" tabindex="-1"></a><span class="at"> </span><span class="fu">date</span><span class="kw">:</span><span class="at"> 2021-04-10</span></span>
-<span id="cb1818-6"><a href="rmarkdown.html#cb1818-6" aria-hidden="true" tabindex="-1"></a><span class="at"> </span><span class="fu">hospital</span><span class="kw">:</span><span class="at"> Central Hospital</span></span>
-<span id="cb1818-7"><a href="rmarkdown.html#cb1818-7" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb1812"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1812-1"><a href="rmarkdown.html#cb1812-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb1812-2"><a href="rmarkdown.html#cb1812-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> Surveillance report</span></span>
+<span id="cb1812-3"><a href="rmarkdown.html#cb1812-3" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> html_document</span></span>
+<span id="cb1812-4"><a href="rmarkdown.html#cb1812-4" aria-hidden="true" tabindex="-1"></a><span class="fu">params</span><span class="kw">:</span></span>
+<span id="cb1812-5"><a href="rmarkdown.html#cb1812-5" aria-hidden="true" tabindex="-1"></a><span class="at"> </span><span class="fu">date</span><span class="kw">:</span><span class="at"> 2021-04-10</span></span>
+<span id="cb1812-6"><a href="rmarkdown.html#cb1812-6" aria-hidden="true" tabindex="-1"></a><span class="at"> </span><span class="fu">hospital</span><span class="kw">:</span><span class="at"> Central Hospital</span></span>
+<span id="cb1812-7"><a href="rmarkdown.html#cb1812-7" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
 <p>Ở chế độ nền, các giá trị tham số này được chứa trong danh sách chỉ đọc được gọi là <code>params</code>. Do đó, bạn có thể chèn các giá trị tham số trong code R như cách bạn làm với một đối tượng/giá trị R khác trong môi trường của bạn. Chỉ cần gõ <code>params $</code> theo sau là tên tham số. Ví dụ: <code>params $ Hospital</code> để đại diện cho tên bệnh viện (“Central Hospital” theo mặc định).</p>
 <p>Lưu ý rằng các tham số cũng có thể giữ các giá trị <code>true</code> hoặc <code>false</code>, và vì vậy chúng có thể được đưa vào các tùy chọn <strong>knitr</strong> của bạn trong một đoạn code R. Ví dụ: bạn có thể đặt <code>{r, eval=params$run}</code> thay vì <code>{r, eval=FALSE}</code>, và bây giờ việc đoạn code chạy hay không phụ thuộc vào giá trị của tham số <code>run:</code>.</p>
 <p>Lưu ý rằng đối với các tham số là ngày tháng, chúng sẽ được nhập dưới dạng một chuỗi. Vì vậy, để <code>params$date</code> được diễn giải trong code R, nó có thể sẽ cần được bao bọc bằng <code><a href="https://rdrr.io/r/base/as.Date.html">as.Date()</a></code> hoặc một hàm tương tự để chuyển đổi thành lớp Date.</p>
@@ -569,7 +561,7 @@ Những ‘đoạn’ này sẽ có màu nền hơi khác so với phần diễn
 <p>Như đã đề cập ở trên, thay thế cho việc nhấn nút “Knit” để tạo đầu ra là thực thi hàm <code>render()</code> từ một script riêng biệt. Trong trường hợp sau này, bạn có thể chỉ định các tham số được sử dụng trong việc hiển thị đó cho đối số <code>params =</code> của <code>render ()</code>.</p>
 <p>Lưu ý rằng bất kỳ giá trị tham số nào được cung cấp ở đây sẽ <em>ghi đè</em> các giá trị mặc định của chúng nếu được viết trong YAML. Chúng tôi viết các giá trị trong dấu ngoặc kép vì trong trường hợp này chúng phải được định nghĩa là giá trị ký tự/chuỗi.</p>
 <p>Lệnh dưới đây kết xuất tệp “surveillance_report.Rmd”, chỉ định tên và thư mục tệp đầu ra động, đồng thời cung cấp một <code><a href="https://rdrr.io/r/base/list.html">list()</a></code> gồm hai tham số và giá trị của chúng cho đối số <code>params =</code>.</p>
-<div class="sourceCode" id="cb1819"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1813"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/render.html">render</a></span><span class="op">(</span>
   input <span class="op">=</span> <span class="st">"surveillance_report.Rmd"</span>,  
   output_file <span class="op">=</span> <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_glue.html">str_glue</a></span><span class="op">(</span><span class="st">"outputs/Report_{Sys.Date()}.docx"</span><span class="op">)</span>,
@@ -582,10 +574,10 @@ Những ‘đoạn’ này sẽ có màu nền hơi khác so với phần diễn
 <p>Một cửa sổ bật lên sẽ xuất hiện cho phép bạn nhập các giá trị cho các tham số được thiết lập trong YAML của tài liệu.</p>
 <div class="inline-figure"><img src="images/markdown/5_parametersGUI.png" width="50%" style="display: block; margin: auto;"></div>
 <p>Bạn có thể đạt được điều tương tự thông qua lệnh <code>render()</code> bằng cách chỉ định <code>params = "ask"</code>, như được minh họa bên dưới.</p>
-<div class="sourceCode" id="cb1820"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1820-1"><a href="rmarkdown.html#cb1820-1" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render</span>(</span>
-<span id="cb1820-2"><a href="rmarkdown.html#cb1820-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">input =</span> <span class="st">"surveillance_report.Rmd"</span>,  </span>
-<span id="cb1820-3"><a href="rmarkdown.html#cb1820-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">output_file =</span> stringr<span class="sc">::</span><span class="fu">str_glue</span>(<span class="st">"outputs/Report_{Sys.Date()}.docx"</span>),</span>
-<span id="cb1820-4"><a href="rmarkdown.html#cb1820-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">params =</span> “ask”)</span></code></pre></div>
+<div class="sourceCode" id="cb1814"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1814-1"><a href="rmarkdown.html#cb1814-1" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render</span>(</span>
+<span id="cb1814-2"><a href="rmarkdown.html#cb1814-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">input =</span> <span class="st">"surveillance_report.Rmd"</span>,  </span>
+<span id="cb1814-3"><a href="rmarkdown.html#cb1814-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">output_file =</span> stringr<span class="sc">::</span><span class="fu">str_glue</span>(<span class="st">"outputs/Report_{Sys.Date()}.docx"</span>),</span>
+<span id="cb1814-4"><a href="rmarkdown.html#cb1814-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">params =</span> “ask”)</span></code></pre></div>
 <p>Tuy nhiên, việc nhập giá trị vào cửa sổ bật lên này có thể xảy ra lỗi và lỗi chính tả. Bạn có thể chọn thêm các hạn chế cho các giá trị có thể được nhập thông qua menu thả xuống. Bạn có thể làm điều này bằng cách thêm vào YAML một số thông số kỹ thuật cho mỗi mục nhập <code>params:</code>.</p>
 <ul>
 <li>
@@ -601,17 +593,17 @@ Những ‘đoạn’ này sẽ có màu nền hơi khác so với phần diễn
 <code>choices:</code> cung cấp các giá trị đủ điều kiện trong menu thả xuống</li>
 </ul>
 <p>Dưới đây, các thông số kỹ thuật này được viết cho tham số <code>hospital</code>.</p>
-<div class="sourceCode" id="cb1821"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1821-1"><a href="rmarkdown.html#cb1821-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb1821-2"><a href="rmarkdown.html#cb1821-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> Surveillance report</span></span>
-<span id="cb1821-3"><a href="rmarkdown.html#cb1821-3" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> html_document</span></span>
-<span id="cb1821-4"><a href="rmarkdown.html#cb1821-4" aria-hidden="true" tabindex="-1"></a><span class="fu">params</span><span class="kw">:</span></span>
-<span id="cb1821-5"><a href="rmarkdown.html#cb1821-5" aria-hidden="true" tabindex="-1"></a><span class="at"> </span><span class="fu">date</span><span class="kw">:</span><span class="at"> 2021-04-10</span></span>
-<span id="cb1821-6"><a href="rmarkdown.html#cb1821-6" aria-hidden="true" tabindex="-1"></a><span class="at"> </span><span class="fu">hospital</span><span class="kw">:</span><span class="at"> </span></span>
-<span id="cb1821-7"><a href="rmarkdown.html#cb1821-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">label</span><span class="kw">:</span><span class="at"> “Town:”</span></span>
-<span id="cb1821-8"><a href="rmarkdown.html#cb1821-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">value</span><span class="kw">:</span><span class="at"> Central Hospital</span></span>
-<span id="cb1821-9"><a href="rmarkdown.html#cb1821-9" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">input</span><span class="kw">:</span><span class="at"> select</span></span>
-<span id="cb1821-10"><a href="rmarkdown.html#cb1821-10" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">choices</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">Central Hospital</span><span class="kw">,</span><span class="at"> Military Hospital</span><span class="kw">,</span><span class="at"> Port Hospital</span><span class="kw">,</span><span class="at"> St. Mark</span><span class="st">'s Maternity Hospital (SMMH)]</span></span>
-<span id="cb1821-11"><a href="rmarkdown.html#cb1821-11" aria-hidden="true" tabindex="-1"></a><span class="st">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb1815"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1815-1"><a href="rmarkdown.html#cb1815-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb1815-2"><a href="rmarkdown.html#cb1815-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> Surveillance report</span></span>
+<span id="cb1815-3"><a href="rmarkdown.html#cb1815-3" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> html_document</span></span>
+<span id="cb1815-4"><a href="rmarkdown.html#cb1815-4" aria-hidden="true" tabindex="-1"></a><span class="fu">params</span><span class="kw">:</span></span>
+<span id="cb1815-5"><a href="rmarkdown.html#cb1815-5" aria-hidden="true" tabindex="-1"></a><span class="at"> </span><span class="fu">date</span><span class="kw">:</span><span class="at"> 2021-04-10</span></span>
+<span id="cb1815-6"><a href="rmarkdown.html#cb1815-6" aria-hidden="true" tabindex="-1"></a><span class="at"> </span><span class="fu">hospital</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb1815-7"><a href="rmarkdown.html#cb1815-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">label</span><span class="kw">:</span><span class="at"> “Town:”</span></span>
+<span id="cb1815-8"><a href="rmarkdown.html#cb1815-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">value</span><span class="kw">:</span><span class="at"> Central Hospital</span></span>
+<span id="cb1815-9"><a href="rmarkdown.html#cb1815-9" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">input</span><span class="kw">:</span><span class="at"> select</span></span>
+<span id="cb1815-10"><a href="rmarkdown.html#cb1815-10" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">choices</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">Central Hospital</span><span class="kw">,</span><span class="at"> Military Hospital</span><span class="kw">,</span><span class="at"> Port Hospital</span><span class="kw">,</span><span class="at"> St. Mark</span><span class="st">'s Maternity Hospital (SMMH)]</span></span>
+<span id="cb1815-11"><a href="rmarkdown.html#cb1815-11" aria-hidden="true" tabindex="-1"></a><span class="st">---</span></span></code></pre></div>
 <p>Khi knit (thông qua nút ‘knit with parameters’ hoặc bằng cách <code>render()</code>), cửa sổ bật lên sẽ có các tùy chọn thả xuống để bạn lựa chọn.</p>
 <div class="inline-figure"><img src="images/markdown/5_parametersGUIB.png" width="50%" style="display: block; margin: auto;"></div>
 </div>
@@ -630,7 +622,7 @@ Những ‘đoạn’ này sẽ có màu nền hơi khác so với phần diễn
 </h3>
 <p>Nếu bạn đang kết xuất tệp R Markdown với <code>render ()</code> từ một script riêng biệt, bạn thực sự có thể tạo ra tác động của tham số hóa mà không cần sử dụng chức năng <code>params:</code>.</p>
 <p>Ví dụ, trong <em>R script</em> có chứa lệnh <code>render ()</code>, bạn có thể chỉ cần xác định <code>hospital</code> và <code>date</code> là hai đối tượng R (giá trị) trước lệnh <code>render ()</code>. Trong R Markdown, bạn sẽ không cần phải có phần <code>params:</code> trong YAML, và chúng tôi sẽ đề cập đến đối tượng <code>date</code> hơn là <code>params$date</code> và <code>hospital</code> hơn là <code>params$hospital</code>.</p>
-<div class="sourceCode" id="cb1822"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1816"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># This is a R script that is separate from the R Markdown</span>
 
 <span class="co"># define R objects</span>
@@ -649,7 +641,7 @@ Những ‘đoạn’ này sẽ có màu nền hơi khác so với phần diễn
 </h2>
 <p>Chúng ta có thể muốn chạy một báo cáo nhiều lần, thay đổi các thông số đầu vào, để tạo ra một báo cáo cho từng khu vực pháp lý/đơn vị. Điều này có thể được thực hiện bằng cách sử dụng các công cụ cho việc <em>lặp lại</em>, được giải thích chi tiết trong chương về [Lặp, vòng lặp và danh sách]. Các tùy chọn bao gồm package <strong>purrr</strong> hoặc sử dụng <em>vòng lặp for</em> như được giải thích bên dưới.</p>
 <p>Dưới đây, chúng tôi sử dụng <em>vòng lặp for</em> đơn giản để tạo báo cáo giám sát cho tất cả các bệnh viện được chọn. Điều này được thực hiện bằng một lệnh (thay vì thay đổi từng thông số bệnh viện theo cách thủ công). Lệnh kết xuất báo cáo phải tồn tại trong một script riêng biệt <em>bên ngoài</em> báo cáo Rmd. Script này cũng sẽ chứa các đối tượng được xác định để “lặp qua” - ngày hôm nay và một vectơ tên bệnh viện để lặp qua.</p>
-<div class="sourceCode" id="cb1823"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1817"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">hospitals</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Central Hospital"</span>,
                 <span class="st">"Military Hospital"</span>, 
                 <span class="st">"Port Hospital"</span>,
@@ -660,7 +652,7 @@ Những ‘đoạn’ này sẽ có màu nền hơi khác so với phần diễn
 </li>
 <li>Với <code>params =</code> sao cho Rmd sử dụng tên bệnh viện trong nội bộ bất cứ khi nào giá trị <code>params$hospital</code> được gọi (ví dụ: chỉ để lọc tập dữ liệu cho bệnh viện cụ thể). Trong ví dụ này, bốn tệp sẽ được tạo - mỗi tệp cho một bệnh viện.</li>
 </ol>
-<div class="sourceCode" id="cb1824"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1818"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">hospitals</span><span class="op">)</span><span class="op">)</span><span class="op">{</span>
   <span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/render.html">render</a></span><span class="op">(</span>
     input <span class="op">=</span> <span class="st">"surveillance_report.Rmd"</span>,
@@ -707,17 +699,17 @@ Những ‘đoạn’ này sẽ có màu nền hơi khác so với phần diễn
 </h3>
 <p>Khi một mẫu được chuẩn bị, chi tiết của mẫu này có thể được thêm vào YAML của Rmd bên dưới dòng ‘đầu ra’ và bên dưới nơi loại tài liệu được chỉ định (chính nó sẽ đi đến một dòng riêng). Lưu ý <code>reference_doc</code> có thể được sử dụng cho các mẫu slide powerpoint.</p>
 <p>Dễ dàng nhất là lưu mẫu trong cùng một thư mục với nơi chứa tệp Rmd (như trong ví dụ bên dưới) hoặc trong một thư mục con bên trong.</p>
-<div class="sourceCode" id="cb1825"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1825-1"><a href="rmarkdown.html#cb1825-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb1825-2"><a href="rmarkdown.html#cb1825-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> Surveillance report</span></span>
-<span id="cb1825-3"><a href="rmarkdown.html#cb1825-3" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> </span></span>
-<span id="cb1825-4"><a href="rmarkdown.html#cb1825-4" aria-hidden="true" tabindex="-1"></a><span class="at"> </span><span class="fu">word_document</span><span class="kw">:</span></span>
-<span id="cb1825-5"><a href="rmarkdown.html#cb1825-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">reference_docx</span><span class="kw">:</span><span class="at"> </span><span class="st">"template.docx"</span></span>
-<span id="cb1825-6"><a href="rmarkdown.html#cb1825-6" aria-hidden="true" tabindex="-1"></a><span class="fu">params</span><span class="kw">:</span></span>
-<span id="cb1825-7"><a href="rmarkdown.html#cb1825-7" aria-hidden="true" tabindex="-1"></a><span class="at"> </span><span class="fu">date</span><span class="kw">:</span><span class="at"> 2021-04-10</span></span>
-<span id="cb1825-8"><a href="rmarkdown.html#cb1825-8" aria-hidden="true" tabindex="-1"></a><span class="at"> </span><span class="fu">hospital</span><span class="kw">:</span><span class="at"> Central Hospital</span></span>
-<span id="cb1825-9"><a href="rmarkdown.html#cb1825-9" aria-hidden="true" tabindex="-1"></a><span class="fu">template</span><span class="kw">:</span></span>
-<span id="cb1825-10"><a href="rmarkdown.html#cb1825-10" aria-hidden="true" tabindex="-1"></a><span class="at"> </span></span>
-<span id="cb1825-11"><a href="rmarkdown.html#cb1825-11" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb1819"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1819-1"><a href="rmarkdown.html#cb1819-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb1819-2"><a href="rmarkdown.html#cb1819-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> Surveillance report</span></span>
+<span id="cb1819-3"><a href="rmarkdown.html#cb1819-3" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb1819-4"><a href="rmarkdown.html#cb1819-4" aria-hidden="true" tabindex="-1"></a><span class="at"> </span><span class="fu">word_document</span><span class="kw">:</span></span>
+<span id="cb1819-5"><a href="rmarkdown.html#cb1819-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">reference_docx</span><span class="kw">:</span><span class="at"> </span><span class="st">"template.docx"</span></span>
+<span id="cb1819-6"><a href="rmarkdown.html#cb1819-6" aria-hidden="true" tabindex="-1"></a><span class="fu">params</span><span class="kw">:</span></span>
+<span id="cb1819-7"><a href="rmarkdown.html#cb1819-7" aria-hidden="true" tabindex="-1"></a><span class="at"> </span><span class="fu">date</span><span class="kw">:</span><span class="at"> 2021-04-10</span></span>
+<span id="cb1819-8"><a href="rmarkdown.html#cb1819-8" aria-hidden="true" tabindex="-1"></a><span class="at"> </span><span class="fu">hospital</span><span class="kw">:</span><span class="at"> Central Hospital</span></span>
+<span id="cb1819-9"><a href="rmarkdown.html#cb1819-9" aria-hidden="true" tabindex="-1"></a><span class="fu">template</span><span class="kw">:</span></span>
+<span id="cb1819-10"><a href="rmarkdown.html#cb1819-10" aria-hidden="true" tabindex="-1"></a><span class="at"> </span></span>
+<span id="cb1819-11"><a href="rmarkdown.html#cb1819-11" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
 </div>
 <div id="định-dạng-tệp-html" class="section level3 unnumbered">
 <h3>Định dạng tệp HTML<a class="anchor" aria-label="anchor" href="#%C4%91%E1%BB%8Bnh-d%E1%BA%A1ng-t%E1%BB%87p-html"><i class="fas fa-link"></i></a>
@@ -729,16 +721,16 @@ Những ‘đoạn’ này sẽ có màu nền hơi khác so với phần diễn
 <li><p>Đánh dấu: Định cấu hình này sẽ thay đổi giao diện của chữ được đánh dấu (ví dụ: code trong các đoạn được hiển thị). Các kiểu được hỗ trợ bao gồm mặc định, tango, pygments, kate, monochrome, espresso, zenburn, hasdock, breezedark và textmate.</p></li>
 </ul>
 <p>Đây là một ví dụ về cách tích hợp các tùy chọn trên vào YAML.</p>
-<div class="sourceCode" id="cb1826"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1826-1"><a href="rmarkdown.html#cb1826-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb1826-2"><a href="rmarkdown.html#cb1826-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"HTML example"</span></span>
-<span id="cb1826-3"><a href="rmarkdown.html#cb1826-3" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
-<span id="cb1826-4"><a href="rmarkdown.html#cb1826-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html_document</span><span class="kw">:</span></span>
-<span id="cb1826-5"><a href="rmarkdown.html#cb1826-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb1826-6"><a href="rmarkdown.html#cb1826-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">toc_float</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb1826-7"><a href="rmarkdown.html#cb1826-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> cerulean</span></span>
-<span id="cb1826-8"><a href="rmarkdown.html#cb1826-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">highlight</span><span class="kw">:</span><span class="at"> kate</span></span>
-<span id="cb1826-9"><a href="rmarkdown.html#cb1826-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span></span>
-<span id="cb1826-10"><a href="rmarkdown.html#cb1826-10" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb1820"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1820-1"><a href="rmarkdown.html#cb1820-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb1820-2"><a href="rmarkdown.html#cb1820-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"HTML example"</span></span>
+<span id="cb1820-3"><a href="rmarkdown.html#cb1820-3" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb1820-4"><a href="rmarkdown.html#cb1820-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html_document</span><span class="kw">:</span></span>
+<span id="cb1820-5"><a href="rmarkdown.html#cb1820-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb1820-6"><a href="rmarkdown.html#cb1820-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">toc_float</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb1820-7"><a href="rmarkdown.html#cb1820-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> cerulean</span></span>
+<span id="cb1820-8"><a href="rmarkdown.html#cb1820-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">highlight</span><span class="kw">:</span><span class="at"> kate</span></span>
+<span id="cb1820-9"><a href="rmarkdown.html#cb1820-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span></span>
+<span id="cb1820-10"><a href="rmarkdown.html#cb1820-10" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
 <p>Dưới đây là hai ví dụ về kết quả đầu ra HTML, cả hai đều có mục lục nổi, nhưng chủ đề và kiểu đánh dấu khác nhau được chọn:</p>
 <div class="inline-figure"><img src="images/markdown/9_html.png" width="100%" style="display: block; margin: auto;"></div>
 </div>
@@ -866,7 +858,7 @@ Những ‘đoạn’ này sẽ có màu nền hơi khác so với phần diễn
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Cẩm nang dịch tễ học với R</strong>" was written by the handbook team. It was last built on 2021-10-14.</p>
+    <p>"<strong>Cẩm nang dịch tễ học với R</strong>" was written by the handbook team. It was last built on 2021-11-01.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -886,22 +878,6 @@ Những ‘đoạn’ này sẽ có màu nền hơi khác so với phần diễn
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
-</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
-for (let popover of popovers) {
-  const div = document.createElement('div');
-  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
-  div.innerHTML = popover.getAttribute('data-content');
-
-  var has_math = div.querySelector("span.math");
-  if (has_math) {
-    document.body.appendChild(div);
-    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
-    MathJax.Hub.Queue(function() {
-      popover.setAttribute('data-content', div.innerHTML);
-      document.body.removeChild(div);
-    })
-  }
-}
 </script>
 </body>
 </html>

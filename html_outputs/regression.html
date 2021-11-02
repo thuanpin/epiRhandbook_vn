@@ -6,40 +6,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>19 Hồi quy đơn và đa biến | Cẩm nang dịch tễ học với R</title>
 <meta name="author" content="the handbook team">
-<meta name="description" content="Trong chương này, chúng tôi trình bày cách sử dụng các hàm hồi quy trong base R rnhư hàm glm() và package gtsummary để xem xét các mối liên quan giữa các biến (ví dụ như tỷ số chênh, tỷ số nguy...">
-<meta name="generator" content="bookdown 0.24 with bs4_book()">
-<meta property="og:title" content="19 Hồi quy đơn và đa biến | Cẩm nang dịch tễ học với R">
-<meta property="og:type" content="book">
-<meta property="og:description" content="Trong chương này, chúng tôi trình bày cách sử dụng các hàm hồi quy trong base R rnhư hàm glm() và package gtsummary để xem xét các mối liên quan giữa các biến (ví dụ như tỷ số chênh, tỷ số nguy...">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="19 Hồi quy đơn và đa biến | Cẩm nang dịch tễ học với R">
-<meta name="twitter:description" content="Trong chương này, chúng tôi trình bày cách sử dụng các hàm hồi quy trong base R rnhư hàm glm() và package gtsummary để xem xét các mối liên quan giữa các biến (ví dụ như tỷ số chênh, tỷ số nguy...">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.0/transition.js"></script><script src="libs/bs3compat-0.3.0/tabs.js"></script><script src="libs/bs3compat-0.3.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
-<script src="libs/datatables-binding-0.19/datatables.js"></script><link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="libs/datatables-binding-0.16/datatables.js"></script><link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet">
 <script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script><link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet">
 <script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script><link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet">
 <script src="libs/selectize-0.12.0/selectize.min.js"></script><link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet">
 <script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet">
-<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<script src="libs/tabwid-1.0.0/tabwid.js"></script><link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
 <script src="libs/leaflet-1.3.1/leaflet.js"></script><link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
-<script src="libs/proj4-2.6.2/proj4.min.js"></script><script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
-<script src="libs/leaflet-binding-2.0.4.1/leaflet.js"></script><script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script><script src="libs/leaflet-providers-plugin-2.0.4.1/leaflet-providers-plugin.js"></script><script src="libs/viz-1.8.2/viz.js"></script><link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
-<script src="libs/grViz-binding-1.0.6.1/grViz.js"></script><script src="libs/d3-4.5.0/d3.min.js"></script><script src="libs/sankey-1/sankey.js"></script><script src="libs/sankeyNetwork-binding-0.4/sankeyNetwork.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
-<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script><link href="libs/vis-9.1.0/vis-network.min.css" rel="stylesheet">
-<script src="libs/vis-9.1.0/vis-network.min.js"></script><script src="libs/visNetwork-binding-2.1.0/visNetwork.js"></script><link href="libs/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<script src="libs/plotly-basic-2.5.1/plotly-basic-2.5.1.min.js"></script><script src="libs/plotly-cartesian-2.5.1/plotly-cartesian-2.5.1.min.js"></script><script src="libs/proj4js-2.3.15/proj4.js"></script><link href="libs/highcharts-8.1.2/css/motion.css" rel="stylesheet">
+<script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script><script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+<script src="libs/leaflet-binding-2.0.3/leaflet.js"></script><script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script><script src="libs/leaflet-providers-plugin-2.0.3/leaflet-providers-plugin.js"></script><script src="libs/viz-1.8.2/viz.js"></script><link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
+<script src="libs/grViz-binding-1.0.6.1/grViz.js"></script><script src="libs/d3-4.5.0/d3.min.js"></script><script src="libs/sankey-1/sankey.js"></script><script src="libs/sankeyNetwork-binding-0.4/sankeyNetwork.js"></script><script src="libs/plotly-binding-4.9.2.1/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script><link href="libs/vis-4.20.1/vis.css" rel="stylesheet">
+<script src="libs/vis-4.20.1/vis.min.js"></script><script src="libs/visNetwork-binding-2.0.9/visNetwork.js"></script><link href="libs/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="libs/plotly-basic-1.52.2/plotly-basic-1.52.2.min.js"></script><script src="libs/plotly-cartesian-1.52.2/plotly-cartesian-1.52.2.min.js"></script><script src="libs/proj4js-2.3.15/proj4.js"></script><link href="libs/highcharts-8.1.2/css/motion.css" rel="stylesheet">
 <script src="libs/highcharts-8.1.2/highcharts.js"></script><script src="libs/highcharts-8.1.2/highcharts-3d.js"></script><script src="libs/highcharts-8.1.2/highcharts-more.js"></script><script src="libs/highcharts-8.1.2/modules/stock.js"></script><script src="libs/highcharts-8.1.2/modules/map.js"></script><script src="libs/highcharts-8.1.2/modules/annotations.js"></script><script src="libs/highcharts-8.1.2/modules/data.js"></script><script src="libs/highcharts-8.1.2/modules/drilldown.js"></script><script src="libs/highcharts-8.1.2/modules/item-series.js"></script><script src="libs/highcharts-8.1.2/modules/offline-exporting.js"></script><script src="libs/highcharts-8.1.2/modules/overlapping-datalabels.js"></script><script src="libs/highcharts-8.1.2/modules/exporting.js"></script><script src="libs/highcharts-8.1.2/modules/export-data.js"></script><script src="libs/highcharts-8.1.2/modules/funnel.js"></script><script src="libs/highcharts-8.1.2/modules/heatmap.js"></script><script src="libs/highcharts-8.1.2/modules/treemap.js"></script><script src="libs/highcharts-8.1.2/modules/sankey.js"></script><script src="libs/highcharts-8.1.2/modules/dependency-wheel.js"></script><script src="libs/highcharts-8.1.2/modules/organization.js"></script><script src="libs/highcharts-8.1.2/modules/solid-gauge.js"></script><script src="libs/highcharts-8.1.2/modules/streamgraph.js"></script><script src="libs/highcharts-8.1.2/modules/sunburst.js"></script><script src="libs/highcharts-8.1.2/modules/vector.js"></script><script src="libs/highcharts-8.1.2/modules/wordcloud.js"></script><script src="libs/highcharts-8.1.2/modules/xrange.js"></script><script src="libs/highcharts-8.1.2/modules/tilemap.js"></script><script src="libs/highcharts-8.1.2/modules/venn.js"></script><script src="libs/highcharts-8.1.2/modules/gantt.js"></script><script src="libs/highcharts-8.1.2/modules/timeline.js"></script><script src="libs/highcharts-8.1.2/modules/parallel-coordinates.js"></script><script src="libs/highcharts-8.1.2/modules/bullet.js"></script><script src="libs/highcharts-8.1.2/modules/coloraxis.js"></script><script src="libs/highcharts-8.1.2/modules/dumbbell.js"></script><script src="libs/highcharts-8.1.2/modules/lollipop.js"></script><script src="libs/highcharts-8.1.2/modules/series-label.js"></script><script src="libs/highcharts-8.1.2/plugins/motion.js"></script><script src="libs/highcharts-8.1.2/custom/reset.js"></script><script src="libs/highcharts-8.1.2/modules/boost.js"></script><script src="libs/highchart-binding-0.8.2/highchart.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-QXDW878QLX"></script><script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
       gtag('config', 'G-QXDW878QLX');
-    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="style_bs4.css">
+    </script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS --><link rel="stylesheet" href="style_bs4.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -172,8 +164,8 @@
 <code class="sourceCode R"><span class="co"># import the linelist</span>
 <span class="va">linelist</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rio/man/import.html">import</a></span><span class="op">(</span><span class="st">"linelist_cleaned.rds"</span><span class="op">)</span></code></pre></div>
 <p>Bên dưới là hiển thị của 50 hàng đầu tiên của bộ số liệu linelist.</p>
-<div id="htmlwidget-6dfebd60ceaaeb94e673" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6dfebd60ceaaeb94e673">{"x":{"filter":"none","vertical":false,"data":[["5fe599","8689b7","11f8ea","b8812a","893f25","be99c8","07e3e8","369449","f393b4","1389ca","2978ac","57a565","fc15ef","2eaa9a","bbfa93","c97dd9","f50e8a","3a7673","7f5a01","ddddee","99e8fa","567136","9371a9","bc2adf","403057","8bd1e8","f327be","42e1a9","90e5fe","959170","8ebf6e","e56412","6d788e","a47529","67be4e","da8ecb","148f18","2cb9a5","f5c142","70a9fe","3ad520","062638","c76676","baacc1","497372","23e499","38cc4a","3789ee","c71dcd","6b70f0"],[4,4,2,3,3,3,4,4,4,4,4,4,6,5,6,9,10,8,7,6,7,6,8,6,10,8,6,12,5,8,7,9,11,5,8,5,6,11,7,9,7,8,9,12,13,9,8,10,8,7],["2014-05-08",null,null,"2014-05-04","2014-05-18","2014-05-03","2014-05-22","2014-05-28",null,null,"2014-05-30","2014-05-28","2014-06-14","2014-06-07","2014-06-09",null,null,null,"2014-06-23","2014-06-18","2014-06-24",null,null,"2014-07-03",null,"2014-07-10","2014-06-14",null,"2014-06-18","2014-06-29","2014-07-02","2014-07-12","2014-07-12","2014-06-13","2014-07-15","2014-06-20",null,null,"2014-07-20",null,"2014-07-12","2014-07-19","2014-07-18","2014-07-18","2014-07-27",null,"2014-07-19","2014-07-26","2014-07-24",null],["2014-05-13","2014-05-13","2014-05-16","2014-05-18","2014-05-21","2014-05-22","2014-05-27","2014-06-02","2014-06-05","2014-06-05","2014-06-06","2014-06-13","2014-06-16","2014-06-17","2014-06-18","2014-06-19","2014-06-22","2014-06-23","2014-06-25","2014-06-26","2014-06-28","2014-07-02","2014-07-08","2014-07-09","2014-07-09","2014-07-10","2014-07-12","2014-07-12","2014-07-13","2014-07-13","2014-07-14","2014-07-15","2014-07-16","2014-07-17","2014-07-17","2014-07-18","2014-07-19","2014-07-22","2014-07-22","2014-07-24","2014-07-24","2014-07-25","2014-07-25","2014-07-27","2014-07-29","2014-07-30",null,"2014-08-01","2014-08-02","2014-08-03"],["2014-05-15","2014-05-14","2014-05-18","2014-05-20","2014-05-22","2014-05-23","2014-05-29","2014-06-03","2014-06-06","2014-06-07","2014-06-08","2014-06-15","2014-06-17","2014-06-17","2014-06-20","2014-06-19","2014-06-23","2014-06-24","2014-06-27","2014-06-28","2014-06-29","2014-07-03","2014-07-09","2014-07-09","2014-07-11","2014-07-11","2014-07-13","2014-07-14","2014-07-14","2014-07-13","2014-07-14","2014-07-17","2014-07-17","2014-07-18","2014-07-19","2014-07-20","2014-07-20","2014-07-22","2014-07-24","2014-07-26","2014-07-24","2014-07-27","2014-07-25","2014-07-27","2014-07-31","2014-08-01","2014-08-03","2014-08-02","2014-08-02","2014-08-04"],[null,"2014-05-18","2014-05-30",null,"2014-05-29","2014-05-24","2014-06-01","2014-06-07","2014-06-18","2014-06-09","2014-06-15",null,"2014-07-09",null,"2014-06-30","2014-07-11","2014-07-01","2014-06-25","2014-07-06","2014-07-02","2014-07-09","2014-07-07","2014-07-20",null,"2014-07-22","2014-07-16","2014-07-14","2014-07-20","2014-07-16","2014-07-19","2014-07-27","2014-07-19",null,"2014-07-26","2014-08-14","2014-08-01","2014-07-23","2014-08-28","2014-07-28","2014-07-19",null,"2014-08-03",null,null,null,"2014-08-06","2014-08-21","2014-09-13","2014-08-04",null],[null,"Recover","Recover",null,"Recover","Recover","Recover","Death","Recover","Death","Death","Death","Recover","Recover",null,"Recover",null,null,"Death","Death","Recover",null,null,null,"Death",null,"Death","Death",null,"Death","Recover","Death","Recover","Death","Recover",null,"Death","Recover","Recover","Death",null,null,"Death","Death","Death","Death","Recover",null,"Death","Death"],["m","f","m","f","m","f","f","f","m","f","m","m","m","f","f","m","f","f","f","f","m","m","f","m","f","m","m","f","m","f","f","f","m","m","f","m","f","f","f","m","f","m","f","m","m","f","m","f","m","m"],[2,3,56,18,3,16,16,0,61,27,12,42,19,7,7,13,35,17,11,11,19,54,14,28,6,3,31,6,67,14,10,21,20,45,1,12,3,15,20,36,7,13,14,3,10,1,0,20,26,14],["years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years"],[2,3,56,18,3,16,16,0,61,27,12,42,19,7,7,13,35,17,11,11,19,54,14,28,6,3,31,6,67,14,10,21,20,45,1,12,3,15,20,36,7,13,14,3,10,1,0,20,26,14],["0-4","0-4","50-69","15-19","0-4","15-19","15-19","0-4","50-69","20-29","10-14","30-49","15-19","5-9","5-9","10-14","30-49","15-19","10-14","10-14","15-19","50-69","10-14","20-29","5-9","0-4","30-49","5-9","50-69","10-14","10-14","20-29","20-29","30-49","0-4","10-14","0-4","15-19","20-29","30-49","5-9","10-14","10-14","0-4","10-14","0-4","0-4","20-29","20-29","10-14"],["0-4","0-4","55-59","15-19","0-4","15-19","15-19","0-4","60-64","25-29","10-14","40-44","15-19","5-9","5-9","10-14","35-39","15-19","10-14","10-14","15-19","50-54","10-14","25-29","5-9","0-4","30-34","5-9","65-69","10-14","10-14","20-24","20-24","45-49","0-4","10-14","0-4","15-19","20-24","35-39","5-9","10-14","10-14","0-4","10-14","0-4","0-4","20-24","25-29","10-14"],["Other","Missing","St. Mark's Maternity Hospital (SMMH)","Port Hospital","Military Hospital","Port Hospital","Missing","Missing","Missing","Missing","Port Hospital","Military Hospital","Missing","Missing","Other","Port Hospital","Port Hospital","Port Hospital","Missing","Other","Port Hospital","Port Hospital","St. Mark's Maternity Hospital (SMMH)","Missing","Other","Missing","St. Mark's Maternity Hospital (SMMH)","Military Hospital","Port Hospital","Central Hospital","Military Hospital","Central Hospital","Missing","Military Hospital","Other","Missing","Missing","Port Hospital","Port Hospital","Port Hospital","Missing","Central Hospital","Military Hospital","Other","Other","Other","Missing","St. Mark's Maternity Hospital (SMMH)","St. Mark's Maternity Hospital (SMMH)","Missing"],[-13.2157351064963,-13.2152339775486,-13.212910703914,-13.2363711169728,-13.2228638912441,-13.222625321098,-13.2331547837254,-13.2320975453153,-13.2225511595637,-13.2572163655863,-13.2206286746001,-13.253989309478,-13.2385127873491,-13.209391925612,-13.2157278814899,-13.2243437095992,-13.2336087079551,-13.21422143145,-13.2339681355349,-13.2535640411465,-13.2250089377786,-13.2160657166043,-13.2680671272333,-13.2266742923612,-13.2160179088168,-13.2482584611565,-13.2156319199566,-13.2142410663192,-13.2614879104088,-13.2452992638476,-13.2630592726116,-13.2343341712241,-13.2199077448676,-13.2227293309912,-13.2343062806506,-13.218781651651,-13.2483677722899,-13.2097478342339,-13.2680867723786,-13.2587535457526,-13.262635786914,-13.2697246824573,-13.2209026809759,-13.2330734719715,-13.2680923666905,-13.2547212675054,-13.2573683214693,-13.2137356012883,-13.2175973322257,-13.2486407324245],[8.46897295100924,8.45171855856465,8.46481700596819,8.4754761613651,8.46082377490923,8.46183062600728,8.46272931462646,8.46144367534271,8.46191259217774,8.47292327643506,8.48401630165138,8.45837125340844,8.47761705512509,8.47570184950483,8.47779946878972,8.47145134147474,8.47804840685363,8.48528034195779,8.46957530395867,8.45957352078114,8.47404889511544,8.48802917129884,8.473437335922,8.48408263734462,8.46242233645879,8.47026822126572,8.46398447480533,8.4641347894342,8.45623094629607,8.48334624336805,8.47493999153642,8.47832062438022,8.4693933891765,8.48480589906514,8.47121232619015,8.48438437371817,8.48466158574339,8.47714159984428,8.46238127010609,8.45568597813113,8.4632880274758,8.47940722413856,8.46353857052336,8.46178968158864,8.47508713872833,8.45825808128071,8.4532568143863,8.4732571907655,8.47911586641933,8.48480340615605],["f547d6",null,null,"f90f5f","11f8ea","aec8ec","893f25","133ee7",null,null,"996f3a","133ee7","37a6f6","9f6884","4802b1",null,null,null,"a75c7f","8e104d","ab634e",null,null,"b799eb",null,"5d9e4d","a15e13",null,"ea3740","beb26e","567136","894024","36e2e7","a2086d","7baf73","eb2277",null,null,"d6584f",null,"312ecf","52ea64","cfd79c","d145b7","174288",null,"53608c","3b096b","f5c142",null],["other",null,null,"other","other","other","other","other",null,null,"other","other","other","other","other",null,null,null,"other","other","other",null,null,"other",null,"other","other",null,"other","funeral","other","funeral","other","other","other","funeral",null,null,"other",null,"other","other","other","other","other",null,"funeral","other","other",null],[27,25,91,41,36,56,47,0,86,69,67,84,68,44,34,66,78,47,53,47,71,86,53,69,38,46,68,37,100,56,50,57,65,72,29,69,37,48,54,71,47,61,47,35,53,16,13,59,69,67],[48,59,238,135,71,116,87,11,226,174,112,186,174,90,91,152,214,137,117,131,150,241,131,161,80,69,188,66,233,142,110,182,164,214,26,157,39,154,133,168,100,125,123,67,134,31,36,125,183,169],[22,22,21,23,23,21,21,22,22,22,22,22,22,21,23,22,23,21,22,23,21,23,21,24,23,22,24,23,20,24,24,20,24,21,22,21,23,22,23,23,23,22,23,22,22,22,23,22,22,22],["no",null,null,"no","no","no",null,"no","no","no","no","no","no","no","no","no","no","no",null,"no","no","no","no","no",null,"no","no","no",null,null,"no","no",null,"no","no",null,null,"no","no",null,"no","no",null,"no","no","no","no","no","no",null],["no",null,null,"no","no","no",null,"no","no","no","no","no","no","no","no","no","yes","no",null,"no","no","no","yes","no",null,"no","no","yes",null,null,"no","no",null,"no","no",null,null,"no","no",null,"no","no",null,"no","yes","no","no","no","no",null],["yes",null,null,"no","yes","yes",null,"yes","yes","yes","yes","yes","yes","yes","yes","yes","yes","yes",null,"yes","yes","yes","yes","yes",null,"yes","yes","yes",null,null,"yes","yes",null,"yes","yes",null,null,"yes","yes",null,"yes","yes",null,"yes","yes","yes","yes","yes","no",null],["no",null,null,"no","no","no",null,"no","no","no","no","no","no","no","no","yes","no","no",null,"no","no","no","no","no",null,"no","no","no",null,null,"no","no",null,"no","no",null,null,"yes","yes",null,"no","no",null,"no","no","no","no","no","no",null],["yes",null,null,"no","yes","yes",null,"yes","yes","no","yes","no","no","no","yes","no","no","no",null,"no","yes","no","no","no",null,"no","no","no",null,null,"no","yes",null,"yes","yes",null,null,"yes","yes",null,"yes","yes",null,"yes","yes","no","yes","yes","yes",null],[36.8,36.9,36.9,36.8,36.9,37.6,37.3,37,36.4,35.9,36.5,36.9,36.5,37.1,36.5,37.3,37,38,38,36,37,36.7,36.9,36.5,37,36.5,37.6,36.6,36.6,36.2,36.4,37.1,37.5,37.5,37.4,36.9,36.4,37.3,37,37.8,36.5,37.5,36.7,37,37.3,36.6,36.5,36.6,37.6,36.8],[null,"09:36","16:48","11:22","12:60","14:13","14:33","09:25","11:16","10:55","16:03","11:14","12:42","11:06","09:10","08:45",null,"15:41","13:34","18:58","12:43","16:33","14:29","07:18","08:11","16:32","16:17","07:32","17:45",null,"13:24","14:43","02:33","11:36","17:28","16:27",null,"20:49",null,"11:38","14:25","13:42","21:22","13:33","19:06","17:14","20:09",null,"10:23","09:09"],[117.1875,71.8184429761563,16.0652496292635,22.4965706447188,71.4144019043841,41.6171224732461,62.0953890870657,0,16.8376536925366,22.7903289734443,53.4119897959184,24.2802636142907,22.4600343506408,54.320987654321,41.0578432556455,28.5664819944598,17.0320552013276,25.0412914912888,38.7172182043977,27.3876813705495,31.5555555555556,14.8069075945662,30.8839811199813,26.6193433895297,59.375,96.6183574879227,19.2394748755093,84.9403122130395,18.4199377406104,27.7722674072605,41.3223140495868,17.2080666586161,24.1671624033314,15.7218971089178,428.994082840237,27.9930220292912,243.261012491782,20.2395007589813,30.527446435638,25.15589569161,47,39.04,31.0661643201798,77.9683671196257,29.5165961238583,166.493236212279,100.308641975309,37.76,20.6037803457852,23.458562375267],[2,1,2,2,1,1,2,1,1,2,2,2,1,0,2,0,1,1,2,2,1,1,1,0,2,1,1,2,1,0,0,2,1,1,2,2,1,0,2,2,0,2,0,0,2,2,null,1,0,1]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>case_id<\/th>\n      <th>generation<\/th>\n      <th>date_infection<\/th>\n      <th>date_onset<\/th>\n      <th>date_hospitalisation<\/th>\n      <th>date_outcome<\/th>\n      <th>outcome<\/th>\n      <th>gender<\/th>\n      <th>age<\/th>\n      <th>age_unit<\/th>\n      <th>age_years<\/th>\n      <th>age_cat<\/th>\n      <th>age_cat5<\/th>\n      <th>hospital<\/th>\n      <th>lon<\/th>\n      <th>lat<\/th>\n      <th>infector<\/th>\n      <th>source<\/th>\n      <th>wt_kg<\/th>\n      <th>ht_cm<\/th>\n      <th>ct_blood<\/th>\n      <th>fever<\/th>\n      <th>chills<\/th>\n      <th>cough<\/th>\n      <th>aches<\/th>\n      <th>vomit<\/th>\n      <th>temp<\/th>\n      <th>time_admission<\/th>\n      <th>bmi<\/th>\n      <th>days_onset_hosp<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[1,8,10,14,15,18,19,20,26,28,29]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-7f7e008b39781a5fab2d" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7f7e008b39781a5fab2d">{"x":{"filter":"none","data":[["5fe599","8689b7","11f8ea","b8812a","893f25","be99c8","07e3e8","369449","f393b4","1389ca","2978ac","57a565","fc15ef","2eaa9a","bbfa93","c97dd9","f50e8a","3a7673","7f5a01","ddddee","99e8fa","567136","9371a9","bc2adf","403057","8bd1e8","f327be","42e1a9","90e5fe","959170","8ebf6e","e56412","6d788e","a47529","67be4e","da8ecb","148f18","2cb9a5","f5c142","70a9fe","3ad520","062638","c76676","baacc1","497372","23e499","38cc4a","3789ee","c71dcd","6b70f0"],[4,4,2,3,3,3,4,4,4,4,4,4,6,5,6,9,10,8,7,6,7,6,8,6,10,8,6,12,5,8,7,9,11,5,8,5,6,11,7,9,7,8,9,12,13,9,8,10,8,7],["2014-05-08",null,null,"2014-05-04","2014-05-18","2014-05-03","2014-05-22","2014-05-28",null,null,"2014-05-30","2014-05-28","2014-06-14","2014-06-07","2014-06-09",null,null,null,"2014-06-23","2014-06-18","2014-06-24",null,null,"2014-07-03",null,"2014-07-10","2014-06-14",null,"2014-06-18","2014-06-29","2014-07-02","2014-07-12","2014-07-12","2014-06-13","2014-07-15","2014-06-20",null,null,"2014-07-20",null,"2014-07-12","2014-07-19","2014-07-18","2014-07-18","2014-07-27",null,"2014-07-19","2014-07-26","2014-07-24",null],["2014-05-13","2014-05-13","2014-05-16","2014-05-18","2014-05-21","2014-05-22","2014-05-27","2014-06-02","2014-06-05","2014-06-05","2014-06-06","2014-06-13","2014-06-16","2014-06-17","2014-06-18","2014-06-19","2014-06-22","2014-06-23","2014-06-25","2014-06-26","2014-06-28","2014-07-02","2014-07-08","2014-07-09","2014-07-09","2014-07-10","2014-07-12","2014-07-12","2014-07-13","2014-07-13","2014-07-14","2014-07-15","2014-07-16","2014-07-17","2014-07-17","2014-07-18","2014-07-19","2014-07-22","2014-07-22","2014-07-24","2014-07-24","2014-07-25","2014-07-25","2014-07-27","2014-07-29","2014-07-30",null,"2014-08-01","2014-08-02","2014-08-03"],["2014-05-15","2014-05-14","2014-05-18","2014-05-20","2014-05-22","2014-05-23","2014-05-29","2014-06-03","2014-06-06","2014-06-07","2014-06-08","2014-06-15","2014-06-17","2014-06-17","2014-06-20","2014-06-19","2014-06-23","2014-06-24","2014-06-27","2014-06-28","2014-06-29","2014-07-03","2014-07-09","2014-07-09","2014-07-11","2014-07-11","2014-07-13","2014-07-14","2014-07-14","2014-07-13","2014-07-14","2014-07-17","2014-07-17","2014-07-18","2014-07-19","2014-07-20","2014-07-20","2014-07-22","2014-07-24","2014-07-26","2014-07-24","2014-07-27","2014-07-25","2014-07-27","2014-07-31","2014-08-01","2014-08-03","2014-08-02","2014-08-02","2014-08-04"],[null,"2014-05-18","2014-05-30",null,"2014-05-29","2014-05-24","2014-06-01","2014-06-07","2014-06-18","2014-06-09","2014-06-15",null,"2014-07-09",null,"2014-06-30","2014-07-11","2014-07-01","2014-06-25","2014-07-06","2014-07-02","2014-07-09","2014-07-07","2014-07-20",null,"2014-07-22","2014-07-16","2014-07-14","2014-07-20","2014-07-16","2014-07-19","2014-07-27","2014-07-19",null,"2014-07-26","2014-08-14","2014-08-01","2014-07-23","2014-08-28","2014-07-28","2014-07-19",null,"2014-08-03",null,null,null,"2014-08-06","2014-08-21","2014-09-13","2014-08-04",null],[null,"Recover","Recover",null,"Recover","Recover","Recover","Death","Recover","Death","Death","Death","Recover","Recover",null,"Recover",null,null,"Death","Death","Recover",null,null,null,"Death",null,"Death","Death",null,"Death","Recover","Death","Recover","Death","Recover",null,"Death","Recover","Recover","Death",null,null,"Death","Death","Death","Death","Recover",null,"Death","Death"],["m","f","m","f","m","f","f","f","m","f","m","m","m","f","f","m","f","f","f","f","m","m","f","m","f","m","m","f","m","f","f","f","m","m","f","m","f","f","f","m","f","m","f","m","m","f","m","f","m","m"],[2,3,56,18,3,16,16,0,61,27,12,42,19,7,7,13,35,17,11,11,19,54,14,28,6,3,31,6,67,14,10,21,20,45,1,12,3,15,20,36,7,13,14,3,10,1,0,20,26,14],["years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years","years"],[2,3,56,18,3,16,16,0,61,27,12,42,19,7,7,13,35,17,11,11,19,54,14,28,6,3,31,6,67,14,10,21,20,45,1,12,3,15,20,36,7,13,14,3,10,1,0,20,26,14],["0-4","0-4","50-69","15-19","0-4","15-19","15-19","0-4","50-69","20-29","10-14","30-49","15-19","5-9","5-9","10-14","30-49","15-19","10-14","10-14","15-19","50-69","10-14","20-29","5-9","0-4","30-49","5-9","50-69","10-14","10-14","20-29","20-29","30-49","0-4","10-14","0-4","15-19","20-29","30-49","5-9","10-14","10-14","0-4","10-14","0-4","0-4","20-29","20-29","10-14"],["0-4","0-4","55-59","15-19","0-4","15-19","15-19","0-4","60-64","25-29","10-14","40-44","15-19","5-9","5-9","10-14","35-39","15-19","10-14","10-14","15-19","50-54","10-14","25-29","5-9","0-4","30-34","5-9","65-69","10-14","10-14","20-24","20-24","45-49","0-4","10-14","0-4","15-19","20-24","35-39","5-9","10-14","10-14","0-4","10-14","0-4","0-4","20-24","25-29","10-14"],["Other","Missing","St. Mark's Maternity Hospital (SMMH)","Port Hospital","Military Hospital","Port Hospital","Missing","Missing","Missing","Missing","Port Hospital","Military Hospital","Missing","Missing","Other","Port Hospital","Port Hospital","Port Hospital","Missing","Other","Port Hospital","Port Hospital","St. Mark's Maternity Hospital (SMMH)","Missing","Other","Missing","St. Mark's Maternity Hospital (SMMH)","Military Hospital","Port Hospital","Central Hospital","Military Hospital","Central Hospital","Missing","Military Hospital","Other","Missing","Missing","Port Hospital","Port Hospital","Port Hospital","Missing","Central Hospital","Military Hospital","Other","Other","Other","Missing","St. Mark's Maternity Hospital (SMMH)","St. Mark's Maternity Hospital (SMMH)","Missing"],[-13.2157351064963,-13.2152339775486,-13.212910703914,-13.2363711169728,-13.2228638912441,-13.222625321098,-13.2331547837254,-13.2320975453153,-13.2225511595637,-13.2572163655863,-13.2206286746001,-13.253989309478,-13.2385127873491,-13.209391925612,-13.2157278814899,-13.2243437095992,-13.2336087079551,-13.21422143145,-13.2339681355349,-13.2535640411465,-13.2250089377786,-13.2160657166043,-13.2680671272333,-13.2266742923612,-13.2160179088168,-13.2482584611565,-13.2156319199566,-13.2142410663192,-13.2614879104088,-13.2452992638476,-13.2630592726116,-13.2343341712241,-13.2199077448676,-13.2227293309912,-13.2343062806506,-13.218781651651,-13.2483677722899,-13.2097478342339,-13.2680867723786,-13.2587535457526,-13.262635786914,-13.2697246824573,-13.2209026809759,-13.2330734719715,-13.2680923666905,-13.2547212675054,-13.2573683214693,-13.2137356012883,-13.2175973322257,-13.2486407324245],[8.46897295100924,8.45171855856465,8.46481700596819,8.4754761613651,8.46082377490923,8.46183062600728,8.46272931462646,8.46144367534271,8.46191259217774,8.47292327643506,8.48401630165138,8.45837125340844,8.47761705512509,8.47570184950483,8.47779946878972,8.47145134147474,8.47804840685363,8.48528034195779,8.46957530395867,8.45957352078114,8.47404889511544,8.48802917129884,8.473437335922,8.48408263734462,8.46242233645879,8.47026822126572,8.46398447480533,8.4641347894342,8.45623094629607,8.48334624336805,8.47493999153642,8.47832062438022,8.4693933891765,8.48480589906514,8.47121232619015,8.48438437371817,8.48466158574339,8.47714159984428,8.46238127010609,8.45568597813113,8.4632880274758,8.47940722413856,8.46353857052336,8.46178968158864,8.47508713872833,8.45825808128071,8.4532568143863,8.4732571907655,8.47911586641933,8.48480340615605],["f547d6",null,null,"f90f5f","11f8ea","aec8ec","893f25","133ee7",null,null,"996f3a","133ee7","37a6f6","9f6884","4802b1",null,null,null,"a75c7f","8e104d","ab634e",null,null,"b799eb",null,"5d9e4d","a15e13",null,"ea3740","beb26e","567136","894024","36e2e7","a2086d","7baf73","eb2277",null,null,"d6584f",null,"312ecf","52ea64","cfd79c","d145b7","174288",null,"53608c","3b096b","f5c142",null],["other",null,null,"other","other","other","other","other",null,null,"other","other","other","other","other",null,null,null,"other","other","other",null,null,"other",null,"other","other",null,"other","funeral","other","funeral","other","other","other","funeral",null,null,"other",null,"other","other","other","other","other",null,"funeral","other","other",null],[27,25,91,41,36,56,47,0,86,69,67,84,68,44,34,66,78,47,53,47,71,86,53,69,38,46,68,37,100,56,50,57,65,72,29,69,37,48,54,71,47,61,47,35,53,16,13,59,69,67],[48,59,238,135,71,116,87,11,226,174,112,186,174,90,91,152,214,137,117,131,150,241,131,161,80,69,188,66,233,142,110,182,164,214,26,157,39,154,133,168,100,125,123,67,134,31,36,125,183,169],[22,22,21,23,23,21,21,22,22,22,22,22,22,21,23,22,23,21,22,23,21,23,21,24,23,22,24,23,20,24,24,20,24,21,22,21,23,22,23,23,23,22,23,22,22,22,23,22,22,22],["no",null,null,"no","no","no",null,"no","no","no","no","no","no","no","no","no","no","no",null,"no","no","no","no","no",null,"no","no","no",null,null,"no","no",null,"no","no",null,null,"no","no",null,"no","no",null,"no","no","no","no","no","no",null],["no",null,null,"no","no","no",null,"no","no","no","no","no","no","no","no","no","yes","no",null,"no","no","no","yes","no",null,"no","no","yes",null,null,"no","no",null,"no","no",null,null,"no","no",null,"no","no",null,"no","yes","no","no","no","no",null],["yes",null,null,"no","yes","yes",null,"yes","yes","yes","yes","yes","yes","yes","yes","yes","yes","yes",null,"yes","yes","yes","yes","yes",null,"yes","yes","yes",null,null,"yes","yes",null,"yes","yes",null,null,"yes","yes",null,"yes","yes",null,"yes","yes","yes","yes","yes","no",null],["no",null,null,"no","no","no",null,"no","no","no","no","no","no","no","no","yes","no","no",null,"no","no","no","no","no",null,"no","no","no",null,null,"no","no",null,"no","no",null,null,"yes","yes",null,"no","no",null,"no","no","no","no","no","no",null],["yes",null,null,"no","yes","yes",null,"yes","yes","no","yes","no","no","no","yes","no","no","no",null,"no","yes","no","no","no",null,"no","no","no",null,null,"no","yes",null,"yes","yes",null,null,"yes","yes",null,"yes","yes",null,"yes","yes","no","yes","yes","yes",null],[36.8,36.9,36.9,36.8,36.9,37.6,37.3,37,36.4,35.9,36.5,36.9,36.5,37.1,36.5,37.3,37,38,38,36,37,36.7,36.9,36.5,37,36.5,37.6,36.6,36.6,36.2,36.4,37.1,37.5,37.5,37.4,36.9,36.4,37.3,37,37.8,36.5,37.5,36.7,37,37.3,36.6,36.5,36.6,37.6,36.8],[null,"09:36","16:48","11:22","12:60","14:13","14:33","09:25","11:16","10:55","16:03","11:14","12:42","11:06","09:10","08:45",null,"15:41","13:34","18:58","12:43","16:33","14:29","07:18","08:11","16:32","16:17","07:32","17:45",null,"13:24","14:43","02:33","11:36","17:28","16:27",null,"20:49",null,"11:38","14:25","13:42","21:22","13:33","19:06","17:14","20:09",null,"10:23","09:09"],[117.1875,71.8184429761563,16.0652496292635,22.4965706447188,71.4144019043841,41.6171224732461,62.0953890870657,0,16.8376536925366,22.7903289734443,53.4119897959184,24.2802636142907,22.4600343506408,54.320987654321,41.0578432556455,28.5664819944598,17.0320552013276,25.0412914912888,38.7172182043977,27.3876813705495,31.5555555555556,14.8069075945662,30.8839811199813,26.6193433895297,59.375,96.6183574879227,19.2394748755093,84.9403122130395,18.4199377406104,27.7722674072605,41.3223140495868,17.2080666586161,24.1671624033314,15.7218971089178,428.994082840237,27.9930220292912,243.261012491782,20.2395007589813,30.527446435638,25.15589569161,47,39.04,31.0661643201798,77.9683671196257,29.5165961238583,166.493236212279,100.308641975309,37.76,20.6037803457852,23.458562375267],[2,1,2,2,1,1,2,1,1,2,2,2,1,0,2,0,1,1,2,2,1,1,1,0,2,1,1,2,1,0,0,2,1,1,2,2,1,0,2,2,0,2,0,0,2,2,null,1,0,1]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>case_id<\/th>\n      <th>generation<\/th>\n      <th>date_infection<\/th>\n      <th>date_onset<\/th>\n      <th>date_hospitalisation<\/th>\n      <th>date_outcome<\/th>\n      <th>outcome<\/th>\n      <th>gender<\/th>\n      <th>age<\/th>\n      <th>age_unit<\/th>\n      <th>age_years<\/th>\n      <th>age_cat<\/th>\n      <th>age_cat5<\/th>\n      <th>hospital<\/th>\n      <th>lon<\/th>\n      <th>lat<\/th>\n      <th>infector<\/th>\n      <th>source<\/th>\n      <th>wt_kg<\/th>\n      <th>ht_cm<\/th>\n      <th>ct_blood<\/th>\n      <th>fever<\/th>\n      <th>chills<\/th>\n      <th>cough<\/th>\n      <th>aches<\/th>\n      <th>vomit<\/th>\n      <th>temp<\/th>\n      <th>time_admission<\/th>\n      <th>bmi<\/th>\n      <th>days_onset_hosp<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[1,8,10,14,15,18,19,20,26,28,29]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="làm-sạch-số-liệu" class="section level3 unnumbered">
 <h3>Làm sạch số liệu<a class="anchor" aria-label="anchor" href="#l%C3%A0m-s%E1%BA%A1ch-s%E1%BB%91-li%E1%BB%87u"><i class="fas fa-link"></i></a>
@@ -440,8 +432,8 @@
   <span class="fu">tidy</span><span class="op">(</span>exponentiate <span class="op">=</span> <span class="cn">TRUE</span>, conf.int <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span>        <span class="co"># exponentiate and produce CIs</span>
   <span class="fu">mutate</span><span class="op">(</span><span class="fu">across</span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>, <span class="va">round</span>, digits <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span>  <span class="co"># round all numeric columns</span></code></pre></div>
 <p>Bên dưới là bảng kết quả đầu ra của <code>model</code>:</p>
-<div id="htmlwidget-c9730f4210045be79cef" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c9730f4210045be79cef">{"x":{"filter":"none","vertical":false,"data":[["(Intercept)","age_cat5-9","age_cat10-14","age_cat15-19","age_cat20-29","age_cat30-49","age_cat50-69","age_cat70+"],[1.26,0.94,1.15,0.99,1.03,1.07,0.68,0.53],[0.07,0.1,0.11,0.11,0.1,0.11,0.26,0.92],[3.21,-0.62,1.29,-0.05,0.27,0.56,-1.5,-0.7],[0,0.54,0.2,0.96,0.79,0.58,0.13,0.49],[1.1,0.77,0.93,0.8,0.84,0.85,0.41,0.07],[1.46,1.15,1.42,1.24,1.26,1.33,1.13,3.2]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>term<\/th>\n      <th>estimate<\/th>\n      <th>std.error<\/th>\n      <th>statistic<\/th>\n      <th>p.value<\/th>\n      <th>conf.low<\/th>\n      <th>conf.high<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":8,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5,6]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[8,10,25,50,100]}},"evals":[],"jsHooks":[]}</script><ol start="2" style="list-style-type: decimal">
+<div id="htmlwidget-56fe3a5a7190bc2f178a" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-56fe3a5a7190bc2f178a">{"x":{"filter":"none","data":[["(Intercept)","age_cat5-9","age_cat10-14","age_cat15-19","age_cat20-29","age_cat30-49","age_cat50-69","age_cat70+"],[1.26,0.94,1.15,0.99,1.03,1.07,0.68,0.53],[0.07,0.1,0.11,0.11,0.1,0.11,0.26,0.92],[3.21,-0.62,1.29,-0.05,0.27,0.56,-1.5,-0.7],[0,0.54,0.2,0.96,0.79,0.58,0.13,0.49],[1.1,0.77,0.93,0.8,0.84,0.85,0.41,0.07],[1.46,1.15,1.42,1.24,1.26,1.33,1.13,3.2]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>term<\/th>\n      <th>estimate<\/th>\n      <th>std.error<\/th>\n      <th>statistic<\/th>\n      <th>p.value<\/th>\n      <th>conf.low<\/th>\n      <th>conf.high<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":8,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5,6]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[8,10,25,50,100]}},"evals":[],"jsHooks":[]}</script><ol start="2" style="list-style-type: decimal">
 <li>Kết hợp các kết quả của mô hình vào trong một bảng đếm. Dưới đây, chúng tôi tạo một bảng đếm bằng hàm <code>tabyl()</code> từ package <strong>janitor</strong>, như được đề cập trong chương <a href="tables-descriptive.html#tables-descriptive">Bảng mô tả</a>.</li>
 </ol>
 <div class="sourceCode" id="cb978"><pre class="downlit sourceCode r">
@@ -458,8 +450,8 @@
 <!--   pivot_wider(names_from = outcome, values_from = n)    ## spread data to wide format (as in cross-tabulation) -->
 <!-- ``` -->
 <p>Đây là cách mà bảng <code>counts_table</code> được hiển thị:</p>
-<div id="htmlwidget-f6b02e8ae5a6beafd09c" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f6b02e8ae5a6beafd09c">{"x":{"filter":"none","vertical":false,"data":[["0-4","5-9","10-14","15-19","20-29","30-49","50-69","70+"],[338,365,273,238,345,228,35,3],[427,433,396,299,448,307,30,2]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>age_cat<\/th>\n      <th>0<\/th>\n      <th>1<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":8,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[1,2]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[8,10,25,50,100]}},"evals":[],"jsHooks":[]}</script><p>Bây giờ chúng ta có thể nối bảng <code>counts_table</code> và kết quả của mô hình <code>model</code> lại với nhau theo chiều ngang bằng hàm nối cột <code>bind_cols()</code> (<strong>dplyr</strong>). Hãy nhớ rằng đối với hàm <code>bind_cols()</code> các hàng trong hai cấu trúc dữ liệu trên phải được căn chỉnh hoàn hảo. Trong đoạn code này, bởi vì chúng ta đang thực hiện một chuỗi các thuật toán pipe, chúng ta sử dụng dấu <code>.</code> để đại diện cho đối tượng được nối trong bảng đếm <code>counts_table</code> khi chúng tôi nối nó với kết quả mô hình <code>model</code>. Để kết thúc quy trình này, chúng ta sử dụng hàm <code>select()</code> để chọn các cột mong muốn và thứ tự của nó, và cuối cùng áp dụng hàm <code><a href="https://rdrr.io/r/base/Round.html">round()</a></code> trong <strong>base</strong> R để làm tròn với hai chữ số thập phân cho tất cả các cột.</p>
+<div id="htmlwidget-2d21118927cfce7dd4d6" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2d21118927cfce7dd4d6">{"x":{"filter":"none","data":[["0-4","5-9","10-14","15-19","20-29","30-49","50-69","70+"],[338,365,273,238,345,228,35,3],[427,433,396,299,448,307,30,2]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>age_cat<\/th>\n      <th>0<\/th>\n      <th>1<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":8,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[1,2]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[8,10,25,50,100]}},"evals":[],"jsHooks":[]}</script><p>Bây giờ chúng ta có thể nối bảng <code>counts_table</code> và kết quả của mô hình <code>model</code> lại với nhau theo chiều ngang bằng hàm nối cột <code>bind_cols()</code> (<strong>dplyr</strong>). Hãy nhớ rằng đối với hàm <code>bind_cols()</code> các hàng trong hai cấu trúc dữ liệu trên phải được căn chỉnh hoàn hảo. Trong đoạn code này, bởi vì chúng ta đang thực hiện một chuỗi các thuật toán pipe, chúng ta sử dụng dấu <code>.</code> để đại diện cho đối tượng được nối trong bảng đếm <code>counts_table</code> khi chúng tôi nối nó với kết quả mô hình <code>model</code>. Để kết thúc quy trình này, chúng ta sử dụng hàm <code>select()</code> để chọn các cột mong muốn và thứ tự của nó, và cuối cùng áp dụng hàm <code><a href="https://rdrr.io/r/base/Round.html">round()</a></code> trong <strong>base</strong> R để làm tròn với hai chữ số thập phân cho tất cả các cột.</p>
 <div class="sourceCode" id="cb979"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">combined</span> <span class="op">&lt;-</span> <span class="va">counts_table</span> <span class="op">%&gt;%</span>           <span class="co"># begin with table of counts</span>
   <span class="fu">bind_cols</span><span class="op">(</span><span class="va">.</span>, <span class="va">model</span><span class="op">)</span> <span class="op">%&gt;%</span>              <span class="co"># combine with the outputs of the regression </span>
@@ -512,8 +504,8 @@
   <span class="co"># round all numeric columns</span>
   <span class="fu">mutate</span><span class="op">(</span><span class="fu">across</span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>, <span class="va">round</span>, digits <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>Lúc này, kết quả xuất ra của <code>models</code> dài hơn bởi vì kết quả bây giờ bao gồm các kết quả đầu ra của một số hồi quy đơn biến. Nhấp nút tiếp theo để xem tất cả các hàng của <code>model</code>.</p>
-<div id="htmlwidget-c1ece69a8b1334a92343" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c1ece69a8b1334a92343">{"x":{"filter":"none","vertical":false,"data":[["(Intercept)","gender","(Intercept)","fever","(Intercept)","chills","(Intercept)","cough","(Intercept)","aches","(Intercept)","vomit","(Intercept)","age_cat5-9","age_cat10-14","age_cat15-19","age_cat20-29","age_cat30-49","age_cat50-69","age_cat70+"],[1.28,1,1.28,1,1.28,1.03,1.14,1.15,1.29,0.93,1.23,1.09,1.26,0.94,1.15,0.99,1.03,1.07,0.68,0.53],[0.04,0.06,0.07,0.08,0.03,0.08,0.08,0.09,0.03,0.1,0.04,0.06,0.07,0.1,0.11,0.11,0.1,0.11,0.26,0.92],[5.67,-0.04,3.44,0.01,6.98,0.41,1.53,1.58,7.78,-0.66,4.67,1.39,3.21,-0.62,1.29,-0.05,0.27,0.56,-1.5,-0.7],[0,0.97,0,0.99,0,0.68,0.13,0.11,0,0.51,0,0.17,0,0.54,0.2,0.96,0.79,0.58,0.13,0.49],[1.18,0.88,1.11,0.85,1.19,0.89,0.97,0.97,1.21,0.76,1.13,0.96,1.1,0.77,0.93,0.8,0.84,0.85,0.41,0.07],[1.4,1.13,1.48,1.17,1.37,1.21,1.34,1.37,1.38,1.14,1.34,1.23,1.46,1.15,1.42,1.24,1.26,1.33,1.13,3.2]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>term<\/th>\n      <th>estimate<\/th>\n      <th>std.error<\/th>\n      <th>statistic<\/th>\n      <th>p.value<\/th>\n      <th>conf.low<\/th>\n      <th>conf.high<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5,6]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script><p>Như lúc trước, chúng ta có thể tạo một bảng đếm từ bộ số liệu <code>linelist</code> cho mỗi biến giải thích, gắn chúng với <code>models</code>, và tạo ra một bảng đẹp. Chúng ta bắt đầu với các biến giải thích này, và lặp lại các biến này thông qua hàm <code>map()</code>. Chúng ta lặp lại qua một hàm do người dùng tạo ra mà liên quan đến việc tạo ra một bảng đếm bằng cách dùng các hàm trong package <strong>dplyr</strong> Sau đó, kết quả được kết nối trình tự với kết quả của mô hình <code>models</code>.</p>
+<div id="htmlwidget-2d6bdb56d03b92247e87" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2d6bdb56d03b92247e87">{"x":{"filter":"none","data":[["(Intercept)","gender","(Intercept)","fever","(Intercept)","chills","(Intercept)","cough","(Intercept)","aches","(Intercept)","vomit","(Intercept)","age_cat5-9","age_cat10-14","age_cat15-19","age_cat20-29","age_cat30-49","age_cat50-69","age_cat70+"],[1.28,1,1.28,1,1.28,1.03,1.14,1.15,1.29,0.93,1.23,1.09,1.26,0.94,1.15,0.99,1.03,1.07,0.68,0.53],[0.04,0.06,0.07,0.08,0.03,0.08,0.08,0.09,0.03,0.1,0.04,0.06,0.07,0.1,0.11,0.11,0.1,0.11,0.26,0.92],[5.67,-0.04,3.44,0.01,6.98,0.41,1.53,1.58,7.78,-0.66,4.67,1.39,3.21,-0.62,1.29,-0.05,0.27,0.56,-1.5,-0.7],[0,0.97,0,0.99,0,0.68,0.13,0.11,0,0.51,0,0.17,0,0.54,0.2,0.96,0.79,0.58,0.13,0.49],[1.18,0.88,1.11,0.85,1.19,0.89,0.97,0.97,1.21,0.76,1.13,0.96,1.1,0.77,0.93,0.8,0.84,0.85,0.41,0.07],[1.4,1.13,1.48,1.17,1.37,1.21,1.34,1.37,1.38,1.14,1.34,1.23,1.46,1.15,1.42,1.24,1.26,1.33,1.13,3.2]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>term<\/th>\n      <th>estimate<\/th>\n      <th>std.error<\/th>\n      <th>statistic<\/th>\n      <th>p.value<\/th>\n      <th>conf.low<\/th>\n      <th>conf.high<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5,6]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script><p>Như lúc trước, chúng ta có thể tạo một bảng đếm từ bộ số liệu <code>linelist</code> cho mỗi biến giải thích, gắn chúng với <code>models</code>, và tạo ra một bảng đẹp. Chúng ta bắt đầu với các biến giải thích này, và lặp lại các biến này thông qua hàm <code>map()</code>. Chúng ta lặp lại qua một hàm do người dùng tạo ra mà liên quan đến việc tạo ra một bảng đếm bằng cách dùng các hàm trong package <strong>dplyr</strong> Sau đó, kết quả được kết nối trình tự với kết quả của mô hình <code>models</code>.</p>
 <div class="sourceCode" id="cb984"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## for each explanatory variable</span>
 <span class="va">univ_tab_base</span> <span class="op">&lt;-</span> <span class="va">explanatory_vars</span> <span class="op">%&gt;%</span> 
@@ -541,8 +533,8 @@
   <span class="co">## round decimal places</span>
   <span class="fu">mutate</span><span class="op">(</span><span class="fu">across</span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>, <span class="va">round</span>, digits <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>Bên dưới là cấu trúc số liệu kết nối được tạo ra. Xem chương <a href="tables-presentation.html#tables-presentation">Trình bày bảng</a> để có thêm ý tưởng về cách chuyển đổi bảng số liệu này thành một bảng đẹp trên HTML (ví dụ như với package <strong>flextable</strong>).</p>
-<div id="htmlwidget-d80806cfa81bdd3bcdd3" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d80806cfa81bdd3bcdd3">{"x":{"filter":"none","vertical":false,"data":[["(Intercept)","gender","(Intercept)","fever","(Intercept)","chills","(Intercept)","cough","(Intercept)","aches","(Intercept)","vomit","(Intercept)","age_cat5-9","age_cat10-14","age_cat15-19","age_cat20-29","age_cat30-49","age_cat50-69","age_cat70+"],[909,916,340,1485,1472,353,272,1553,1636,189,931,894,338,365,273,238,345,228,35,3],[1168,1174,436,1906,1877,465,309,2033,2114,228,1144,1198,427,433,396,299,448,307,30,2],[1.28,1,1.28,1,1.28,1.03,1.14,1.15,1.29,0.93,1.23,1.09,1.26,0.94,1.15,0.99,1.03,1.07,0.68,0.53],[1.18,0.88,1.11,0.85,1.19,0.89,0.97,0.97,1.21,0.76,1.13,0.96,1.1,0.77,0.93,0.8,0.84,0.85,0.41,0.07],[1.4,1.13,1.48,1.17,1.37,1.21,1.34,1.37,1.38,1.14,1.34,1.23,1.46,1.15,1.42,1.24,1.26,1.33,1.13,3.2],[0,0.97,0,0.99,0,0.68,0.13,0.11,0,0.51,0,0.17,0,0.54,0.2,0.96,0.79,0.58,0.13,0.49]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>term<\/th>\n      <th>0<\/th>\n      <th>1<\/th>\n      <th>estimate<\/th>\n      <th>conf.low<\/th>\n      <th>conf.high<\/th>\n      <th>p.value<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5,6]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script><!-- ======================================================= -->
+<div id="htmlwidget-ea294522dd22d6cf2123" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ea294522dd22d6cf2123">{"x":{"filter":"none","data":[["(Intercept)","gender","(Intercept)","fever","(Intercept)","chills","(Intercept)","cough","(Intercept)","aches","(Intercept)","vomit","(Intercept)","age_cat5-9","age_cat10-14","age_cat15-19","age_cat20-29","age_cat30-49","age_cat50-69","age_cat70+"],[909,916,340,1485,1472,353,272,1553,1636,189,931,894,338,365,273,238,345,228,35,3],[1168,1174,436,1906,1877,465,309,2033,2114,228,1144,1198,427,433,396,299,448,307,30,2],[1.28,1,1.28,1,1.28,1.03,1.14,1.15,1.29,0.93,1.23,1.09,1.26,0.94,1.15,0.99,1.03,1.07,0.68,0.53],[1.18,0.88,1.11,0.85,1.19,0.89,0.97,0.97,1.21,0.76,1.13,0.96,1.1,0.77,0.93,0.8,0.84,0.85,0.41,0.07],[1.4,1.13,1.48,1.17,1.37,1.21,1.34,1.37,1.38,1.14,1.34,1.23,1.46,1.15,1.42,1.24,1.26,1.33,1.13,3.2],[0,0.97,0,0.99,0,0.68,0.13,0.11,0,0.51,0,0.17,0,0.54,0.2,0.96,0.79,0.58,0.13,0.49]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>term<\/th>\n      <th>0<\/th>\n      <th>1<\/th>\n      <th>estimate<\/th>\n      <th>conf.low<\/th>\n      <th>conf.high<\/th>\n      <th>p.value<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5,6]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script><!-- ======================================================= -->
 </div>
 </div>
 <div id="reg_gt_uni" class="section level3 unnumbered">
@@ -566,12 +558,11 @@
 
 <span class="co">## view univariate results table </span>
 <span class="va">univ_tab</span></code></pre></div>
-<div id="avtlldlmha" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#avtlldlmha .gt_table {
+#yqbkzozcjp .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -596,7 +587,7 @@
   border-left-color: #D3D3D3;
 }
 
-#avtlldlmha .gt_heading {
+#yqbkzozcjp .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -608,7 +599,7 @@
   border-right-color: #D3D3D3;
 }
 
-#avtlldlmha .gt_title {
+#yqbkzozcjp .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -618,23 +609,23 @@
   border-bottom-width: 0;
 }
 
-#avtlldlmha .gt_subtitle {
+#yqbkzozcjp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
   padding-top: 0;
-  padding-bottom: 6px;
+  padding-bottom: 4px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
 
-#avtlldlmha .gt_bottom_border {
+#yqbkzozcjp .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#avtlldlmha .gt_col_headings {
+#yqbkzozcjp .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -649,7 +640,7 @@
   border-right-color: #D3D3D3;
 }
 
-#avtlldlmha .gt_col_heading {
+#yqbkzozcjp .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -669,7 +660,7 @@
   overflow-x: hidden;
 }
 
-#avtlldlmha .gt_column_spanner_outer {
+#yqbkzozcjp .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -681,27 +672,27 @@
   padding-right: 4px;
 }
 
-#avtlldlmha .gt_column_spanner_outer:first-child {
+#yqbkzozcjp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#avtlldlmha .gt_column_spanner_outer:last-child {
+#yqbkzozcjp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#avtlldlmha .gt_column_spanner {
+#yqbkzozcjp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
   vertical-align: bottom;
   padding-top: 5px;
-  padding-bottom: 5px;
+  padding-bottom: 6px;
   overflow-x: hidden;
   display: inline-block;
   width: 100%;
 }
 
-#avtlldlmha .gt_group_heading {
+#yqbkzozcjp .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -723,7 +714,7 @@
   vertical-align: middle;
 }
 
-#avtlldlmha .gt_empty_group_heading {
+#yqbkzozcjp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -738,15 +729,15 @@
   vertical-align: middle;
 }
 
-#avtlldlmha .gt_from_md > :first-child {
+#yqbkzozcjp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#avtlldlmha .gt_from_md > :last-child {
+#yqbkzozcjp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#avtlldlmha .gt_row {
+#yqbkzozcjp .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -765,7 +756,7 @@
   overflow-x: hidden;
 }
 
-#avtlldlmha .gt_stub {
+#yqbkzozcjp .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -777,7 +768,7 @@
   padding-left: 12px;
 }
 
-#avtlldlmha .gt_summary_row {
+#yqbkzozcjp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -787,7 +778,7 @@
   padding-right: 5px;
 }
 
-#avtlldlmha .gt_first_summary_row {
+#yqbkzozcjp .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -797,7 +788,7 @@
   border-top-color: #D3D3D3;
 }
 
-#avtlldlmha .gt_grand_summary_row {
+#yqbkzozcjp .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -807,7 +798,7 @@
   padding-right: 5px;
 }
 
-#avtlldlmha .gt_first_grand_summary_row {
+#yqbkzozcjp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -817,11 +808,11 @@
   border-top-color: #D3D3D3;
 }
 
-#avtlldlmha .gt_striped {
+#yqbkzozcjp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#avtlldlmha .gt_table_body {
+#yqbkzozcjp .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -830,7 +821,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#avtlldlmha .gt_footnotes {
+#yqbkzozcjp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -844,13 +835,13 @@
   border-right-color: #D3D3D3;
 }
 
-#avtlldlmha .gt_footnote {
+#yqbkzozcjp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#avtlldlmha .gt_sourcenotes {
+#yqbkzozcjp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -864,47 +855,46 @@
   border-right-color: #D3D3D3;
 }
 
-#avtlldlmha .gt_sourcenote {
+#yqbkzozcjp .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#avtlldlmha .gt_left {
+#yqbkzozcjp .gt_left {
   text-align: left;
 }
 
-#avtlldlmha .gt_center {
+#yqbkzozcjp .gt_center {
   text-align: center;
 }
 
-#avtlldlmha .gt_right {
+#yqbkzozcjp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#avtlldlmha .gt_font_normal {
+#yqbkzozcjp .gt_font_normal {
   font-weight: normal;
 }
 
-#avtlldlmha .gt_font_bold {
+#yqbkzozcjp .gt_font_bold {
   font-weight: bold;
 }
 
-#avtlldlmha .gt_font_italic {
+#yqbkzozcjp .gt_font_italic {
   font-style: italic;
 }
 
-#avtlldlmha .gt_super {
+#yqbkzozcjp .gt_super {
   font-size: 65%;
 }
 
-#avtlldlmha .gt_footnote_marks {
+#yqbkzozcjp .gt_footnote_marks {
   font-style: italic;
-  font-weight: normal;
   font-size: 65%;
 }
 </style>
-<div class="inline-table"><table class="gt_table">
+<div id="yqbkzozcjp" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><div class="inline-table"><table class="gt_table">
 <thead class="gt_col_headings"><tr>
 <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"><strong>Characteristic</strong></th>
       <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>N</strong></th>
@@ -919,109 +909,109 @@
 <tbody class="gt_table_body">
 <tr>
 <td class="gt_row gt_left">gender</td>
-<td class="gt_row gt_center">4167</td>
-<td class="gt_row gt_center">1.00</td>
-<td class="gt_row gt_center">0.88, 1.13</td>
-<td class="gt_row gt_center">&gt;0.9</td>
-</tr>
+      <td class="gt_row gt_center">4,167</td>
+      <td class="gt_row gt_center">1.00</td>
+      <td class="gt_row gt_center">0.88, 1.13</td>
+      <td class="gt_row gt_center">&gt;0.9</td>
+    </tr>
 <tr>
 <td class="gt_row gt_left">fever</td>
-<td class="gt_row gt_center">4167</td>
-<td class="gt_row gt_center">1.00</td>
-<td class="gt_row gt_center">0.85, 1.17</td>
-<td class="gt_row gt_center">&gt;0.9</td>
-</tr>
+      <td class="gt_row gt_center">4,167</td>
+      <td class="gt_row gt_center">1.00</td>
+      <td class="gt_row gt_center">0.85, 1.17</td>
+      <td class="gt_row gt_center">&gt;0.9</td>
+    </tr>
 <tr>
 <td class="gt_row gt_left">chills</td>
-<td class="gt_row gt_center">4167</td>
-<td class="gt_row gt_center">1.03</td>
-<td class="gt_row gt_center">0.89, 1.21</td>
-<td class="gt_row gt_center">0.7</td>
-</tr>
+      <td class="gt_row gt_center">4,167</td>
+      <td class="gt_row gt_center">1.03</td>
+      <td class="gt_row gt_center">0.89, 1.21</td>
+      <td class="gt_row gt_center">0.7</td>
+    </tr>
 <tr>
 <td class="gt_row gt_left">cough</td>
-<td class="gt_row gt_center">4167</td>
-<td class="gt_row gt_center">1.15</td>
-<td class="gt_row gt_center">0.97, 1.37</td>
-<td class="gt_row gt_center">0.11</td>
-</tr>
+      <td class="gt_row gt_center">4,167</td>
+      <td class="gt_row gt_center">1.15</td>
+      <td class="gt_row gt_center">0.97, 1.37</td>
+      <td class="gt_row gt_center">0.11</td>
+    </tr>
 <tr>
 <td class="gt_row gt_left">aches</td>
-<td class="gt_row gt_center">4167</td>
-<td class="gt_row gt_center">0.93</td>
-<td class="gt_row gt_center">0.76, 1.14</td>
-<td class="gt_row gt_center">0.5</td>
-</tr>
+      <td class="gt_row gt_center">4,167</td>
+      <td class="gt_row gt_center">0.93</td>
+      <td class="gt_row gt_center">0.76, 1.14</td>
+      <td class="gt_row gt_center">0.5</td>
+    </tr>
 <tr>
 <td class="gt_row gt_left">vomit</td>
-<td class="gt_row gt_center">4167</td>
-<td class="gt_row gt_center">1.09</td>
-<td class="gt_row gt_center">0.96, 1.23</td>
-<td class="gt_row gt_center">0.2</td>
-</tr>
+      <td class="gt_row gt_center">4,167</td>
+      <td class="gt_row gt_center">1.09</td>
+      <td class="gt_row gt_center">0.96, 1.23</td>
+      <td class="gt_row gt_center">0.2</td>
+    </tr>
 <tr>
 <td class="gt_row gt_left">age_cat</td>
-<td class="gt_row gt_center">4167</td>
-<td class="gt_row gt_center"></td>
-<td class="gt_row gt_center"></td>
-<td class="gt_row gt_center"></td>
-</tr>
+      <td class="gt_row gt_center">4,167</td>
+      <td class="gt_row gt_center"></td>
+      <td class="gt_row gt_center"></td>
+      <td class="gt_row gt_center"></td>
+    </tr>
 <tr>
 <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">0-4</td>
-<td class="gt_row gt_center"></td>
-<td class="gt_row gt_center">—</td>
-<td class="gt_row gt_center">—</td>
-<td class="gt_row gt_center"></td>
-</tr>
+      <td class="gt_row gt_center"></td>
+      <td class="gt_row gt_center">—</td>
+      <td class="gt_row gt_center">—</td>
+      <td class="gt_row gt_center"></td>
+    </tr>
 <tr>
 <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">5-9</td>
-<td class="gt_row gt_center"></td>
-<td class="gt_row gt_center">0.94</td>
-<td class="gt_row gt_center">0.77, 1.15</td>
-<td class="gt_row gt_center">0.5</td>
-</tr>
+      <td class="gt_row gt_center"></td>
+      <td class="gt_row gt_center">0.94</td>
+      <td class="gt_row gt_center">0.77, 1.15</td>
+      <td class="gt_row gt_center">0.5</td>
+    </tr>
 <tr>
 <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">10-14</td>
-<td class="gt_row gt_center"></td>
-<td class="gt_row gt_center">1.15</td>
-<td class="gt_row gt_center">0.93, 1.42</td>
-<td class="gt_row gt_center">0.2</td>
-</tr>
+      <td class="gt_row gt_center"></td>
+      <td class="gt_row gt_center">1.15</td>
+      <td class="gt_row gt_center">0.93, 1.42</td>
+      <td class="gt_row gt_center">0.2</td>
+    </tr>
 <tr>
 <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">15-19</td>
-<td class="gt_row gt_center"></td>
-<td class="gt_row gt_center">0.99</td>
-<td class="gt_row gt_center">0.80, 1.24</td>
-<td class="gt_row gt_center">&gt;0.9</td>
-</tr>
+      <td class="gt_row gt_center"></td>
+      <td class="gt_row gt_center">0.99</td>
+      <td class="gt_row gt_center">0.80, 1.24</td>
+      <td class="gt_row gt_center">&gt;0.9</td>
+    </tr>
 <tr>
 <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">20-29</td>
-<td class="gt_row gt_center"></td>
-<td class="gt_row gt_center">1.03</td>
-<td class="gt_row gt_center">0.84, 1.26</td>
-<td class="gt_row gt_center">0.8</td>
-</tr>
+      <td class="gt_row gt_center"></td>
+      <td class="gt_row gt_center">1.03</td>
+      <td class="gt_row gt_center">0.84, 1.26</td>
+      <td class="gt_row gt_center">0.8</td>
+    </tr>
 <tr>
 <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">30-49</td>
-<td class="gt_row gt_center"></td>
-<td class="gt_row gt_center">1.07</td>
-<td class="gt_row gt_center">0.85, 1.33</td>
-<td class="gt_row gt_center">0.6</td>
-</tr>
+      <td class="gt_row gt_center"></td>
+      <td class="gt_row gt_center">1.07</td>
+      <td class="gt_row gt_center">0.85, 1.33</td>
+      <td class="gt_row gt_center">0.6</td>
+    </tr>
 <tr>
 <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">50-69</td>
-<td class="gt_row gt_center"></td>
-<td class="gt_row gt_center">0.68</td>
-<td class="gt_row gt_center">0.41, 1.13</td>
-<td class="gt_row gt_center">0.13</td>
-</tr>
+      <td class="gt_row gt_center"></td>
+      <td class="gt_row gt_center">0.68</td>
+      <td class="gt_row gt_center">0.41, 1.13</td>
+      <td class="gt_row gt_center">0.13</td>
+    </tr>
 <tr>
 <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">70+</td>
-<td class="gt_row gt_center"></td>
-<td class="gt_row gt_center">0.53</td>
-<td class="gt_row gt_center">0.07, 3.20</td>
-<td class="gt_row gt_center">0.5</td>
-</tr>
+      <td class="gt_row gt_center"></td>
+      <td class="gt_row gt_center">0.53</td>
+      <td class="gt_row gt_center">0.07, 3.20</td>
+      <td class="gt_row gt_center">0.5</td>
+    </tr>
 </tbody>
 <tfoot><tr class="gt_footnotes">
 <td colspan="5">
@@ -1033,8 +1023,7 @@
           <br></p>
       </td>
     </tr></tfoot>
-</table></div>
-</div>
+</table></div></div>
 <p>Chúng ta có thể sửa đổi đối với kết quả đầu ra của bảng này, ví dụ như điều chỉnh các nhãn, tô đậm các hàng theo giá trị p, .v.v. Xem hướng dẫn <a href="http://www.danieldsjoberg.com/gtsummary/articles/tbl_regression.html">tại đây</a> và các tài liệu trực tuyến khác.</p>
 <!-- ======================================================= -->
 </div>
@@ -1143,8 +1132,8 @@
   <span class="fu">broom</span><span class="fu">::</span><span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span>exponentiate <span class="op">=</span> <span class="cn">TRUE</span>, conf.int <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span>  <span class="co">## get a tidy dataframe of estimates </span>
   <span class="fu">mutate</span><span class="op">(</span><span class="fu">across</span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>, <span class="va">round</span>, digits <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span>          <span class="co">## round </span></code></pre></div>
 <p>Đây là hiển thị kết quả dưới dạng data frame looks:</p>
-<div id="htmlwidget-6d65c50120fcd0a94bd1" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6d65c50120fcd0a94bd1">{"x":{"filter":"none","vertical":false,"data":[["(Intercept)","gender","fever","chills","cough","aches","vomit","age_cat5-9","age_cat10-14","age_cat15-19","age_cat20-29","age_cat30-49","age_cat50-69","age_cat70+"],[1.07,1,1,1.03,1.15,0.93,1.09,0.94,1.15,0.99,1.03,1.06,0.68,0.52],[0.13,0.07,0.08,0.08,0.09,0.1,0.06,0.1,0.11,0.11,0.1,0.12,0.26,0.92],[0.52,0.04,0.05,0.43,1.54,-0.68,1.37,-0.62,1.27,-0.1,0.26,0.51,-1.48,-0.71],[0.6,0.97,0.96,0.67,0.12,0.5,0.17,0.53,0.2,0.92,0.8,0.61,0.14,0.48],[0.83,0.88,0.86,0.89,0.96,0.76,0.96,0.77,0.93,0.79,0.84,0.85,0.4,0.07],[1.39,1.14,1.18,1.21,1.37,1.14,1.23,1.15,1.41,1.24,1.26,1.33,1.13,3.19]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>term<\/th>\n      <th>estimate<\/th>\n      <th>std.error<\/th>\n      <th>statistic<\/th>\n      <th>p.value<\/th>\n      <th>conf.low<\/th>\n      <th>conf.high<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":10,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5,6]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script><!-- ======================================================= -->
+<div id="htmlwidget-edd33670419550e4a244" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-edd33670419550e4a244">{"x":{"filter":"none","data":[["(Intercept)","gender","fever","chills","cough","aches","vomit","age_cat5-9","age_cat10-14","age_cat15-19","age_cat20-29","age_cat30-49","age_cat50-69","age_cat70+"],[1.07,1,1,1.03,1.15,0.93,1.09,0.94,1.15,0.99,1.03,1.06,0.68,0.52],[0.13,0.07,0.08,0.08,0.09,0.1,0.06,0.1,0.11,0.11,0.1,0.12,0.26,0.92],[0.52,0.04,0.05,0.43,1.54,-0.68,1.37,-0.62,1.27,-0.1,0.26,0.51,-1.48,-0.71],[0.6,0.97,0.96,0.67,0.12,0.5,0.17,0.53,0.2,0.92,0.8,0.61,0.14,0.48],[0.83,0.88,0.86,0.89,0.96,0.76,0.96,0.77,0.93,0.79,0.84,0.85,0.4,0.07],[1.39,1.14,1.18,1.21,1.37,1.14,1.23,1.15,1.41,1.24,1.26,1.33,1.13,3.19]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>term<\/th>\n      <th>estimate<\/th>\n      <th>std.error<\/th>\n      <th>statistic<\/th>\n      <th>p.value<\/th>\n      <th>conf.low<\/th>\n      <th>conf.high<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":10,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5,6]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script><!-- ======================================================= -->
 </div>
 </div>
 <div id="gộp-kết-quả-phân-tích-đơn-biến-và-đa-biến" class="section level3 unnumbered">
@@ -1160,12 +1149,11 @@
 <p>Hãy xem bảng sau:</p>
 <div class="sourceCode" id="cb996"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">mv_tab</span></code></pre></div>
-<div id="itfhewfnzb" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#itfhewfnzb .gt_table {
+#fbgihqjqxg .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1190,7 +1178,7 @@
   border-left-color: #D3D3D3;
 }
 
-#itfhewfnzb .gt_heading {
+#fbgihqjqxg .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1202,7 +1190,7 @@
   border-right-color: #D3D3D3;
 }
 
-#itfhewfnzb .gt_title {
+#fbgihqjqxg .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1212,23 +1200,23 @@
   border-bottom-width: 0;
 }
 
-#itfhewfnzb .gt_subtitle {
+#fbgihqjqxg .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
   padding-top: 0;
-  padding-bottom: 6px;
+  padding-bottom: 4px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
 
-#itfhewfnzb .gt_bottom_border {
+#fbgihqjqxg .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#itfhewfnzb .gt_col_headings {
+#fbgihqjqxg .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1243,7 +1231,7 @@
   border-right-color: #D3D3D3;
 }
 
-#itfhewfnzb .gt_col_heading {
+#fbgihqjqxg .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1263,7 +1251,7 @@
   overflow-x: hidden;
 }
 
-#itfhewfnzb .gt_column_spanner_outer {
+#fbgihqjqxg .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1275,27 +1263,27 @@
   padding-right: 4px;
 }
 
-#itfhewfnzb .gt_column_spanner_outer:first-child {
+#fbgihqjqxg .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#itfhewfnzb .gt_column_spanner_outer:last-child {
+#fbgihqjqxg .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#itfhewfnzb .gt_column_spanner {
+#fbgihqjqxg .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
   vertical-align: bottom;
   padding-top: 5px;
-  padding-bottom: 5px;
+  padding-bottom: 6px;
   overflow-x: hidden;
   display: inline-block;
   width: 100%;
 }
 
-#itfhewfnzb .gt_group_heading {
+#fbgihqjqxg .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1317,7 +1305,7 @@
   vertical-align: middle;
 }
 
-#itfhewfnzb .gt_empty_group_heading {
+#fbgihqjqxg .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1332,15 +1320,15 @@
   vertical-align: middle;
 }
 
-#itfhewfnzb .gt_from_md > :first-child {
+#fbgihqjqxg .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#itfhewfnzb .gt_from_md > :last-child {
+#fbgihqjqxg .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#itfhewfnzb .gt_row {
+#fbgihqjqxg .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1359,7 +1347,7 @@
   overflow-x: hidden;
 }
 
-#itfhewfnzb .gt_stub {
+#fbgihqjqxg .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1371,7 +1359,7 @@
   padding-left: 12px;
 }
 
-#itfhewfnzb .gt_summary_row {
+#fbgihqjqxg .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1381,7 +1369,7 @@
   padding-right: 5px;
 }
 
-#itfhewfnzb .gt_first_summary_row {
+#fbgihqjqxg .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1391,7 +1379,7 @@
   border-top-color: #D3D3D3;
 }
 
-#itfhewfnzb .gt_grand_summary_row {
+#fbgihqjqxg .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1401,7 +1389,7 @@
   padding-right: 5px;
 }
 
-#itfhewfnzb .gt_first_grand_summary_row {
+#fbgihqjqxg .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1411,11 +1399,11 @@
   border-top-color: #D3D3D3;
 }
 
-#itfhewfnzb .gt_striped {
+#fbgihqjqxg .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#itfhewfnzb .gt_table_body {
+#fbgihqjqxg .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1424,7 +1412,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#itfhewfnzb .gt_footnotes {
+#fbgihqjqxg .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1438,13 +1426,13 @@
   border-right-color: #D3D3D3;
 }
 
-#itfhewfnzb .gt_footnote {
+#fbgihqjqxg .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#itfhewfnzb .gt_sourcenotes {
+#fbgihqjqxg .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1458,47 +1446,46 @@
   border-right-color: #D3D3D3;
 }
 
-#itfhewfnzb .gt_sourcenote {
+#fbgihqjqxg .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#itfhewfnzb .gt_left {
+#fbgihqjqxg .gt_left {
   text-align: left;
 }
 
-#itfhewfnzb .gt_center {
+#fbgihqjqxg .gt_center {
   text-align: center;
 }
 
-#itfhewfnzb .gt_right {
+#fbgihqjqxg .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#itfhewfnzb .gt_font_normal {
+#fbgihqjqxg .gt_font_normal {
   font-weight: normal;
 }
 
-#itfhewfnzb .gt_font_bold {
+#fbgihqjqxg .gt_font_bold {
   font-weight: bold;
 }
 
-#itfhewfnzb .gt_font_italic {
+#fbgihqjqxg .gt_font_italic {
   font-style: italic;
 }
 
-#itfhewfnzb .gt_super {
+#fbgihqjqxg .gt_super {
   font-size: 65%;
 }
 
-#itfhewfnzb .gt_footnote_marks {
+#fbgihqjqxg .gt_footnote_marks {
   font-style: italic;
-  font-weight: normal;
   font-size: 65%;
 }
 </style>
-<div class="inline-table"><table class="gt_table">
+<div id="fbgihqjqxg" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><div class="inline-table"><table class="gt_table">
 <thead class="gt_col_headings"><tr>
 <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"><strong>Characteristic</strong></th>
       <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">
@@ -1512,94 +1499,94 @@
 <tbody class="gt_table_body">
 <tr>
 <td class="gt_row gt_left">gender</td>
-<td class="gt_row gt_center">1.00</td>
-<td class="gt_row gt_center">0.88, 1.14</td>
-<td class="gt_row gt_center">&gt;0.9</td>
-</tr>
+      <td class="gt_row gt_center">1.00</td>
+      <td class="gt_row gt_center">0.88, 1.14</td>
+      <td class="gt_row gt_center">&gt;0.9</td>
+    </tr>
 <tr>
 <td class="gt_row gt_left">fever</td>
-<td class="gt_row gt_center">1.00</td>
-<td class="gt_row gt_center">0.86, 1.18</td>
-<td class="gt_row gt_center">&gt;0.9</td>
-</tr>
+      <td class="gt_row gt_center">1.00</td>
+      <td class="gt_row gt_center">0.86, 1.18</td>
+      <td class="gt_row gt_center">&gt;0.9</td>
+    </tr>
 <tr>
 <td class="gt_row gt_left">chills</td>
-<td class="gt_row gt_center">1.03</td>
-<td class="gt_row gt_center">0.89, 1.21</td>
-<td class="gt_row gt_center">0.7</td>
-</tr>
+      <td class="gt_row gt_center">1.03</td>
+      <td class="gt_row gt_center">0.89, 1.21</td>
+      <td class="gt_row gt_center">0.7</td>
+    </tr>
 <tr>
 <td class="gt_row gt_left">cough</td>
-<td class="gt_row gt_center">1.15</td>
-<td class="gt_row gt_center">0.96, 1.37</td>
-<td class="gt_row gt_center">0.12</td>
-</tr>
+      <td class="gt_row gt_center">1.15</td>
+      <td class="gt_row gt_center">0.96, 1.37</td>
+      <td class="gt_row gt_center">0.12</td>
+    </tr>
 <tr>
 <td class="gt_row gt_left">aches</td>
-<td class="gt_row gt_center">0.93</td>
-<td class="gt_row gt_center">0.76, 1.14</td>
-<td class="gt_row gt_center">0.5</td>
-</tr>
+      <td class="gt_row gt_center">0.93</td>
+      <td class="gt_row gt_center">0.76, 1.14</td>
+      <td class="gt_row gt_center">0.5</td>
+    </tr>
 <tr>
 <td class="gt_row gt_left">vomit</td>
-<td class="gt_row gt_center">1.09</td>
-<td class="gt_row gt_center">0.96, 1.23</td>
-<td class="gt_row gt_center">0.2</td>
-</tr>
+      <td class="gt_row gt_center">1.09</td>
+      <td class="gt_row gt_center">0.96, 1.23</td>
+      <td class="gt_row gt_center">0.2</td>
+    </tr>
 <tr>
 <td class="gt_row gt_left">age_cat</td>
-<td class="gt_row gt_center"></td>
-<td class="gt_row gt_center"></td>
-<td class="gt_row gt_center"></td>
-</tr>
+      <td class="gt_row gt_center"></td>
+      <td class="gt_row gt_center"></td>
+      <td class="gt_row gt_center"></td>
+    </tr>
 <tr>
 <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">0-4</td>
-<td class="gt_row gt_center">—</td>
-<td class="gt_row gt_center">—</td>
-<td class="gt_row gt_center"></td>
-</tr>
+      <td class="gt_row gt_center">—</td>
+      <td class="gt_row gt_center">—</td>
+      <td class="gt_row gt_center"></td>
+    </tr>
 <tr>
 <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">5-9</td>
-<td class="gt_row gt_center">0.94</td>
-<td class="gt_row gt_center">0.77, 1.15</td>
-<td class="gt_row gt_center">0.5</td>
-</tr>
+      <td class="gt_row gt_center">0.94</td>
+      <td class="gt_row gt_center">0.77, 1.15</td>
+      <td class="gt_row gt_center">0.5</td>
+    </tr>
 <tr>
 <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">10-14</td>
-<td class="gt_row gt_center">1.15</td>
-<td class="gt_row gt_center">0.93, 1.41</td>
-<td class="gt_row gt_center">0.2</td>
-</tr>
+      <td class="gt_row gt_center">1.15</td>
+      <td class="gt_row gt_center">0.93, 1.41</td>
+      <td class="gt_row gt_center">0.2</td>
+    </tr>
 <tr>
 <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">15-19</td>
-<td class="gt_row gt_center">0.99</td>
-<td class="gt_row gt_center">0.79, 1.24</td>
-<td class="gt_row gt_center">&gt;0.9</td>
-</tr>
+      <td class="gt_row gt_center">0.99</td>
+      <td class="gt_row gt_center">0.79, 1.24</td>
+      <td class="gt_row gt_center">&gt;0.9</td>
+    </tr>
 <tr>
 <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">20-29</td>
-<td class="gt_row gt_center">1.03</td>
-<td class="gt_row gt_center">0.84, 1.26</td>
-<td class="gt_row gt_center">0.8</td>
-</tr>
+      <td class="gt_row gt_center">1.03</td>
+      <td class="gt_row gt_center">0.84, 1.26</td>
+      <td class="gt_row gt_center">0.8</td>
+    </tr>
 <tr>
 <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">30-49</td>
-<td class="gt_row gt_center">1.06</td>
-<td class="gt_row gt_center">0.85, 1.33</td>
-<td class="gt_row gt_center">0.6</td>
-</tr>
+      <td class="gt_row gt_center">1.06</td>
+      <td class="gt_row gt_center">0.85, 1.33</td>
+      <td class="gt_row gt_center">0.6</td>
+    </tr>
 <tr>
 <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">50-69</td>
-<td class="gt_row gt_center">0.68</td>
-<td class="gt_row gt_center">0.40, 1.13</td>
-<td class="gt_row gt_center">0.14</td>
-</tr>
+      <td class="gt_row gt_center">0.68</td>
+      <td class="gt_row gt_center">0.40, 1.13</td>
+      <td class="gt_row gt_center">0.14</td>
+    </tr>
 <tr>
 <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">70+</td>
-<td class="gt_row gt_center">0.52</td>
-<td class="gt_row gt_center">0.07, 3.19</td>
-<td class="gt_row gt_center">0.5</td>
-</tr>
+      <td class="gt_row gt_center">0.52</td>
+      <td class="gt_row gt_center">0.07, 3.19</td>
+      <td class="gt_row gt_center">0.5</td>
+    </tr>
 </tbody>
 <tfoot><tr class="gt_footnotes">
 <td colspan="4">
@@ -1611,20 +1598,18 @@
           <br></p>
       </td>
     </tr></tfoot>
-</table></div>
-</div>
+</table></div></div>
 <p>Chúng ta cũng có thể kết hợp một số bảng kết quả đầu ra bằng cách dùng hàm <code>tbl_merge()</code> trong package <strong>gtsummary</strong>. Bây giờ chúng ta hộp các kết quả đa biến với kết quả <em>đơn biến</em> đã được tạo <a href="regression.html#reg_gt_uni">bên trên</a> bằng package <strong>gtsummary</strong>:</p>
 <div class="sourceCode" id="cb997"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## combine with univariate results </span>
 <span class="fu">tbl_merge</span><span class="op">(</span>
   tbls <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">univ_tab</span>, <span class="va">mv_tab</span><span class="op">)</span>,                          <span class="co"># combine</span>
   tab_spanner <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"**Univariate**"</span>, <span class="st">"**Multivariable**"</span><span class="op">)</span><span class="op">)</span> <span class="co"># set header names</span></code></pre></div>
-<div id="gsxnjheymu" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#gsxnjheymu .gt_table {
+#zjspdyaegj .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1649,7 +1634,7 @@
   border-left-color: #D3D3D3;
 }
 
-#gsxnjheymu .gt_heading {
+#zjspdyaegj .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1661,7 +1646,7 @@
   border-right-color: #D3D3D3;
 }
 
-#gsxnjheymu .gt_title {
+#zjspdyaegj .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1671,23 +1656,23 @@
   border-bottom-width: 0;
 }
 
-#gsxnjheymu .gt_subtitle {
+#zjspdyaegj .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
   padding-top: 0;
-  padding-bottom: 6px;
+  padding-bottom: 4px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
 
-#gsxnjheymu .gt_bottom_border {
+#zjspdyaegj .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#gsxnjheymu .gt_col_headings {
+#zjspdyaegj .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1702,7 +1687,7 @@
   border-right-color: #D3D3D3;
 }
 
-#gsxnjheymu .gt_col_heading {
+#zjspdyaegj .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1722,7 +1707,7 @@
   overflow-x: hidden;
 }
 
-#gsxnjheymu .gt_column_spanner_outer {
+#zjspdyaegj .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1734,27 +1719,27 @@
   padding-right: 4px;
 }
 
-#gsxnjheymu .gt_column_spanner_outer:first-child {
+#zjspdyaegj .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#gsxnjheymu .gt_column_spanner_outer:last-child {
+#zjspdyaegj .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#gsxnjheymu .gt_column_spanner {
+#zjspdyaegj .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
   vertical-align: bottom;
   padding-top: 5px;
-  padding-bottom: 5px;
+  padding-bottom: 6px;
   overflow-x: hidden;
   display: inline-block;
   width: 100%;
 }
 
-#gsxnjheymu .gt_group_heading {
+#zjspdyaegj .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1776,7 +1761,7 @@
   vertical-align: middle;
 }
 
-#gsxnjheymu .gt_empty_group_heading {
+#zjspdyaegj .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1791,15 +1776,15 @@
   vertical-align: middle;
 }
 
-#gsxnjheymu .gt_from_md > :first-child {
+#zjspdyaegj .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#gsxnjheymu .gt_from_md > :last-child {
+#zjspdyaegj .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#gsxnjheymu .gt_row {
+#zjspdyaegj .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1818,7 +1803,7 @@
   overflow-x: hidden;
 }
 
-#gsxnjheymu .gt_stub {
+#zjspdyaegj .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1830,7 +1815,7 @@
   padding-left: 12px;
 }
 
-#gsxnjheymu .gt_summary_row {
+#zjspdyaegj .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1840,7 +1825,7 @@
   padding-right: 5px;
 }
 
-#gsxnjheymu .gt_first_summary_row {
+#zjspdyaegj .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1850,7 +1835,7 @@
   border-top-color: #D3D3D3;
 }
 
-#gsxnjheymu .gt_grand_summary_row {
+#zjspdyaegj .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1860,7 +1845,7 @@
   padding-right: 5px;
 }
 
-#gsxnjheymu .gt_first_grand_summary_row {
+#zjspdyaegj .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1870,11 +1855,11 @@
   border-top-color: #D3D3D3;
 }
 
-#gsxnjheymu .gt_striped {
+#zjspdyaegj .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#gsxnjheymu .gt_table_body {
+#zjspdyaegj .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1883,7 +1868,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#gsxnjheymu .gt_footnotes {
+#zjspdyaegj .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1897,13 +1882,13 @@
   border-right-color: #D3D3D3;
 }
 
-#gsxnjheymu .gt_footnote {
+#zjspdyaegj .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#gsxnjheymu .gt_sourcenotes {
+#zjspdyaegj .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1917,50 +1902,49 @@
   border-right-color: #D3D3D3;
 }
 
-#gsxnjheymu .gt_sourcenote {
+#zjspdyaegj .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#gsxnjheymu .gt_left {
+#zjspdyaegj .gt_left {
   text-align: left;
 }
 
-#gsxnjheymu .gt_center {
+#zjspdyaegj .gt_center {
   text-align: center;
 }
 
-#gsxnjheymu .gt_right {
+#zjspdyaegj .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#gsxnjheymu .gt_font_normal {
+#zjspdyaegj .gt_font_normal {
   font-weight: normal;
 }
 
-#gsxnjheymu .gt_font_bold {
+#zjspdyaegj .gt_font_bold {
   font-weight: bold;
 }
 
-#gsxnjheymu .gt_font_italic {
+#zjspdyaegj .gt_font_italic {
   font-style: italic;
 }
 
-#gsxnjheymu .gt_super {
+#zjspdyaegj .gt_super {
   font-size: 65%;
 }
 
-#gsxnjheymu .gt_footnote_marks {
+#zjspdyaegj .gt_footnote_marks {
   font-style: italic;
-  font-weight: normal;
   font-size: 65%;
 }
 </style>
-<div class="inline-table"><table class="gt_table">
+<div id="zjspdyaegj" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><div class="inline-table"><table class="gt_table">
 <thead class="gt_col_headings">
 <tr>
-<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1"><strong>Characteristic</strong></th>
+<th class="gt_col_heading gt_center gt_columns_bottom_border" rowspan="2" colspan="1"><strong>Characteristic</strong></th>
       <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="4">
         <span class="gt_column_spanner"><strong>Univariate</strong></span>
       </th>
@@ -1989,154 +1973,154 @@
 <tbody class="gt_table_body">
 <tr>
 <td class="gt_row gt_left">gender</td>
-<td class="gt_row gt_center">4167</td>
-<td class="gt_row gt_center">1.00</td>
-<td class="gt_row gt_center">0.88, 1.13</td>
-<td class="gt_row gt_center">&gt;0.9</td>
-<td class="gt_row gt_center">1.00</td>
-<td class="gt_row gt_center">0.88, 1.14</td>
-<td class="gt_row gt_center">&gt;0.9</td>
-</tr>
+      <td class="gt_row gt_center">4,167</td>
+      <td class="gt_row gt_center">1.00</td>
+      <td class="gt_row gt_center">0.88, 1.13</td>
+      <td class="gt_row gt_center">&gt;0.9</td>
+      <td class="gt_row gt_center">1.00</td>
+      <td class="gt_row gt_center">0.88, 1.14</td>
+      <td class="gt_row gt_center">&gt;0.9</td>
+    </tr>
 <tr>
 <td class="gt_row gt_left">fever</td>
-<td class="gt_row gt_center">4167</td>
-<td class="gt_row gt_center">1.00</td>
-<td class="gt_row gt_center">0.85, 1.17</td>
-<td class="gt_row gt_center">&gt;0.9</td>
-<td class="gt_row gt_center">1.00</td>
-<td class="gt_row gt_center">0.86, 1.18</td>
-<td class="gt_row gt_center">&gt;0.9</td>
-</tr>
+      <td class="gt_row gt_center">4,167</td>
+      <td class="gt_row gt_center">1.00</td>
+      <td class="gt_row gt_center">0.85, 1.17</td>
+      <td class="gt_row gt_center">&gt;0.9</td>
+      <td class="gt_row gt_center">1.00</td>
+      <td class="gt_row gt_center">0.86, 1.18</td>
+      <td class="gt_row gt_center">&gt;0.9</td>
+    </tr>
 <tr>
 <td class="gt_row gt_left">chills</td>
-<td class="gt_row gt_center">4167</td>
-<td class="gt_row gt_center">1.03</td>
-<td class="gt_row gt_center">0.89, 1.21</td>
-<td class="gt_row gt_center">0.7</td>
-<td class="gt_row gt_center">1.03</td>
-<td class="gt_row gt_center">0.89, 1.21</td>
-<td class="gt_row gt_center">0.7</td>
-</tr>
+      <td class="gt_row gt_center">4,167</td>
+      <td class="gt_row gt_center">1.03</td>
+      <td class="gt_row gt_center">0.89, 1.21</td>
+      <td class="gt_row gt_center">0.7</td>
+      <td class="gt_row gt_center">1.03</td>
+      <td class="gt_row gt_center">0.89, 1.21</td>
+      <td class="gt_row gt_center">0.7</td>
+    </tr>
 <tr>
 <td class="gt_row gt_left">cough</td>
-<td class="gt_row gt_center">4167</td>
-<td class="gt_row gt_center">1.15</td>
-<td class="gt_row gt_center">0.97, 1.37</td>
-<td class="gt_row gt_center">0.11</td>
-<td class="gt_row gt_center">1.15</td>
-<td class="gt_row gt_center">0.96, 1.37</td>
-<td class="gt_row gt_center">0.12</td>
-</tr>
+      <td class="gt_row gt_center">4,167</td>
+      <td class="gt_row gt_center">1.15</td>
+      <td class="gt_row gt_center">0.97, 1.37</td>
+      <td class="gt_row gt_center">0.11</td>
+      <td class="gt_row gt_center">1.15</td>
+      <td class="gt_row gt_center">0.96, 1.37</td>
+      <td class="gt_row gt_center">0.12</td>
+    </tr>
 <tr>
 <td class="gt_row gt_left">aches</td>
-<td class="gt_row gt_center">4167</td>
-<td class="gt_row gt_center">0.93</td>
-<td class="gt_row gt_center">0.76, 1.14</td>
-<td class="gt_row gt_center">0.5</td>
-<td class="gt_row gt_center">0.93</td>
-<td class="gt_row gt_center">0.76, 1.14</td>
-<td class="gt_row gt_center">0.5</td>
-</tr>
+      <td class="gt_row gt_center">4,167</td>
+      <td class="gt_row gt_center">0.93</td>
+      <td class="gt_row gt_center">0.76, 1.14</td>
+      <td class="gt_row gt_center">0.5</td>
+      <td class="gt_row gt_center">0.93</td>
+      <td class="gt_row gt_center">0.76, 1.14</td>
+      <td class="gt_row gt_center">0.5</td>
+    </tr>
 <tr>
 <td class="gt_row gt_left">vomit</td>
-<td class="gt_row gt_center">4167</td>
-<td class="gt_row gt_center">1.09</td>
-<td class="gt_row gt_center">0.96, 1.23</td>
-<td class="gt_row gt_center">0.2</td>
-<td class="gt_row gt_center">1.09</td>
-<td class="gt_row gt_center">0.96, 1.23</td>
-<td class="gt_row gt_center">0.2</td>
-</tr>
+      <td class="gt_row gt_center">4,167</td>
+      <td class="gt_row gt_center">1.09</td>
+      <td class="gt_row gt_center">0.96, 1.23</td>
+      <td class="gt_row gt_center">0.2</td>
+      <td class="gt_row gt_center">1.09</td>
+      <td class="gt_row gt_center">0.96, 1.23</td>
+      <td class="gt_row gt_center">0.2</td>
+    </tr>
 <tr>
 <td class="gt_row gt_left">age_cat</td>
-<td class="gt_row gt_center">4167</td>
-<td class="gt_row gt_center"></td>
-<td class="gt_row gt_center"></td>
-<td class="gt_row gt_center"></td>
-<td class="gt_row gt_center"></td>
-<td class="gt_row gt_center"></td>
-<td class="gt_row gt_center"></td>
-</tr>
+      <td class="gt_row gt_center">4,167</td>
+      <td class="gt_row gt_center"></td>
+      <td class="gt_row gt_center"></td>
+      <td class="gt_row gt_center"></td>
+      <td class="gt_row gt_center"></td>
+      <td class="gt_row gt_center"></td>
+      <td class="gt_row gt_center"></td>
+    </tr>
 <tr>
 <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">0-4</td>
-<td class="gt_row gt_center"></td>
-<td class="gt_row gt_center">—</td>
-<td class="gt_row gt_center">—</td>
-<td class="gt_row gt_center"></td>
-<td class="gt_row gt_center">—</td>
-<td class="gt_row gt_center">—</td>
-<td class="gt_row gt_center"></td>
-</tr>
+      <td class="gt_row gt_center"></td>
+      <td class="gt_row gt_center">—</td>
+      <td class="gt_row gt_center">—</td>
+      <td class="gt_row gt_center"></td>
+      <td class="gt_row gt_center">—</td>
+      <td class="gt_row gt_center">—</td>
+      <td class="gt_row gt_center"></td>
+    </tr>
 <tr>
 <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">5-9</td>
-<td class="gt_row gt_center"></td>
-<td class="gt_row gt_center">0.94</td>
-<td class="gt_row gt_center">0.77, 1.15</td>
-<td class="gt_row gt_center">0.5</td>
-<td class="gt_row gt_center">0.94</td>
-<td class="gt_row gt_center">0.77, 1.15</td>
-<td class="gt_row gt_center">0.5</td>
-</tr>
+      <td class="gt_row gt_center"></td>
+      <td class="gt_row gt_center">0.94</td>
+      <td class="gt_row gt_center">0.77, 1.15</td>
+      <td class="gt_row gt_center">0.5</td>
+      <td class="gt_row gt_center">0.94</td>
+      <td class="gt_row gt_center">0.77, 1.15</td>
+      <td class="gt_row gt_center">0.5</td>
+    </tr>
 <tr>
 <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">10-14</td>
-<td class="gt_row gt_center"></td>
-<td class="gt_row gt_center">1.15</td>
-<td class="gt_row gt_center">0.93, 1.42</td>
-<td class="gt_row gt_center">0.2</td>
-<td class="gt_row gt_center">1.15</td>
-<td class="gt_row gt_center">0.93, 1.41</td>
-<td class="gt_row gt_center">0.2</td>
-</tr>
+      <td class="gt_row gt_center"></td>
+      <td class="gt_row gt_center">1.15</td>
+      <td class="gt_row gt_center">0.93, 1.42</td>
+      <td class="gt_row gt_center">0.2</td>
+      <td class="gt_row gt_center">1.15</td>
+      <td class="gt_row gt_center">0.93, 1.41</td>
+      <td class="gt_row gt_center">0.2</td>
+    </tr>
 <tr>
 <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">15-19</td>
-<td class="gt_row gt_center"></td>
-<td class="gt_row gt_center">0.99</td>
-<td class="gt_row gt_center">0.80, 1.24</td>
-<td class="gt_row gt_center">&gt;0.9</td>
-<td class="gt_row gt_center">0.99</td>
-<td class="gt_row gt_center">0.79, 1.24</td>
-<td class="gt_row gt_center">&gt;0.9</td>
-</tr>
+      <td class="gt_row gt_center"></td>
+      <td class="gt_row gt_center">0.99</td>
+      <td class="gt_row gt_center">0.80, 1.24</td>
+      <td class="gt_row gt_center">&gt;0.9</td>
+      <td class="gt_row gt_center">0.99</td>
+      <td class="gt_row gt_center">0.79, 1.24</td>
+      <td class="gt_row gt_center">&gt;0.9</td>
+    </tr>
 <tr>
 <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">20-29</td>
-<td class="gt_row gt_center"></td>
-<td class="gt_row gt_center">1.03</td>
-<td class="gt_row gt_center">0.84, 1.26</td>
-<td class="gt_row gt_center">0.8</td>
-<td class="gt_row gt_center">1.03</td>
-<td class="gt_row gt_center">0.84, 1.26</td>
-<td class="gt_row gt_center">0.8</td>
-</tr>
+      <td class="gt_row gt_center"></td>
+      <td class="gt_row gt_center">1.03</td>
+      <td class="gt_row gt_center">0.84, 1.26</td>
+      <td class="gt_row gt_center">0.8</td>
+      <td class="gt_row gt_center">1.03</td>
+      <td class="gt_row gt_center">0.84, 1.26</td>
+      <td class="gt_row gt_center">0.8</td>
+    </tr>
 <tr>
 <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">30-49</td>
-<td class="gt_row gt_center"></td>
-<td class="gt_row gt_center">1.07</td>
-<td class="gt_row gt_center">0.85, 1.33</td>
-<td class="gt_row gt_center">0.6</td>
-<td class="gt_row gt_center">1.06</td>
-<td class="gt_row gt_center">0.85, 1.33</td>
-<td class="gt_row gt_center">0.6</td>
-</tr>
+      <td class="gt_row gt_center"></td>
+      <td class="gt_row gt_center">1.07</td>
+      <td class="gt_row gt_center">0.85, 1.33</td>
+      <td class="gt_row gt_center">0.6</td>
+      <td class="gt_row gt_center">1.06</td>
+      <td class="gt_row gt_center">0.85, 1.33</td>
+      <td class="gt_row gt_center">0.6</td>
+    </tr>
 <tr>
 <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">50-69</td>
-<td class="gt_row gt_center"></td>
-<td class="gt_row gt_center">0.68</td>
-<td class="gt_row gt_center">0.41, 1.13</td>
-<td class="gt_row gt_center">0.13</td>
-<td class="gt_row gt_center">0.68</td>
-<td class="gt_row gt_center">0.40, 1.13</td>
-<td class="gt_row gt_center">0.14</td>
-</tr>
+      <td class="gt_row gt_center"></td>
+      <td class="gt_row gt_center">0.68</td>
+      <td class="gt_row gt_center">0.41, 1.13</td>
+      <td class="gt_row gt_center">0.13</td>
+      <td class="gt_row gt_center">0.68</td>
+      <td class="gt_row gt_center">0.40, 1.13</td>
+      <td class="gt_row gt_center">0.14</td>
+    </tr>
 <tr>
 <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">70+</td>
-<td class="gt_row gt_center"></td>
-<td class="gt_row gt_center">0.53</td>
-<td class="gt_row gt_center">0.07, 3.20</td>
-<td class="gt_row gt_center">0.5</td>
-<td class="gt_row gt_center">0.52</td>
-<td class="gt_row gt_center">0.07, 3.19</td>
-<td class="gt_row gt_center">0.5</td>
-</tr>
+      <td class="gt_row gt_center"></td>
+      <td class="gt_row gt_center">0.53</td>
+      <td class="gt_row gt_center">0.07, 3.20</td>
+      <td class="gt_row gt_center">0.5</td>
+      <td class="gt_row gt_center">0.52</td>
+      <td class="gt_row gt_center">0.07, 3.19</td>
+      <td class="gt_row gt_center">0.5</td>
+    </tr>
 </tbody>
 <tfoot><tr class="gt_footnotes">
 <td colspan="8">
@@ -2148,8 +2132,7 @@
           <br></p>
       </td>
     </tr></tfoot>
-</table></div>
-</div>
+</table></div></div>
 </div>
 <div id="gộp-bằng-package-dplyr" class="section level4 unnumbered">
 <h4>Gộp bằng package <strong>dplyr</strong><a class="anchor" aria-label="anchor" href="#g%E1%BB%99p-b%E1%BA%B1ng-package-dplyr"><i class="fas fa-link"></i></a>
@@ -2263,22 +2246,9 @@
 <p>Lựa chọn thứ hai là sử dụng một sự kết hợp của các package trong <strong>easystats</strong>, nếu chúng ta không muốn mức độ kiểm soát chặt chẽ mà package <strong>ggplot2</strong> cung cấp.</p>
 <p>Hàm <code>model_parameters()</code> từ package <strong>parameters</strong> thực hiện tương đương với hàm <code>tidy()</code> trong package <strong>broom</strong> . Sau đó, package <strong>see</strong> chấp nhận các kết quả đầu ra và tạo một biểu đồ forest plot mặc định giống như cho một đối tượng <code>ggplot()</code>.</p>
 <div class="sourceCode" id="cb1001"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">pacman</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pacman/man/p_load.html">p_load</a></span><span class="op">(</span><span class="va">easystats</span><span class="op">)</span></code></pre></div>
-<pre><code>## Installing package into 'C:/Users/MSFuser/Documents/R/win-library/4.1'
-## (as 'lib' is unspecified)</code></pre>
-<pre><code>## Warning: package 'easystats' is not available for this version of R
-## 
-## A version of this package for your version of R might be available elsewhere,
-## see the ideas at
-## https://cran.r-project.org/doc/manuals/r-patched/R-admin.html#Installing-packages</code></pre>
-<pre><code>## Warning: unable to access index for repository http://www.stats.ox.ac.uk/pub/RWin/bin/windows/contrib/4.1:
-##   cannot open URL 'http://www.stats.ox.ac.uk/pub/RWin/bin/windows/contrib/4.1/PACKAGES'</code></pre>
-<pre><code>## Warning in p_install(package, character.only = TRUE, ...):</code></pre>
-<pre><code>## Warning in library(package, lib.loc = lib.loc, character.only = TRUE, logical.return = TRUE, : there is no package called 'easystats'</code></pre>
-<pre><code>## Warning in pacman::p_load(easystats): Failed to install/load:
-## easystats</code></pre>
-<div class="sourceCode" id="cb1008"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">## remove the intercept term from your multivariable results</span>
+<code class="sourceCode R"><span class="fu">pacman</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pacman/man/p_load.html">p_load</a></span><span class="op">(</span><span class="va">easystats</span><span class="op">)</span>
+
+<span class="co">## remove the intercept term from your multivariable results</span>
 <span class="va">final_mv_reg</span> <span class="op">%&gt;%</span> 
   <span class="fu">model_parameters</span><span class="op">(</span>exponentiate <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
@@ -2348,7 +2318,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Cẩm nang dịch tễ học với R</strong>" was written by the handbook team. It was last built on 2021-10-14.</p>
+    <p>"<strong>Cẩm nang dịch tễ học với R</strong>" was written by the handbook team. It was last built on 2021-11-01.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -2368,22 +2338,6 @@
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
-</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
-for (let popover of popovers) {
-  const div = document.createElement('div');
-  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
-  div.innerHTML = popover.getAttribute('data-content');
-
-  var has_math = div.querySelector("span.math");
-  if (has_math) {
-    document.body.appendChild(div);
-    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
-    MathJax.Hub.Queue(function() {
-      popover.setAttribute('data-content', div.innerHTML);
-      document.body.removeChild(div);
-    })
-  }
-}
 </script>
 </body>
 </html>

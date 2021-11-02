@@ -6,40 +6,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>23 Chuỗi thời gian và phát hiện ổ dịch | Cẩm nang dịch tễ học với R</title>
 <meta name="author" content="the handbook team">
-<meta name="description" content="23.1 Tổng quan Chương này minh họa cách sử dụng của một số packages cho phân tích chuỗi thời gian. Các packages chủ yếu đến từ hệ sinh thái tidyverts, ngoài ra cũng sử dụng RECON trending package...">
-<meta name="generator" content="bookdown 0.24 with bs4_book()">
-<meta property="og:title" content="23 Chuỗi thời gian và phát hiện ổ dịch | Cẩm nang dịch tễ học với R">
-<meta property="og:type" content="book">
-<meta property="og:description" content="23.1 Tổng quan Chương này minh họa cách sử dụng của một số packages cho phân tích chuỗi thời gian. Các packages chủ yếu đến từ hệ sinh thái tidyverts, ngoài ra cũng sử dụng RECON trending package...">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="23 Chuỗi thời gian và phát hiện ổ dịch | Cẩm nang dịch tễ học với R">
-<meta name="twitter:description" content="23.1 Tổng quan Chương này minh họa cách sử dụng của một số packages cho phân tích chuỗi thời gian. Các packages chủ yếu đến từ hệ sinh thái tidyverts, ngoài ra cũng sử dụng RECON trending package...">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.0/transition.js"></script><script src="libs/bs3compat-0.3.0/tabs.js"></script><script src="libs/bs3compat-0.3.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
-<script src="libs/datatables-binding-0.19/datatables.js"></script><link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="libs/datatables-binding-0.16/datatables.js"></script><link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet">
 <script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script><link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet">
 <script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script><link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet">
 <script src="libs/selectize-0.12.0/selectize.min.js"></script><link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet">
 <script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet">
-<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<script src="libs/tabwid-1.0.0/tabwid.js"></script><link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
 <script src="libs/leaflet-1.3.1/leaflet.js"></script><link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
-<script src="libs/proj4-2.6.2/proj4.min.js"></script><script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
-<script src="libs/leaflet-binding-2.0.4.1/leaflet.js"></script><script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script><script src="libs/leaflet-providers-plugin-2.0.4.1/leaflet-providers-plugin.js"></script><script src="libs/viz-1.8.2/viz.js"></script><link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
-<script src="libs/grViz-binding-1.0.6.1/grViz.js"></script><script src="libs/d3-4.5.0/d3.min.js"></script><script src="libs/sankey-1/sankey.js"></script><script src="libs/sankeyNetwork-binding-0.4/sankeyNetwork.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
-<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script><link href="libs/vis-9.1.0/vis-network.min.css" rel="stylesheet">
-<script src="libs/vis-9.1.0/vis-network.min.js"></script><script src="libs/visNetwork-binding-2.1.0/visNetwork.js"></script><link href="libs/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<script src="libs/plotly-basic-2.5.1/plotly-basic-2.5.1.min.js"></script><script src="libs/plotly-cartesian-2.5.1/plotly-cartesian-2.5.1.min.js"></script><script src="libs/proj4js-2.3.15/proj4.js"></script><link href="libs/highcharts-8.1.2/css/motion.css" rel="stylesheet">
+<script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script><script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+<script src="libs/leaflet-binding-2.0.3/leaflet.js"></script><script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script><script src="libs/leaflet-providers-plugin-2.0.3/leaflet-providers-plugin.js"></script><script src="libs/viz-1.8.2/viz.js"></script><link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
+<script src="libs/grViz-binding-1.0.6.1/grViz.js"></script><script src="libs/d3-4.5.0/d3.min.js"></script><script src="libs/sankey-1/sankey.js"></script><script src="libs/sankeyNetwork-binding-0.4/sankeyNetwork.js"></script><script src="libs/plotly-binding-4.9.2.1/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script><link href="libs/vis-4.20.1/vis.css" rel="stylesheet">
+<script src="libs/vis-4.20.1/vis.min.js"></script><script src="libs/visNetwork-binding-2.0.9/visNetwork.js"></script><link href="libs/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="libs/plotly-basic-1.52.2/plotly-basic-1.52.2.min.js"></script><script src="libs/plotly-cartesian-1.52.2/plotly-cartesian-1.52.2.min.js"></script><script src="libs/proj4js-2.3.15/proj4.js"></script><link href="libs/highcharts-8.1.2/css/motion.css" rel="stylesheet">
 <script src="libs/highcharts-8.1.2/highcharts.js"></script><script src="libs/highcharts-8.1.2/highcharts-3d.js"></script><script src="libs/highcharts-8.1.2/highcharts-more.js"></script><script src="libs/highcharts-8.1.2/modules/stock.js"></script><script src="libs/highcharts-8.1.2/modules/map.js"></script><script src="libs/highcharts-8.1.2/modules/annotations.js"></script><script src="libs/highcharts-8.1.2/modules/data.js"></script><script src="libs/highcharts-8.1.2/modules/drilldown.js"></script><script src="libs/highcharts-8.1.2/modules/item-series.js"></script><script src="libs/highcharts-8.1.2/modules/offline-exporting.js"></script><script src="libs/highcharts-8.1.2/modules/overlapping-datalabels.js"></script><script src="libs/highcharts-8.1.2/modules/exporting.js"></script><script src="libs/highcharts-8.1.2/modules/export-data.js"></script><script src="libs/highcharts-8.1.2/modules/funnel.js"></script><script src="libs/highcharts-8.1.2/modules/heatmap.js"></script><script src="libs/highcharts-8.1.2/modules/treemap.js"></script><script src="libs/highcharts-8.1.2/modules/sankey.js"></script><script src="libs/highcharts-8.1.2/modules/dependency-wheel.js"></script><script src="libs/highcharts-8.1.2/modules/organization.js"></script><script src="libs/highcharts-8.1.2/modules/solid-gauge.js"></script><script src="libs/highcharts-8.1.2/modules/streamgraph.js"></script><script src="libs/highcharts-8.1.2/modules/sunburst.js"></script><script src="libs/highcharts-8.1.2/modules/vector.js"></script><script src="libs/highcharts-8.1.2/modules/wordcloud.js"></script><script src="libs/highcharts-8.1.2/modules/xrange.js"></script><script src="libs/highcharts-8.1.2/modules/tilemap.js"></script><script src="libs/highcharts-8.1.2/modules/venn.js"></script><script src="libs/highcharts-8.1.2/modules/gantt.js"></script><script src="libs/highcharts-8.1.2/modules/timeline.js"></script><script src="libs/highcharts-8.1.2/modules/parallel-coordinates.js"></script><script src="libs/highcharts-8.1.2/modules/bullet.js"></script><script src="libs/highcharts-8.1.2/modules/coloraxis.js"></script><script src="libs/highcharts-8.1.2/modules/dumbbell.js"></script><script src="libs/highcharts-8.1.2/modules/lollipop.js"></script><script src="libs/highcharts-8.1.2/modules/series-label.js"></script><script src="libs/highcharts-8.1.2/plugins/motion.js"></script><script src="libs/highcharts-8.1.2/custom/reset.js"></script><script src="libs/highcharts-8.1.2/modules/boost.js"></script><script src="libs/highchart-binding-0.8.2/highchart.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-QXDW878QLX"></script><script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
       gtag('config', 'G-QXDW878QLX');
-    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="style_bs4.css">
+    </script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS --><link rel="stylesheet" href="style_bs4.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -156,7 +148,7 @@
 <h3>Packages<a class="anchor" aria-label="anchor" href="#packages-1"><i class="fas fa-link"></i></a>
 </h3>
 <p>Đoạn code này hiển thị việc gọi các package cần thiết cho các phân tích. Trong cuốn sách này, chúng tôi nhấn mạnh việc sử dụng hàm <code><a href="https://rdrr.io/pkg/pacman/man/p_load.html">p_load()</a></code> từ package <strong>pacman</strong>, giúp cài đặt các package cần thiết <em>và</em> gọi chúng ra để sử dụng. Bạn cũng có thể gọi các packages đã cài đặt với hàm <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> của <strong>base</strong> R. Xem thêm chương <a href="basics.html#basics">R cơ bản</a> để có thêm thông tin về các packages trong R.</p>
-<div class="sourceCode" id="cb1107"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1098"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">pacman</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pacman/man/p_load.html">p_load</a></span><span class="op">(</span><span class="va">rio</span>,          <span class="co"># File import</span>
                <span class="va">here</span>,         <span class="co"># File locator</span>
                <span class="va">tidyverse</span>,    <span class="co"># data management + ggplot2 graphics</span>
@@ -181,18 +173,18 @@
 <p>Bộ dữ liệu minh họa được sử dụng trong phần này là số lượng các trường hợp campylobacter hàng tuần được báo cáo ở Đức từ năm 2001 đến 2011. <a href="https://github.com/epirhandbook/Epi_R_handbook/raw/master/data/time_series/campylobacter_germany.xlsx" class="download-button">Bạn có thể bấm vào đây để tải xuống<span> bộ dữ liệu này (.xlsx).</span></a></p>
 <p>Bộ dữ liệu này là một phiên bản rút gọn của bộ dữ liệu có sẵn trong package <a href="https://cran.r-project.org/web/packages/surveillance/"><strong>surveillance</strong></a>. (để biết chi tiết, hãy gọi surveillance package ra sau đó nhập <code>?campyDE</code>)</p>
 <p>Nhập dữ liệu này với hàm <code><a href="https://rdrr.io/pkg/rio/man/import.html">import()</a></code> từ package <strong>rio</strong> (nó xử lý nhiều loại tệp như .xlsx, .csv, .rds - xem thêm chương <a href="importing.html#importing">Nhập xuất dữ liệu</a> để biết thêm chi tiết).</p>
-<div class="sourceCode" id="cb1108"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1099"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># import the counts into R</span>
 <span class="va">counts</span> <span class="op">&lt;-</span> <span class="fu">rio</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rio/man/import.html">import</a></span><span class="op">(</span><span class="st">"campylobacter_germany.xlsx"</span><span class="op">)</span></code></pre></div>
 <p>10 hàng đầu tiên được hiển thị như bên dưới.</p>
-<div id="htmlwidget-b5cc7c1bbc092ea6e8ee" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b5cc7c1bbc092ea6e8ee">{"x":{"filter":"none","vertical":false,"data":[["2001-12-31T00:00:00Z","2002-01-07T00:00:00Z","2002-01-14T00:00:00Z","2002-01-21T00:00:00Z","2002-01-28T00:00:00Z","2002-02-04T00:00:00Z","2002-02-11T00:00:00Z","2002-02-18T00:00:00Z","2002-02-25T00:00:00Z","2002-03-04T00:00:00Z"],[514,913,1023,887,815,792,803,807,692,705]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>date<\/th>\n      <th>case<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":1}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-a2443d8d28d06dc5f557" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a2443d8d28d06dc5f557">{"x":{"filter":"none","data":[["2001-12-31T00:00:00Z","2002-01-07T00:00:00Z","2002-01-14T00:00:00Z","2002-01-21T00:00:00Z","2002-01-28T00:00:00Z","2002-02-04T00:00:00Z","2002-02-11T00:00:00Z","2002-02-18T00:00:00Z","2002-02-25T00:00:00Z","2002-03-04T00:00:00Z"],[514,913,1023,887,815,792,803,807,692,705]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>date<\/th>\n      <th>case<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":1}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="làm-sạch-dữ-liệu" class="section level3 unnumbered">
 <h3>Làm sạch dữ liệu<a class="anchor" aria-label="anchor" href="#l%C3%A0m-s%E1%BA%A1ch-d%E1%BB%AF-li%E1%BB%87u"><i class="fas fa-link"></i></a>
 </h3>
 <p>Code dưới đây đảm bảo rằng cột ngày thág đã ở đúng định dạng. Trong chương này chúng ta sẽ sử dụng package <strong>tsibble</strong> và hàm <code>yearweek</code> sẽ được sử dụng để tạp biến lịch theo tuần. Có một số cách để thực hiện việc này (Xem chương <a href="dates.html#dates">Làm việc với ngày tháng</a> để biết thêm chi tiết), tuy nhiên đối với dữ liệu chuỗi thời gian thì tốt nhất nên sử dụng thống nhất một framework (<strong>tsibble</strong>).</p>
-<div class="sourceCode" id="cb1109"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1100"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## ensure the date column is in the appropriate format</span>
 <span class="va">counts</span><span class="op">$</span><span class="va">date</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="va">counts</span><span class="op">$</span><span class="va">date</span><span class="op">)</span>
 
@@ -209,7 +201,7 @@ Dữ liệu khí hậu tại bất kỳ đâu trên thế giới đều có th�
 <p>Bạn có thể tải xuống từng tệp dữ liệu khí hậu này từ chương <a href="data-used.html#data-used">Tải sách và dữ liệu</a>.</p>
 <p>Với mục đích minh họa ở đây, chúng tôi sẽ trình bày code để sử dụng package <strong>ecmwfr</strong> để lấy những dữ liệu này từ kho dữ liệu khí hậu Copernicus. Bạn sẽ cần tạo một tài khoản miễn phí để thực hiện. Trang web của package có một <a href="https://github.com/bluegreen-labs/ecmwfr#use-copernicus-climate-data-store-cds">hướng dẫn</a> hữu ích về cách thực hiện việc này. Dưới đây là code minh họa về cách thực hiện việc này, khi bạn có các khóa API thích hợp. Bạn phải thay thế X bên dưới bằng ID tài khoản của mình. Bạn sẽ cần tải xuống một năm dữ liệu cùng một lúc nếu không máy chủ sẽ hết thời gian chờ.</p>
 <p>Nếu bạn không chắc chắn về tọa độ cho vị trí mà bạn muốn tải dữ liệu xuống, bạn có thể sử dụng gói <strong>tmaptools</strong> để lấy tọa độ ra từ open street maps. Một cách khác là dùng package <a href="https://github.com/rCarto/photon"><strong>photon</strong></a>, tuy nhiên nó chưa được chính thức xuất bản lên trên CRAN; cái hay của <strong>photon</strong> là nó cung cấp nhiều dữ liệu ngữ cảnh hơn khi có một số kết quả phù hợp cho tìm kiếm của bạn.</p>
-<div class="sourceCode" id="cb1110"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1101"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## retrieve location coordinates</span>
 <span class="va">coords</span> <span class="op">&lt;-</span> <span class="fu">geocode_OSM</span><span class="op">(</span><span class="st">"Germany"</span>, geometry <span class="op">=</span> <span class="st">"point"</span><span class="op">)</span>
 
@@ -263,7 +255,7 @@ Dữ liệu khí hậu tại bất kỳ đâu trên thế giới đều có th�
 </h3>
 <p>Cho dù bạn đã tải xuống dữ liệu khí hậu thông qua sổ tay này hay sử dụng code ở trên, thì bạn cần phải các tệp dữ liệu khí hậu trong 10 năm có phần mở rộng là “.nc”, được lưu trữ trong cùng một thư mục trong máy tính của bạn.</p>
 <p>Sử dụng mã bên dưới để nhập các tệp này vào R với package <strong>stars</strong>.</p>
-<div class="sourceCode" id="cb1111"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1102"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## define path to weather folder </span>
 <span class="va">file_paths</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.files.html">list.files</a></span><span class="op">(</span>
   <span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"data"</span>, <span class="st">"time_series"</span>, <span class="st">"weather"</span><span class="op">)</span>, <span class="co"># replace with your own file path </span>
@@ -285,7 +277,7 @@ Dữ liệu khí hậu tại bất kỳ đâu trên thế giới đều có th�
 ## t2m, tp, 
 ## t2m, tp,</code></pre>
 <p>Khi các tệp này đã được nhập vào một đối tượng có tên <code>data</code>, chúng ta sẽ chuyển chúng thành một data frame.</p>
-<div class="sourceCode" id="cb1113"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1104"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## change to a data frame </span>
 <span class="va">temp_data</span> <span class="op">&lt;-</span> <span class="fu">as_tibble</span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="co">## add in variables and correct units</span>
@@ -314,12 +306,12 @@ Dữ liệu khí hậu tại bất kỳ đâu trên thế giới đều có th�
 <p>Có một số package khác nhau để cấu trúc và xử lý dữ liệu chuỗi thời gian. Như đã nói, chúng ta sẽ tập trung vào họ các package thuộc <strong>tidyverts</strong> và sẽ sử dụng package <strong>tsibble</strong> để xác định đối tượng chuỗi thời gian. Việc có một tập dữ liệu được xác định là một đối tượng chuỗi thời gian có nghĩa là việc cấu trúc phân tích của chúng ta sẽ trở nên dễ dàng hơn nhiều.</p>
 <p>Để thực hiện, chúng ta sử dụng hàm <code>tsibble()</code> và cụ thể “chỉ mục (index)”, vd: biến số cụ thể đơn vị thời gian quan tâm. Trong trường hợp của chúng ta, biến số này có tên <code>epiweek</code>.</p>
 <p>Ví dụ: nếu chúng ta có một tập dữ liệu với số lượng hàng tuần theo tỉnh, chúng ta cũng có thể cụ thể biến nhóm bằng cách cụ sử dụng đối số <code>key =</code>. Điều này sẽ cho phép chúng ta thực hiện phân tích cho từng nhóm.</p>
-<div class="sourceCode" id="cb1115"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1106"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## define time series object </span>
 <span class="va">counts</span> <span class="op">&lt;-</span> <span class="fu">tsibble</span><span class="op">(</span><span class="va">counts</span>, index <span class="op">=</span> <span class="va">epiweek</span><span class="op">)</span></code></pre></div>
 <p>Nhìn vào <code><a href="https://rdrr.io/r/base/class.html">class(counts)</a></code>, ta thấy ngoài việc là một data frame gọn gàng (“tbl_df”, “tbl”, “data.frame”), nó có các thuộc tính bổ sung của một khung dữ liệu chuỗi thời gian (“tbl_ts”).</p>
 <p>Bạn có thể xem nhanh dữ liệu của mình bằng cách sử dụng <strong>ggplot2</strong>. Từ biểu đồ ta thấy có một xu hướng theo mùa, và không có bất kỳ giá trị bị thiếu nào. Tuy nhiên, dường như có vấn đề với việc báo cáo vào đầu mỗi năm; số ca mắc bệnh giảm vào tuần cuối cùng của năm và sau đó tăng vào tuần đầu tiên của năm tiếp theo.</p>
-<div class="sourceCode" id="cb1116"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1107"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## plot a line graph of cases by week</span>
 <span class="fu">ggplot</span><span class="op">(</span><span class="va">counts</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">epiweek</span>, y <span class="op">=</span> <span class="va">case</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
      <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span></code></pre></div>
@@ -331,7 +323,7 @@ Dữ liệu khí hậu tại bất kỳ đâu trên thế giới đều có th�
 </h3>
 <p><strong>tsibble</strong> không cho phép các quan sát trùng lặp. Vì vậy, mỗi hàng sẽ cần phải là duy nhất, hoặc duy nhất trong nhóm (biến <code>key</code>). Package này có một số hàm để xác định các bản ghi trùng lặp. Chúng bao gồm các hàm: <code>are_duplicated()</code> trả về một vectơ có giá trị TRUE/FALSE vector, truy vấn xem hàng có là duy nhất không; và hàm <code>duplicates()</code> sẽ cung cấp cho bạn một data frame chứa các hàng trùng lặp.</p>
 <p>Xem chương <a href="deduplication.html#lo%E1%BA%A1i-b%E1%BB%8F-tr%C3%B9ng-l%E1%BA%B7p-1">Loại bỏ trùng lặp</a> để biết thêm chi tiết về cách lựa chọn các hàng bạn muốn.</p>
-<div class="sourceCode" id="cb1117"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1108"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## get a vector of TRUE/FALSE whether rows are duplicates</span>
 <span class="fu">are_duplicated</span><span class="op">(</span><span class="va">counts</span>, index <span class="op">=</span> <span class="va">epiweek</span><span class="op">)</span> 
 
@@ -345,7 +337,7 @@ Dữ liệu khí hậu tại bất kỳ đâu trên thế giới đều có th�
 <p>Chúng ta đã thấy từ cuộc khảo sát tóm tắt bên trên, không có bất kỳ giá trị missing nào được phát hiện, nhưng chúng ta cũng đã thấy rằng dường như có vấn đề với việc báo cáo chậm trễ vào khoảng năm mới. Một cách để giải quyết vấn đề này có thể là đặt các giá trị này thành missing và sau đó impute các giá trị. Dạng đơn giản nhất của khi impute chuỗi thời gian là vẽ một đường thẳng giữa giá trị không bị thiếu cuối cùng và giá trị không bị thiếu tiếp theo. Để làm điều này, chúng ta sẽ sử dụng hàm <code>na_interpolation()</code> từ package <strong>imputeTS</strong> .</p>
 <p>Xem chương <a href="missing-data.html#missing-data">Dữ liệu Missing</a> để biết các tùy chọn khác của imputation.</p>
 <p>Một giải pháp thay thế khác sẽ là tính toán đường trung bình động, để thử và giải quyết các vấn đề báo cáo rõ ràng này (xem phần tiếp theo và chương <a href="epicurves.html#%C4%91%C6%B0%E1%BB%9Dng-trung-b%C3%ACnh-%C4%91%E1%BB%99ng">Đường trung bình động</a>.</p>
-<div class="sourceCode" id="cb1118"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1109"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## create a variable with missings instead of weeks with reporting issues</span>
 <span class="va">counts</span> <span class="op">&lt;-</span> <span class="va">counts</span> <span class="op">%&gt;%</span> 
      <span class="fu">mutate</span><span class="op">(</span>case_miss <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span>
@@ -380,7 +372,7 @@ Dữ liệu khí hậu tại bất kỳ đâu trên thế giới đều có th�
 <h3>Đường trung bình động<a class="anchor" aria-label="anchor" href="#timeseries_moving"><i class="fas fa-link"></i></a>
 </h3>
 <p>Nếu dữ liệu rất nhiễu (dao động lên và xuống), việc tính toán đường trung bình động có thể sẽ hữu ích. Trong ví dụ dưới đây, với mỗi tuần chúng ta sẽ tính toán số trường hợp trung bình từ bốn tuần trước đó. Việc này sẽ giúp dữ liệu dễ diễn giải hơn. Trong trường hợp của chúng ta, điều này không thực sự bổ sung nhiều, vì vậy chúng ta sẽ bám vào dữ liệu nội suy để phân tích thêm. Xem chương <a href="epicurves.html#%C4%91%C6%B0%E1%BB%9Dng-trung-b%C3%ACnh-%C4%91%E1%BB%99ng">Đường trung bình động</a> để biết thêm chi tiết.</p>
-<div class="sourceCode" id="cb1119"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1110"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## create a moving average variable (deals with missings)</span>
 <span class="va">counts</span> <span class="op">&lt;-</span> <span class="va">counts</span> <span class="op">%&gt;%</span> 
      <span class="co">## create the ma_4w variable </span>
@@ -403,7 +395,7 @@ Dữ liệu khí hậu tại bất kỳ đâu trên thế giới đều có th�
 </h3>
 <p>Sau đây chúng ta sẽ định nghĩa một hàm để tạo một biểu đồ chu kỳ. Xem chương <a href="writing-functions.html#writing-functions">Viết hàm</a> để biết cách tạo một hàm trong R.</p>
 <p>Đầu tiên, hàm được định nghĩa. Các đối số của nó bao gồm một bộ dữ liệu với cột <code>counts</code>, <code>start_week =</code> là tuần đầu tiên của bộ dữ liệu, một con số để cho biết có bao nhiêu chu kỳ mỗi năm (ví dụ: 52, 12), và cuối cùng là kiểu đầu ra (xem chi tiết trong đoạn mã bên dưới).</p>
-<div class="sourceCode" id="cb1120"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1111"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## Function arguments</span>
 <span class="co">#####################</span>
 <span class="co">## x is a dataset</span>
@@ -461,7 +453,7 @@ Dữ liệu khí hậu tại bất kỳ đâu trên thế giới đều có th�
   <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> 
   <span class="fu">labs</span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Period (Weeks)"</span>, y <span class="op">=</span> <span class="st">"Log(density)"</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="_main_files/figure-html/periodogram-1.png" width="672"></div>
-<div class="sourceCode" id="cb1121"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1112"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## get a vector weeks in ascending order </span>
 <span class="va">peak_weeks</span> <span class="op">&lt;-</span> <span class="fu">periodogram</span><span class="op">(</span><span class="va">counts</span>, 
                           <span class="va">case_int</span>, 
@@ -481,7 +473,7 @@ Dữ liệu khí hậu tại bất kỳ đâu trên thế giới đều có th�
 </li>
 <li>Sự ngẫu nhiên (những gì còn lại sau khi loại bỏ xu hướng và theo mùa)</li>
 </ul>
-<div class="sourceCode" id="cb1122"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1113"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## decompose the counts dataset </span>
 <span class="va">counts</span> <span class="op">%&gt;%</span> 
   <span class="co"># using an additive classical decomposition model</span>
@@ -499,7 +491,7 @@ Dữ liệu khí hậu tại bất kỳ đâu trên thế giới đều có th�
 <p>Tự tương quan cho bạn biết về mối quan hệ giữa số lượng của mỗi tuần và các tuần trước đó (được gọi là trễ).</p>
 <p>Sử dụng hàm <code>ACF()</code>, chúng ta có thể tạo ra một biểu đồ cho chúng ta thấy số lượng đường có mối quan hệ ở các độ trễ khác nhau. Khi độ trễ bằng 0 (x = 0), đường này sẽ luôn là 1 vì nó cho thấy mối quan hệ giữa một quan sát và chính nó (không được hiển thị). Đường đầu tiên hiển thị ở đây (x = 1) cho thấy mối quan hệ giữa mỗi quan sát và quan sát trước nó (độ trễ bằng 1), đường thứ hai cho thấy mối quan hệ giữa mỗi quan sát và quan sát trước quan sát cuối cùng (độ trễ là 2) và cứ như thế cho đến khi độ trễ là 52, cho thấy mối quan hệ giữa mỗi quan sát và quan sát từ 1 năm (52 tuần trước đó).</p>
 <p>Sử dụng hàm <code>ACF()</code> (cho tự tương quan một phần) hiển thị cùng một loại quan hệ nhưng được hiệu chỉnh cho tất cả các tuần khác nằm giữa. Nó sẽ ít thông tin hơn để xác định tính chu kỳ.</p>
-<div class="sourceCode" id="cb1123"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1114"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## using the counts dataset</span>
 <span class="va">counts</span> <span class="op">%&gt;%</span> 
   <span class="co">## calculate autocorrelation using a full years worth of lags</span>
@@ -507,7 +499,7 @@ Dữ liệu khí hậu tại bất kỳ đâu trên thế giới đều có th�
   <span class="co">## show a plot</span>
   <span class="fu">autoplot</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="_main_files/figure-html/autocorrelation-1.png" width="672"></div>
-<div class="sourceCode" id="cb1124"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1115"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## using the counts data set </span>
 <span class="va">counts</span> <span class="op">%&gt;%</span> 
   <span class="co">## calculate the partial autocorrelation using a full years worth of lags</span>
@@ -516,7 +508,7 @@ Dữ liệu khí hậu tại bất kỳ đâu trên thế giới đều có th�
   <span class="fu">autoplot</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="_main_files/figure-html/autocorrelation-2.png" width="672"></div>
 <p>Bạn có thể kiểm định giả thuyết không về tính độc lập trong một chuỗi thời gian (vd: không tự tương quan) sử dụng kiểm định Ljung-Box (trong package <strong>stats</strong>). Giá trị p có ý nghĩa cho thấy rằng có sự tự tương quan trong dữ liệu.</p>
-<div class="sourceCode" id="cb1125"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1116"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## test for independance </span>
 <span class="fu"><a href="https://rdrr.io/r/stats/box.test.html">Box.test</a></span><span class="op">(</span><span class="va">counts</span><span class="op">$</span><span class="va">case_int</span>, type <span class="op">=</span> <span class="st">"Ljung-Box"</span><span class="op">)</span></code></pre></div>
 <pre><code>## 
@@ -539,7 +531,7 @@ Dữ liệu khí hậu tại bất kỳ đâu trên thế giới đều có th�
 <p>Chu kỳ Fourier tương đương với các đường cong sin và cosin. Sự khác biệt là chúng được dựa trên việc tìm ra sự kết hợp thích hợp nhất của các đường cong để giải thích dữ liệu của bạn.</p>
 <p>If only fitting một chu kỳ Fourier, điều này sẽ tương đương với việc fitting một đường sin và cosin cho độ trễ xảy ra thường xuyên nhất được thấy trong biểu đồ chu kỳ của bạn (trong trường hợp của chúng ta là 52 tuần). Chúng ta sử dụng hàm <code>fourier()</code> từ package <strong>forecast</strong>.</p>
 <p>Trong code dưới đây, chúng ta gán bằng cách sử dụng <code><a href="https://rdrr.io/r/base/Extract.html">$</a></code>, vì hàm <code>fourier()</code> trả về hai cột (một cho sin và một cho cosin) và vì vậy chúng được thêm vào tập dữ liệu dưới dạng danh sách, được gọi là “fourier” - nhưng danh sách này sau đó có thể được sử dụng như một biến bình thường trong hồi quy.</p>
-<div class="sourceCode" id="cb1127"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1118"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## add in fourier terms using the epiweek and case_int variabless</span>
 <span class="va">counts</span><span class="op">$</span><span class="va">fourier</span> <span class="op">&lt;-</span> <span class="fu">select</span><span class="op">(</span><span class="va">counts</span>, <span class="va">epiweek</span>, <span class="va">case_int</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">fourier</span><span class="op">(</span>K <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
@@ -552,7 +544,7 @@ Dữ liệu khí hậu tại bất kỳ đâu trên thế giới đều có th�
 <p>Sự khác biệt là đầu tiên chúng ta phải xác định model trước, và sau đó <code>fit()</code> nó vào dữ liệu. Điều này rất hữu ích vì nó cho phép so sánh nhiều mô hình khác nhau với cùng một cú pháp..</p>
 <p><span style="color: darkgreen;"><strong><em>MẸO:</em></strong> Nếu bạn muốn sử dụng tỷ suất hơn là số lượng, bạn có thể bao gồm biến dân số dưới dạng thuật ngữ bù logarit, bằng cách thêm <code>offset(log(population)</code>. Sau đó, bạn sẽ cần đặt dân số là 1, trước khi sử dụng hàm <code><a href="https://rdrr.io/r/stats/predict.html">predict()</a></code> để tạo ra tỷ suất. </span></p>
 <p><span style="color: darkgreen;"><strong><em>MẸO:</em></strong> Để fit những mô hình phức tạp hơn chẳng hạn như ARIMA hoặc prophet, hãy tham khảo package <a href="https://fable.tidyverts.org/index.html"><strong>fable</strong></a>.</span></p>
-<div class="sourceCode" id="cb1128"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1119"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## define the model you want to fit (negative binomial) </span>
 <span class="va">model</span> <span class="op">&lt;-</span> <span class="fu">glm_nb_model</span><span class="op">(</span>
   <span class="co">## set number of cases as outcome of interest</span>
@@ -590,7 +582,7 @@ Dữ liệu khí hậu tại bất kỳ đâu trên thế giới đều có th�
 </h3>
 <p>Để xem mô hình của chúng ta phù hợp với dữ liệu quan sát như thế nào, chúng ta cần xem xét phần dư. Phần dư là sự khác biệt giữa số lượng được quan sát và số lượng được ước tính từ mô hình. Chúng ta có thể tính toán nó một cách đơn giản bằng cách dùng hàm <code>case_int - estimate</code>, nhưng hàm <code><a href="https://rdrr.io/r/stats/residuals.html">residuals()</a></code> trích xuất nó trực tiếp từ mô hình hồi quy cho chúng ta.</p>
 <p>Những gì chúng ta thấy dưới đây là chúng ta không giải thích tất cả các sự dao động mà chúng ta có thể có với mô hình. Có thể chúng ta cần fit nhiều chu kỳ fourier hơn, và gủau quyết biên độ. Tuy nhiên đối với ví dụ này, chúng ta sẽ để nguyên như vậy. Các biểu đồ cho thấy mô hình của chúng ta hoạt động kém hơn ở các đỉnh và đáy (khi số lượng ở mức cao nhất và thấp nhất) và có nhiều khả năng ước tính không đầy đủ các số lượng quan sát được.</p>
-<div class="sourceCode" id="cb1129"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1120"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## calculate the residuals </span>
 <span class="va">observed</span> <span class="op">&lt;-</span> <span class="va">observed</span> <span class="op">%&gt;%</span> 
   <span class="fu">mutate</span><span class="op">(</span>resid <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="va">fitted_model</span><span class="op">$</span><span class="va">fitted_model</span>, type <span class="op">=</span> <span class="st">"response"</span><span class="op">)</span><span class="op">)</span>
@@ -602,14 +594,14 @@ Dữ liệu khí hậu tại bất kỳ đâu trên thế giới đều có th�
   <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> 
   <span class="fu">labs</span><span class="op">(</span>x <span class="op">=</span> <span class="st">"epiweek"</span>, y <span class="op">=</span> <span class="st">"Residuals"</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="_main_files/figure-html/unnamed-chunk-854-1.png" width="672"></div>
-<div class="sourceCode" id="cb1130"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1121"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## is there autocorelation in the residuals (is there a pattern to the error?)  </span>
 <span class="va">observed</span> <span class="op">%&gt;%</span> 
   <span class="fu">as_tsibble</span><span class="op">(</span>index <span class="op">=</span> <span class="va">epiweek</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">ACF</span><span class="op">(</span><span class="va">resid</span>, lag_max <span class="op">=</span> <span class="fl">52</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">autoplot</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="_main_files/figure-html/unnamed-chunk-854-2.png" width="672"></div>
-<div class="sourceCode" id="cb1131"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1122"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## are residuals normally distributed (are under or over estimating?)  </span>
 <span class="va">observed</span> <span class="op">%&gt;%</span>
   <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">resid</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
@@ -617,7 +609,7 @@ Dữ liệu khí hậu tại bất kỳ đâu trên thế giới đều có th�
   <span class="fu">geom_rug</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">labs</span><span class="op">(</span>y <span class="op">=</span> <span class="st">"count"</span><span class="op">)</span> </code></pre></div>
 <div class="inline-figure"><img src="_main_files/figure-html/unnamed-chunk-854-3.png" width="672"></div>
-<div class="sourceCode" id="cb1132"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1123"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## compare observed counts to their residuals </span>
   <span class="co">## should also be no pattern </span>
 <span class="va">observed</span> <span class="op">%&gt;%</span>
@@ -625,7 +617,7 @@ Dữ liệu khí hậu tại bất kỳ đâu trên thế giới đều có th�
   <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">labs</span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Fitted"</span>, y <span class="op">=</span> <span class="st">"Residuals"</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="_main_files/figure-html/unnamed-chunk-854-4.png" width="672"></div>
-<div class="sourceCode" id="cb1133"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1124"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## formally test autocorrelation of the residuals</span>
 <span class="co">## H0 is that residuals are from a white-noise series (i.e. random)</span>
 <span class="co">## test for independence </span>
@@ -649,7 +641,7 @@ Dữ liệu khí hậu tại bất kỳ đâu trên thế giới đều có th�
 <h3>Nối hai bộ dữ liệu<a class="anchor" aria-label="anchor" href="#n%E1%BB%91i-hai-b%E1%BB%99-d%E1%BB%AF-li%E1%BB%87u"><i class="fas fa-link"></i></a>
 </h3>
 <p>Bạn có thể nối các tập dữ liệu của mình sử dụng biến tuần. Để biết thêm về nối dữ liệu, xem chương <a href="joining-matching.html#joining-matching">Nối dữ liệu</a>.</p>
-<div class="sourceCode" id="cb1135"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1126"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## left join so that we only have the rows already existing in counts</span>
 <span class="co">## drop the date variable from temp_data (otherwise is duplicated)</span>
 <span class="va">counts</span> <span class="op">&lt;-</span> <span class="fu">left_join</span><span class="op">(</span><span class="va">counts</span>, 
@@ -661,7 +653,7 @@ Dữ liệu khí hậu tại bất kỳ đâu trên thế giới đều có th�
 <h3>Phân tích mô tả<a class="anchor" aria-label="anchor" href="#ph%C3%A2n-t%C3%ADch-m%C3%B4-t%E1%BA%A3-1"><i class="fas fa-link"></i></a>
 </h3>
 <p>Đầu tiên hãy trực quan hóa dữ liệu của bạn để kiểm tra xem có bất kỳ mối tương quan rõ ràng nào không. Biểu đồ dưới đây cho thấy một mối quan hệ rõ ràng về tính mùa vụ của các biến, và nhiệt độ có thể đạt đỉnh vài tuần trước khi các trường hợp xảy ra. Để biết thêm về xoay trục dữ liệu, xem chương <a href="pivoting.html#pivoting">Xoay trục dữ liệu</a>.</p>
-<div class="sourceCode" id="cb1136"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1127"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">counts</span> <span class="op">%&gt;%</span> 
   <span class="co">## keep the variables we are interested </span>
   <span class="fu">select</span><span class="op">(</span><span class="va">epiweek</span>, <span class="va">case_int</span>, <span class="va">t2m</span><span class="op">)</span> <span class="op">%&gt;%</span> 
@@ -688,7 +680,7 @@ Dữ liệu khí hậu tại bất kỳ đâu trên thế giới đều có th�
 <h3>Lags và tương quan chéo<a class="anchor" aria-label="anchor" href="#lags-v%C3%A0-t%C6%B0%C6%A1ng-quan-ch%C3%A9o"><i class="fas fa-link"></i></a>
 </h3>
 <p>Để kiểm định xem những tuần nào có tương quan nhiều nhất tới các trường hợp và nhiệt độ, bạn có thể sử dụng hàm tương quan chéo (<code>CCF()</code>) từ package <strong>feasts</strong>. Bạn cũng có thể trực quan hóa (hơn là sử dụng <code>arrange</code>) sử dụng hàm <code>autoplot()</code>.</p>
-<div class="sourceCode" id="cb1137"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1128"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">counts</span> <span class="op">%&gt;%</span> 
   <span class="co">## calculate cross-correlation between interpolated counts and temperature</span>
   <span class="fu">CCF</span><span class="op">(</span><span class="va">case_int</span>, <span class="va">t2m</span>,
@@ -716,7 +708,7 @@ Dữ liệu khí hậu tại bất kỳ đâu trên thế giới đều có th�
 ## 10  -47W 0.638</code></pre>
 <p>Chúng ta thấy rằng độ trễ 4 tuần có mối tương quan cao nhất, vì vậy chúng ta tạo một biến nhiệt độ trễ để đưa vào mô hình hồi quy.</p>
 <p><span style="color: red;"><strong><em>NGUY HIỂM:</em></strong> Lưu ý rằng bốn tuần đầu tiên dữ liệu của chúng ta trong biến nhiệt độ trễ bị thiếu (<code>NA</code>) - bởi vì không có bốn tuần trước đó để lấy dữ liệu. Để sử dụng bộ dữ liệu này với hàm <strong>trending</strong> <code><a href="https://rdrr.io/r/stats/predict.html">predict()</a></code>, chúng ta cần phải sử dụng đối số <code>simulate_pi = FALSE</code> bên trong hàm <code><a href="https://rdrr.io/r/stats/predict.html">predict()</a></code>. Nếu chúng ta muốn sử dụng tùy chọn mô phỏng, thì chúng ta phải loại bỏ các giá trị missings và lưu thành một bộ dữ liệu mới bằng cách thêm hàm <code>drop_na(t2m_lag4)</code> vào đoạn code dưới đây.</span></p>
-<div class="sourceCode" id="cb1139"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1130"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">counts</span> <span class="op">&lt;-</span> <span class="va">counts</span> <span class="op">%&gt;%</span> 
   <span class="co">## create a new variable for temperature lagged by four weeks</span>
   <span class="fu">mutate</span><span class="op">(</span>t2m_lag4 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/lag.html">lag</a></span><span class="op">(</span><span class="va">t2m</span>, n <span class="op">=</span> <span class="fl">4</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -727,7 +719,7 @@ Dữ liệu khí hậu tại bất kỳ đâu trên thế giới đều có th�
 </h3>
 <p>Chúng ta sẽ fit một mô hình hồi quy nhị thức âm như đã thực hiện trước đó. Lần này chúng ta thêm biến nhiệt độ có độ trễ là bốn tuần.</p>
 <p><span style="color: orange;"><strong><em>CẨN TRỌNG:</em></strong> Lưu ý cách sử dụng của đối số <code>simulate_pi = FALSE</code> bên trong hàm <code><a href="https://rdrr.io/r/stats/predict.html">predict()</a></code>. Điều này là bởi hành vi mặc định của <strong>trending</strong> là sử dụng package <strong>ciTools</strong> để ước tính khoảng tiên lượng. Nó sẽ không hoạt động nếu có giá trị <code>NA</code>, cũng như tạo ra nhiều khoảng chi tiết hơn. Xem <code><a href="https://rdrr.io/pkg/trending/man/trending_model_fit-prediction.html">?trending::predict.trending_model_fit</a></code> để biết thêm chi tiết. </span></p>
-<div class="sourceCode" id="cb1140"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1131"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## define the model you want to fit (negative binomial) </span>
 <span class="va">model</span> <span class="op">&lt;-</span> <span class="fu">glm_nb_model</span><span class="op">(</span>
   <span class="co">## set number of cases as outcome of interest</span>
@@ -747,7 +739,7 @@ Dữ liệu khí hậu tại bất kỳ đâu trên thế giới đều có th�
 <span class="va">observed</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">fitted_model</span>, simulate_pi <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
 <p>Để khảo sát các chu kỳ đơn lẻ, chúng ta có thể lấy mô hình hồi quy nhị thức âm gốc ra khỏi định dạng <strong>trending</strong> bằng cách sử dụng hàm <code>get_model()</code> và chuyển nó tới hàm <code>tidy()</code> của package <strong>broom</strong> để truy xuất các ước tính được lũy thừa hóa và các khoảng tin cậy.</p>
 <p>Điều này cho chúng ta thấy là nhiệt độ trễ, sau khi kiểm soát xu hướng và tính theo mùa, tương tự như số lượng trường hợp (ước tính ~ 1) và sự liên quan có ý nghĩa. Điều này cho thấy rằng nó có thể là một biến số tốt để sử dụng trong việc dự báo các ca bệnh trong tương lai (các dữ liệu dự báo khí hậu luôn có sẵn).</p>
-<div class="sourceCode" id="cb1141"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1132"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fitted_model</span> <span class="op">%&gt;%</span> 
   <span class="co">## extract original negative binomial regression</span>
   <span class="fu">get_model</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
@@ -755,15 +747,15 @@ Dữ liệu khí hậu tại bất kỳ đâu trên thế giới đều có th�
   <span class="fu">tidy</span><span class="op">(</span>exponentiate <span class="op">=</span> <span class="cn">TRUE</span>, 
        conf.int <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 5 x 7
-##   term         estimate  std.error statistic  p.value conf.low conf.high
-##   &lt;chr&gt;           &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
-## 1 (Intercept)   339.    0.108          53.8  0         274.      419.   
-## 2 epiweek         1.00  0.00000774     10.9  8.13e-28    1.00      1.00 
-## 3 fourierS1-52    0.752 0.0214        -13.3  1.84e-40    0.721     0.784
-## 4 fourierC1-52    0.823 0.0200         -9.78 1.35e-22    0.791     0.855
-## 5 t2m_lag4        1.01  0.00269         2.48 1.30e- 2    1.00      1.01</code></pre>
+##   term           estimate  std.error statistic  p.value   conf.low  conf.high
+##   &lt;chr&gt;             &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;
+## 1 (Intercept)   5.83      0.108          53.8  0         5.61       6.04     
+## 2 epiweek       0.0000846 0.00000774     10.9  8.13e-28  0.0000695  0.0000998
+## 3 fourierS1-52 -0.285     0.0214        -13.3  1.84e-40 -0.327     -0.243    
+## 4 fourierC1-52 -0.195     0.0200         -9.78 1.35e-22 -0.234     -0.157    
+## 5 t2m_lag4      0.00667   0.00269         2.48 1.30e- 2  0.00139    0.0119</code></pre>
 <p>Đánh giá nhanh mô hình cho thấy nó có thể thực hiện tốt hơn công việc ước tính số ca bệnh quan sát được.</p>
-<div class="sourceCode" id="cb1143"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1134"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## plot your regression </span>
 <span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">observed</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">epiweek</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
   <span class="co">## add in a line for the model estimate</span>
@@ -783,7 +775,7 @@ Dữ liệu khí hậu tại bất kỳ đâu trên thế giới đều có th�
 <h4>Phần dư<a class="anchor" aria-label="anchor" href="#ph%E1%BA%A7n-d%C6%B0-1"><i class="fas fa-link"></i></a>
 </h4>
 <p>Chúng ta một lần nữa lại khảo sát phần dư để xem mô hình của chúng ta phù hợp với dữ liệu quan sát như thế nào. Các kết quả và phiên giải ở đây tương tự như kết quả của hồi quy trước đó, vì vậy sẽ khả thi hơn khi chọn mô hình đơn giản hơn mà không có nhiệt độ.</p>
-<div class="sourceCode" id="cb1144"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1135"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## calculate the residuals </span>
 <span class="va">observed</span> <span class="op">&lt;-</span> <span class="va">observed</span> <span class="op">%&gt;%</span> 
   <span class="fu">mutate</span><span class="op">(</span>resid <span class="op">=</span> <span class="va">case_int</span> <span class="op">-</span> <span class="va">estimate</span><span class="op">)</span>
@@ -797,14 +789,14 @@ Dữ liệu khí hậu tại bất kỳ đâu trên thế giới đều có th�
 <pre><code>## Warning: Removed 4 row(s) containing missing values (geom_path).</code></pre>
 <pre><code>## Warning: Removed 4 rows containing missing values (geom_point).</code></pre>
 <div class="inline-figure"><img src="_main_files/figure-html/unnamed-chunk-855-1.png" width="672"></div>
-<div class="sourceCode" id="cb1147"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1138"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## is there autocorelation in the residuals (is there a pattern to the error?)  </span>
 <span class="va">observed</span> <span class="op">%&gt;%</span> 
   <span class="fu">as_tsibble</span><span class="op">(</span>index <span class="op">=</span> <span class="va">epiweek</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">ACF</span><span class="op">(</span><span class="va">resid</span>, lag_max <span class="op">=</span> <span class="fl">52</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">autoplot</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="_main_files/figure-html/unnamed-chunk-855-2.png" width="672"></div>
-<div class="sourceCode" id="cb1148"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1139"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## are residuals normally distributed (are under or over estimating?)  </span>
 <span class="va">observed</span> <span class="op">%&gt;%</span>
   <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">resid</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
@@ -813,7 +805,7 @@ Dữ liệu khí hậu tại bất kỳ đâu trên thế giới đều có th�
   <span class="fu">labs</span><span class="op">(</span>y <span class="op">=</span> <span class="st">"count"</span><span class="op">)</span> </code></pre></div>
 <pre><code>## Warning: Removed 4 rows containing non-finite values (stat_bin).</code></pre>
 <div class="inline-figure"><img src="_main_files/figure-html/unnamed-chunk-855-3.png" width="672"></div>
-<div class="sourceCode" id="cb1150"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1141"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## compare observed counts to their residuals </span>
   <span class="co">## should also be no pattern </span>
 <span class="va">observed</span> <span class="op">%&gt;%</span>
@@ -822,7 +814,7 @@ Dữ liệu khí hậu tại bất kỳ đâu trên thế giới đều có th�
   <span class="fu">labs</span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Fitted"</span>, y <span class="op">=</span> <span class="st">"Residuals"</span><span class="op">)</span></code></pre></div>
 <pre><code>## Warning: Removed 4 rows containing missing values (geom_point).</code></pre>
 <div class="inline-figure"><img src="_main_files/figure-html/unnamed-chunk-855-4.png" width="672"></div>
-<div class="sourceCode" id="cb1152"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1143"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## formally test autocorrelation of the residuals</span>
 <span class="co">## H0 is that residuals are from a white-noise series (i.e. random)</span>
 <span class="co">## test for independence </span>
@@ -855,7 +847,7 @@ Dữ liệu khí hậu tại bất kỳ đâu trên thế giới đều có th�
 <p>Sẽ dễ dàng hơn khi xác định ngày của bạn ở một nơi và sau đó sử dụng những ngày này trong suốt phần còn lại trong của bạn.</p>
 <p>Ở đây chúng ta xác định ngày bắt đầu (khi các quan sát của chúng ta bắt đầu) và ngày làm điểm cắt (cut-off date) (kết thúc giai đoạn baseline - và giai đoạn chúng ta muốn dự đoán cho sự bắt đầu). ~Chúng ta cũng xác định có bao nhiêu tuần trong năm mà chúng tôi sẽ dự đoán)~. Chúng ta cũng xác định có bao nhiêu tuần mà chúng ta đang muốn dự báo nằm giữa điểm cắt baseline và ngày kết thúc.</p>
 <p><span style="color: black;"><strong><em>LƯU Ý:</em></strong> Trong ví dụ này, chúng tôi giả sử hiện đang ở cuối tháng 9 năm 2011 (“2011 W39”).</span></p>
-<div class="sourceCode" id="cb1154"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1145"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## define start date (when observations began)</span>
 <span class="va">start_date</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">counts</span><span class="op">$</span><span class="va">epiweek</span><span class="op">)</span>
 
@@ -873,7 +865,7 @@ Dữ liệu khí hậu tại bất kỳ đâu trên thế giới đều có th�
 <h4>Thêm hàng<a class="anchor" aria-label="anchor" href="#th%C3%AAm-h%C3%A0ng-1"><i class="fas fa-link"></i></a>
 </h4>
 <p>Để có thể dự báo ở định dạng tidyverse, chúng ta cần có số hàng phù hợp trong tập dữ liệu của mình, tức là một hàng cho mỗi tuần cho tới ngày kết thúc <code>end_date</code> đã được xác định bên trên. Đoạn mã bên dưới cho phép bạn thêm các hàng này theo một biến nhóm - ví dụ: nếu chúng ta có nhiều quốc gia trong một tập dữ liệu, chúng ta có thể nhóm theo quốc gia và sau đó thêm các hàng một cách thích hợp cho từng quốc gia. Hàm <code>group_by_key()</code> trong package <strong>tsibble</strong> cho phép chúng ta thực hiện điều này và sau đó chuyển dữ liệu đã nhóm tới các hàm <strong>dplyr</strong> như <code>group_modify()</code> và <code>add_row()</code>. Sau đó, chúng ta cụ thể trình tự các tuần giữa một tuần sau tuần tối đa hiện có trong dữ liệu và tuần kết thúc.</p>
-<div class="sourceCode" id="cb1155"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1146"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## add in missing weeks till end of year </span>
 <span class="va">counts</span> <span class="op">&lt;-</span> <span class="va">counts</span> <span class="op">%&gt;%</span>
   <span class="co">## group by the region</span>
@@ -890,7 +882,7 @@ Dữ liệu khí hậu tại bất kỳ đâu trên thế giới đều có th�
 </h4>
 <p>Chúng ta phải định nghĩa lại chu kỳ Fourier - bởi vì chúng ta chỉ muốn fit chúng tới ngày baseline và sau đó dự báo (ngoại suy) các chu kỳ này cho năm sau. Để làm điều này, chúng ta cần kết hợp hai danh sách đầu ra từ hàm <code>fourier()</code> lại với nhau; cái đầu tiên dành cho dữ liệu baseline, và cái thứ hai dự đoán cho năm quan tâm (bằng cách xác định đối số <code>h</code>).</p>
 <p><em>Lưu ý</em> để nối dòng chúng ta phải sử dụng hàm <code><a href="https://rdrr.io/r/base/cbind.html">rbind()</a></code> (thay vì hàm tidyverse <code>bind_rows</code>) bởi vì các cột fourier ở định dạng danh sách (vì vậy không được đặt tên riêng lẻ).</p>
-<div class="sourceCode" id="cb1156"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1147"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## define fourier terms (sincos) </span>
 <span class="va">counts</span> <span class="op">&lt;-</span> <span class="va">counts</span> <span class="op">%&gt;%</span> 
   <span class="fu">mutate</span><span class="op">(</span>
@@ -926,7 +918,7 @@ Dữ liệu khí hậu tại bất kỳ đâu trên thế giới đều có th�
 <p>Chúng ta sau đó sử dụng hàm <code>pluck()</code> từ package <strong>purrr</strong> để kéo tập dữ liệu ra khỏi danh sách (tương đương với việc sử dụng ngoặc vuông, vd: <code>dat[[1]]</code>), và sau đó có thể fit mô hình của chúng ta tới dữ liệu nền,và sau đó sử dụng hàm <code><a href="https://rdrr.io/r/stats/predict.html">predict()</a></code> cho dữ liệu mà chúng ta quan tâm sau cut-off.</p>
 <p>Xem chương <a href="iteration.html#iteration">Lặp, vòng lặp, và danh sách</a> để biết thêm về <strong>purrr</strong>.</p>
 <p><span style="color: orange;"><strong><em>CẨN TRỌNG:</em></strong> Lưu ý cách sử dụng của đối số <code>simulate_pi = FALSE</code> bên trong hàm <code><a href="https://rdrr.io/r/stats/predict.html">predict()</a></code>. Điều này là bởi hành vi mặc định của <strong>trending</strong> là sử dụng package <strong>ciTools</strong> để ước tính khoảng tiên lượng. Nó sẽ không hoạt động nếu có giá trị <code>NA</code>, cũng như tạo ra nhiều khoảng chi tiết hơn. Xem <code><a href="https://rdrr.io/pkg/trending/man/trending_model_fit-prediction.html">?trending::predict.trending_model_fit</a></code> để biết thêm chi tiết. </span></p>
-<div class="sourceCode" id="cb1157"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1148"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># split data for fitting and prediction</span>
 <span class="va">dat</span> <span class="op">&lt;-</span> <span class="va">counts</span> <span class="op">%&gt;%</span> 
   <span class="fu">group_by</span><span class="op">(</span><span class="va">epiweek</span> <span class="op">&lt;=</span> <span class="va">cut_off</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -961,7 +953,7 @@ Dữ liệu khí hậu tại bất kỳ đâu trên thế giới đều có th�
 <span class="co">## combine baseline and predicted datasets</span>
 <span class="va">observed</span> <span class="op">&lt;-</span> <span class="fu">bind_rows</span><span class="op">(</span><span class="va">observed</span>, <span class="va">forecasts</span><span class="op">)</span></code></pre></div>
 <p>Như bên trên, chúng ta có thể trực quan hóa mô hình với <strong>ggplot</strong>. Chúng ta đánh dấu các cảnh báo bằng các chấm màu đỏ cho các trường hợp quan sát được phía trên 95% khoảng dự đoán. Lần này, chúng ta cũng thêm một đường dọc để dán nhãn khi dự báo bắt đầu.</p>
-<div class="sourceCode" id="cb1158"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1149"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## plot your regression </span>
 <span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">observed</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">epiweek</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
   <span class="co">## add in a line for the model estimate</span>
@@ -1009,7 +1001,7 @@ Dữ liệu khí hậu tại bất kỳ đâu trên thế giới đều có th�
 <p><img src="https://otexts.com/fpp2/fpp_files/figure-html/cv1-1.png"><em>hình sử dụng lại với sự cho phép của các tác giả</em></p>
 <p>Dưới đây chúng ta sử dụng hàm <code>map()</code> từ package <strong>purrr</strong> để chạy vòng lặp trên từng tập dữ liệu. Sau đó, chúng ta đặt các ước tính vào một tập dữ liệu và hợp nhất với số lượng trường hợp ban đầu để sử dụng package <strong>yardstick</strong> để tính toán các đo lường về độ chính xác. Chúng ta sẽ tính toán bốn giá trị bao gồm: Root mean squared error (RMSE), Mean absolute error (MAE), Mean absolute scaled error (MASE), Mean absolute percent error (MAPE).</p>
 <p><span style="color: orange;"><strong><em>CẨN TRỌNG:</em></strong> Lưu ý cách sử dụng của đối số <code>simulate_pi = FALSE</code> bên trong hàm <code><a href="https://rdrr.io/r/stats/predict.html">predict()</a></code>. Điều này là bởi hành vi mặc định của <strong>trending</strong> là sử dụng package <strong>ciTools</strong> để ước tính khoảng tiên lượng. Nó sẽ không hoạt động nếu có giá trị <code>NA</code>, cũng như tạo ra nhiều khoảng chi tiết hơn. Xem <code><a href="https://rdrr.io/pkg/trending/man/trending_model_fit-prediction.html">?trending::predict.trending_model_fit</a></code> để biết thêm chi tiết. </span></p>
-<div class="sourceCode" id="cb1160"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1151"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## Cross validation: predicting week(s) ahead based on sliding window</span>
 
 <span class="co">## expand your data by rolling over in 52 week windows (before + after) </span>
@@ -1173,7 +1165,7 @@ Dữ liệu khí hậu tại bất kỳ đâu trên thế giới đều có th�
 <p>Lựa chọn đầu tiên là sử dụng phương pháp Farrington cải tiến. Nó fit một mô hình nhị thức âm tổng quát (bao gồm xu hướng) và down-weights các đợt bùng phát trong quá khứ (giá trị ngoại lai) để tạo một mức ngưỡng.</p>
 <p>Lựa chọn thứ hai là dùng phương pháp glrnb. Nó cũng fit một mô hình nhị thức âm tổng quát nhưng bao gồm cả xu hướng và chu kỳ fourier (vì vậy được ưu ái ở đây). Mô hình hồi quy được sử dụng để tính toán “control mean” (~fitted values) - nó sau đó sử dụng một phép thống kê tính toán likelihood ratio statistic tổng quát hóa để đánh giá nếu có sự thay đổi trung bình cho mỗi tuần. Lưu ý rằng ngưỡng cho mỗi tuần sẽ tính đến các tuần trước, vì vậy nếu có sự thay đổi liên tục, một cảnh báo sẽ được kích hoạt. (Cũng lưu ý rằng sau mỗi lần cảnh báo, thuật toán sẽ được đặt lại)</p>
 <p>Để làm việc được với package <strong>surveillance</strong>, trước tiên chúng ta cần xác định đối tượng “chuỗi thời gian giám sát” (sử dụng hàm <code>sts()</code>) để fit vào bên trong framework.</p>
-<div class="sourceCode" id="cb1162"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1153"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## define surveillance time series object</span>
 <span class="co">## nb. you can include a denominator with the population object (see ?sts)</span>
 <span class="va">counts_sts</span> <span class="op">&lt;-</span> <span class="fu">sts</span><span class="op">(</span>observed <span class="op">=</span> <span class="va">counts</span><span class="op">$</span><span class="va">case_int</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">counts</span><span class="op">$</span><span class="va">case_int</span><span class="op">)</span><span class="op">]</span>,
@@ -1194,7 +1186,7 @@ Dữ liệu khí hậu tại bất kỳ đâu trên thế giới đều có th�
 <h4>Phương pháp Farrington<a class="anchor" aria-label="anchor" href="#ph%C6%B0%C6%A1ng-ph%C3%A1p-farrington"><i class="fas fa-link"></i></a>
 </h4>
 <p>Sau đó chúng ta xác định từng tham số cho phương pháp Farrington trong một danh sách <code>list</code>. Sau đó, chúng ta chạy thuật toán bằng cách sử dụng hàm <code>farringtonFlexible()</code> và sau đó chúng ta có thể trích xuất ngưỡng cảnh báo bằng hàm <code>farringtonmethod@upperbound</code> để thêm vào tệp dữ liệu của chúng ta. Bạn cũng có thể trích xuất giá trị TRUE/FALSE cho từng tuần nếu nó kích hoạt một cảnh báo (cao hơn ngưỡng) bằng cách sử dụng <code>farringtonmethod@alarm</code>.</p>
-<div class="sourceCode" id="cb1163"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1154"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## define control</span>
 <span class="va">ctrl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
   <span class="co">## define what time period that want threshold for (i.e. 2011)</span>
@@ -1219,7 +1211,7 @@ Dữ liệu khí hậu tại bất kỳ đâu trên thế giới đều có th�
                <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">counts</span><span class="op">$</span><span class="va">case_int</span><span class="op">)</span><span class="op">)</span>,
               <span class="st">"threshold"</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">farringtonmethod</span><span class="op">@</span><span class="va">upperbound</span></code></pre></div>
 <p>Sau đó, chúng ta có thể trực quan hóa kết quả với ggplot như đã thực hiện ở trên.</p>
-<div class="sourceCode" id="cb1164"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1155"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">counts</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">epiweek</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
   <span class="co">## add in observed case counts as a line</span>
   <span class="fu">geom_line</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="va">case_int</span>, colour <span class="op">=</span> <span class="st">"Observed"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
@@ -1243,7 +1235,7 @@ Dữ liệu khí hậu tại bất kỳ đâu trên thế giới đều có th�
 <p>Tương tự với phương pháp GLRNB, chúng ta xác định từng tham số vào một danh sách <code>list</code>, sau đó fit thuật toán và trích xuất các giới hạn trên.</p>
 <p><span style="color: orange;"><strong><em>CẨN TRỌNG:</em></strong> Phương pháp này sử dụng “brute force” (tương tự như bootstrapping) để tính toán các ngưỡng, vì vậy có thể mất nhiều thời gian!</span></p>
 <p>Xem <a href="https://cran.r-project.org/web/packages/surveillance/vignettes/glrnb.pdf">GLRNB vignette</a> để biết thêm chi tiết.</p>
-<div class="sourceCode" id="cb1165"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1156"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## define control options</span>
 <span class="va">ctrl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
   <span class="co">## define what time period that want threshold for (i.e. 2011)</span>
@@ -1269,7 +1261,7 @@ Dữ liệu khí hậu tại bất kỳ đâu trên thế giới đều có th�
                <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">counts</span><span class="op">$</span><span class="va">case_int</span><span class="op">)</span><span class="op">)</span>,
               <span class="st">"threshold_glrnb"</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">glrnbmethod</span><span class="op">@</span><span class="va">upperbound</span></code></pre></div>
 <p>Trực quan hóa kết quả đầu ra như bên trên.</p>
-<div class="sourceCode" id="cb1166"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1157"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">counts</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">epiweek</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
   <span class="co">## add in observed case counts as a line</span>
   <span class="fu">geom_line</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="va">case_int</span>, colour <span class="op">=</span> <span class="st">"Observed"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
@@ -1306,7 +1298,7 @@ Dữ liệu khí hậu tại bất kỳ đâu trên thế giới đều có th�
 <p>Các chu kỳ bổ sung có xu hướng hoặc theo mùa có thể được thêm vào nếu cần thiết.</p>
 <p><span class="math inline">\(β_2 \times δ(t-t_0) + β_3\times(t-t_0 )^+\)</span> là một phần của mô hình tuyến tỉnh tổng quát hóa của giai đoạn sau và bằng không ở giai đoạn trước. Điều này có nghĩa là <span class="math inline">\(β_2\)</span> và <span class="math inline">\(β_3\)</span> ước tính các hiệu quả của can thiệp.</p>
 <p>Chúng ta cần tính toán lại chu kỳ Fourier mà không có dự báo ở đây, vì chúng ta sẽ sử dụng tất cả dữ liệu có sẵn (vd: hồi cứu). Ngoài ra, chúng ta cần tính toán các điều khoản bổ sung cần thiết cho hồi quy. thực tế là chúng ta cần tính chu kỳ mở rộng (extra terms) cho đường hồi quy.</p>
-<div class="sourceCode" id="cb1167"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1158"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## add in fourier terms using the epiweek and case_int variabless</span>
 <span class="va">counts</span><span class="op">$</span><span class="va">fourier</span> <span class="op">&lt;-</span> <span class="fu">select</span><span class="op">(</span><span class="va">counts</span>, <span class="va">epiweek</span>, <span class="va">case_int</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">as_tsibble</span><span class="op">(</span>index <span class="op">=</span> <span class="va">epiweek</span><span class="op">)</span> <span class="op">%&gt;%</span> 
@@ -1330,7 +1322,7 @@ Dữ liệu khí hậu tại bất kỳ đâu trên thế giới đều có th�
     time_post <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">pmax</a></span><span class="op">(</span><span class="fl">0</span>, <span class="va">epiweek</span> <span class="op">-</span> <span class="va">intervention_week</span> <span class="op">+</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>Chúng ta sau đó sử dụng các chi kỳ này để fit một mô hình hồi quy nhị thức âm, và tạo một bảng với phần trăm thay đổi. Những gì ví dụ này cho thấy là không có thay đổi đáng kể.</p>
 <p><span style="color: orange;"><strong><em>CẨN TRỌNG:</em></strong> Lưu ý cách sử dụng của đối số <code>simulate_pi = FALSE</code> bên trong hàm <code><a href="https://rdrr.io/r/stats/predict.html">predict()</a></code>. Điều này là bởi hành vi mặc định của <strong>trending</strong> là sử dụng package <strong>ciTools</strong> để ước tính khoảng tiên lượng. Nó sẽ không hoạt động nếu có giá trị <code>NA</code>, cũng như tạo ra nhiều khoảng chi tiết hơn. Xem <code><a href="https://rdrr.io/pkg/trending/man/trending_model_fit-prediction.html">?trending::predict.trending_model_fit</a></code> để biết thêm chi tiết. </span></p>
-<div class="sourceCode" id="cb1168"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1159"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## define the model you want to fit (negative binomial) </span>
 <span class="va">model</span> <span class="op">&lt;-</span> <span class="fu">glm_nb_model</span><span class="op">(</span>
   <span class="co">## set number of cases as outcome of interest</span>
@@ -1381,11 +1373,11 @@ Dữ liệu khí hậu tại bất kỳ đâu trên thế giới đều có th�
          <span class="st">"95%CI high (perc)"</span> <span class="op">=</span> <span class="va">conf.high_perc</span>,
          <span class="st">"p-value"</span> <span class="op">=</span> <span class="va">p.value</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 1 x 7
-##     IRR `95%CI low` `95%CI high` `Percentage change` `95%CI low (perc)` `95%CI high (perc)` `p-value`
-##   &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;               &lt;dbl&gt;              &lt;dbl&gt;               &lt;dbl&gt;     &lt;dbl&gt;
-## 1 0.936       0.874         1.00               -6.40              -12.6               0.306    0.0645</code></pre>
+##       IRR `95%CI low` `95%CI high` `Percentage change` `95%CI low (perc)` `95%CI high (perc)` `p-value`
+##     &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;               &lt;dbl&gt;              &lt;dbl&gt;               &lt;dbl&gt;     &lt;dbl&gt;
+## 1 -0.0661      -0.135      0.00305               -107.              -113.               -99.7    0.0645</code></pre>
 <p>Như bên trên, chúng ta có thể trực quan hóa các đầu ra của mô hình hồi quy.</p>
-<div class="sourceCode" id="cb1170"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1161"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">observed</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">epiweek</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
   <span class="co">## add in observed case counts as a line</span>
   <span class="fu">geom_line</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="va">case_int</span>, colour <span class="op">=</span> <span class="st">"Observed"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
@@ -1494,7 +1486,7 @@ Dữ liệu khí hậu tại bất kỳ đâu trên thế giới đều có th�
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Cẩm nang dịch tễ học với R</strong>" was written by the handbook team. It was last built on 2021-10-14.</p>
+    <p>"<strong>Cẩm nang dịch tễ học với R</strong>" was written by the handbook team. It was last built on 2021-11-01.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -1514,22 +1506,6 @@ Dữ liệu khí hậu tại bất kỳ đâu trên thế giới đều có th�
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
-</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
-for (let popover of popovers) {
-  const div = document.createElement('div');
-  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
-  div.innerHTML = popover.getAttribute('data-content');
-
-  var has_math = div.querySelector("span.math");
-  if (has_math) {
-    document.body.appendChild(div);
-    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
-    MathJax.Hub.Queue(function() {
-      popover.setAttribute('data-content', div.innerHTML);
-      document.body.removeChild(div);
-    })
-  }
-}
 </script>
 </body>
 </html>

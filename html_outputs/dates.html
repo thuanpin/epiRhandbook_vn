@@ -6,40 +6,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>9 Làm việc với ngày tháng | Cẩm nang dịch tễ học với R</title>
 <meta name="author" content="the handbook team">
-<meta name="description" content="Làm việc với trường ngày trên R cần nhiều sự tỉ mỉ hơn là làm việc với các lớp đối tượng khác. Dưới đây, chúng tôi giới thiệu một số công cụ và ví dụ để các thao tác trở nên dễ dàng hơn. Thật may...">
-<meta name="generator" content="bookdown 0.24 with bs4_book()">
-<meta property="og:title" content="9 Làm việc với ngày tháng | Cẩm nang dịch tễ học với R">
-<meta property="og:type" content="book">
-<meta property="og:description" content="Làm việc với trường ngày trên R cần nhiều sự tỉ mỉ hơn là làm việc với các lớp đối tượng khác. Dưới đây, chúng tôi giới thiệu một số công cụ và ví dụ để các thao tác trở nên dễ dàng hơn. Thật may...">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="9 Làm việc với ngày tháng | Cẩm nang dịch tễ học với R">
-<meta name="twitter:description" content="Làm việc với trường ngày trên R cần nhiều sự tỉ mỉ hơn là làm việc với các lớp đối tượng khác. Dưới đây, chúng tôi giới thiệu một số công cụ và ví dụ để các thao tác trở nên dễ dàng hơn. Thật may...">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.0/transition.js"></script><script src="libs/bs3compat-0.3.0/tabs.js"></script><script src="libs/bs3compat-0.3.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
-<script src="libs/datatables-binding-0.19/datatables.js"></script><link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="libs/datatables-binding-0.16/datatables.js"></script><link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet">
 <script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script><link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet">
 <script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script><link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet">
 <script src="libs/selectize-0.12.0/selectize.min.js"></script><link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet">
 <script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet">
-<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<script src="libs/tabwid-1.0.0/tabwid.js"></script><link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
 <script src="libs/leaflet-1.3.1/leaflet.js"></script><link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
-<script src="libs/proj4-2.6.2/proj4.min.js"></script><script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
-<script src="libs/leaflet-binding-2.0.4.1/leaflet.js"></script><script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script><script src="libs/leaflet-providers-plugin-2.0.4.1/leaflet-providers-plugin.js"></script><script src="libs/viz-1.8.2/viz.js"></script><link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
-<script src="libs/grViz-binding-1.0.6.1/grViz.js"></script><script src="libs/d3-4.5.0/d3.min.js"></script><script src="libs/sankey-1/sankey.js"></script><script src="libs/sankeyNetwork-binding-0.4/sankeyNetwork.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
-<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script><link href="libs/vis-9.1.0/vis-network.min.css" rel="stylesheet">
-<script src="libs/vis-9.1.0/vis-network.min.js"></script><script src="libs/visNetwork-binding-2.1.0/visNetwork.js"></script><link href="libs/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<script src="libs/plotly-basic-2.5.1/plotly-basic-2.5.1.min.js"></script><script src="libs/plotly-cartesian-2.5.1/plotly-cartesian-2.5.1.min.js"></script><script src="libs/proj4js-2.3.15/proj4.js"></script><link href="libs/highcharts-8.1.2/css/motion.css" rel="stylesheet">
+<script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script><script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+<script src="libs/leaflet-binding-2.0.3/leaflet.js"></script><script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script><script src="libs/leaflet-providers-plugin-2.0.3/leaflet-providers-plugin.js"></script><script src="libs/viz-1.8.2/viz.js"></script><link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
+<script src="libs/grViz-binding-1.0.6.1/grViz.js"></script><script src="libs/d3-4.5.0/d3.min.js"></script><script src="libs/sankey-1/sankey.js"></script><script src="libs/sankeyNetwork-binding-0.4/sankeyNetwork.js"></script><script src="libs/plotly-binding-4.9.2.1/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script><link href="libs/vis-4.20.1/vis.css" rel="stylesheet">
+<script src="libs/vis-4.20.1/vis.min.js"></script><script src="libs/visNetwork-binding-2.0.9/visNetwork.js"></script><link href="libs/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="libs/plotly-basic-1.52.2/plotly-basic-1.52.2.min.js"></script><script src="libs/plotly-cartesian-1.52.2/plotly-cartesian-1.52.2.min.js"></script><script src="libs/proj4js-2.3.15/proj4.js"></script><link href="libs/highcharts-8.1.2/css/motion.css" rel="stylesheet">
 <script src="libs/highcharts-8.1.2/highcharts.js"></script><script src="libs/highcharts-8.1.2/highcharts-3d.js"></script><script src="libs/highcharts-8.1.2/highcharts-more.js"></script><script src="libs/highcharts-8.1.2/modules/stock.js"></script><script src="libs/highcharts-8.1.2/modules/map.js"></script><script src="libs/highcharts-8.1.2/modules/annotations.js"></script><script src="libs/highcharts-8.1.2/modules/data.js"></script><script src="libs/highcharts-8.1.2/modules/drilldown.js"></script><script src="libs/highcharts-8.1.2/modules/item-series.js"></script><script src="libs/highcharts-8.1.2/modules/offline-exporting.js"></script><script src="libs/highcharts-8.1.2/modules/overlapping-datalabels.js"></script><script src="libs/highcharts-8.1.2/modules/exporting.js"></script><script src="libs/highcharts-8.1.2/modules/export-data.js"></script><script src="libs/highcharts-8.1.2/modules/funnel.js"></script><script src="libs/highcharts-8.1.2/modules/heatmap.js"></script><script src="libs/highcharts-8.1.2/modules/treemap.js"></script><script src="libs/highcharts-8.1.2/modules/sankey.js"></script><script src="libs/highcharts-8.1.2/modules/dependency-wheel.js"></script><script src="libs/highcharts-8.1.2/modules/organization.js"></script><script src="libs/highcharts-8.1.2/modules/solid-gauge.js"></script><script src="libs/highcharts-8.1.2/modules/streamgraph.js"></script><script src="libs/highcharts-8.1.2/modules/sunburst.js"></script><script src="libs/highcharts-8.1.2/modules/vector.js"></script><script src="libs/highcharts-8.1.2/modules/wordcloud.js"></script><script src="libs/highcharts-8.1.2/modules/xrange.js"></script><script src="libs/highcharts-8.1.2/modules/tilemap.js"></script><script src="libs/highcharts-8.1.2/modules/venn.js"></script><script src="libs/highcharts-8.1.2/modules/gantt.js"></script><script src="libs/highcharts-8.1.2/modules/timeline.js"></script><script src="libs/highcharts-8.1.2/modules/parallel-coordinates.js"></script><script src="libs/highcharts-8.1.2/modules/bullet.js"></script><script src="libs/highcharts-8.1.2/modules/coloraxis.js"></script><script src="libs/highcharts-8.1.2/modules/dumbbell.js"></script><script src="libs/highcharts-8.1.2/modules/lollipop.js"></script><script src="libs/highcharts-8.1.2/modules/series-label.js"></script><script src="libs/highcharts-8.1.2/plugins/motion.js"></script><script src="libs/highcharts-8.1.2/custom/reset.js"></script><script src="libs/highcharts-8.1.2/modules/boost.js"></script><script src="libs/highchart-binding-0.8.2/highchart.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-QXDW878QLX"></script><script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
       gtag('config', 'G-QXDW878QLX');
-    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="style_bs4.css">
+    </script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS --><link rel="stylesheet" href="style_bs4.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -177,11 +169,11 @@
 <div class="sourceCode" id="cb315"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># get the system date - this is a DATE class</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "2021-10-14"</code></pre>
+<pre><code>## [1] "2021-11-01"</code></pre>
 <div class="sourceCode" id="cb317"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># get the system time - this is a DATETIME class</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "2021-10-14 13:49:53 UTC"</code></pre>
+<pre><code>## [1] "2021-11-01 20:33:31 CET"</code></pre>
 <p>Với package <strong>lubridate</strong>, chúng cũng có thể trả về giá trị tương ứng với hàm <code>today()</code> và <code>now()</code>. Hàm <code><a href="https://rdrr.io/r/base/date.html">date()</a></code> sẽ trả về giá trị ngày và giờ hiện tại với ngày trong tuần và tháng.</p>
 <!-- ======================================================= -->
 </div>
@@ -560,19 +552,19 @@
 <div class="sourceCode" id="cb374"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># today's date, with formatting</span>
 <span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span><span class="op">(</span><span class="op">)</span>, format <span class="op">=</span> <span class="st">"%d %B %Y"</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "14 October 2021"</code></pre>
+<pre><code>## [1] "01 November 2021"</code></pre>
 <div class="sourceCode" id="cb376"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># easy way to get full date and time (default formatting)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/date.html">date</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "Thu Oct 14 09:49:55 2021"</code></pre>
+<pre><code>## [1] "Mon Nov 01 20:33:33 2021"</code></pre>
 <div class="sourceCode" id="cb378"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># formatted combined date, time, and time zone using str_glue() function</span>
 <span class="fu">str_glue</span><span class="op">(</span><span class="st">"{format(Sys.Date(), format = '%A, %B %d %Y, %z  %Z, ')}{format(Sys.time(), format = '%H:%M:%S')}"</span><span class="op">)</span></code></pre></div>
-<pre><code>## Thursday, October 14 2021, +0000  UTC, 13:49:55</code></pre>
+<pre><code>## Monday, November 01 2021, +0000  UTC, 20:33:33</code></pre>
 <div class="sourceCode" id="cb380"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Using format to display weeks</span>
 <span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"%Y Week %W"</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "2021 Week 41"</code></pre>
+<pre><code>## [1] "2021 Week 44"</code></pre>
 <p>Lưu ý rằng nếu sử dụng hàm <code>str_glue()</code>, hãy lưu ý rằng các nội dung lẽ ra nên để trong dấu ngoặc kép thì bạn chỉ nên sử dụng dấu ngoặc đơn (như trên).</p>
 </div>
 <div id="tháng-năm" class="section level3 unnumbered">
@@ -645,8 +637,8 @@
       by <span class="op">=</span> <span class="st">"week"</span><span class="op">)</span>,                   <span class="co"># by weeks</span>
     fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">0</span><span class="op">)</span><span class="op">)</span>             <span class="co"># fill-in NAs in the n counts column with 0</span></code></pre></div>
 <p>Đây là các hàng đầu tiên của kết quả bộ dữ liệu:</p>
-<div id="htmlwidget-23a0407643f0af8733eb" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-23a0407643f0af8733eb">{"x":{"filter":"none","vertical":false,"data":[["2014-04-06","2014-04-13","2014-04-20","2014-04-27","2014-05-04","2014-05-11","2014-05-18","2014-05-25","2014-06-01","2014-06-08","2014-06-15","2014-06-22","2014-06-29","2014-07-06","2014-07-13","2014-07-20","2014-07-27","2014-08-03","2014-08-10","2014-08-17"],[1,1,4,4,12,14,14,21,21,18,30,23,31,35,55,58,80,86,114,122]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>weekly_cases<\/th>\n      <th>n<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":1}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-4ddd681223517ee3ef56" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4ddd681223517ee3ef56">{"x":{"filter":"none","data":[["2014-04-06","2014-04-13","2014-04-20","2014-04-27","2014-05-04","2014-05-11","2014-05-18","2014-05-25","2014-06-01","2014-06-08","2014-06-15","2014-06-22","2014-06-29","2014-07-06","2014-07-13","2014-07-20","2014-07-27","2014-08-03","2014-08-10","2014-08-17"],[1,1,4,4,12,14,14,21,21,18,30,23,31,35,55,58,80,86,114,122]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>weekly_cases<\/th>\n      <th>n<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":1}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="các-thay-thế-cho-tuần-dịch-tễ-học" class="section level3 unnumbered">
 <h3>Các thay thế cho tuần dịch tễ học<a class="anchor" aria-label="anchor" href="#c%C3%A1c-thay-th%E1%BA%BF-cho-tu%E1%BA%A7n-d%E1%BB%8Bch-t%E1%BB%85-h%E1%BB%8Dc"><i class="fas fa-link"></i></a>
@@ -669,7 +661,7 @@
 <code class="sourceCode R"><span class="co"># assign the current time to a column</span>
 <span class="va">time_now</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span>
 <span class="va">time_now</span></code></pre></div>
-<pre><code>## [1] "2021-10-14 13:49:55 UTC"</code></pre>
+<pre><code>## [1] "2021-11-01 20:33:34 CET"</code></pre>
 <div class="sourceCode" id="cb389"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># use with_tz() to assign a new timezone to the column, while CHANGING the clock time</span>
 <span class="va">time_london_real</span> <span class="op">&lt;-</span> <span class="fu">with_tz</span><span class="op">(</span><span class="va">time_now</span>, <span class="st">"Europe/London"</span><span class="op">)</span>
@@ -682,7 +674,7 @@
 <span class="co"># there will be a difference in the times </span>
 <span class="co"># (the number of hours difference from the computers time zone to london)</span>
 <span class="va">time_london_real</span> <span class="op">-</span> <span class="va">time_london_local</span></code></pre></div>
-<pre><code>## Time difference of 1 hours</code></pre>
+<pre><code>## Time difference of -1 hours</code></pre>
 <p>Điều này có vẻ trừu tượng và thường không cần thiết nếu người dùng không làm việc trên các múi giờ.</p>
 <!-- ======================================================= -->
 </div>
@@ -692,8 +684,8 @@
 </h2>
 <p><code>lead()</code> và <code><a href="https://rdrr.io/r/stats/lag.html">lag()</a></code> là các hàm thuộc package <strong>dplyr</strong> giúp tìm các giá trị trước đó (lagged) hoặc tiếp theo (leading) trong một vectơ - thường là vectơ số hoặc ngày. Điều này rất hữu ích khi thực hiện các phép tính về sự thay đổi / chênh lệch giữa các đơn vị thời gian.</p>
 <p>Giả sử bạn muốn tính toán sự khác biệt trong trường hợp giữa tuần hiện tại và tuần trước đó. Dữ liệu ban đầu được cung cấp theo số lượng hàng tuần như dưới đây.</p>
-<div id="htmlwidget-1622fc05c1bf070c7648" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1622fc05c1bf070c7648">{"x":{"filter":"none","vertical":false,"data":[["2019-06-23","2019-06-30","2019-07-07","2019-07-14","2019-07-21","2019-07-28","2019-08-04","2019-08-11","2019-08-18","2019-08-25","2019-09-01","2019-09-08","2019-09-15","2019-09-22","2019-09-29","2019-10-06","2019-10-13","2019-10-20","2019-10-27","2019-11-03","2019-11-10","2019-11-17","2019-11-24","2019-12-01","2019-12-08","2019-12-15","2019-12-22","2019-12-29"],[0,25,59,90,65,79,41,47,31,32,28,28,76,41,70,90,124,278,371,329,177,69,77,97,100,39,19,0]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>week_start<\/th>\n      <th>cases_wk<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":1}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script><p><strong>Khi sử dụng hàm <code><a href="https://rdrr.io/r/stats/lag.html">lag()</a></code> hoặc <code>lead()</code>, thứ tự của các dòng trong khung dữ liệu là rất quan trọng! - chú ý xem ngày/số của bạn tăng dần hay giảm dần</strong></p>
+<div id="htmlwidget-a8997a6bd7c57292b457" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a8997a6bd7c57292b457">{"x":{"filter":"none","data":[["2019-06-23","2019-06-30","2019-07-07","2019-07-14","2019-07-21","2019-07-28","2019-08-04","2019-08-11","2019-08-18","2019-08-25","2019-09-01","2019-09-08","2019-09-15","2019-09-22","2019-09-29","2019-10-06","2019-10-13","2019-10-20","2019-10-27","2019-11-03","2019-11-10","2019-11-17","2019-11-24","2019-12-01","2019-12-08","2019-12-15","2019-12-22","2019-12-29"],[0,25,59,90,65,79,41,47,31,32,28,28,76,41,70,90,124,278,371,329,177,69,77,97,100,39,19,0]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>week_start<\/th>\n      <th>cases_wk<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":1}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script><p><strong>Khi sử dụng hàm <code><a href="https://rdrr.io/r/stats/lag.html">lag()</a></code> hoặc <code>lead()</code>, thứ tự của các dòng trong khung dữ liệu là rất quan trọng! - chú ý xem ngày/số của bạn tăng dần hay giảm dần</strong></p>
 <p>Đầu tiên, tạo một cột mới chứa giá trị của tuần trước đó (lagged).</p>
 <ul>
 <li>Kiểm soát số lượng đơn vị trước/sau với <code>n =</code> (phải là số nguyên không âm)<br>
@@ -705,14 +697,14 @@
 <div class="sourceCode" id="cb391"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">counts</span> <span class="op">&lt;-</span> <span class="va">counts</span> <span class="op">%&gt;%</span> 
   <span class="fu">mutate</span><span class="op">(</span>cases_prev_wk <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/lag.html">lag</a></span><span class="op">(</span><span class="va">cases_wk</span>, n <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-78384a16b4a1d488736a" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-78384a16b4a1d488736a">{"x":{"filter":"none","vertical":false,"data":[["2019-06-23","2019-06-30","2019-07-07","2019-07-14","2019-07-21","2019-07-28","2019-08-04","2019-08-11","2019-08-18","2019-08-25","2019-09-01","2019-09-08","2019-09-15","2019-09-22","2019-09-29","2019-10-06","2019-10-13","2019-10-20","2019-10-27","2019-11-03","2019-11-10","2019-11-17","2019-11-24","2019-12-01","2019-12-08","2019-12-15","2019-12-22","2019-12-29"],[0,25,59,90,65,79,41,47,31,32,28,28,76,41,70,90,124,278,371,329,177,69,77,97,100,39,19,0],[null,0,25,59,90,65,79,41,47,31,32,28,28,76,41,70,90,124,278,371,329,177,69,77,97,100,39,19]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>week_start<\/th>\n      <th>cases_wk<\/th>\n      <th>cases_prev_wk<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[1,2]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script><p>Tiếp theo, tạo một cột mới khác biệt với hai cột đang tham chiếu:</p>
+<div id="htmlwidget-522bdb0983631dfdaa22" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-522bdb0983631dfdaa22">{"x":{"filter":"none","data":[["2019-06-23","2019-06-30","2019-07-07","2019-07-14","2019-07-21","2019-07-28","2019-08-04","2019-08-11","2019-08-18","2019-08-25","2019-09-01","2019-09-08","2019-09-15","2019-09-22","2019-09-29","2019-10-06","2019-10-13","2019-10-20","2019-10-27","2019-11-03","2019-11-10","2019-11-17","2019-11-24","2019-12-01","2019-12-08","2019-12-15","2019-12-22","2019-12-29"],[0,25,59,90,65,79,41,47,31,32,28,28,76,41,70,90,124,278,371,329,177,69,77,97,100,39,19,0],[null,0,25,59,90,65,79,41,47,31,32,28,28,76,41,70,90,124,278,371,329,177,69,77,97,100,39,19]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>week_start<\/th>\n      <th>cases_wk<\/th>\n      <th>cases_prev_wk<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[1,2]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script><p>Tiếp theo, tạo một cột mới khác biệt với hai cột đang tham chiếu:</p>
 <div class="sourceCode" id="cb392"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">counts</span> <span class="op">&lt;-</span> <span class="va">counts</span> <span class="op">%&gt;%</span> 
   <span class="fu">mutate</span><span class="op">(</span>cases_prev_wk <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/lag.html">lag</a></span><span class="op">(</span><span class="va">cases_wk</span>, n <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,
          case_diff <span class="op">=</span> <span class="va">cases_wk</span> <span class="op">-</span> <span class="va">cases_prev_wk</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-98a3d1708190d2e4251e" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-98a3d1708190d2e4251e">{"x":{"filter":"none","vertical":false,"data":[["2019-06-23","2019-06-30","2019-07-07","2019-07-14","2019-07-21","2019-07-28","2019-08-04","2019-08-11","2019-08-18","2019-08-25","2019-09-01","2019-09-08","2019-09-15","2019-09-22","2019-09-29","2019-10-06","2019-10-13","2019-10-20","2019-10-27","2019-11-03","2019-11-10","2019-11-17","2019-11-24","2019-12-01","2019-12-08","2019-12-15","2019-12-22","2019-12-29"],[0,25,59,90,65,79,41,47,31,32,28,28,76,41,70,90,124,278,371,329,177,69,77,97,100,39,19,0],[null,0,25,59,90,65,79,41,47,31,32,28,28,76,41,70,90,124,278,371,329,177,69,77,97,100,39,19],[null,25,34,31,-25,14,-38,6,-16,1,-4,0,48,-35,29,20,34,154,93,-42,-152,-108,8,20,3,-61,-20,-19]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>week_start<\/th>\n      <th>cases_wk<\/th>\n      <th>cases_prev_wk<\/th>\n      <th>case_diff<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[1,2,3]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script><p>Bạn có thể đọc thêm về hàm <code>lead()</code> và <code><a href="https://rdrr.io/r/stats/lag.html">lag()</a></code> trong tài liệu <a href="https://dplyr.tidyverse.org/reference/lead-lag.html">này</a> hoặc gõ <code><a href="https://rdrr.io/r/stats/lag.html">?lag</a></code> vào cửa sổ console.</p>
+<div id="htmlwidget-ed70ef7b9d2d19c55517" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ed70ef7b9d2d19c55517">{"x":{"filter":"none","data":[["2019-06-23","2019-06-30","2019-07-07","2019-07-14","2019-07-21","2019-07-28","2019-08-04","2019-08-11","2019-08-18","2019-08-25","2019-09-01","2019-09-08","2019-09-15","2019-09-22","2019-09-29","2019-10-06","2019-10-13","2019-10-20","2019-10-27","2019-11-03","2019-11-10","2019-11-17","2019-11-24","2019-12-01","2019-12-08","2019-12-15","2019-12-22","2019-12-29"],[0,25,59,90,65,79,41,47,31,32,28,28,76,41,70,90,124,278,371,329,177,69,77,97,100,39,19,0],[null,0,25,59,90,65,79,41,47,31,32,28,28,76,41,70,90,124,278,371,329,177,69,77,97,100,39,19],[null,25,34,31,-25,14,-38,6,-16,1,-4,0,48,-35,29,20,34,154,93,-42,-152,-108,8,20,3,-61,-20,-19]],"container":"<table class=\"white-space: nowrap\">\n  <thead>\n    <tr>\n      <th>week_start<\/th>\n      <th>cases_wk<\/th>\n      <th>cases_prev_wk<\/th>\n      <th>case_diff<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[1,2,3]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script><p>Bạn có thể đọc thêm về hàm <code>lead()</code> và <code><a href="https://rdrr.io/r/stats/lag.html">lag()</a></code> trong tài liệu <a href="https://dplyr.tidyverse.org/reference/lead-lag.html">này</a> hoặc gõ <code><a href="https://rdrr.io/r/stats/lag.html">?lag</a></code> vào cửa sổ console.</p>
 <!-- ======================================================= -->
 </div>
 <div id="nguồn-1" class="section level2" number="9.12">
@@ -794,7 +786,7 @@ R for Data Science page on <a href="https://r4ds.had.co.nz/dates-and-times.html"
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Cẩm nang dịch tễ học với R</strong>" was written by the handbook team. It was last built on 2021-10-14.</p>
+    <p>"<strong>Cẩm nang dịch tễ học với R</strong>" was written by the handbook team. It was last built on 2021-11-01.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -814,22 +806,6 @@ R for Data Science page on <a href="https://r4ds.had.co.nz/dates-and-times.html"
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
-</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
-for (let popover of popovers) {
-  const div = document.createElement('div');
-  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
-  div.innerHTML = popover.getAttribute('data-content');
-
-  var has_math = div.querySelector("span.math");
-  if (has_math) {
-    document.body.appendChild(div);
-    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
-    MathJax.Hub.Queue(function() {
-      popover.setAttribute('data-content', div.innerHTML);
-      document.body.removeChild(div);
-    })
-  }
-}
 </script>
 </body>
 </html>
