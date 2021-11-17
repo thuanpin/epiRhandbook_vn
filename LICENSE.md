@@ -54,7 +54,7 @@ to be bound by the terms and conditions of this Creative Commons
 Attribution-NonCommercial-ShareAlike 4.0 International Public License
 ("Public License"). To the extent this Public License may be interpreted
 as a contract, You are granted the Licensed Rights in consideration of
-Your acceptance of these terms and conditions, and the Licensor grants
+Your acceptance of these terms and conditions, and the Licensor (Applied Epi Incorporated) grants
 You such rights in consideration of benefits the Licensor receives from
 making the Licensed Material available under these terms and conditions.
 
@@ -99,7 +99,7 @@ Section 1 – Definitions.
     all Copyright and Similar Rights that apply to Your use of the
     Licensed Material and that the Licensor has authority to license.
 -   j. Licensor means the individual(s) or entity(ies) granting rights
-    under this Public License.
+    under this Public License (Applied Epi Incorporated).
 -   k. NonCommercial means not primarily intended for or directed
     towards commercial advantage or monetary compensation. For purposes
     of this Public License, the exchange of the Licensed Material for
